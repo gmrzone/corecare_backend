@@ -1,0 +1,2 @@
+class CategoryChange(Exception):
+    pass
