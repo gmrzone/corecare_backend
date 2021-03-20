@@ -9,4 +9,6 @@ urlpatterns = [
     path('cart/get/detail/', views.get_cart, name="get_detail_cart"),
     path('cart/get/basic/', views.get_basic_cart, name="get_basic_cart"),
     path('cart/clear/', views.clear_cart, name="clear_cart"),
+    path('cart/delete/', views.delete_service, name="delete_service"),
+    path('coupon/apply/', views.apply_Coupon, name="apply_coupon"),
 ]

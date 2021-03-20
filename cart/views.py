@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.conf import settings
 from .errors import CategoryChange
+
 # Create your views here.
 
 @api_view(['POST'])
@@ -54,6 +55,28 @@ def clear_cart(request):
     cart = Cart(request=request)
     cart.clear_Cart()
     return Response({'status': 'ok'})
+
+@api_view(['POST'])
+def delete_service(request):
+    service_id = request.data.get('service_id')
+    try:
+        service = Service.objects.get(id=service_id)
+    except Service.DoesNotExist:
+        data = {'status': 'error'}
+    else:
+        cart = Cart(request=request)
+        cart.delete_service(service)
+        data = cart.get_basic_cart()
+    return Response(data)
+
+@api_view(['POST'])
+def apply_Coupon(request):
+    coupon_code = request.data.get('coupon_code')
+    cart = Cart(request=request)
+    data = cart.validate_coupon(coupon_code)
+    return Response(data)
+
+
 
 
 
