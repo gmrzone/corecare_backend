@@ -2,11 +2,12 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from .models import CategoryReview, EmployeeCategory, CouponCode, Service, ServiceSubcategory
-from .serializers import CouponCodeSerializers, EmployeeCategorySerializer, SubcategorySerializer, ServiceSerializer, CategoryReviewSerializer, AllSubcategoryServiceSerializer
+from .serializers import CouponCodeSerializers, EmployeeCategorySerializer, SubcategorySerializer, ServiceSerializer, CategoryReviewSerializer, AllSubcategoryServiceSerializer, ContactSerializer
 from rest_framework.permissions import IsAuthenticated
 from account.serializers import UserSerializer
 from itertools import chain
 from django.core.cache import cache
+from django.core.mail import send_mail, mail_admins
 
 @api_view(['GET'])
 def EmployeeCategoryList(request):
@@ -99,4 +100,25 @@ def get_full_service(request, slug):
     all_service = ServiceSubcategory.objects.filter(service_specialist__slug=slug).prefetch_related('services')
     service_serializer = AllSubcategoryServiceSerializer(all_service, many=True)
     return Response(service_serializer.data)
+    
+@api_view(['POST'])
+def contact_us(request):
+    data = request.data
+    instance = ContactSerializer(data=data)
+    if instance.is_valid():
+        mail_subject = "CoreCare ContactUs"
+        mail_message = f"""A Contact Message from
+        Name: {data['first_name']} {data['last_name']}
+        email : {data['email']}
+        message: {data['message']}"""
+        try:
+            # mail_admins(mail_subject, mail_message, fail_silently=False)
+            send_mail(mail_subject, mail_message,'saiyedafzal0@gmail.com',['saiyedafzalgz@gmail.com'])
+        except Exception as e:
+            return Response({'status': 'error', 'message': "There was an error on our end please try again later."})
+        else:
+            instance.save()
+            return Response({'status': 'ok', 'message': "Thank you for contacting us. we Will get back to you as soon as possible"})
+    else:
+        return Response({'status': 'error', 'message': "Please Make sure that your imformation is accurate or try again later"})
 

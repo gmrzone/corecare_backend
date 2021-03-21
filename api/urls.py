@@ -14,4 +14,5 @@ urlpatterns = [
     path('get_reviews/<slug:slug>/', views.getReviews, name="get_reviews"),
     path('create_review/<slug:slug>/new/', views.createReview, name="create_review"),
     path('get_services/<slug:slug>/', views.get_full_service, name="get_full_service"),
+    path('contact/send/', views.contact_us, name="contact_us"),
 ]   

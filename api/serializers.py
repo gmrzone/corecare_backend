@@ -1,6 +1,6 @@
 
 from django.db.models import fields
-from .models import EmployeeCategory, CouponCode, ServiceSubcategory, Service, CategoryReview
+from .models import EmployeeCategory, CouponCode, ServiceSubcategory, Service, CategoryReview, Contact
 from rest_framework.serializers import ModelSerializer, StringRelatedField, Field
 from django.utils.timesince import timesince
 from account.models import CustomUser
@@ -50,3 +50,8 @@ class AllSubcategoryServiceSerializer(ModelSerializer):
     class Meta:
         model = ServiceSubcategory
         fields = ['id' ,'name', 'slug', 'services']
+
+class ContactSerializer(ModelSerializer):
+    class Meta:
+        model = Contact
+        fields = ('first_name', 'last_name', 'email', 'message')

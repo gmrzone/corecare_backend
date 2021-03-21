@@ -79,3 +79,17 @@ class CouponCode(models.Model):
         ordering = ('code',)
     def __str__(self):
         return self.code
+
+class Contact(models.Model):
+    first_name = models.CharField(max_length=100, db_index=True)
+    last_name = models.CharField(max_length=100, db_index=True)
+    email = models.EmailField(max_length=100, db_index=True)
+    message = models.TextField(max_length=500)
+    created = models.DateTimeField(auto_now_add=True)
+
+
+    class Meta:
+        ordering = ('-created',)
+
+    def __str__(self):
+        return self.email

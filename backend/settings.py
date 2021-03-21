@@ -181,3 +181,15 @@ CACHES = {
 
 # SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'saiyedafzal0@gmail.com'
+EMAIL_HOST_PASSWORD = '27021992Afzal'
+
+
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# ADMINS = (('Afzal', 'saiyedafzalgz@gmail.com'), ('afzal1', 'saiyedafzalaz@gmail.com'), ('Samar', 'dalvisamar333@gmail.com'))
