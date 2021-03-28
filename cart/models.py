@@ -1,5 +1,7 @@
 
-from api.models import Service
+from django.db.models.aggregates import Max
+from django.db.models.fields import DateTimeField
+from api.models import EmployeeCategory, Service
 from django.db import models
 from django.conf import settings
 from decimal import Decimal
@@ -8,7 +10,12 @@ from .errors import CategoryChange
 from django.utils import timezone
 from api.models import CouponCode
 from django.core.cache import cache
-
+from django.core.validators import MaxValueValidator, MinValueValidator
+from api.models import Service
+from django.conf import settings
+from django.core.cache import cache
+from datetime import timedelta
+from django.utils import timezone
 # Create your models here.
 class Cart:
     def __init__(self, request) -> None:
@@ -82,6 +89,7 @@ class Cart:
     def apply_coupon(self, coupon_code, coupon):
         self.cart_detail['coupon'] = coupon_code
         self.cart_detail['discount_percent'] = coupon.discount
+        self.cart_detail['coupon_id'] = coupon.id
         self.save()
         data = self.get_cart()
         return data
@@ -107,6 +115,11 @@ class Cart:
         del self.session[settings.CART_SESSION_ID]
         del self.session['cart_detail']
         self.save()
+    
+    def razorpay_order_created(self, razorpay_id, order_receipt):
+        self.cart_detail['razorpay_order_id'] = razorpay_id
+        self.cart_detail['order_receipt'] = order_receipt
+        self.save()
 
     def get_cart(self):
         cart = self.cart.copy()
@@ -114,11 +127,46 @@ class Cart:
         cart_detail['cart_subtotal'] = str(self.get_cart_total())
         cart_detail['total'], cart_detail['discount'] = self.get_discounted_total()
         for key in cart.keys():
-            service = Service.objects.get(id=key)
+            service = cache.get(f"service_{key}")
+            if not service:
+                service = Service.objects.get(id=key)
+                cache.set(f"service_{key}", service)
             cart[key]['service'] = ServiceSerializer(service).data
             cart[key]['total'] = str(self.get_service_total(key))
         return {'cart': cart, 'cart_detail': cart_detail}
         
     def get_basic_cart(self):
         return self.cart
+
+
+class Order(models.Model):
+    FULLFILLED_BY = timezone.now() + timedelta(days=3)
+    STATUS_CHOISES = (('pending', 'Pending'), ('processing', 'Processing'),('ongoing', 'OnGoing'),('cancelled', 'Cancelled'),('failed', 'Failed'),('completed', 'Completed'))
+    category = models.ForeignKey(EmployeeCategory, on_delete=models.CASCADE, related_name="related_orders", null=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="orders")
+    receipt = models.CharField(max_length=100, db_index=True)
+    razorpay_order_id = models.CharField(max_length=100, db_index=True, null=True, blank=True)
+    razorpay_payment_id = models.CharField(max_length=100, db_index=True, null=True, blank=True)
+    razorpay_signature = models.CharField(max_length=300, db_index=True, null=True, blank=True)
+    subtotal = models.DecimalField(max_digits=10, decimal_places=2)
+    discount = models.DecimalField(max_digits=10, decimal_places=2)
+    total = models.DecimalField(max_digits=10, decimal_places=2)
+    coupon = models.ForeignKey(CouponCode, null=True, blank=True, on_delete=models.SET_NULL, related_name="related_orders")
+    paid = models.BooleanField(default=False)
+    status = models.CharField(choices=STATUS_CHOISES, default="pending", max_length=100)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    fullfill_by = DateTimeField(default=FULLFILLED_BY)
+
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
+    service = models.ForeignKey(Service, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=0, validators=[MaxValueValidator(10), MinValueValidator(0)])
+    total = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return self.service.name
+
+
 

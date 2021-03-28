@@ -1,7 +1,10 @@
 from django.urls import path
 from . import views
-
+from rest_framework.routers import SimpleRouter
 app_name = "cart"
+
+router = SimpleRouter()
+router.register(r"orders", views.OrderViewSet, basename='orders')
 
 urlpatterns = [
     path('cart/add/', views.add_service_to_cart, name="add_to_cart"),
@@ -11,4 +14,6 @@ urlpatterns = [
     path('cart/clear/', views.clear_cart, name="clear_cart"),
     path('cart/delete/', views.delete_service, name="delete_service"),
     path('coupon/apply/', views.apply_Coupon, name="apply_coupon"),
-]
+    path('create-razorpay-orders/', views.create_razorPay_order, name="create_rezorpay_order"),
+    path('create-orders/', views.create_order, name="create_order"),
+] + router.urls

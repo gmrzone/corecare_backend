@@ -8,6 +8,7 @@ from .managers import CustomUserManager
 from django.core.mail import send_mail
 from api.models import EmployeeCategory
 from .utils import employee_document_location, profile_pic_loc
+import razorpay
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     username_validators = UnicodeUsernameValidator()
