@@ -15,6 +15,7 @@ from .models import Order, OrderItem
 from django.core.cache import cache
 from rest_framework.viewsets import ViewSet
 from .serializers import OrderSerializer
+from rest_framework.decorators import action
 # Create your views here.
 client = razorpay.Client(auth=('rzp_test_Fz30Ps4aOA4Zke', 'HS7mZz3v6G9dLeaS5LY1tejl'))
 @api_view(['POST'])
@@ -96,7 +97,7 @@ def create_razorPay_order(request):
         order_amount = cart.get_discounted_total()[0]
         order_currency = "INR"
         allowed_characters = datetime.now().strftime('%Y%m%d%H%M%S') + ascii_uppercase + ascii_lowercase
-        order_receipt = 'ORD' + str(user.id) + get_random_string(16, allowed_characters)
+        order_receipt = 'ORD' + str(user.id) + get_random_string(17, allowed_characters)
         shipping_address = f"{user.address_1} {user.address_2} {user.city} {user.state} {user.pincode}"
         notes = {'shipping address': shipping_address}
         order = client.order.create({'amount': float(order_amount) * 100, 'currency': order_currency, 'receipt': order_receipt, 'notes': notes})
@@ -180,17 +181,25 @@ def create_order(request):
 
 
 class OrderViewSet(ViewSet):
-    
+    permission_classes = [IsAuthenticated]
     def list(self, request):
-        queryset = Order.objects.all().prefetch_related('items').select_related('coupon')
+        queryset = Order.objects.all().prefetch_related('items').select_related('coupon', 'user')
         ser = OrderSerializer(queryset, many=True)
         return Response(ser.data)
 
     def retrieve(self, request, pk):
-        queryset = Order.objects.all().prefetch_related('items').select_related('coupon')
+        queryset = Order.objects.all().prefetch_related('items').select_related('coupon','user')
         order = get_object_or_404(queryset, receipt=pk)
         ser = OrderSerializer(order)
         return Response(ser.data)
+
+    @action(detail=False, methods=['GET'])
+    def user_order(self, request):
+        queryset = Order.objects.all().prefetch_related('items').select_related('coupon', 'user')
+        orders = queryset.filter(user=request.user)
+        ser = OrderSerializer(orders, many=True)
+        return Response(ser.data)
+
 
 
 

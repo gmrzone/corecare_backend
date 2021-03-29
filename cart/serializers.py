@@ -2,6 +2,7 @@ from .models import Order, OrderItem
 from rest_framework.serializers import ModelSerializer, Field
 from api.serializers import CouponCodeSerializers, TimeSince
 from api.serializers import ServiceSerializer, EmployeeCategorySerializer
+from account.serializers import UserSerializer
 # class date(Field):
 #     def to_representation(self, value):
 #         return timesince(value) + " ago"
@@ -47,6 +48,7 @@ class OrderSerializer(ModelSerializer):
     created = TimeSince()
     updated = TimeSince()
     fullfill_by = CalculateFullfillTime()
+    user = UserSerializer()
     class Meta:
         model = Order
-        fields = ('category', 'items', 'user', 'receipt', 'razorpay_order_id', 'subtotal', 'discount', 'total', 'coupon', 'paid', 'status', 'created', 'updated', 'fullfill_by')
+        fields = ('id', 'category', 'items', 'user', 'receipt', 'razorpay_order_id', 'subtotal', 'discount', 'total', 'coupon', 'paid', 'status', 'created', 'updated', 'fullfill_by')
