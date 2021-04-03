@@ -15,7 +15,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     
     number = models.CharField(max_length=10, db_index=True, unique=True)
     username = models.CharField(_('username'),max_length=150, null=True, blank=True, unique=True, validators=[username_validators], error_messages={'unique': _('A user with that username already exists.')})
-    email = models.EmailField(_('email address'), unique=True, blank=True)
+    email = models.EmailField(_('email address'), unique=True, blank=True, null=True)
     first_name = models.CharField(_('first name'), max_length=150, blank=True)
     photo = models.ImageField(default='default-profile.png', upload_to=profile_pic_loc)
     last_name = models.CharField(_('last name'), max_length=150, blank=True)

@@ -27,7 +27,9 @@ def signup(request):
             raise CustomUser.DoesNotExist()
     except CustomUser.DoesNotExist:
         if validate_number(number):
+            print("Ok")
             CustomUser.objects.create_user(number=number, password=f"{number}corecare")
+            print("Not OK")
             secret_key = generate_key_for_otp(number)
             key = base64.b32encode(secret_key.encode())
             otp = pyotp.TOTP(key, interval=300, digits=6)
