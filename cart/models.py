@@ -158,6 +158,9 @@ class Order(models.Model):
     updated = models.DateTimeField(auto_now=True)
     fullfill_by = DateTimeField(default=FULLFILLED_BY)
 
+    class Meta:
+        ordering = ('-created',)
+
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')

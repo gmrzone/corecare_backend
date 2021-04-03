@@ -22,6 +22,7 @@ client = razorpay.Client(auth=('rzp_test_Fz30Ps4aOA4Zke', 'HS7mZz3v6G9dLeaS5LY1t
 def add_service_to_cart(request):
     service_id = request.data['service_id']
     category = request.data['category']
+    print(category)
     try:
         service = Service.objects.get(id=service_id)
     except Service.DoesNotExist:

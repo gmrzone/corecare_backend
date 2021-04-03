@@ -51,7 +51,7 @@ def get_subcategory_for_single_category(request, id, slug):
 
 @api_view(['GET'])
 def GetSubcategory(request):
-    subcategory = ServiceSubcategory.objects.all()
+    subcategory = ServiceSubcategory.objects.all().select_related('service_specialist')
     Serializer = SubcategorySerializer(subcategory, many=True)
     return Response(Serializer.data)
 
@@ -121,4 +121,14 @@ def contact_us(request):
             return Response({'status': 'ok', 'message': "Thank you for contacting us. we Will get back to you as soon as possible"})
     else:
         return Response({'status': 'error', 'message': "Please Make sure that your imformation is accurate or try again later"})
+
+@api_view(['GET'])
+def search_service(request, query, city):
+    print(query)
+    if (query):
+        service_sub = ServiceSubcategory.objects.filter(name__icontains=query).select_related('service_specialist')
+        data = SubcategorySerializer(service_sub, many=True).data
+    else:
+        data = []
+    return Response(data)
 

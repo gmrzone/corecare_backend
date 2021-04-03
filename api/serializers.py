@@ -17,6 +17,7 @@ class ServiceSerializer(ModelSerializer):
         fields= '__all__'
 
 class SubcategorySerializer(ModelSerializer):
+    service_specialist = EmployeeCategorySerializer()
     class Meta:
         model = ServiceSubcategory
         fields = '__all__'
