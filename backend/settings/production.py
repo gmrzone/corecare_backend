@@ -2,7 +2,6 @@ from .base import *
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-
 # POSTGRESS PRODUCTION
 DATABASES = {
     'default': {
@@ -10,7 +9,7 @@ DATABASES = {
         'NAME': 'corecare',
         'USER': 'afzal',
         'PASSWORD': '27021992samgalnote4',
-        'HOST': '192.46.213.116',
+        'HOST': '172.105.54.166',
         'PORT': '5432',
     }
 }
