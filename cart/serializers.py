@@ -4,6 +4,8 @@ from api.serializers import CouponCodeSerializers, TimeSince
 from api.serializers import ServiceSerializer, EmployeeCategorySerializer
 from account.serializers import UserSerializer
 from datetime import timedelta
+from django.utils import timezone
+import pytz
 # class date(Field):
 #     def to_representation(self, value):
 #         return timesince(value) + " ago"
@@ -19,11 +21,12 @@ class CalculateFullfillTime(Field):
         super().__init__(*args, **kwargs)
 
     def to_representation(self, value):
-        future_date = value + timedelta(days=3)
+        local_timezone = pytz.timezone('Asia/Kolkata')
+        local_time = value.astimezone(local_timezone)
+        future_date = local_time + timedelta(days=3)
         future_day = self.make_ordinal(future_date.strftime('%d'))
-        future_month = self.select_month(future_date.strftime('%m'))
-        future_year = future_date.strftime('%Y')
-        return f"{future_day} {future_month} {future_year}"
+        date = future_date.strftime('%B-%Y %I:%M %p')
+        return f"{future_day} {date}"
 
 
     def make_ordinal(self, number):
