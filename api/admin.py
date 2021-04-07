@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import EmployeeCategory, CouponCode, ServiceSubcategory, Service, CategoryReview, Contact
+from .models import EmployeeCategory, CouponCode, ServiceSubcategory, Service, CategoryReview, Contact, PartnerRequest
 # Register your models here.
 @admin.register(EmployeeCategory)
 class EmployeeCategoryAdmin(admin.ModelAdmin):
@@ -35,3 +35,10 @@ class ContAdmin(admin.ModelAdmin):
     list_filter = ('email', 'created')
     list_editable = ('email',)
     search_fields = ('email', 'first_name')
+
+@admin.register(PartnerRequest)
+class PartnerRequestAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'number', 'detail')
+    list_filter = ('email',)
+    list_editable = ('email',)
+    search_field = ('name', 'email', 'number')

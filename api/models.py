@@ -10,6 +10,7 @@ class EmployeeCategory(models.Model):
     name= models.CharField(max_length=100, db_index=True)
     slug = models.CharField(null=True, blank=True, max_length=100, db_index=True)
     icon = models.FileField(upload_to=EmployeeIconLocation, default='Employee Category/default.svg')
+    hiring = models.BooleanField(default=True)
 
     class Meta:
         index_together = ('id', 'slug')
@@ -85,6 +86,20 @@ class Contact(models.Model):
     last_name = models.CharField(max_length=100, db_index=True)
     email = models.EmailField(max_length=100, db_index=True)
     message = models.TextField(max_length=500)
+    created = models.DateTimeField(auto_now_add=True)
+
+
+    class Meta:
+        ordering = ('-created',)
+
+    def __str__(self):
+        return self.email
+
+class PartnerRequest(models.Model):
+    name = models.CharField(max_length=100, db_index=True)
+    number = models.CharField(max_length=100, db_index=True)
+    email = models.EmailField(max_length=100, db_index=True)
+    detail = models.TextField(max_length=500)
     created = models.DateTimeField(auto_now_add=True)
 
 

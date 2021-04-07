@@ -2,7 +2,7 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from .models import CategoryReview, EmployeeCategory, CouponCode, Service, ServiceSubcategory
-from .serializers import CouponCodeSerializers, EmployeeCategorySerializer, SubcategorySerializer, ServiceSerializer, CategoryReviewSerializer, AllSubcategoryServiceSerializer, ContactSerializer
+from .serializers import CouponCodeSerializers, EmployeeCategorySerializer, SubcategorySerializer, ServiceSerializer, CategoryReviewSerializer, AllSubcategoryServiceSerializer, ContactSerializer, PartnerRequestSerializer
 from rest_framework.permissions import IsAuthenticated
 from account.serializers import UserSerializer
 from itertools import chain
@@ -63,7 +63,6 @@ def GetServices(request):
 
 @api_view(['GET'])
 def getEmployees(request, slug):
-    print(request.user)
     employees = EmployeeCategory.objects.get(slug=slug).users.all()
     ser = UserSerializer(employees, many=True)
     return Response(ser.data)
@@ -131,4 +130,32 @@ def search_service(request, query, city):
     else:
         data = []
     return Response(data)
+
+@api_view(['GET'])
+def getHiringEmployeeCategories(request):
+    category = EmployeeCategory.objects.filter(hiring=True)
+    ser = EmployeeCategorySerializer(category, many=True)
+    return Response(ser.data)
+
+@api_view(['POST'])
+def partner_request(request):
+    data = request.data
+    instance = PartnerRequestSerializer(data=data)
+    if instance.is_valid():
+        mail_subject = "CoreCare Partner Request"
+        mail_message = f"""
+        Name: {data['name']}
+        Number: {data['number']}
+        email : {data['email']}
+        detail: {data['detail']}"""
+        try:
+            # mail_admins(mail_subject, mail_message, fail_silently=False)
+            send_mail(mail_subject, mail_message,'saiyedafzal0@gmail.com',['saiyedafzalgz@gmail.com'])
+        except Exception as e:
+            return Response({'status': 'error', 'message': "There was an error on our end please try again later."})
+        else:
+            instance.save()
+            return Response({'status': 'ok', 'message': "Thank you for showing Interest in CoreCare Partners. we Will get back to you as soon as possible"})
+    else:
+        return Response({'status': 'error', 'message': "Please Make sure that your imformation is accurate or try again later"})
 
