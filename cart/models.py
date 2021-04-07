@@ -14,7 +14,6 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from api.models import Service
 from django.conf import settings
 from django.core.cache import cache
-from datetime import timedelta
 from django.utils import timezone
 # Create your models here.
 class Cart:
@@ -140,7 +139,6 @@ class Cart:
 
 
 class Order(models.Model):
-    FULLFILLED_BY = timezone.now() + timedelta(days=3)
     STATUS_CHOISES = (('pending', 'Pending'), ('processing', 'Processing'),('ongoing', 'OnGoing'),('cancelled', 'Cancelled'),('failed', 'Failed'),('completed', 'Completed'))
     category = models.ForeignKey(EmployeeCategory, on_delete=models.CASCADE, related_name="related_orders", null=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="orders")
@@ -156,7 +154,7 @@ class Order(models.Model):
     status = models.CharField(choices=STATUS_CHOISES, default="pending", max_length=100)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    fullfill_by = DateTimeField(default=FULLFILLED_BY)
+    fullfill_by = DateTimeField(default=timezone.now)
 
     class Meta:
         ordering = ('-created',)
