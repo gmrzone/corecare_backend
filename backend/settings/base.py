@@ -12,21 +12,14 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+from .afzal import *
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ar!l!wjmjwl!h2^pf%kox8fobb^&44w#nt%oi-&%zpll=cqjf_'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
@@ -81,39 +74,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'backend.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-# Sqlite Database
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-# POSTGRESS DEVELOPMENT
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'corecare',
-#         'USER': 'afzal',
-#         'PASSWORD': '27021992samgalnote4',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
-# POSTGRESS PRODUCTION
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'corecare',
-#         'USER': 'afzal',
-#         'PASSWORD': '27021992samgalnote4',
-#         'HOST': '192.46.213.116',
-#         'PORT': '5432',
-#     }
-# }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -165,7 +125,13 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://192.168.0.198:3000",
     "http://127.0.0.1:3000",
-
+    'http://corecare.in',
+    'https://corecare.in',
+    'http://partner.corecare.in',
+    'https://partner.corecare.in',
+    'http://api.corecare.in',
+    'https://api.corecare.in',
+    
 
 ]
 CORS_ORIGIN_ALLOW_ALL = True
@@ -193,14 +159,6 @@ AUTH_USER_MODEL = 'account.CustomUser'
 
 CART_SESSION_ID = 'cart'
 
-CACHES = {
-    'default': {
-        'BACKEND': 'redis_cache.RedisCache',
-        'LOCATION': "redis://127.0.0.1:6379/1",
-        'TIMEOUT': 600
-    },
-}
-
 # SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
 
@@ -215,4 +173,3 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-ADMINS = (('Afzal', 'saiyedafzalgz@gmail.com'), ('afzal1', 'saiyedafzalaz@gmail.com'), ('Samar', 'dalvisamar333@gmail.com'))
