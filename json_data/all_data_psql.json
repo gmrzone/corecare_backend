@@ -727,8 +727,8 @@
     "model": "sessions.session",
     "pk": "6bi6hevdeqwn0rd9eiqkevdkc7zo6ycl",
     "fields": {
-        "session_data": ".eJxVzcFuwyAMBuB38blCEBO35Lj7niEy4DZsFekIOUxV332g9tCdLPn__PsOM-91mfdNypwiTGDg8L7zHL4l9yB-cb6sKqy5luRVJ-qVbupzjXL9eNl_BQtvS7s-6REtnUd9dOTphIHYo7PGG22ddeyZRZzGQRwj0ZEQ2eoxYhzI8HlopYFLhekOxuo-fnbONdVfmMwBbiUFaW-QnNIaHo8nn6NUTtfOA1e5rKXxntwkVynN_QGLQVKS:1lSPs9:cQrg8H2aMqvvZ3wKEBxO3lgItONuIPGtN8hAjXgfLKA",
-        "expire_date": "2021-04-16T19:54:25.108Z"
+        "session_data": ".eJxVjMEOgyAQRP-Fc0PAxVU89t5vIAushdZoongy_ns19dDeJu_NzCYcrSW5deHZ5Sg6ocXtl3kKbx5PEV80PicZprHM2cuzIi-7yMcUebhf3b-DREs61q2qwWBfq8aixxYCkgdrtNfKWGPJEzFbBRVbAsQGAcioOkKsUFNfHaeB5iK6bf8mF7lQHk6wfwD3dEBE:1lU7l9:6gpTVFVtmTYG319IjYbnoQZ2rklImtNqbtcVejC2jNk",
+        "expire_date": "2021-04-21T12:58:15.577Z"
     }
 },
 {
@@ -4791,7 +4791,7 @@
         "status": "pending",
         "created": "2021-03-27T16:43:39.421Z",
         "updated": "2021-03-27T16:43:39.421Z",
-        "fullfill_by": "2021-03-31T14:34:38.263Z"
+        "fullfill_by": "2021-04-10T10:48:32.192Z"
     }
 },
 {
@@ -4814,7 +4814,7 @@
         "status": "completed",
         "created": "2021-03-27T17:14:47.974Z",
         "updated": "2021-03-29T12:22:12.493Z",
-        "fullfill_by": "2021-03-31T14:34:38Z"
+        "fullfill_by": "2021-04-10T10:48:32.192Z"
     }
 },
 {
@@ -4837,7 +4837,7 @@
         "status": "pending",
         "created": "2021-03-27T17:25:10.309Z",
         "updated": "2021-03-27T17:25:10.309Z",
-        "fullfill_by": "2021-03-31T14:34:38.263Z"
+        "fullfill_by": "2021-04-10T10:48:32.192Z"
     }
 },
 {
@@ -4860,7 +4860,7 @@
         "status": "pending",
         "created": "2021-03-27T17:27:53.794Z",
         "updated": "2021-03-27T17:27:53.794Z",
-        "fullfill_by": "2021-03-31T14:34:38.263Z"
+        "fullfill_by": "2021-04-10T10:48:32.192Z"
     }
 },
 {
@@ -4883,7 +4883,7 @@
         "status": "pending",
         "created": "2021-03-27T17:31:17.070Z",
         "updated": "2021-03-27T17:31:17.070Z",
-        "fullfill_by": "2021-03-31T14:34:38.263Z"
+        "fullfill_by": "2021-04-10T10:48:32.192Z"
     }
 },
 {
@@ -4906,7 +4906,7 @@
         "status": "pending",
         "created": "2021-03-27T17:56:07.331Z",
         "updated": "2021-03-29T12:30:57.588Z",
-        "fullfill_by": "2021-03-31T14:34:38Z"
+        "fullfill_by": "2021-04-10T10:48:32.192Z"
     }
 },
 {
@@ -4929,7 +4929,7 @@
         "status": "pending",
         "created": "2021-03-28T08:55:35.954Z",
         "updated": "2021-03-29T11:46:41.043Z",
-        "fullfill_by": "2021-03-31T14:34:38Z"
+        "fullfill_by": "2021-04-10T10:48:32.192Z"
     }
 },
 {
@@ -4952,7 +4952,7 @@
         "status": "pending",
         "created": "2021-03-28T20:25:58.217Z",
         "updated": "2021-03-28T20:25:58.217Z",
-        "fullfill_by": "2021-03-31T20:25:17.184Z"
+        "fullfill_by": "2021-04-10T10:48:32.192Z"
     }
 },
 {
@@ -4975,7 +4975,329 @@
         "status": "pending",
         "created": "2021-04-01T19:27:56.931Z",
         "updated": "2021-04-01T19:27:56.931Z",
-        "fullfill_by": "2021-04-04T19:25:52.114Z"
+        "fullfill_by": "2021-04-10T10:48:32.192Z"
+    }
+},
+{
+    "model": "cart.order",
+    "pk": 16,
+    "fields": {
+        "category": 1,
+        "user": [
+            "7208333993"
+        ],
+        "receipt": "ORD1OdmBXslPALDszYz20",
+        "razorpay_order_id": "order_Gw0VVCM0OlSdBs",
+        "razorpay_payment_id": "pay_Gw0VitDYt4AbGv",
+        "razorpay_signature": "86f38e07f1847ad373194d36918fc336bb4391c6f143eac24810fbee3b7c5084",
+        "subtotal": "1076.00",
+        "discount": "0.00",
+        "total": "1076.00",
+        "coupon": null,
+        "paid": true,
+        "status": "pending",
+        "created": "2021-04-07T11:01:56.351Z",
+        "updated": "2021-04-07T11:01:56.351Z",
+        "fullfill_by": "2021-04-07T10:59:02.495Z"
+    }
+},
+{
+    "model": "cart.order",
+    "pk": 17,
+    "fields": {
+        "category": 1,
+        "user": [
+            "7208333993"
+        ],
+        "receipt": "ORD1owf4l0PGaioSURiDU",
+        "razorpay_order_id": "order_Gw0WQU0wr8lsD4",
+        "razorpay_payment_id": "pay_Gw0WdeahhSPzdU",
+        "razorpay_signature": "67f5942d1f6d8ccfef07a667d730318d908dd01b7e54f4fbe25d9fa4f7ccbed8",
+        "subtotal": "269.00",
+        "discount": "0.00",
+        "total": "269.00",
+        "coupon": null,
+        "paid": true,
+        "status": "pending",
+        "created": "2021-04-07T11:02:47.751Z",
+        "updated": "2021-04-07T11:02:47.751Z",
+        "fullfill_by": "2021-04-07T10:59:02.495Z"
+    }
+},
+{
+    "model": "cart.order",
+    "pk": 18,
+    "fields": {
+        "category": 2,
+        "user": [
+            "7208333993"
+        ],
+        "receipt": "ORD1YEr48RPeZoWkNeSTB",
+        "razorpay_order_id": "order_Gw0mj0PvBwMpiV",
+        "razorpay_payment_id": "pay_Gw0n2NN0cmLjNh",
+        "razorpay_signature": "3a5f45d3011ca51d6adff90cdade288b577cf8f22be10129129301cfe33a616c",
+        "subtotal": "369.00",
+        "discount": "0.00",
+        "total": "369.00",
+        "coupon": null,
+        "paid": true,
+        "status": "pending",
+        "created": "2021-04-07T11:18:18.910Z",
+        "updated": "2021-04-07T11:18:18.910Z",
+        "fullfill_by": "2021-04-07T10:59:02.495Z"
+    }
+},
+{
+    "model": "cart.order",
+    "pk": 19,
+    "fields": {
+        "category": 1,
+        "user": [
+            "7208333993"
+        ],
+        "receipt": "ORD11LoHckYzEv0O48fAF",
+        "razorpay_order_id": "order_Gw0nIq5reJJBID",
+        "razorpay_payment_id": "pay_Gw0nSwdWAMUz9u",
+        "razorpay_signature": "738b43c4cb0851dadda2490275e0f7d9e105e8e31dd842794ccdb29f2a6b7d31",
+        "subtotal": "269.00",
+        "discount": "0.00",
+        "total": "269.00",
+        "coupon": null,
+        "paid": true,
+        "status": "pending",
+        "created": "2021-04-07T11:18:43.463Z",
+        "updated": "2021-04-07T11:18:43.463Z",
+        "fullfill_by": "2021-04-07T10:59:02.495Z"
+    }
+},
+{
+    "model": "cart.order",
+    "pk": 20,
+    "fields": {
+        "category": 1,
+        "user": [
+            "7208333993"
+        ],
+        "receipt": "ORD1ICagfVcxEAmnDmZmP",
+        "razorpay_order_id": "order_Gw0paRwqul42g1",
+        "razorpay_payment_id": "pay_Gw0polwgRVVpLI",
+        "razorpay_signature": "677c939c7c39b0acca436513c9352a4c8f28516734516ffeb56ae2ef3d0a0369",
+        "subtotal": "269.00",
+        "discount": "0.00",
+        "total": "269.00",
+        "coupon": null,
+        "paid": true,
+        "status": "pending",
+        "created": "2021-04-07T11:20:56.681Z",
+        "updated": "2021-04-07T11:20:56.681Z",
+        "fullfill_by": "2021-04-07T10:59:02.495Z"
+    }
+},
+{
+    "model": "cart.order",
+    "pk": 21,
+    "fields": {
+        "category": 1,
+        "user": [
+            "7208333993"
+        ],
+        "receipt": "ORD18TT2LyevwaQDHVxIV",
+        "razorpay_order_id": "order_Gw0uekYFNb7gMH",
+        "razorpay_payment_id": "pay_Gw0utXFePJlKCd",
+        "razorpay_signature": "f994b49383dfcc952d3a6c6e7eb7f39faeabcd4516b029de7045a683e245cf26",
+        "subtotal": "269.00",
+        "discount": "0.00",
+        "total": "269.00",
+        "coupon": null,
+        "paid": true,
+        "status": "pending",
+        "created": "2021-04-07T11:25:45.343Z",
+        "updated": "2021-04-07T11:25:45.343Z",
+        "fullfill_by": "2021-04-07T10:59:02.495Z"
+    }
+},
+{
+    "model": "cart.order",
+    "pk": 22,
+    "fields": {
+        "category": 1,
+        "user": [
+            "7208333993"
+        ],
+        "receipt": "ORD1d0nTj21ey2AdcPG4l",
+        "razorpay_order_id": "order_Gw0vvJuUxl81VH",
+        "razorpay_payment_id": "pay_Gw0w7KdRN8Q2tC",
+        "razorpay_signature": "63304dda5c44c9fcbe67b1bfcfb5ca7a3348c8a59bf1ed47824126b19d1f6b09",
+        "subtotal": "269.00",
+        "discount": "0.00",
+        "total": "269.00",
+        "coupon": null,
+        "paid": true,
+        "status": "pending",
+        "created": "2021-04-07T11:26:54.544Z",
+        "updated": "2021-04-07T11:26:54.544Z",
+        "fullfill_by": "2021-04-07T10:59:02.495Z"
+    }
+},
+{
+    "model": "cart.order",
+    "pk": 23,
+    "fields": {
+        "category": 1,
+        "user": [
+            "7208333993"
+        ],
+        "receipt": "ORD12GAa6QOtNvO3AtwUQ",
+        "razorpay_order_id": "order_Gw0ztgom2UA2BT",
+        "razorpay_payment_id": "pay_Gw10BzJ0ReZrTL",
+        "razorpay_signature": "15485f04ead50d1cfd8196cf27da8e1db503cc15fd8347808e0a90991ec4d081",
+        "subtotal": "269.00",
+        "discount": "0.00",
+        "total": "269.00",
+        "coupon": null,
+        "paid": true,
+        "status": "pending",
+        "created": "2021-04-07T11:30:46.201Z",
+        "updated": "2021-04-07T11:30:46.201Z",
+        "fullfill_by": "2021-04-07T10:59:02.495Z"
+    }
+},
+{
+    "model": "cart.order",
+    "pk": 24,
+    "fields": {
+        "category": 2,
+        "user": [
+            "7208333993"
+        ],
+        "receipt": "ORD1Jk5CbWgA0bW5N4s4y",
+        "razorpay_order_id": "order_Gw10Os6t9Lmyee",
+        "razorpay_payment_id": "pay_Gw10gNuvv3b2zV",
+        "razorpay_signature": "0588ab522307273b63d9ec6457533739d5e8bf4ae68c967f0b96b918b9127f24",
+        "subtotal": "369.00",
+        "discount": "0.00",
+        "total": "369.00",
+        "coupon": null,
+        "paid": true,
+        "status": "pending",
+        "created": "2021-04-07T11:31:14.474Z",
+        "updated": "2021-04-07T11:31:14.474Z",
+        "fullfill_by": "2021-04-07T10:59:02.495Z"
+    }
+},
+{
+    "model": "cart.order",
+    "pk": 25,
+    "fields": {
+        "category": 1,
+        "user": [
+            "7208333993"
+        ],
+        "receipt": "ORD1Eagj2Bh0drW1AO1yH",
+        "razorpay_order_id": "order_Gw16qciSL084d5",
+        "razorpay_payment_id": "pay_Gw173cGTEHxeLq",
+        "razorpay_signature": "ec1da30a608bbd519a615c6f667cc5e4144234e94e13620680c6793510ea2141",
+        "subtotal": "199.00",
+        "discount": "0.00",
+        "total": "199.00",
+        "coupon": null,
+        "paid": true,
+        "status": "pending",
+        "created": "2021-04-07T11:37:16.262Z",
+        "updated": "2021-04-07T11:37:16.263Z",
+        "fullfill_by": "2021-04-07T11:37:16.262Z"
+    }
+},
+{
+    "model": "cart.order",
+    "pk": 26,
+    "fields": {
+        "category": 1,
+        "user": [
+            "7208333993"
+        ],
+        "receipt": "ORD1JsXmxeP01JjKbVKe4",
+        "razorpay_order_id": "order_Gw1f1N03VLTQjY",
+        "razorpay_payment_id": "pay_Gw1fNXrZwMwcXe",
+        "razorpay_signature": "6f08c03c6f3a572b7f35f3c39ebf442a501fbf3eaf0909d30c127fbc44198255",
+        "subtotal": "656.00",
+        "discount": "137.76",
+        "total": "518.24",
+        "coupon": 4,
+        "paid": true,
+        "status": "pending",
+        "created": "2021-04-07T12:09:47.217Z",
+        "updated": "2021-04-07T12:09:47.217Z",
+        "fullfill_by": "2021-04-07T12:09:47.216Z"
+    }
+},
+{
+    "model": "cart.order",
+    "pk": 27,
+    "fields": {
+        "category": 2,
+        "user": [
+            "7208333993"
+        ],
+        "receipt": "ORD1svFh20CEZDbdvFvQd",
+        "razorpay_order_id": "order_Gw1hJX1Zi4Qej6",
+        "razorpay_payment_id": "pay_Gw1hVcJ333WoxK",
+        "razorpay_signature": "8979422acbff4b83f41e3d8d8896bb45426ab5b5477e1a69a9cdace7e6efd14d",
+        "subtotal": "638.00",
+        "discount": "0.00",
+        "total": "638.00",
+        "coupon": null,
+        "paid": true,
+        "status": "pending",
+        "created": "2021-04-07T12:11:47.120Z",
+        "updated": "2021-04-07T12:11:47.120Z",
+        "fullfill_by": "2021-04-07T12:11:47.120Z"
+    }
+},
+{
+    "model": "cart.order",
+    "pk": 28,
+    "fields": {
+        "category": 4,
+        "user": [
+            "7208333993"
+        ],
+        "receipt": "ORD1RrwR1Xgxi3j7aSOCm",
+        "razorpay_order_id": "order_Gw1mFe17G5tRNE",
+        "razorpay_payment_id": "pay_Gw1maDXDEhymIe",
+        "razorpay_signature": "744dc9fb699c1a7eb0d67d00f615ed6ec53e9d7fae1d24531cbff760972cae81",
+        "subtotal": "198.00",
+        "discount": "0.00",
+        "total": "198.00",
+        "coupon": null,
+        "paid": true,
+        "status": "pending",
+        "created": "2021-04-07T12:16:35.505Z",
+        "updated": "2021-04-07T12:16:35.505Z",
+        "fullfill_by": "2021-04-07T12:16:35.505Z"
+    }
+},
+{
+    "model": "cart.order",
+    "pk": 29,
+    "fields": {
+        "category": 1,
+        "user": [
+            "7208333993"
+        ],
+        "receipt": "ORD1SbUzkzIA0b4LofhZ0",
+        "razorpay_order_id": "order_Gw2SrDhbkH1PI7",
+        "razorpay_payment_id": "pay_Gw2TSxkY7COUAE",
+        "razorpay_signature": "2868ca21db6f932cbaadf30624abd5b153d9b0bf6644c9e428b3e80f4d71031b",
+        "subtotal": "269.00",
+        "discount": "0.00",
+        "total": "269.00",
+        "coupon": null,
+        "paid": true,
+        "status": "pending",
+        "created": "2021-04-07T12:57:11.054Z",
+        "updated": "2021-04-07T12:57:11.054Z",
+        "fullfill_by": "2021-04-07T12:57:11.053Z"
     }
 },
 {
@@ -5266,6 +5588,196 @@
         "service": 171,
         "quantity": 1,
         "total": "299.00"
+    }
+},
+{
+    "model": "cart.orderitem",
+    "pk": 36,
+    "fields": {
+        "order": 16,
+        "service": 55,
+        "quantity": 4,
+        "total": "1076.00"
+    }
+},
+{
+    "model": "cart.orderitem",
+    "pk": 37,
+    "fields": {
+        "order": 17,
+        "service": 55,
+        "quantity": 1,
+        "total": "269.00"
+    }
+},
+{
+    "model": "cart.orderitem",
+    "pk": 38,
+    "fields": {
+        "order": 18,
+        "service": 137,
+        "quantity": 1,
+        "total": "369.00"
+    }
+},
+{
+    "model": "cart.orderitem",
+    "pk": 39,
+    "fields": {
+        "order": 19,
+        "service": 55,
+        "quantity": 1,
+        "total": "269.00"
+    }
+},
+{
+    "model": "cart.orderitem",
+    "pk": 40,
+    "fields": {
+        "order": 20,
+        "service": 55,
+        "quantity": 1,
+        "total": "269.00"
+    }
+},
+{
+    "model": "cart.orderitem",
+    "pk": 41,
+    "fields": {
+        "order": 21,
+        "service": 55,
+        "quantity": 1,
+        "total": "269.00"
+    }
+},
+{
+    "model": "cart.orderitem",
+    "pk": 42,
+    "fields": {
+        "order": 22,
+        "service": 55,
+        "quantity": 1,
+        "total": "269.00"
+    }
+},
+{
+    "model": "cart.orderitem",
+    "pk": 43,
+    "fields": {
+        "order": 23,
+        "service": 55,
+        "quantity": 1,
+        "total": "269.00"
+    }
+},
+{
+    "model": "cart.orderitem",
+    "pk": 44,
+    "fields": {
+        "order": 24,
+        "service": 137,
+        "quantity": 1,
+        "total": "369.00"
+    }
+},
+{
+    "model": "cart.orderitem",
+    "pk": 45,
+    "fields": {
+        "order": 25,
+        "service": 48,
+        "quantity": 1,
+        "total": "199.00"
+    }
+},
+{
+    "model": "cart.orderitem",
+    "pk": 46,
+    "fields": {
+        "order": 26,
+        "service": 54,
+        "quantity": 1,
+        "total": "69.00"
+    }
+},
+{
+    "model": "cart.orderitem",
+    "pk": 47,
+    "fields": {
+        "order": 26,
+        "service": 55,
+        "quantity": 1,
+        "total": "269.00"
+    }
+},
+{
+    "model": "cart.orderitem",
+    "pk": 48,
+    "fields": {
+        "order": 26,
+        "service": 49,
+        "quantity": 1,
+        "total": "219.00"
+    }
+},
+{
+    "model": "cart.orderitem",
+    "pk": 49,
+    "fields": {
+        "order": 26,
+        "service": 50,
+        "quantity": 1,
+        "total": "99.00"
+    }
+},
+{
+    "model": "cart.orderitem",
+    "pk": 50,
+    "fields": {
+        "order": 27,
+        "service": 139,
+        "quantity": 1,
+        "total": "369.00"
+    }
+},
+{
+    "model": "cart.orderitem",
+    "pk": 51,
+    "fields": {
+        "order": 27,
+        "service": 138,
+        "quantity": 1,
+        "total": "269.00"
+    }
+},
+{
+    "model": "cart.orderitem",
+    "pk": 52,
+    "fields": {
+        "order": 28,
+        "service": 166,
+        "quantity": 1,
+        "total": "99.00"
+    }
+},
+{
+    "model": "cart.orderitem",
+    "pk": 53,
+    "fields": {
+        "order": 28,
+        "service": 165,
+        "quantity": 1,
+        "total": "99.00"
+    }
+},
+{
+    "model": "cart.orderitem",
+    "pk": 54,
+    "fields": {
+        "order": 29,
+        "service": 55,
+        "quantity": 1,
+        "total": "269.00"
     }
 },
 {
