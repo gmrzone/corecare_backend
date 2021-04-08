@@ -18,3 +18,5 @@ CACHES = {
         'TIMEOUT': 600
     },
 }
+
+SECURE_SSL_REDIRECT = False
