@@ -126,11 +126,11 @@ CORS_ALLOWED_ORIGINS = [
     "http://192.168.0.198:3000",
     "http://127.0.0.1:3000",
     'http://corecare.in',
-    'https://corecare.in',
+    'http://corecare.in',
     'http://partner.corecare.in',
-    'https://partner.corecare.in',
+    'http://partner.corecare.in',
     'http://api.corecare.in',
-    'https://api.corecare.in',
+    'http://api.corecare.in',
     
 
 ]
