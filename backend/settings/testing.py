@@ -7,10 +7,10 @@ DEBUG = True
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'corecare',
-        'USER': 'afzal',
-        'PASSWORD': '27021992samgalnote4',
-        'HOST': 'localhost',
+        'NAME': os.environ["PG_DEV_DB_NAME"],
+        'USER': os.environ["PG_DEV_DB_USER"],
+        'PASSWORD': os.environ["PG_DEV_DB_PASSWORD"],
+        'HOST': os.environ["PG_DEV_DB_HOST"],
         'PORT': '5432',
     }
 }
