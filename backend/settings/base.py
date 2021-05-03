@@ -12,10 +12,32 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
-
+import json
+from django.core import exceptions
+from django.core.exceptions import ImproperlyConfigured
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
-SECRET_KEY = os.environ['SECRET_KEY']
+
+
+with open(BASE_DIR / "backend/settings/secret.json", 'r') as file:
+    secret = json.load(file)
+def get_var(key, secret=secret):
+    try:
+        value = os.environ[key]
+    except KeyError:
+        try:
+            value = secret[key]
+        except KeyError:
+            error_mssg = f"Please Setup Environmant Variable or Secret JSON for {key}"
+            raise ImproperlyConfigured(error_mssg)
+        else:
+            return value
+    else:
+        return value
+
+
+# SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = get_var('SECRET_KEY')
 
 
 # Quick-start development settings - unsuitable for production
@@ -167,8 +189,10 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = os.environ["EMAIL_HOST_USER"]
-EMAIL_HOST_PASSWORD = os.environ["EMAIL_HOST_PASSWORD"]
+# EMAIL_HOST_USER = os.environ["EMAIL_HOST_USER"]
+EMAIL_HOST_USER = get_var("EMAIL_HOST_USER")
+# EMAIL_HOST_PASSWORD = os.environ["EMAIL_HOST_PASSWORD"]
+EMAIL_HOST_PASSWORD = get_var("EMAIL_HOST_PASSWORD")
 EMAIL_PORT = 587
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 

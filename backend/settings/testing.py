@@ -4,13 +4,23 @@ from .base import *
 DEBUG = True
 
 # POSTGRESS DEVELOPMENT
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': os.environ["PG_DEV_DB_NAME"],
+#         'USER': os.environ["PG_DEV_DB_USER"],
+#         'PASSWORD': os.environ["PG_DEV_DB_PASSWORD"],
+#         'HOST': os.environ["PG_DEV_DB_HOST"],
+#         'PORT': '5432',
+#     }
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ["PG_DEV_DB_NAME"],
-        'USER': os.environ["PG_DEV_DB_USER"],
-        'PASSWORD': os.environ["PG_DEV_DB_PASSWORD"],
-        'HOST': os.environ["PG_DEV_DB_HOST"],
+        'NAME': get_var("PG_DEV_DB_NAME"),
+        'USER': get_var("PG_DEV_DB_USER"),
+        'PASSWORD': get_var("PG_DEV_DB_PASSWORD"),
+        'HOST': get_var("PG_DEV_DB_HOST"),
         'PORT': '5432',
     }
 }
