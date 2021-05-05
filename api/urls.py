@@ -5,6 +5,7 @@ app_name = 'api'
 
 
 urlpatterns = [
+    
     path('', views.EmployeeCategoryList, name='employee_category_list'),
     path('coupons/', views.GetCoupons, name='coupon_list'),
     path('subcategory/', views.GetSubcategory, name='subcategory'),

@@ -27,12 +27,10 @@ def EmployeeCategoryList(request):
 def GetCoupons(request):
     coupon_codes = cache.get('coupon_code')
     if coupon_codes:
-        print("cached_coupon")
         return Response(coupon_codes)
     else:
-        coupons = CouponCode.objects.all()
+        coupons = CouponCode.objects.all().prefetch_related('category')
         Serializer = CouponCodeSerializers(coupons, many=True)
-        print("database_coupon")
         cache.set('coupon_code', Serializer.data)
         return Response(Serializer.data)
     
@@ -40,10 +38,9 @@ def GetCoupons(request):
 def get_subcategory_for_single_category(request, id, slug):
     subcategory = cache.get(f"{slug}_subcategory")
     if subcategory:
-        print(f"{slug}_category_cached")
         return Response(subcategory)
     else:
-        subcategory = ServiceSubcategory.objects.filter(service_specialist__id=id, service_specialist__slug=slug)
+        subcategory = ServiceSubcategory.objects.filter(service_specialist__id=id, service_specialist__slug=slug).select_related('service_specialist')
         serializer = SubcategorySerializer(subcategory, many=True)
         cache.set(f"{slug}_subcategory", serializer.data)
         print(f"{slug}_category_db")
@@ -69,8 +66,9 @@ def getEmployees(request, slug):
 
 @api_view(['GET'])
 def getReviews(request, slug):
-    employees = EmployeeCategory.objects.get(slug=slug).category_reviews.all().select_related('user', 'parent')
-    ser = CategoryReviewSerializer(employees, many=True)
+    # employees = EmployeeCategory.objects.get(slug=slug).category_reviews.all().select_related('user', 'parent')
+    reviews = CategoryReview.objects.filter(category__slug=slug).select_related('parent', 'user').prefetch_related('replies')
+    ser = CategoryReviewSerializer(reviews, many=True)
     return Response(ser.data)
 
 @api_view(['POST'])
