@@ -16,6 +16,7 @@ from django.core.cache import cache
 from rest_framework.viewsets import ViewSet
 from .serializers import OrderSerializer
 from rest_framework.decorators import action
+from .utils import Recommender
 # Create your views here.
 client = razorpay.Client(auth=('rzp_test_Fz30Ps4aOA4Zke', 'HS7mZz3v6G9dLeaS5LY1tejl'))
 @api_view(['POST'])
@@ -171,11 +172,14 @@ def create_order(request):
             coupon=coupon,
             paid=True
             )
+        create_recommandation_list = []
         for i in cart.values():
+            create_recommandation_list.append(i['service']['id'])
             service = cache.get(f"service_{i['service']['id']}")
             if not service:
                 service = Service.objects.get(id=i.service.id)
             OrderItem.objects.create(order=order, service=service, quantity=i['quantity'], total=int(i['quantity']) * float(i['price']))
+        Recommender().create_recommandation_for(create_recommandation_list)
         cartObject.clear_Cart()
         data = {'status': 'ok', 'msg': f"Paymant sucessfull your order with order id {order.receipt} has been created ", 'receipt': order.receipt}   
     return Response(data)
@@ -186,22 +190,33 @@ class OrderViewSet(ViewSet):
     permission_classes = [IsAuthenticated]
 
     def list(self, request):
-        queryset = Order.objects.all().select_related('coupon', 'user').prefetch_related('items')
+        queryset = Order.objects.all().select_related('coupon', 'user', 'category').prefetch_related('items')
         ser = OrderSerializer(queryset, many=True)
         return Response(ser.data)
 
     def retrieve(self, request, pk):
-        queryset = Order.objects.all().select_related('coupon','user').prefetch_related('items')
+        queryset = Order.objects.all().select_related('coupon','user', "category").prefetch_related('items')
         order = get_object_or_404(queryset, receipt=pk)
         ser = OrderSerializer(order)
         return Response(ser.data)
 
     @action(detail=False, methods=['GET'])
     def user_order(self, request):
-        queryset = Order.objects.all().select_related('coupon', 'user').prefetch_related('items')
+        queryset = Order.objects.all().select_related('coupon', 'user', 'category').prefetch_related('items')
         orders = queryset.filter(user=request.user)
         ser = OrderSerializer(orders, many=True)
         return Response(ser.data)
+
+
+
+@api_view(['GET'])
+def get_basic_recommandation(request):
+    cart = Cart(request)
+    recommender = Recommender()
+    recommandation_for = [id for id in cart.get_basic_cart().keys()]
+    data = recommender.get_basic_recommandation(recommandation_for, max_result=5)
+    return Response(data)
+
 
 
 

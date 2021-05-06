@@ -4,7 +4,6 @@ from api.serializers import CouponCodeSerializers, TimeSince
 from api.serializers import ServiceSerializer, EmployeeCategorySerializer
 from account.serializers import UserSerializer
 from datetime import timedelta
-from django.utils import timezone
 import pytz
 # class date(Field):
 #     def to_representation(self, value):
@@ -43,12 +42,12 @@ class CalculateFullfillTime(Field):
         
 
 class OrderSerializer(ModelSerializer):
-    coupon = CouponCodeSerializers(many=False)
-    category = EmployeeCategorySerializer()
+    coupon = CouponCodeSerializers()
+    category = EmployeeCategorySerializer(read_only=True)
     items = OrderItemSerializer(many=True)
-    created = TimeSince()
-    updated = TimeSince()
-    fullfill_by = CalculateFullfillTime()
+    created = TimeSince(read_only=True)
+    updated = TimeSince(read_only=True)
+    fullfill_by = CalculateFullfillTime(read_only=True)
     user = UserSerializer()
     class Meta:
         model = Order
