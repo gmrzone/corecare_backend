@@ -8,7 +8,7 @@ from django.db.models import Case, When
 if settings.DEBUG:
     r = Redis(host=settings.REDIS_HOST, port=settings.REDIS_PORT, db=settings.REDIS_DB)
 else:
-    r = StrictRedis(host=settings.REDIS_HOST, port=settings.REDIS_PORT, db=Settings.REDIS_DB, password=settings.REDIS_PASSWORD)
+    r = StrictRedis(host=settings.REDIS_HOST, port=settings.REDIS_PORT, db=settings.REDIS_DB, password=settings.REDIS_PASSWORD)
 
 class Recommender:
 
