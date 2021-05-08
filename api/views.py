@@ -1,14 +1,23 @@
 
+# Rest framework import
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
-from .models import CategoryReview, EmployeeCategory, CouponCode, Service, ServiceSubcategory
-from .serializers import CouponCodeSerializers, EmployeeCategorySerializer, SubcategorySerializer, ServiceSerializer, CategoryReviewSerializer, AllSubcategoryServiceSerializer, ContactSerializer, PartnerRequestSerializer
+from rest_framework.generics import CreateAPIView
 from rest_framework.permissions import IsAuthenticated
+# Models Import
+from .models import CategoryReview, EmployeeCategory, CouponCode, Service, ServiceSubcategory
+
+# Serializers import
+from .serializers import CouponCodeSerializers, EmployeeCategorySerializer, SubcategorySerializer, ServiceSerializer, CategoryReviewSerializer, AllSubcategoryServiceSerializer, ContactSerializer, PartnerRequestSerializer
 from account.serializers import UserSerializer
+
+# Others imports
 from itertools import chain
+
+# Django Imports
 from django.core.cache import cache
 from django.core.mail import send_mail, mail_admins
-from rest_framework.generics import CreateAPIView
+
 
 @api_view(['GET'])
 def EmployeeCategoryList(request):

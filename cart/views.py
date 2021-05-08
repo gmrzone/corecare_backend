@@ -1,22 +1,30 @@
+# Django Imports
 from django.shortcuts import get_object_or_404, render
-from rest_framework import serializers
+from django.conf import settings
+from django.utils.crypto import get_random_string
+from django.core.cache import cache
+
+# Project Import
 from api.models import CouponCode, EmployeeCategory, Service
 from cart.models import Cart
+from .errors import CategoryChange
+from string import ascii_lowercase, ascii_uppercase
+from .models import Order, OrderItem
+from .serializers import OrderSerializer
+from .utils import Recommender
+
+# Other Modules Imports
+from datetime import datetime
+import razorpay
+
+# Rest Framework
+from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
-from django.conf import settings
-from .errors import CategoryChange
-import razorpay
-from django.utils.crypto import get_random_string
-from datetime import datetime
-from string import ascii_lowercase, ascii_uppercase
 from rest_framework.permissions import IsAuthenticated
-from .models import Order, OrderItem
-from django.core.cache import cache
 from rest_framework.viewsets import ViewSet
-from .serializers import OrderSerializer
-from rest_framework.decorators import action
-from .utils import Recommender
+from rest_framework.views import APIView
+
 # Create your views here.
 client = razorpay.Client(auth=('rzp_test_Fz30Ps4aOA4Zke', 'HS7mZz3v6G9dLeaS5LY1tejl'))
 @api_view(['POST'])
@@ -230,6 +238,20 @@ def get_detailed_recommandation(request):
     else:
         data = []
     return Response(data)
+
+
+class AddFromRecommandedToCart(APIView):
+    pass
+
+@api_view(['POST'])
+def add_from_recommanded_toCart(request):
+    service_id = request.data.get('service_id')
+    if service_id:
+        data = {"status": 'ok'}
+    else:
+        data = {'status': 'error'}
+    return Response(data)
+    
 
 
 

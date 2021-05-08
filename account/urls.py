@@ -1,6 +1,8 @@
 from django.urls import path
 from .views import get_current_user, signup, verify_otp, signup_additional, update_profile_image
 
+app_name = 'account'
+
 urlpatterns = [
     path('get_current_user/', get_current_user, name="get_current_user"),
     path('create_user_account/', signup, name="create_user_account"),

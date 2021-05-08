@@ -1,14 +1,26 @@
-
+# RestFramework
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
+
+# Serializers
 from .serializers import UserSerializer
+
+# Project Modules
 from .utils import generate_key_for_otp, validate_number, generate_key_for_otp
+
+# Other Imports
 import base64
 import pyotp
+
+# Models
 from .models import CustomUser
+
+# Django Imports
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import AnonymousUser
+
+
 # Create your views here.
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])

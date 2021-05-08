@@ -1,20 +1,31 @@
-
+# Django Imports
 from django.db.models.aggregates import Max
 from django.db.models.fields import DateTimeField
-from api.models import EmployeeCategory, Service
 from django.db import models
 from django.conf import settings
-from decimal import Decimal
-from api.serializers import ServiceSerializer
-from .errors import CategoryChange
 from django.utils import timezone
-from api.models import CouponCode
 from django.core.cache import cache
 from django.core.validators import MaxValueValidator, MinValueValidator
-from api.models import Service
 from django.conf import settings
 from django.core.cache import cache
 from django.utils import timezone
+
+# Models Imports
+from api.models import EmployeeCategory, Service
+from api.models import CouponCode
+from api.models import Service
+
+# Serializers
+from api.serializers import ServiceSerializer
+
+# Others Import
+from decimal import Decimal
+
+# Project Module Imports
+from .errors import CategoryChange
+
+
+
 # Create your models here.
 class Cart:
     def __init__(self, request) -> None:
