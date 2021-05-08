@@ -16,4 +16,6 @@ urlpatterns = [
     path('coupon/apply/', views.apply_Coupon, name="apply_coupon"),
     path('create-razorpay-orders/', views.create_razorPay_order, name="create_rezorpay_order"),
     path('create-orders/', views.create_order, name="create_order"),
+    path('services/get-recommandation/basic/', views.get_basic_recommandation, name="basic_recommandation"),
+    path('services/get-recommandation/detail/', views.get_detailed_recommandation, name="detail_recommandation")
 ] + router.urls

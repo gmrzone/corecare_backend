@@ -8,6 +8,7 @@ from account.serializers import UserSerializer
 from itertools import chain
 from django.core.cache import cache
 from django.core.mail import send_mail, mail_admins
+from rest_framework.generics import CreateAPIView
 
 @api_view(['GET'])
 def EmployeeCategoryList(request):
@@ -135,25 +136,49 @@ def getHiringEmployeeCategories(request):
     ser = EmployeeCategorySerializer(category, many=True)
     return Response(ser.data)
 
-@api_view(['POST'])
-def partner_request(request):
-    data = request.data
-    instance = PartnerRequestSerializer(data=data)
-    if instance.is_valid():
-        mail_subject = "CoreCare Partner Request"
-        mail_message = f"""
-        Name: {data['name']}
-        Number: {data['number']}
-        email : {data['email']}
-        detail: {data['detail']}"""
-        try:
-            # mail_admins(mail_subject, mail_message, fail_silently=False)
-            send_mail(mail_subject, mail_message,'saiyedafzal0@gmail.com',['saiyedafzalgz@gmail.com'])
-        except Exception as e:
-            return Response({'status': 'error', 'message': "There was an error on our end please try again later."})
-        else:
-            instance.save()
-            return Response({'status': 'ok', 'message': "Thank you for showing Interest in CoreCare Partners. we Will get back to you as soon as possible"})
-    else:
-        return Response({'status': 'error', 'message': "Please Make sure that your imformation is accurate or try again later"})
+# @api_view(['POST'])
+# def partner_request(request):
+#     data = request.data
+#     instance = PartnerRequestSerializer(data=data)
+#     if instance.is_valid():
+#         mail_subject = "CoreCare Partner Request"
+#         mail_message = f"""
+#         Name: {data['name']}
+#         Number: {data['number']}
+#         email : {data['email']}
+#         detail: {data['detail']}"""
+#         try:
+#             # mail_admins(mail_subject, mail_message, fail_silently=False)
+#             send_mail(mail_subject, mail_message,'saiyedafzal0@gmail.com',['saiyedafzalgz@gmail.com'])
+#         except Exception as e:
+#             return Response({'status': 'error', 'message': "There was an error on our end please try again later."})
+#         else:
+#             instance.save()
+#             return Response({'status': 'ok', 'message': "Thank you for showing Interest in CoreCare Partners. we Will get back to you as soon as possible"})
+#     else:
+#         return Response({'status': 'error', 'message': "Please Make sure that your imformation is accurate or try again later"})
 
+
+class CreatePartnerRequest(CreateAPIView):
+    serializer_class = PartnerRequestSerializer
+    
+    def post(self, request, *args, **kwargs):
+        data = request.data
+        instance = self.serializer_class(data=data)
+        if instance.is_valid():
+            mail_subject = "CoreCare Partner Request"
+            mail_message = f"""
+            Name: {data['name']}
+            Number: {data['number']}
+            email : {data['email']}
+            detail: {data['detail']}"""
+            try:
+                # mail_admins(mail_subject, mail_message, fail_silently=False)
+                send_mail(mail_subject, mail_message,'saiyedafzal0@gmail.com',['saiyedafzalgz@gmail.com'])
+            except Exception as e:
+                return Response({'status': 'error', 'message': "There was an error on our end please try again later."})
+            else:
+                instance.save()
+                return Response({'status': 'ok', 'message': "Thank you for showing Interest in CoreCare Partners. we Will get back to you as soon as possible"})
+        else:
+            return Response({'status': 'error', 'message': "Please Make sure that your imformation is accurate or try again later"})

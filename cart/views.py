@@ -23,7 +23,6 @@ client = razorpay.Client(auth=('rzp_test_Fz30Ps4aOA4Zke', 'HS7mZz3v6G9dLeaS5LY1t
 def add_service_to_cart(request):
     service_id = request.data['service_id']
     category = request.data['category']
-    print(category)
     try:
         service = Service.objects.get(id=service_id)
     except Service.DoesNotExist:
@@ -179,6 +178,7 @@ def create_order(request):
             if not service:
                 service = Service.objects.get(id=i.service.id)
             OrderItem.objects.create(order=order, service=service, quantity=i['quantity'], total=int(i['quantity']) * float(i['price']))
+        
         Recommender().create_recommandation_for(create_recommandation_list)
         cartObject.clear_Cart()
         data = {'status': 'ok', 'msg': f"Paymant sucessfull your order with order id {order.receipt} has been created ", 'receipt': order.receipt}   
@@ -214,8 +214,24 @@ def get_basic_recommandation(request):
     cart = Cart(request)
     recommender = Recommender()
     recommandation_for = [id for id in cart.get_basic_cart().keys()]
-    data = recommender.get_basic_recommandation(recommandation_for, max_result=5)
+    if len(recommandation_for) > 0:
+        data = recommender.get_basic_recommandation(recommandation_for, max_result=7)
+    else:
+        data = []
     return Response(data)
+
+@api_view(['GET'])
+def get_detailed_recommandation(request):
+    cart = Cart(request)
+    recommender = Recommender()
+    recommandation_for = [id for id in cart.get_basic_cart().keys()]
+    if len(recommandation_for) > 0:
+        data = recommender.get_detail_recommandation(recommandation_for, max_result=7)
+    else:
+        data = []
+    return Response(data)
+
+
 
 
 
