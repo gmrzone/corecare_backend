@@ -32,7 +32,7 @@ class Recommender:
             temp_key = "".join(services) + "union"
             r.zunionstore(temp_key, suggestion_keys, 'SUM')
             r.zrem(temp_key, *services)
-            suggestion = r.zrange(temp_key, 0, 1, desc=True)
+            suggestion = r.zrange(temp_key, 0, -1, desc=True)
         suggestion = [int(id) for id in suggestion]
         suggestion = suggestion[0:max_result] if len(suggestion) >= max_result else suggestion
         return suggestion

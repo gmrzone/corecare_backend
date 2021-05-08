@@ -1,4 +1,5 @@
 # Django Imports
+from api.serializers import ServiceSerializer
 from django.shortcuts import get_object_or_404, render
 from django.conf import settings
 from django.utils.crypto import get_random_string
@@ -246,8 +247,31 @@ class AddFromRecommandedToCart(APIView):
 @api_view(['POST'])
 def add_from_recommanded_toCart(request):
     service_id = request.data.get('service_id')
-    if service_id:
-        data = {"status": 'ok'}
+    category = request.data.get('category')
+    if service_id and category:
+        service = cache.get(f"service_{service_id}")
+        if not service:
+            service = Service.objects.get(pk=service_id)
+            cache.set(f"service_{service_id}", service)
+        cart = Cart(request=request)
+        recommander = Recommender()
+        cart.add(service, category=category)
+        get_recommandation_for = [id for id in cart.get_basic_cart().keys()]
+        if len(get_recommandation_for) > 0:
+            rec = recommander.get_detail_recommandation(get_recommandation_for, max_result=7)
+        else:
+            rec = []
+        added_service = ServiceSerializer(service).data
+        added_service = {service_id: {
+            'quantity': 1,
+            'service': added_service,
+            'price': added_service['price'],
+            'total': added_service['price'],
+        }}
+        cart_detail = cart.cart_detail
+        cart_detail['cart_subtotal'] = str(cart.get_cart_total())
+        cart_detail['total'], cart_detail['discount'] = cart.get_discounted_total()
+        data = {'status': 'ok', 'added': added_service, "recommandedServices": rec, "cart_detail": cart_detail}
     else:
         data = {'status': 'error'}
     return Response(data)
