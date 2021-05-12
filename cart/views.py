@@ -267,6 +267,7 @@ def add_from_recommanded_toCart(request):
             'service': added_service,
             'price': added_service['price'],
             'total': added_service['price'],
+            'added': True,
         }}
         cart_detail = cart.cart_detail
         cart_detail['cart_subtotal'] = str(cart.get_cart_total())
