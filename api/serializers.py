@@ -38,8 +38,8 @@ class ReviewUser(ModelSerializer):
         fields = ['number', 'username', 'email', 'photo']
 
 class CategoryReviewSerializer(ModelSerializer):
-    user = ReviewUser(many=False)
-    created = TimeSince()
+    user = ReviewUser(many=False, read_only=True)
+    created = TimeSince(read_only=True)
 
     class Meta:
         model = CategoryReview
