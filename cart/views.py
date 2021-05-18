@@ -194,30 +194,6 @@ def create_order(request):
     return Response(data)
 
 
-
-class OrderViewSet(ViewSet):
-    permission_classes = [IsAuthenticated]
-
-    def list(self, request):
-        queryset = Order.objects.all().select_related('coupon', 'user', 'category').prefetch_related('items')
-        ser = OrderSerializer(queryset, many=True)
-        return Response(ser.data)
-
-    def retrieve(self, request, pk):
-        queryset = Order.objects.all().select_related('coupon','user', "category").prefetch_related('items')
-        order = get_object_or_404(queryset, receipt=pk)
-        ser = OrderSerializer(order)
-        return Response(ser.data)
-
-    @action(detail=False, methods=['GET'])
-    def user_order(self, request):
-        queryset = Order.objects.all().select_related('coupon', 'user', 'category').prefetch_related('items')
-        orders = queryset.filter(user=request.user)
-        ser = OrderSerializer(orders, many=True)
-        return Response(ser.data)
-
-
-
 @api_view(['GET'])
 def get_basic_recommandation(request):
     cart = Cart(request)

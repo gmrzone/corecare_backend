@@ -46,8 +46,11 @@ def get_var(key, secret=secret):
         try:
             value = secret[key]
         except KeyError:
-            error_mssg = f"Please Setup Environmant Variable or Secret JSON for {key}"
-            raise ImproperlyConfigured(error_mssg)
+            if key == 'SECRET_KEY':
+                return None
+            else:
+                error_mssg = f"Please Setup Environmant Variable or Secret JSON for {key}"
+                raise ImproperlyConfigured(error_mssg)
         else:
             return value
     else:
@@ -55,7 +58,7 @@ def get_var(key, secret=secret):
 
 
 # SECRET_KEY = os.environ['SECRET_KEY']
-SECRET_KEY = get_var('SECRET_KEY')
+SECRET_KEY = get_var('SECRET_KEY') or "afzal_saiyed"
 
 
 # Quick-start development settings - unsuitable for production

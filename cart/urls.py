@@ -1,11 +1,12 @@
 from django.urls import path
 from . import views
+from . import viewsets
 from rest_framework.routers import SimpleRouter
 app_name = "cart"
 
 router = SimpleRouter()
-router.register(r"orders", views.OrderViewSet, basename='orders')
-
+router.register(r"orders", viewsets.OrderViewSet, basename='orders')
+print(router.urls)
 urlpatterns = [
     path('cart/add/', views.add_service_to_cart, name="add_to_cart"),
     path('cart/remove/', views.remove_service_from_cart, name="remove_to_cart"),

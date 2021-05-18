@@ -15,8 +15,8 @@ urlpatterns = [
     path('get_reviews/<slug:slug>/', views.getReviews, name="get_reviews"),
     path('create_review/<slug:slug>/new/', views.createReview, name="create_review"),
     path('get_services/<slug:slug>/', views.get_full_service, name="get_full_service"),
-    path('contact/send/', views.contact_us, name="contact_us"),
     path('search/<str:query>/<str:city>/', views.search_service, name="search_service"),
     path('category/hiring/', views.getHiringEmployeeCategories, name="hiring_category"),
     path('partner/request/', views.CreatePartnerRequest.as_view(), name="partner_request"),
+    path('contact/send/', views.ContactUs.as_view(), name="contact_us"),
 ]   
