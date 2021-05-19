@@ -151,8 +151,8 @@ class Cart:
 
 class Order(models.Model):
     STATUS_CHOISES = (('pending', 'Pending'), ('processing', 'Processing'),('ongoing', 'OnGoing'),('cancelled', 'Cancelled'),('failed', 'Failed'),('completed', 'Completed'))
-    category = models.ForeignKey(EmployeeCategory, on_delete=models.CASCADE, related_name="related_orders", null=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="orders")
+    category = models.ForeignKey(EmployeeCategory, on_delete=models.CASCADE, related_name="related_orders", null=True, blank=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="orders", blank=True)
     receipt = models.CharField(max_length=100, db_index=True)
     razorpay_order_id = models.CharField(max_length=100, db_index=True, null=True, blank=True)
     razorpay_payment_id = models.CharField(max_length=100, db_index=True, null=True, blank=True)

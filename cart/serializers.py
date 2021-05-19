@@ -42,13 +42,13 @@ class CalculateFullfillTime(Field):
         
 
 class OrderSerializer(ModelSerializer):
-    coupon = CouponCodeSerializers()
+    coupon = CouponCodeSerializers(read_only=True)
     category = EmployeeCategorySerializer(read_only=True)
-    items = OrderItemSerializer(many=True)
+    items = OrderItemSerializer(many=True, read_only=True)
     created = TimeSince(read_only=True)
     updated = TimeSince(read_only=True)
     fullfill_by = CalculateFullfillTime(read_only=True)
-    user = UserSerializer()
+    user = UserSerializer(read_only=True)
     class Meta:
         model = Order
         fields = ('id', 'category', 'items', 'user', 'receipt', 'razorpay_order_id', 'subtotal', 'discount', 'total', 'coupon', 'paid', 'status', 'created', 'updated', 'fullfill_by')

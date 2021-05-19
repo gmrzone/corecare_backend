@@ -11,54 +11,57 @@ from cart.models import Cart
 from .errors import CategoryChange
 from string import ascii_lowercase, ascii_uppercase
 from .models import Order, OrderItem
-from .serializers import OrderSerializer
 from .utils import Recommender
+from .serializers import OrderSerializer
 
 # Other Modules Imports
 from datetime import datetime
 import razorpay
 
 # Rest Framework
-from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.viewsets import ViewSet
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.views import APIView
+from rest_framework.generics import CreateAPIView
 
 # Create your views here.
 client = razorpay.Client(auth=('rzp_test_Fz30Ps4aOA4Zke', 'HS7mZz3v6G9dLeaS5LY1tejl'))
-@api_view(['POST'])
-def add_service_to_cart(request):
-    service_id = request.data['service_id']
-    category = request.data['category']
-    try:
-        service = Service.objects.get(id=service_id)
-    except Service.DoesNotExist:
-        data = {'status': 'error'}
-    else:
+
+class AddServiceToCart(APIView):
+    permission_classes = [AllowAny]
+    def post(self, request):
+        service_id = request.data['service_id']
+        category = request.data['category']
         try:
-            cart = Cart(request=request)
-            cart.add(service, category) 
-        except CategoryChange as e:
-            data = {'status': 'category_change', "mssg": str(e)}
+            service = Service.objects.get(id=service_id)
+        except Service.DoesNotExist:
+            data = {'status': 'error'}
         else:
+            try:
+                cart = Cart(request=request)
+                cart.add(service, category) 
+            except CategoryChange as e:
+                data = {'status': 'category_change', "mssg": str(e)}
+            else:
+                data = request.session[settings.CART_SESSION_ID]
+        return Response(data)
+
+class RemoveServiceFromCart(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        service_id = request.data['service_id']
+        try:
+            service = Service.objects.get(id=service_id)
+        except Service.DoesNotExist:
+            data = {'status': 'error'}
+        else:
+            cart = Cart(request=request)
+            cart.remove(service)
             data = request.session[settings.CART_SESSION_ID]
-    return Response(data)
+        return Response(data)
 
-
-@api_view(['POST'])
-def remove_service_from_cart(request):
-    service_id = request.data['service_id']
-    try:
-        service = Service.objects.get(id=service_id)
-    except Service.DoesNotExist:
-        data = {'status': 'error'}
-    else:
-        cart = Cart(request=request)
-        cart.remove(service)
-        data = request.session[settings.CART_SESSION_ID]
-    return Response(data)
 
 @api_view(['GET'])
 def get_cart(request):
@@ -76,18 +79,20 @@ def clear_cart(request):
     cart.clear_Cart()
     return Response({'status': 'ok'})
 
-@api_view(['POST'])
-def delete_service(request):
-    service_id = request.data.get('service_id')
-    try:
-        service = Service.objects.get(id=service_id)
-    except Service.DoesNotExist:
-        data = {'status': 'error'}
-    else:
-        cart = Cart(request=request)
-        cart.delete_service(service)
-        data = cart.get_basic_cart()
-    return Response(data)
+class DeleteService(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        service_id = request.data.get('service_id')
+        try:
+            service = Service.objects.get(id=service_id)
+        except Service.DoesNotExist:
+            data = {'status': 'error'}
+        else:
+            cart = Cart(request=request)
+            cart.delete_service(service)
+            data = cart.get_basic_cart()
+        return Response(data)
 
 @api_view(['POST'])
 def apply_Coupon(request):
@@ -97,26 +102,28 @@ def apply_Coupon(request):
     return Response(data)
 
 
-@api_view(['POST'])
-@permission_classes([IsAuthenticated])
-def create_razorPay_order(request):
-    user = request.user
-    if user.address_1 and user.address_2 and user.city and user.state and user.pincode:
-        cart = Cart(request)
-        # client = razorpay.Client(auth=('rzp_test_Fz30Ps4aOA4Zke', 'HS7mZz3v6G9dLeaS5LY1tejl'))
-        order_amount = cart.get_discounted_total()[0]
-        order_currency = "INR"
-        allowed_characters = datetime.now().strftime('%Y%m%d%H%M%S') + ascii_uppercase + ascii_lowercase
-        order_receipt = 'ORD' + str(user.id) + get_random_string(17, allowed_characters)
-        shipping_address = f"{user.address_1} {user.address_2} {user.city} {user.state} {user.pincode}"
-        notes = {'shipping address': shipping_address}
-        order = client.order.create({'amount': float(order_amount) * 100, 'currency': order_currency, 'receipt': order_receipt, 'notes': notes})
-        if order['status'] == 'created':
-            cart.razorpay_order_created(order['id'], order_receipt)
-        data = {'status': 'ok', "receipt": order_receipt, 'order_details': order, 'user': {'name': f"{user.first_name} {user.last_name}", 'email': user.email, 'number': user.number}, 'notes': notes['shipping address']}
-    else:
-        data = {'status': 'error', 'msg': 'address_error'}
-    return Response(data)
+class CreateRazorPayOrder(APIView):
+    permission_classes = [IsAuthenticated]
+    
+    def post(self, request):
+        user = request.user
+        if user.address_1 and user.address_2 and user.city and user.state and user.pincode:
+            cart = Cart(request)
+            # client = razorpay.Client(auth=('rzp_test_Fz30Ps4aOA4Zke', 'HS7mZz3v6G9dLeaS5LY1tejl'))
+            order_amount = cart.get_discounted_total()[0]
+            order_currency = "INR"
+            allowed_characters = datetime.now().strftime('%Y%m%d%H%M%S') + ascii_uppercase + ascii_lowercase
+            order_receipt = 'ORD' + str(user.id) + get_random_string(17, allowed_characters)
+            shipping_address = f"{user.address_1} {user.address_2} {user.city} {user.state} {user.pincode}"
+            notes = {'shipping address': shipping_address}
+            order = client.order.create({'amount': float(order_amount) * 100, 'currency': order_currency, 'receipt': order_receipt, 'notes': notes})
+            if order['status'] == 'created':
+                cart.razorpay_order_created(order['id'], order_receipt)
+            data = {'status': 'ok', "receipt": order_receipt, 'order_details': order, 'user': {'name': f"{user.first_name} {user.last_name}", 'email': user.email, 'number': user.number}, 'notes': notes['shipping address']}
+        else:
+            data = {'status': 'error', 'msg': 'address_error'}
+        return Response(data)
+
 
 def create_order_helper(request, cart, cart_detail, razorpay_payment_id, razorpay_signature):
         user = request.user
@@ -194,6 +201,60 @@ def create_order(request):
     return Response(data)
 
 
+class CreateOrder(CreateAPIView):
+    serializer_class = OrderSerializer
+    http_method_names = ['post']
+    permission_classes = [IsAuthenticated]
+
+    def create(self, request, *args, **kwargs):
+        razorpay_payment_id = request.data.get('razorpay_payment_id')
+        razorpay_signature = request.data.get('razorpay_signature')
+        cart_obj = Cart(request)
+        whole_cart = cart_obj.get_cart()
+        cart_detail = whole_cart['cart_detail']
+        cart = whole_cart['cart']
+        serializer_data = {
+            'razorpay_order_id': cart_detail['razorpay_order_id'],
+            'razorpay_payment_id': razorpay_payment_id,
+            'razorpay_signature': razorpay_signature
+        }
+        try:
+            p = client.utility.verify_payment_signature(serializer_data)
+        except:
+            data = {'status': 'error', 'msg': 'Payment signature could not be verified'}
+        else:
+            user = request.user
+            coupon_id = cart_detail.get('coupon_id', False)
+            coupon = CouponCode.objects.get(id=coupon_id) if coupon_id else None
+            category = get_object_or_404(EmployeeCategory, slug=cart_detail['category'])
+            receipt = cart_detail['order_receipt']
+            serializer_data.update({'receipt': receipt,
+                                    "subtotal": cart_detail['cart_subtotal'],
+                                    "discount":cart_detail['discount'], 
+                                    "total":cart_detail['total'],
+                                    "paid":True
+                                    })
+            serializer = self.serializer_class(data=serializer_data)
+            if serializer.is_valid():
+                instance = serializer.save(user=user, coupon=coupon, category=category)
+                create_recommandation_list = []
+                for i in cart.values():
+                    create_recommandation_list.append(i['service']['id'])
+                    service = cache.get(f"service_{i['service']['id']}")
+                    if not service:
+                        service = Service.objects.get(id=i.service.id)
+                        cache.set(f"service_{i['service']['id']}", service)
+                    OrderItem.objects.create(order=instance, service=service, quantity=i['quantity'], total=int(i['quantity']) * float(i['price']))
+                Recommender().create_recommandation_for(create_recommandation_list)
+                cart_obj.clear_Cart()
+                data = {'status': 'ok', 'msg': f"Paymant sucessfull your order with order id {receipt} has been created ", 'receipt': receipt}
+            else:
+                data = serializer.errors
+            return Response(data)
+
+
+        
+
 @api_view(['GET'])
 def get_basic_recommandation(request):
     cart = Cart(request)
@@ -215,10 +276,6 @@ def get_detailed_recommandation(request):
     else:
         data = []
     return Response(data)
-
-
-class AddFromRecommandedToCart(APIView):
-    pass
 
 @api_view(['POST'])
 def add_from_recommanded_toCart(request):
