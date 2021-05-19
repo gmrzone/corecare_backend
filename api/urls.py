@@ -26,7 +26,7 @@ urlpatterns = [
     path('get_employee/v2/<slug:slug>/', views.GetEmployeesList.as_view(), name="get_employee_new"),
     path('get_services/v2/<slug:slug>/', views.GetFullServiceList.as_view(), name="get_full_service_new"),
     path('get_reviews/v2/<slug:slug>/', views.GetReviewsList.as_view(), name="get_reviews_new"),
-    path('category/v2/hiring/', views.GetHiringEmployeeCategory.as_view(), name="hiring_category_new"),
+    path('v2/category/hiring/', views.GetHiringEmployeeCategory.as_view(), name="hiring_category_new"),
     path('search/v2/<str:query>/<str:city>/', views.SearchServices.as_view(), name="search_service_new"),
 
     path('v2/', views.EmployeeCategoryListView.as_view(), name='employee_category_list_new'),
