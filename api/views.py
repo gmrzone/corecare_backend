@@ -38,113 +38,127 @@ def EmployeeCategoryList(request):
         return Response(serializer.data)
 
 # Working Class Views But images url as relative
-# class EmployeeCategoryListView(ListAPIView):
-#     serializer_class = EmployeeCategorySerializer
-#     http_method_names = ['get']
 
-#     def get_queryset(self): 
-#         query = cache.get('employee_category')
-#         if not query:
-#             query = EmployeeCategory.objects.all()
-#             cache.set('employee_category', query)
-#         return query
+class GetServiceList(ListAPIView):
+    serializer_class = ServiceSerializer
+    http_method_names = ['get']
 
-# class GetSubcategoryForSingleCategory(ListAPIView):
-#     serializer_class = SubcategorySerializer
-#     http_method_names = ['get']
-
-#     def dispatch(self, request, id, slug, *args, **kwargs):
-#         self.id = id
-#         self.slug = slug
-#         return super().dispatch(request, id, slug, *args, **kwargs)
-
-#     def get_queryset(self):
-#         query = cache.get(f"{self.slug}_subcategory")
-#         if not query:
-#             query = ServiceSubcategory.objects.filter(service_specialist__id=self.id, service_specialist__slug=self.slug).select_related('service_specialist')
-#             cache.set(f"{self.slug}_subcategory", query)
-#         return query
-
-# class GetSubcategoryView(ListAPIView):
-#     serializer_class = SubcategorySerializer
-#     http_method_names = ['get']
-
-#     def get_queryset(self):
-#         query = cache.get('subcategory_list')
-#         if not query:
-#             query = ServiceSubcategory.objects.all().select_related('service_specialist')
-#             cache.set('subcategory_list', query)
-#         return query
-
-# class GetEmployeesList(ListAPIView):
-#     serializer_class = UserSerializer
-#     http_method_names = ['get']
-
-#     def dispatch(self, request, slug, *args, **kwargs):
-#         self.slug = slug
-#         return super().dispatch(request, *args, **kwargs)
-
-#     def get_queryset(self):
-#         query = cache.get(f'{self.slug}_employees')
-#         if not query:
-#             query = CustomUser.objects.filter(employee_category__slug=self.slug)
-#             cache.set(f'{self.slug}_employees', query)
-#         return query
-
-# class GetReviewsList(ListAPIView):
-#     serializer_class = CategoryReviewSerializer
-#     http_method_names = ['get']
-
-#     def dispatch(self, request, slug,  *args, **kwargs):
-#         self.slug = slug
-#         return super().dispatch(request, *args, **kwargs)
-
-#     def get_queryset(self):
-#         query = cache.get(f"{self.slug}_reviews")
-#         if not query:
-#             query = CategoryReview.objects.filter(category__slug=self.slug).select_related('parent', 'user').prefetch_related('replies')
-#             cache.set(f"{self.slug}_reviews", query)
-#         return query
-
-# class GetFullServiceList(ListAPIView):
-#     serializer_class = AllSubcategoryServiceSerializer
-#     http_method_names = ['get']
-
-#     def dispatch(self, request, slug, *args, **kwargs):
-#         self.slug = slug
-#         return super().dispatch(request, *args, **kwargs)
-
-#     def get_queryset(self):
-#         query = cache.get(f"{self.slug}_services")
-#         if not query:
-#             query = ServiceSubcategory.objects.filter(service_specialist__slug=self.slug).prefetch_related('services')
-#             cache.set(f"{self.slug}_services", query)
-#         return query
+    def get_queryset(self):
+        query = cache.get('service_list')
+        if not query:
+            query = Service.objects.all()
+            cache.set('service_list', query)
+        return query
 
 
-# class SearchServices(ListAPIView):
-#     serializer_class = SubcategorySerializer
-#     http_method_names = ['get']
+class EmployeeCategoryListView(ListAPIView):
+    serializer_class = EmployeeCategorySerializer
+    http_method_names = ['get']
 
-#     def dispatch(self, request, query, city, *args, **kwargs):
-#         self.query = query
-#         self.city = city
-#         return super().dispatch(request, *args, **kwargs)
+    def get_queryset(self): 
+        query = cache.get('employee_category')
+        if not query:
+            query = EmployeeCategory.objects.all()
+            cache.set('employee_category', query)
+        return query
 
-#     def get_queryset(self):
-#         service_sub = ServiceSubcategory.objects.filter(name__icontains=self.query).select_related('service_specialist')
-#         return service_sub
 
-# class GetHiringEmployeeCategory(ListAPIView):
-#     serializer_class = EmployeeCategorySerializer
-#     http_method_names = ['get']
+class GetSubcategoryForSingleCategory(ListAPIView):
+    serializer_class = SubcategorySerializer
+    http_method_names = ['get']
 
-#     def get_queryset(self):
-#         query = cache.get('currently_hiring')
-#         if not query:
-#             query = EmployeeCategory.objects.filter(hiring=True)
-#             cache.set('currently_hiring', query)
-#         return query
+    def dispatch(self, request, id, slug, *args, **kwargs):
+        self.id = id
+        self.slug = slug
+        return super().dispatch(request, id, slug, *args, **kwargs)
+
+    def get_queryset(self):
+        query = cache.get(f"{self.slug}_subcategory")
+        if not query:
+            query = ServiceSubcategory.objects.filter(service_specialist__id=self.id, service_specialist__slug=self.slug).select_related('service_specialist')
+            cache.set(f"{self.slug}_subcategory", query)
+        return query
+
+class GetSubcategoryView(ListAPIView):
+    serializer_class = SubcategorySerializer
+    http_method_names = ['get']
+
+    def get_queryset(self):
+        query = cache.get('subcategory_list')
+        if not query:
+            query = ServiceSubcategory.objects.all().select_related('service_specialist')
+            cache.set('subcategory_list', query)
+        return query
+
+class GetEmployeesList(ListAPIView):
+    serializer_class = UserSerializer
+    http_method_names = ['get']
+
+    def dispatch(self, request, slug, *args, **kwargs):
+        self.slug = slug
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_queryset(self):
+        query = cache.get(f'{self.slug}_employees')
+        if not query:
+            query = CustomUser.objects.filter(employee_category__slug=self.slug)
+            cache.set(f'{self.slug}_employees', query)
+        return query
+
+class GetReviewsList(ListAPIView):
+    serializer_class = CategoryReviewSerializer
+    http_method_names = ['get']
+
+    def dispatch(self, request, slug,  *args, **kwargs):
+        self.slug = slug
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_queryset(self):
+        query = cache.get(f"{self.slug}_reviews")
+        if not query:
+            query = CategoryReview.objects.filter(category__slug=self.slug).select_related('parent', 'user').prefetch_related('replies')
+            cache.set(f"{self.slug}_reviews", query)
+        return query
+
+class GetFullServiceList(ListAPIView):
+    serializer_class = AllSubcategoryServiceSerializer
+    http_method_names = ['get']
+
+    def dispatch(self, request, slug, *args, **kwargs):
+        self.slug = slug
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_queryset(self):
+        query = cache.get(f"{self.slug}_services")
+        if not query:
+            query = ServiceSubcategory.objects.filter(service_specialist__slug=self.slug).prefetch_related('services')
+            cache.set(f"{self.slug}_services", query)
+        return query
+
+
+class SearchServices(ListAPIView):
+    serializer_class = SubcategorySerializer
+    http_method_names = ['get']
+
+    def dispatch(self, request, query, city, *args, **kwargs):
+        self.query = query
+        self.city = city
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_queryset(self):
+        service_sub = ServiceSubcategory.objects.filter(name__icontains=self.query).select_related('service_specialist')
+        return service_sub
+
+class GetHiringEmployeeCategory(ListAPIView):
+    serializer_class = EmployeeCategorySerializer
+    http_method_names = ['get']
+
+    def get_queryset(self):
+        query = cache.get('currently_hiring')
+        if not query:
+            query = EmployeeCategory.objects.filter(hiring=True)
+            cache.set('currently_hiring', query)
+        return query
 
 
 class GetCouponsView(ListAPIView):
@@ -187,17 +201,6 @@ def GetServices(request):
     serializer = ServiceSerializer(services, many=True)
     return Response(serializer.data)
 
-
-class GetServiceList(ListAPIView):
-    serializer_class = ServiceSerializer
-    http_method_names = ['get']
-
-    def get_queryset(self):
-        query = cache.get('service_list')
-        if not query:
-            query = Service.objects.all()
-            cache.set('service_list', query)
-        return query
 
 @api_view(['GET'])
 def getEmployees(request, slug):
