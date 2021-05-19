@@ -1,4 +1,5 @@
 # Django Imports
+from django.contrib.auth import validators
 from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, AbstractUser
@@ -6,7 +7,7 @@ from django.contrib.auth.models import PermissionsMixin
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 from django.core.mail import send_mail
-
+from .validators import number_validator
 # Models Imports
 from api.models import EmployeeCategory
 from .managers import CustomUserManager
@@ -20,7 +21,7 @@ import razorpay
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     username_validators = UnicodeUsernameValidator()
     
-    number = models.CharField(max_length=10, db_index=True, unique=True)
+    number = models.CharField(max_length=10, db_index=True, unique=True, validators=[number_validator])
     username = models.CharField(_('username'),max_length=150, null=True, blank=True, unique=True, validators=[username_validators], error_messages={'unique': _('A user with that username already exists.')})
     email = models.EmailField(_('email address'), unique=True, blank=True, null=True)
     first_name = models.CharField(_('first name'), max_length=150, blank=True)

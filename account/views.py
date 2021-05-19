@@ -1,13 +1,16 @@
 # RestFramework
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
+from rest_framework.generics import CreateAPIView, UpdateAPIView
+from rest_framework.views import APIView
+
 
 # Serializers
 from .serializers import UserSerializer
 
 # Project Modules
-from .utils import generate_key_for_otp, validate_number, generate_key_for_otp
+from .utils import generate_key_for_otp, generate_key_for_otp
 
 # Other Imports
 import base64
@@ -21,37 +24,39 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import AnonymousUser
 
 
-# Create your views here.
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def get_current_user(request):
-    user = request.user
-    serializer = UserSerializer(user)
-    return Response(serializer.data)
 
-@api_view(['POST'])
-def signup(request):
-    number = request.data.get('number')
-    try:
-        user = CustomUser.objects.get(number=number)
-        if not user.verified:
-            user.delete()
-            raise CustomUser.DoesNotExist()
-    except CustomUser.DoesNotExist:
-        if validate_number(number):
-            print("Ok")
-            CustomUser.objects.create_user(number=number, password=f"{number}corecare")
-            print("Not OK")
-            secret_key = generate_key_for_otp(number)
-            key = base64.b32encode(secret_key.encode())
-            otp = pyotp.TOTP(key, interval=300, digits=6)
-            print(otp.now())
-            data = {'status': 'ok', 'msg': "A 6 Digit OTP Has Been Send to Your Mobile Number {0}".format(number), 'otp': otp.now()}
+# Create your views here.
+
+class GetCurrentUser(APIView):
+    permission_classes = [IsAuthenticated]
+    http_method_names = ['get']
+    
+    def get(self, request):
+        user = request.user
+        serializer = UserSerializer(user)
+        return Response(serializer.data)
+
+class SignUp(CreateAPIView):
+    serializer_class = UserSerializer
+    permission_classes = [AllowAny]
+
+    def create(self, request, *args, **kwargs):
+        number = request.data.get('number')
+        try:
+            user = CustomUser.objects.get(number=number)
+            if not user.verified:
+                user.delete()
+                raise CustomUser.DoesNotExist()
+        except CustomUser.DoesNotExist:
+            serializer =self.serializer_class(data=request.data)
+            if serializer.is_valid():
+                data = serializer.save()
+            else:
+                data = {'status': 'error', 'msg': serializer.error_messages}
         else:
-            data = {'status': 'error', 'msg': "Invalid Number"}
-    else:
-        data = {'status': 'warning', 'msg': 'An Account with number {0} already Exist with us. Please Login or Reset Your Password.'.format(number)}
-    return Response(data)
+            data = {'status': 'warning', 'msg': 'An Account with number {0} already Exist with us. Please Login or Reset Your Password.'.format(number)}
+        return Response(data)       
+
 
 
 def update_user(user, first_name, last_name, email, address_1, address_2, city, state, pincode):
@@ -100,27 +105,71 @@ def signup_additional(request):
             data = {'status': 'ok', 'msg': 'Profile Sucessfully Updated'}
     return Response(data)
 
-@api_view(['POST'])
-def verify_otp(request):
-    number = request.data.get('number')
-    entered_otp = request.data.get('entered_otp')
-    password = request.data.get('password1')
-    if entered_otp and len(entered_otp) == 6:
-        secret_key = generate_key_for_otp(number)
-        key = base64.b32encode(secret_key.encode())
-        otp = pyotp.TOTP(key, interval=300, digits=6)
-        if otp.verify(entered_otp):
-            user = get_object_or_404(CustomUser, number=number)
-            user.set_password(password)
-            user.verified = True
-            user.save()
-            data = {'status': 'ok', 'msg': 'Your Number Has been Verified Sucessfully'}
-        else:
-            data = {'status': 'error', 'msg': 'Invalid OTP or OTP Expired'}
+class UpdateSignupAdditionalData(UpdateAPIView):
+    serializer_class = UserSerializer
+    permission_classes = [AllowAny]
+    http_method_names = ['patch']
 
-    else:
-        data = {'status': 'error', 'msg': 'Please Enter a valid 6 digit OTP'}
-    return Response(data)
+    def update(self, request, number, *args, **kwargs):
+        try:
+            request_data = {
+                "first_name": request.data['first_name'],
+                "last_name": request.data['last_name'],
+                "email": request.data['email'],
+                "address_1": request.data['address_1'],
+                "address_2": request.data['address_2'],
+                "city": request.data['city'],
+                "state": request.data['state'],
+                'pincode': request.data['pincode']
+                }
+        except KeyError:
+            data = {'status': 'error', 'msg': 'Please Provide all the required fields'}
+        else:
+            user = request.user
+            # number = request.data.get('number')
+            password = request.data.get('password')
+            isAnonUser = isinstance(user, AnonymousUser)
+            if isAnonUser:
+                instance = get_object_or_404(CustomUser, number=number)
+                if not instance.check_password(password):
+                    return Response({'status': 'error', 'msg': 'Invalid Number'})
+            else:
+                instance = user
+            serializer = UserSerializer(instance=instance, data=request_data, partial=True)
+            if serializer.is_valid():
+                self.perform_update(serializer)
+                data = {'status': 'ok', 'msg': 'Profile Sucessfully Updated'}
+            else:
+                data = {"error": 'ok', "message": serializer.errors}
+        return Response(data)
+
+
+
+class VerifyOtp(APIView):
+    permission_classes = [AllowAny]
+    http_method_names = ['post']
+
+    def post(self, request):
+        number = request.data.get('number')
+        entered_otp = request.data.get('entered_otp')
+        password = request.data.get('password1')
+        if entered_otp and len(entered_otp) == 6:
+            secret_key = generate_key_for_otp(number)
+            key = base64.b32encode(secret_key.encode())
+            otp = pyotp.TOTP(key, interval=300, digits=6)
+            if otp.verify(entered_otp):
+                user = get_object_or_404(CustomUser, number=number)
+                user.set_password(password)
+                user.verified = True
+                user.save()
+                data = {'status': 'ok', 'msg': 'Your Number Has been Verified Sucessfully'}
+            else:
+                data = {'status': 'error', 'msg': 'Invalid OTP or OTP Expired'}
+        else:
+            data = {'status': 'error', 'msg': 'Please Enter a valid 6 digit OTP'}
+        return Response(data)
+
+
 
 @api_view(['POST'])
 def update_profile_image(request):
@@ -136,3 +185,35 @@ def update_profile_image(request):
     else:
         data = {'status': 'error', 'message': "Invalid Number"}
     return Response(data)
+
+class UpdateProfileImage(UpdateAPIView):
+    serializer_class = UserSerializer
+    http_method_names = ['patch']
+
+    def update(self, request, number, *args, **kwargs):
+        instance = CustomUser.objects.get(number=number)
+        image = request.data.get('image')
+        print(image)
+        password = request.data.get('password')
+        if instance.check_password(password):
+            serializer = UserSerializer(instance=instance, data={'photo': image}, partial=True)
+            if serializer.is_valid():
+                self.perform_update(serializer)
+                data = {'status': 'ok', 'message': 'Profile Photo Updated'}
+            else:
+                if image:
+                    data = {'status': 'error', 'message': 'Invalid or Unsupported Image File'}
+                else:
+                    data = {'status': 'ok', 'message': 'No profile photo updated using default Avatar.'}
+        else:
+            data = {'status': 'error', 'message': "Invalid Number"}
+        return Response(data)
+
+        
+
+
+
+
+
+
+
