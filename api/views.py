@@ -21,7 +21,7 @@ from itertools import chain
 
 # Django Imports
 from django.core.cache import cache
-from django.core.mail import send_mail, mail_admins
+from django.core.mail import send_mail
 from django.db.models import Q
 
 @api_view(['GET'])
@@ -222,6 +222,7 @@ def getReviews(request, slug):
 def createReview(request, slug):
     category = EmployeeCategory.objects.get(slug=slug)
     parent_id = request.data.get('parent', False)
+    cache.delete(f"{slug}_reviews")
     try:
         parent = CategoryReview.objects.get(id=parent_id)
     except CategoryReview.DoesNotExist:
@@ -230,6 +231,7 @@ def createReview(request, slug):
         review = CategoryReview(star=request.data['star'], review=request.data['review'], parent=parent)
     review.user = request.user
     review.category = category
+    cache.delete(f"{slug}_reviews")
     review.save()
     if parent_id:
         a = CategoryReview.objects.filter(category=category).select_related('user', 'parent')
