@@ -36,9 +36,13 @@ sentry_sdk.init(
 )
 
 
+try:
+    with open(BASE_DIR / "backend/settings/secret.json", 'r') as file:
+        secret = json.load(file)
+except:
+    secret = {}
 
-with open(BASE_DIR / "backend/settings/secret.json", 'r') as file:
-    secret = json.load(file)
+
 def get_var(key, secret=secret):
     try:
         value = os.environ[key]
@@ -49,7 +53,7 @@ def get_var(key, secret=secret):
             if key == 'SECRET_KEY':
                 return None
             else:
-                error_mssg = f"Please Setup Environmant Variable or Secret JSON for {key}"
+                error_mssg = f"Please Setup Environment Variable or Secret JSON for {key}"
                 raise ImproperlyConfigured(error_mssg)
         else:
             return value
