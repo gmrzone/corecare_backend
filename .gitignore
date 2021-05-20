@@ -2,3 +2,4 @@
 /3_92
 /venv
 /backend/settings/secret.json
+/db.sqlite3
