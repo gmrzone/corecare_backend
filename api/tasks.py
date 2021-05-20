@@ -42,4 +42,5 @@ def send_contact_or_partners_mail_new(type, data, _from, _to):
     mail_body = render_to_string('emails/contact_and_partners.html', context=mail_context)
     mail_obj = EmailMessage(mail_subject, mail_body, _from, _to)
     mail_obj.content_subtype = "html"
+    mail_obj.mixed_subtype = "related"
     mail_obj.send()
