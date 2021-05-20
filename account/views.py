@@ -4,7 +4,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.generics import CreateAPIView, UpdateAPIView
 from rest_framework.views import APIView
-
+from .tasks import new_signup
 
 # Serializers
 from .serializers import UserSerializer
@@ -59,7 +59,7 @@ class SignUp(CreateAPIView):
 
 
 
-def update_user(user, first_name, last_name, email, address_1, address_2, city, state, pincode):
+def update_user(user, first_name, last_name, email, address_1, address_2, city, state, pincode, new_account):
     user.first_name = first_name
     user.last_name = last_name
     user.email = email
@@ -69,7 +69,8 @@ def update_user(user, first_name, last_name, email, address_1, address_2, city, 
     user.state = state
     user.pincode = pincode
     user.save()
-    return user
+    if new_account:
+        new_signup.delay(user.id)
 
 @api_view(['POST'])
 def signup_additional(request):
@@ -92,7 +93,7 @@ def signup_additional(request):
             else:
                 user = get_object_or_404(CustomUser, number=number)
                 if user.check_password(password):
-                    user_instance = update_user(user, first_name, last_name, email, address_1, address_2, city, state, pincode)
+                    update_user(user, first_name, last_name, email, address_1, address_2, city, state, pincode, new_account=True)
                     data = {'status': 'ok', 'msg': 'Profile Sucessfully Updated'}
                 else:
                     data = {'status': 'error', 'msg': 'Invalid Number'}
@@ -102,7 +103,7 @@ def signup_additional(request):
         if email_exist:
             data = {'status': 'error', 'msg': 'We Already have an account associated with email {0}'.format(email)}
         else:
-            update_user(user, first_name, last_name, email, address_1, address_2, city, state, pincode)
+            update_user(user, first_name, last_name, email, address_1, address_2, city, state, pincode, new_account=False)
             data = {'status': 'ok', 'msg': 'Profile Sucessfully Updated'}
     return Response(data)
 

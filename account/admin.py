@@ -25,7 +25,7 @@ class CustomUserAdmin(UserAdmin):
             'fields': ('number', 'email', 'username', 'first_name', 'last_name', 'employee_category', 'password1', 'password2', 'address_1', 'address_2', 'city', 'state', 'pincode', 'is_employee', 'is_verified_employee', 'verified', 'is_staff', 'is_active', 'is_superuser')}
         ),
     )
-    search_fields = ('number',)
+    search_fields = ('number', 'email')
     ordering = ('-id',)
 
 

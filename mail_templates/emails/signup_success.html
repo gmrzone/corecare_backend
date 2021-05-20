@@ -240,9 +240,9 @@
                             "
                           >
                             {% if user.username %}
-                                {user.username}
+                                {{user.username}}
                             {% else %}
-                                {user.first_name} {user.last_name}
+                                {{user.first_name}} {{user.last_name}}
                             {% endif %}
                           </p>
                         </div>
@@ -358,7 +358,6 @@
             </tr>
           </tbody>
         </table>
-      </div>
       <div
         style="
           background: #4da8da;
@@ -367,6 +366,7 @@
           max-width: 600px;
         "
       >
+      
       <table
       border="0"
       cellpadding="0"
@@ -412,7 +412,7 @@
           >
             <br />
             <br />
-            <span style="font-size: 15px; font-weight: 700">Please Confirm that {{user.email}} is your email address by clicking this link or Verify Now Button Below.</span>
+            <span style="font-size: 15px; font-weight: 700; line-height: 2;">Please Confirm that <a href="mailto:{{user.email}}" target="_blank" style="color: rgb(48, 48, 48) !important;">{{user.email}}</a> is your email address by clicking this link or Verify Now Button Below.</span>
           </div>
         </td>
       </tr>
@@ -493,6 +493,51 @@
         </div>
       </td>
     </tr>
+    <tr>
+        <td
+          align="center"
+          style="
+            font-size: 0px;
+            padding: 10px 25px;
+            padding-top: 28px;
+            padding-right: 25px;
+            padding-bottom: 28px;
+            padding-left: 25px;
+            word-break: break-word;
+          "
+        >
+          <div
+            style="
+              font-size: 13px;
+              line-height: 1;
+              text-align: center;
+              color: #ffffff;
+            "
+          >
+            <span style="font-size: 20px; font-weight: 700" >Account Details.</span>
+            <br />
+            <br />
+            <div style="width: 100%; text-align: center; font-weight: bolder; color: white;">
+                    <div style="margin-bottom: 30px;">
+                        <p style="color: white;">Number</p>
+                        <p style="color: white;">{{user.number}}</p>
+                    </div>
+                    <div style="margin-bottom: 30px;">
+                        <p style="color: white;">First Name</p>
+                        <p style="color: white;">{{user.first_name}}</p>
+                    </div>
+                    <div style="margin-bottom: 30px;">
+                        <p style="color: white;">Last Name</p>
+                        <p style="color: white;">{{user.last_name}}</p>
+                    </div>
+                    <div style="margin-bottom: 30px;">
+                        <p style="color: white;">Address</p>
+                        <p style="color: white;">{{user.address_1}} {{user.address_2}} {{user.city}} {{user.state}} {{user.pincode}}</p>
+                    </div>
+            </div>
+          </div>
+        </td>
+      </tr>
   </table>
     </div>
       <div
