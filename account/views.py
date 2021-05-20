@@ -69,6 +69,7 @@ def update_user(user, first_name, last_name, email, address_1, address_2, city, 
     user.state = state
     user.pincode = pincode
     user.save()
+    return user
 
 @api_view(['POST'])
 def signup_additional(request):
@@ -91,7 +92,7 @@ def signup_additional(request):
             else:
                 user = get_object_or_404(CustomUser, number=number)
                 if user.check_password(password):
-                    update_user(user, first_name, last_name, email, address_1, address_2, city, state, pincode)
+                    user_instance = update_user(user, first_name, last_name, email, address_1, address_2, city, state, pincode)
                     data = {'status': 'ok', 'msg': 'Profile Sucessfully Updated'}
                 else:
                     data = {'status': 'error', 'msg': 'Invalid Number'}
