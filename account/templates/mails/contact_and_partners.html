@@ -33,8 +33,7 @@
         height: auto;
         line-height: 100%;
         outline: none;
-        text-decoration: none;Than
-        -ms-interpolation-mode: bicubic;
+        text-decoration: none;
       }
 
       p {
@@ -241,20 +240,13 @@
                               font-weight: 700;
                             "
                           >
-                            {{order.user.username}}
+                            CORECARE ADMINS
                           </p>
                         </div>
                       </td>
                     </tr>
                   </table>
                 </div>
-                <!--[if mso | IE]>
-            </td>
-          
-        </tr>
-      
-                  </table>
-                <![endif]-->
               </td>
             </tr>
           </tbody>
@@ -350,14 +342,10 @@
                             color: #ffffff;
                           "
                         >
-                          <span style="font-size: 20px; font-weight: 700"
-                            >Thank you very much for your purchase.</span
-                          >
+                          <span style="font-size: 20px; font-weight: 700">You have Received a message from Corecare {{request_type}}</span>
                           <br />
                           <br />
-                          <span style="font-size: 16px"
-                            >Please find the Invoice In attachment.</span
-                          >
+                          <span>Please Find the detail of the sender below.</span>
                         </div>
                       </td>
                     </tr>
@@ -434,7 +422,7 @@
                             color: #ffffff;
                           "
                         >
-                          <strong>Order Number</strong>
+                          <strong>From</strong>
                         </div>
                       </td>
                     </tr>
@@ -459,7 +447,7 @@
                             color: #ffffff;
                           "
                         >
-                          {{order.receipt}}
+                          {{from}}
                         </div>
                       </td>
                     </tr>
@@ -504,7 +492,7 @@
                             color: #ffffff;
                           "
                         >
-                          <strong>Order Date</strong>
+                          <strong>Number</strong>
                         </div>
                       </td>
                     </tr>
@@ -529,7 +517,7 @@
                             color: #ffffff;
                           "
                         >
-                          {{order.created|timesince}}
+                          {{Number}}
                         </div>
                       </td>
                     </tr>
@@ -574,7 +562,7 @@
                             color: #ffffff;
                           "
                         >
-                          <strong>Total Price</strong>
+                          <strong>Email</strong>
                         </div>
                       </td>
                     </tr>
@@ -599,7 +587,7 @@
                             color: #ffffff;
                           "
                         >
-                          {{order.total}}
+                          {{email}}
                         </div>
                       </td>
                     </tr>
@@ -618,188 +606,57 @@
           max-width: 600px;
         "
       >
-        <table
-          align="center"
-          border="0"
-          cellpadding="0"
-          cellspacing="0"
-          role="presentation"
-          style="background: #4da8da; background-color: #4da8da; width: 100%"
+      <table
+      border="0"
+      cellpadding="0"
+      cellspacing="0"
+      role="presentation"
+      style="vertical-align: top"
+      width="100%"
+    >
+      <tr>
+        <td
+          style="
+            font-size: 0px;
+            padding: 10px 25px;
+            padding-top: 0;
+            padding-right: 20px;
+            padding-bottom: 0px;
+            padding-left: 20px;
+            word-break: break-word;
+          "
         >
-          <tbody>
-            <tr>
-              <td
-                style="
-                  direction: ltr;
-                  font-size: 0px;
-                  padding: 20px 0;
-                  padding-bottom: 20px;
-                  padding-top: 20px;
-                  text-align: center;
-                "
-              >
-                <div
-                  class="mj-column-per-50 mj-outlook-group-fix"
-                  style="
-                    font-size: 0px;
-                    text-align: left;
-                    direction: ltr;
-                    display: inline-block;
-                    vertical-align: top;
-                    width: 100%;
-                  "
-                >
-                  <table
-                    border="0"
-                    cellpadding="0"
-                    cellspacing="0"
-                    role="presentation"
-                    style="vertical-align: top"
-                    width="100%"
-                  >
-                    <tr>
-                      <td
-                        align="center"
-                        vertical-align="middle"
-                        style="
-                          font-size: 0px;
-                          padding: 15px 30px;
-                          padding-right: 25px;
-                          padding-bottom: 10px;
-                          padding-left: 25px;
-                          word-break: break-word;
-                        "
-                      >
-                        <table
-                          border="0"
-                          cellpadding="0"
-                          cellspacing="0"
-                          role="presentation"
-                          style="border-collapse: separate; line-height: 100%"
-                        >
-                          <tr>
-                            <td
-                              align="center"
-                              bgcolor="#ffae00"
-                              role="presentation"
-                              style="
-                                border: none;
-                                border-radius: 4px;
-                                cursor: auto;
-                                mso-padding-alt: 10px 25px;
-                                background: black;
-                              "
-                              valign="middle"
-                            >
-                              <a
-                                href="https://corecare.in"
-                                style="
-                                  display: inline-block;
-                                  background: black;
-                                  color: #ffffff;
-                                  font-size: 14px;
-                                  font-weight: bold;
-                                  line-height: 120%;
-                                  margin: 0;
-                                  text-decoration: none;
-                                  text-transform: none;
-                                  padding: 10px 25px;
-                                  mso-padding-alt: 0px;
-                                  border-radius: 4px;
-                                "
-                                target="_blank"
-                              >
-                                Download Invoice
-                              </a>
-                            </td>
-                          </tr>
-                        </table>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-                <div
-                  class="mj-column-per-50 mj-outlook-group-fix"
-                  style="
-                    font-size: 0px;
-                    text-align: left;
-                    direction: ltr;
-                    display: inline-block;
-                    vertical-align: top;
-                    width: 100%;
-                  "
-                >
-                  <table
-                    border="0"
-                    cellpadding="0"
-                    cellspacing="0"
-                    role="presentation"
-                    style="vertical-align: top"
-                    width="100%"
-                  >
-                    <tr>
-                      <td
-                        align="center"
-                        vertical-align="middle"
-                        style="
-                          font-size: 0px;
-                          padding: 15px 30px;
-                          padding-right: 25px;
-                          padding-bottom: 12px;
-                          padding-left: 25px;
-                          word-break: break-word;
-                        "
-                      >
-                        <table
-                          border="0"
-                          cellpadding="0"
-                          cellspacing="0"
-                          role="presentation"
-                          style="border-collapse: separate; line-height: 100%"
-                        >
-                          <tr>
-                            <td
-                              align="center"
-                              bgcolor="#ffae00"
-                              role="presentation"
-                              style="
-                                border: none;
-                                border-radius: 4px;
-                                cursor: auto;
-                                background: black;
-                              "
-                              valign="middle"
-                            >
-                              <a
-                                href="https://corecare.in"
-                                style="
-                                  display: inline-block;
-                                  background: black;
-                                  color: #ffffff;
-                                  font-size: 14px;
-                                  font-weight: bold;
-                                  line-height: 120%;
-                                  margin: 0;
-                                  text-decoration: none;
-                                  text-transform: none;
-                                  padding: 10px 25px;
-                                  border-radius: 4px;
-                                "
-                                target="_blank"
-                              >
-                                Track My Order
-                              </a>
-                            </td>
-                          </tr>
-                        </table>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        </td>
+      </tr>
+      <tr>
+        <td
+          align="center"
+          style="
+            font-size: 0px;
+            padding: 10px 25px;
+            padding-top: 28px;
+            padding-right: 25px;
+            padding-bottom: 28px;
+            padding-left: 25px;
+            word-break: break-word;
+          "
+        >
+          <div
+            style="
+              font-size: 13px;
+              line-height: 1;
+              text-align: center;
+              color: #ffffff;
+            "
+          >
+            <span style="font-size: 15px; font-weight: 700">Message</span>
+            <br />
+            <br />
+            <span style="font-size: 15px; font-weight: 700">{{message}}</span>
+          </div>
+        </td>
+      </tr>
+    </table>
       </div>
       <div
         style="
@@ -892,7 +749,7 @@
                           "
                         >
                           Best, <br />
-                          <span style="font-size: 15px">The Corecare Team</span>
+                          <span style="font-size: 15px">Corecare Admins</span>
                         </div>
                       </td>
                     </tr>

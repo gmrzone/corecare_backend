@@ -1,6 +1,7 @@
 from celery import shared_task
 from django.core.mail import send_mail
 
+
 @shared_task
 def send_contact_or_partners_mail(type, data, _from, _to):
     if type == "contact":
