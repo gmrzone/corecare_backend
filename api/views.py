@@ -9,6 +9,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.generics import CreateAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.generics import ListAPIView, CreateAPIView
+from .tasks import send_contact_or_partners_mail
 # Models Import
 from .models import CategoryReview, EmployeeCategory, CouponCode, Service, ServiceSubcategory
 
@@ -299,23 +300,12 @@ class SendContactAndPartnerMixin:
         instance = self.serializer_class(data=data)
         if instance.is_valid():
             if self.type == "contact":
-                mail_subject = "CoreCare Contact Us"
-                mail_message = f"""A Contact Message from
-                Name: {data['first_name']} {data['last_name']}
-                email : {data['email']}
-                message: {data['message']}"""
                 success_msg = "Thank you for contacting us. we Will get back to you as soon as possible"
             elif self.type == "partner":
-                mail_subject = "CoreCare Partner Request"
-                mail_message = f"""
-                Name: {data['name']}
-                Number: {data['number']}
-                email : {data['email']}
-                detail: {data['detail']}"""
                 success_msg = "Thank you for showing Interest in CoreCare Partners. we Will get back to you as soon as possible"
             try:
-                # mail_admins(mail_subject, mail_message, fail_silently=False)
-                send_mail(mail_subject, mail_message,'saiyedafzal0@gmail.com',['saiyedafzalgz@gmail.com'])
+                send_contact_or_partners_mail.delay(self.type, data, 'saiyedafzal0@gmail.com', ['saiyedafzalgz@gmail.com'])
+                # send_mail(mail_subject, mail_message,'saiyedafzal0@gmail.com',['saiyedafzalgz@gmail.com'])
             except Exception as e:
                 return Response({'status': 'error', 'message': "There was an error on our end please try again later."})
             else:
