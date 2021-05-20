@@ -1,1 +1,0 @@
-python manage.py dumpdata api --indent=4 --natural-primary --natural-foreign -e contenttypes --output=apidata_latest_psql.json

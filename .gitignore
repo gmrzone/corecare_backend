@@ -3,3 +3,7 @@
 /venv
 /backend/settings/secret.json
 /db.sqlite3
+/json_data
+/fulldatafixure.json
+/dump_data.txt
+__pycache__/
