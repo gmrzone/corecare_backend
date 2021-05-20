@@ -151,21 +151,21 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'staticfiles/media/')
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/static/')
 
-CORS_ALLOWED_ORIGINS = [
+# CORS_ALLOWED_ORIGINS = [
 
-    "http://localhost:3000",
-    "http://localhost:3000",
-    "http://192.168.0.198:3000",
-    "http://127.0.0.1:3000",
-    'http://corecare.in',
-    'http://corecare.in',
-    'http://partner.corecare.in',
-    'http://partner.corecare.in',
-    'http://api.corecare.in',
-    'http://api.corecare.in',
+#     "http://localhost:3000",
+#     "http://localhost:3000",
+#     "http://192.168.0.198:3000",
+#     "http://127.0.0.1:3000",
+#     'http://corecare.in',
+#     'http://corecare.in',
+#     'http://partner.corecare.in',
+#     'http://partner.corecare.in',
+#     'http://api.corecare.in',
+#     'http://api.corecare.in',
     
 
-]
+# ]
 CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOW_CREDENTIALS = True
