@@ -9,7 +9,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.generics import CreateAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.generics import ListAPIView, CreateAPIView
-from .tasks import send_contact_or_partners_mail
+from .tasks import send_contact_or_partners_mail, send_contact_or_partners_mail_new
 # Models Import
 from .models import CategoryReview, EmployeeCategory, CouponCode, Service, ServiceSubcategory
 
@@ -304,7 +304,7 @@ class SendContactAndPartnerMixin:
             elif self.type == "partner":
                 success_msg = "Thank you for showing Interest in CoreCare Partners. we Will get back to you as soon as possible"
             try:
-                send_contact_or_partners_mail.delay(self.type, data, 'saiyedafzal0@gmail.com', ['saiyedafzalgz@gmail.com'])
+                send_contact_or_partners_mail_new.delay(self.type, data, 'saiyedafzal0@gmail.com', ['saiyedafzalgz@gmail.com'])
                 # send_mail(mail_subject, mail_message,'saiyedafzal0@gmail.com',['saiyedafzalgz@gmail.com'])
             except Exception as e:
                 return Response({'status': 'error', 'message': "There was an error on our end please try again later."})

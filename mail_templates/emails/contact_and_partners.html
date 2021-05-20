@@ -24,8 +24,6 @@
       table,
       td {
         border-collapse: collapse;
-        mso-table-lspace: 0pt;
-        mso-table-rspace: 0pt;
       }
 
       img {
@@ -44,7 +42,7 @@
     <style type="text/css">
       @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
       body {
-        font-family: "Poppins", sans-serif !important;
+        font-family: "Poppins", apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif !important;
         font-weight: 400;
       }
     </style>
@@ -342,7 +340,7 @@
                             color: #ffffff;
                           "
                         >
-                          <span style="font-size: 20px; font-weight: 700">You have Received a message from Corecare {{request_type}}</span>
+                          <span style="font-size: 20px; font-weight: 700">You have Received a message from Corecare {{request_type|capfirst}} request.</span>
                           <br />
                           <br />
                           <span>Please Find the detail of the sender below.</span>
@@ -447,7 +445,7 @@
                             color: #ffffff;
                           "
                         >
-                          {{from}}
+                          <strong>{{from}}</strong>
                         </div>
                       </td>
                     </tr>
@@ -517,7 +515,7 @@
                             color: #ffffff;
                           "
                         >
-                          {{Number}}
+                          <strong>{{Number}}</strong>
                         </div>
                       </td>
                     </tr>
@@ -587,7 +585,7 @@
                             color: #ffffff;
                           "
                         >
-                          {{email}}
+                          <strong>{{email}}</strong>
                         </div>
                       </td>
                     </tr>
