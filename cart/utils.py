@@ -29,7 +29,7 @@ class Recommender:
             suggestion = r.zrange(self.generate_key(services[0]), 0, -1, desc=True)
         elif len(services) > 1:
             suggestion_keys = [self.generate_key(id) for id in services]
-            temp_key = "".join(services) + "union"
+            temp_key = "".join(str(i) for i in services) + "union"
             r.zunionstore(temp_key, suggestion_keys, 'SUM')
             r.zrem(temp_key, *services)
             suggestion = r.zrange(temp_key, 0, -1, desc=True)

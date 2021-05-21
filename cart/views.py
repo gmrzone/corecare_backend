@@ -13,7 +13,7 @@ from string import ascii_lowercase, ascii_uppercase
 from .models import Order, OrderItem
 from .utils import Recommender
 from .serializers import OrderSerializer
-
+from .tasks import order_success_mail
 # Other Modules Imports
 from datetime import datetime
 import razorpay
@@ -196,6 +196,10 @@ def create_order(request):
             OrderItem.objects.create(order=order, service=service, quantity=i['quantity'], total=int(i['quantity']) * float(i['price']))
         
         Recommender().create_recommandation_for(create_recommandation_list)
+        # Get basic Recommandation based on order to send via email via celery
+        service_recommandation = Recommender().get_basic_recommandation(create_recommandation_list, max_result=4)
+        order_success_mail.delay(cart_detail['order_receipt'], service_recommandation)
+        # Clear Cart
         cartObject.clear_Cart()
         data = {'status': 'ok', 'msg': f"Paymant sucessfull your order with order id {order.receipt} has been created ", 'receipt': order.receipt}   
     return Response(data)
@@ -250,7 +254,7 @@ class CreateOrder(CreateAPIView):
                 data = {'status': 'ok', 'msg': f"Paymant sucessfull your order with order id {receipt} has been created ", 'receipt': receipt}
             else:
                 data = serializer.errors
-            return Response(data    )
+            return Response(data)
 
 
         

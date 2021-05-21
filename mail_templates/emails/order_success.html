@@ -9,6 +9,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      .recommanded-items .recommanded-item {
+          background-color: white;
+          border-radius: 4px;
+          padding: 10px;
+          margin-bottom: 15px;
+      }
+      .recommanded-item .cart-item-image {
+        border-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+        margin-right: 5px;
+      }
+      .recommanded-item .cart-item-content {
+        align-items: center;
+        color: black !important;
+      }
+      .recommanded-item .cart-item-content .cart-item-header{
+        font-weight: bold;
+        margin-bottom: 5px;
+        
+      }
+    </style>
     <style type="text/css">
       #outlook a {
         padding: 0;
@@ -530,7 +552,7 @@
                             color: #ffffff;
                           "
                         >
-                          {{order.created|timesince}}
+                          {{ order.created|date:"D d M Y" }} {{ order.created|time:"H:i" }}
                         </div>
                       </td>
                     </tr>
@@ -802,6 +824,132 @@
           </tbody>
         </table>
       </div>
+      <div
+      style="
+        background: #4da8da;
+        background-color: #4da8da;
+        margin: 0px auto;
+        max-width: 600px;
+      "
+    >
+      <table
+        align="center"
+        border="0"
+        cellpadding="0"
+        cellspacing="0"
+        role="presentation"
+        style="background: #4da8da; background-color: #4da8da; width: 100%"
+      >
+        <tbody>
+          <tr>
+            <td
+              style="
+                direction: ltr;
+                font-size: 0px;
+                padding: 20px 0;
+                padding-bottom: 5px;
+                padding-top: 0;
+                text-align: center;
+              "
+            >
+              <div
+                class="mj-column-per-100 mj-outlook-group-fix"
+                style="
+                  font-size: 0px;
+                  text-align: left;
+                  direction: ltr;
+                  display: inline-block;
+                  vertical-align: top;
+                  width: 100%;
+                "
+              >
+                <table
+                  border="0"
+                  cellpadding="0"
+                  cellspacing="0"
+                  role="presentation"
+                  style="vertical-align: top"
+                  width="100%"
+                >
+                  <tr>
+                    <td
+                      style="
+                        font-size: 0px;
+                        padding: 10px 25px;
+                        padding-top: 0;
+                        padding-right: 20px;
+                        padding-bottom: 0px;
+                        padding-left: 20px;
+                        word-break: break-word;
+                      "
+                    >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      align="center"
+                      style="
+                        font-size: 0px;
+                        padding: 10px 25px;
+                        padding-top: 28px;
+                        padding-right: 25px;
+                        padding-bottom: 28px;
+                        padding-left: 25px;
+                        word-break: break-word;
+                      "
+                    >
+                      <div
+                        style="
+                          font-size: 13px;
+                          line-height: 1;
+                          text-align: center;
+                          color: #ffffff;
+                        "
+                      >
+                        <span style="font-size: 20px; font-weight: 700">Recommanded services based on your order</span>
+                        <br />
+                        <br />
+                        <div class="recommanded-items">
+                          {% for item in services %}
+                            <div class="recommanded-item">
+                              <div class="cart-item-image">
+                                  <img src="https://www.afzalsaiyed.corecare.in{{item.icon.url}}" alt={{service.name}} width="60" height="60" style="border-radius: 5px;"/>
+                              </div>
+                              <div class="cart-item-content">
+                                  <div class="cart-item-header">{{item.name|truncatechars:32}}</div>
+                                  <div class="cart-item-price">Rs. {{item.price}}</div>
+                              </div>
+                              <div class="cart-item-action">
+                                  <a href="https://www.dev.corecare.in/services/electrician?afzal={{item.subcategory.slug}}" style="
+                                  display: inline-block;
+                                  background: black;
+                                  color: #ffffff;
+                                  font-size: 12px;
+                                  font-weight: bold;
+                                  line-height: 120%;
+                                  margin: 0;
+                                  text-decoration: none;
+                                  text-transform: none;
+                                  padding: 8px 12px;
+                                  border-radius: 4px;
+                                "
+                                target="_blank">
+                                      Add to cart
+                                  </a>
+                              </div>
+                            </div>
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
       <div
         style="
           background: #007cc7;
