@@ -1,6 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 @page { size: A3; margin: 0cm }
 
+@bottom-center {
+    background-color: #007cc7;
+    color: white;
+    content: 'Thankyou for very much for your purchase. We hope to see you soon';
+}
+@bottom-center {
+    background-color: #007cc7;
+    color: white;
+    content: 'Copyright 2021 Afzal Saiyed';
+}
 body {
     padding: 0;
     margin: 0;
@@ -74,6 +84,7 @@ body {
     width: 100%;
     background-color: #e4f5ff;
     border: none;
+    color: #007cc7;
     .table-header {
         background-color: #007cc7;
         color: white;
