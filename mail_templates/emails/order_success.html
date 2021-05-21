@@ -169,7 +169,7 @@
               <img
                 alt="website_logo"
                 height="auto"
-                src="{{logo}}"
+                src="{{request.scheme}}://{{request.META.HTTP_HOST}}{% static 'images/corecare_vertical_blue.png' %}"
                 class="logo-image"
                 style="
                   border: none;
