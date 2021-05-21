@@ -1,28 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
-@page { size: A3; margin: 0cm }
+@page {
+    margin: 0cm 0cm 1.5cm 0cm;
+    @bottom-center {
+      width: 100%;
+      color: white;
+      background-color: #007cc7;
+      padding: 8px 0px;
+      font-weight: bolder;
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+      content: 'Thankyou for very much for your purchase. We hope to see you soon.'; }
+}
 
-@bottom-center {
-    background-color: #007cc7;
-    color: white;
-    content: 'Thankyou for very much for your purchase. We hope to see you soon';
-}
-@bottom-center {
-    background-color: #007cc7;
-    color: white;
-    content: 'Copyright 2021 Afzal Saiyed';
-}
 body {
     padding: 0;
     margin: 0;
+    background-color: #e4f5ff;
     font-family: 'Poppins', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 
     .max-width {
         width: 100%;
-        padding: 10px;
+        padding: 15px;
     }
 }
 .main-logo {
     text-align: center;
+    background-color: white;
     border-top: 5px solid #007cc7;
 
     
@@ -88,6 +90,7 @@ body {
     .table-header {
         background-color: #007cc7;
         color: white;
+        text-align: center;
     }
     .table-body {
         text-align: center;
