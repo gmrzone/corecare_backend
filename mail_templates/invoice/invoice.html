@@ -10,18 +10,18 @@
 </head>
 <body>
     <section class="main-logo max-width">
-        <img
+        <!-- <img
             alt="website_logo"
             height="auto"
             src="https://www.afzalsaiyed.corecare.in/static/images/corecare_vertical_blue.png"
             class="logo-image"
-          />
-          <!-- <img
+          /> -->
+          <img
           alt="website_logo"
           height="auto"
           src="https://www.afzalsaiyed.corecare.in{% static 'images/corecare_vertical_blue.png' %}"
           class="logo-image"
-        /> -->
+        />
     </section>
     <table class="address-section max-width">
         <tr>
@@ -44,6 +44,14 @@
             </td>
             <td class="invoice-date">
                 <h4>Incoice Date: 27/02/2021</h4>
+            </td>
+        </tr>
+        <tr>
+            <td class="invoice-number">
+                <h4>COUPON APPLIED: NEWYEAR_21</h4>
+            </td>
+            <td class="invoice-date">
+                <h4>COUPON DISCOUNT: 21%</h4>
             </td>
         </tr>
     </table>
@@ -79,10 +87,44 @@
                 <td>&#8377; 3500</td>
             </tr>
         </tbody>
+        <tfoot class="table-footer">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td class="footer-header">Subtotal</td>
+                <td>&#8377;4299</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td class="footer-header">Discount @21%</td>
+                <td class="remove">- &#8377;902.79</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td class="footer-header">Tax @5%</td>
+                <td class="remove">+ &#8377;214.95</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td class="footer-header footer-total">Total</td>
+                <td class="footer-total">&#8377;3611.16</td>
+            </tr>
+        </tfoot>
     </table>
-    <!-- <div class="footer max-width">
-        <p>Thankyou for very much for your purchase. We hope to see you soon</p>
-        <span>Copyright 2021 Afzal Saiyed</span>
-    </div> -->
 </body>
 </html>

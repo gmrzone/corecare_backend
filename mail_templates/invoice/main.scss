@@ -19,7 +19,7 @@ body {
 
     .max-width {
         width: 100%;
-        padding: 15px;
+        padding: 20px;
     }
 }
 .main-logo {
@@ -29,7 +29,7 @@ body {
 
     
     .logo-image {
-        width: 180px;
+        width: 200px;
         margin-top: 15px;
     }   
 }
@@ -87,6 +87,8 @@ body {
     background-color: #e4f5ff;
     border: none;
     color: #007cc7;
+
+
     .table-header {
         background-color: #007cc7;
         color: white;
@@ -94,6 +96,27 @@ body {
     }
     .table-body {
         text-align: center;
+
+    }
+    .table-footer {
+        text-align: center;
+        color: #007cc7;
+        
+
+        .footer-header {
+            background-color: #007cc7;
+            color: white;
+        }
+        .footer-total {
+            font-weight: bolder;
+        }
+        // .remove {
+        //     color: #00b42d;
+        //     font-weight: bolder;
+        // }
+        .remove {
+            color: rgb(255, 65, 65);
+        }
     }
 }
 
