@@ -4,6 +4,8 @@ from django.shortcuts import get_object_or_404, render
 from django.conf import settings
 from django.utils.crypto import get_random_string
 from django.core.cache import cache
+from django.template.loader import render_to_string
+from django.http import HttpResponse
 
 # Project Import
 from api.models import CouponCode, EmployeeCategory, Service
@@ -17,6 +19,7 @@ from .tasks import order_success_mail
 # Other Modules Imports
 from datetime import datetime
 import razorpay
+import weasyprint
 
 # Rest Framework
 from rest_framework.response import Response
@@ -313,6 +316,15 @@ def add_from_recommanded_toCart(request):
     else:
         data = {'status': 'error'}
     return Response(data)
+
+def download_pdf(request, order_id):
+    order = get_object_or_404(Order, receipt=order_id)
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachments; filename=invoice_corecare_' + order_id
+    pdf_str = render_to_string('invoice/invoice.html', {'order': order})
+    stylesheet = [weasyprint.CSS(settings.BASE_DIR / "staticfiles/static/css/main.css")]
+    weasyprint.HTML(string=pdf_str).write_pdf(response, stylesheets=stylesheet)
+    return response
     
 
 

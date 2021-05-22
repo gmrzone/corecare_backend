@@ -18,7 +18,8 @@ urlpatterns = [
     path('create-orders/', views.create_order, name="create_order"),
     path('services/get-recommandation/basic/', views.get_basic_recommandation, name="basic_recommandation"),
     path('services/get-recommandation/detail/', views.get_detailed_recommandation, name="detail_recommandation"),
-    path('cart/add/from_recommanded/', views.add_from_recommanded_toCart, name=""),
+    path('cart/add/from_recommanded/', views.add_from_recommanded_toCart, name="add_from_recommanded"),
+    path('order/invoice/generate/download/<str:order_id>/', views.download_pdf, name="download_invoice"),
 
     # New ENDPOINTS VERSIONS
     path('create-orders/', views.CreateOrder.as_view(), name="create_order_new"),
