@@ -8,7 +8,7 @@
       padding: 8px 0px;
       font-weight: bolder;
       font-family: 'Poppins', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-      content: 'Thankyou for very much for your purchase. We hope to see you soon.'; }
+      content: 'Thankyou for very much for your purchase. We hope to see you again soon.'; }
 }
 
 body {
@@ -93,14 +93,24 @@ body {
         background-color: #007cc7;
         color: white;
         text-align: center;
+
+        th {
+            padding: 10px;
+        }
     }
     .table-body {
         text-align: center;
+        td {
+            padding: 4px;
+        }
 
     }
     .table-footer {
         text-align: center;
         color: #007cc7;
+        td {
+            padding: 4px;
+        }
         
 
         .footer-header {
