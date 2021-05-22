@@ -188,7 +188,8 @@ def create_order(request):
             subtotal=cart_detail['cart_subtotal'],
             discount=cart_detail['discount'], total=cart_detail['total'],
             coupon=coupon,
-            paid=True
+            paid=True,
+            tax=cart_detail['tax']
             )
         create_recommandation_list = []
         for i in cart.values():
@@ -201,7 +202,7 @@ def create_order(request):
         Recommender().create_recommandation_for(create_recommandation_list)
         # Get basic Recommandation based on order to send via email via celery
         service_recommandation = Recommender().get_basic_recommandation(create_recommandation_list, max_result=4)
-        order_success_mail.delay(cart_detail['order_receipt'], service_recommandation, cart_detail['cart_subtotal'])
+        order_success_mail.delay(cart_detail['order_receipt'], service_recommandation)
         # Clear Cart
         cartObject.clear_Cart()
         data = {'status': 'ok', 'msg': f"Paymant sucessfull your order with order id {order.receipt} has been created ", 'receipt': order.receipt}   
@@ -311,6 +312,7 @@ def add_from_recommanded_toCart(request):
         }}
         cart_detail = cart.cart_detail
         cart_detail['cart_subtotal'] = str(cart.get_cart_total())
+        cart_detail['tax'] = str(cart.get_tax())
         cart_detail['total'], cart_detail['discount'] = cart.get_discounted_total()
         data = {'status': 'ok', 'added': added_service, "recommandedServices": rec, "cart_detail": cart_detail}
     else:

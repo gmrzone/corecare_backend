@@ -111,14 +111,14 @@ class Cart:
     def get_cart_total(self):
         return sum(item['quantity'] * Decimal(item['price']) for item in self.cart.values())
 
-    def get_cart_discount(self):
-        pass
+    def get_tax(self):
+        return self.get_cart_total() * 5 / 100
     
     def get_discounted_total(self):
         total = self.get_cart_total()
         discount_percent = self.cart_detail.get('discount_percent') or 0
         discount_amount = total * discount_percent / 100
-        discounted_total = total - discount_amount
+        discounted_total = total - discount_amount + self.get_tax()
         return str(discounted_total),  str(discount_amount)
 
     def clear_Cart(self):
@@ -135,6 +135,7 @@ class Cart:
         cart = self.cart.copy()
         cart_detail = self.cart_detail.copy()
         cart_detail['cart_subtotal'] = str(self.get_cart_total())
+        cart_detail['tax'] = str(self.get_tax())
         cart_detail['total'], cart_detail['discount'] = self.get_discounted_total()
         for key in cart.keys():
             service = cache.get(f"service_{key}")
@@ -158,6 +159,7 @@ class Order(models.Model):
     razorpay_payment_id = models.CharField(max_length=100, db_index=True, null=True, blank=True)
     razorpay_signature = models.CharField(max_length=300, db_index=True, null=True, blank=True)
     subtotal = models.DecimalField(max_digits=10, decimal_places=2)
+    tax = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     discount = models.DecimalField(max_digits=10, decimal_places=2)
     total = models.DecimalField(max_digits=10, decimal_places=2)
     coupon = models.ForeignKey(CouponCode, null=True, blank=True, on_delete=models.SET_NULL, related_name="related_orders")
