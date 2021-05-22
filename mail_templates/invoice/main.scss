@@ -66,10 +66,20 @@ body {
     .invoice-number {
         text-align: left;
         color: #007cc7;
+
+        h4 {
+            font-weight: bold;
+            font-size: 14px;
+        }
     }
     .invoice-date {
         text-align: right;
         color: #007cc7;
+
+        h4 {
+            font-weight: bold;
+            font-size: 14px;
+        }
     }
 }
 
