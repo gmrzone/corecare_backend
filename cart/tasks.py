@@ -9,16 +9,17 @@ from io import BytesIO
 from django.conf import settings
 import os
 @shared_task
-def order_success_mail(order_id, recommanded_ids):
-    order = Order.objects.select_related('user').get(receipt=order_id)
+def order_success_mail(order_id, recommanded_ids, order_subtotal):
+    order = Order.objects.select_related('category', 'user', 'coupon').prefetch_related('items', 'items__service', 'coupon__category').get(receipt=order_id)
     preserve_ids = Case(*[When(id=id, then=index) for index, id in enumerate(recommanded_ids)])
-    services = Service.objects.filter(id__in=recommanded_ids).order_by(preserve_ids)
+    recommanded_services = Service.objects.filter(id__in=recommanded_ids).order_by(preserve_ids)
     subject = f"Order {order_id}"
-    body = render_to_string('emails/order_success.html', {'order': order, "services": services})
+    body = render_to_string('emails/order_success.html', {'order': order, "services": recommanded_services})
     mail = EmailMessage(subject=subject, body=body, from_email="saiyedafzal0@gmail.com", to=[order.user.email])
     mail.content_subtype = "html"
     mail.mixed_subtype = "related"
-    pdf_str = render_to_string('invoice/invoice.html', {"order": order})
+    order_tax = float(order_subtotal) * 5 / 100
+    pdf_str = render_to_string('invoice/invoice.html', {"order": order, "tax": order_tax})
     empty_obj = BytesIO()
     stylesheet = [weasyprint.CSS(settings.BASE_DIR / "staticfiles/static/css/main.css")]
     weasyprint.HTML(string=pdf_str).write_pdf(target=empty_obj, stylesheets=stylesheet)

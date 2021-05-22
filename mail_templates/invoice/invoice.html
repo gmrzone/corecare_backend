@@ -32,26 +32,31 @@
         </td>
         <td class="to-address">
             <span>Bill To:</span>
-            <h1>Afzal Saiyed</h1>
-            <p>Room No 302, Hdil Society new hall road <br /> India, Maharashtra <br />Kurla (w) Mumbai 400070</p>
+            <h1>{% if order.user.first_name %}
+                    {{order.user.first_name}}&nbsp;{{order.user.last_name}}
+                {% else %}
+                    {{order.number}}
+                {% endif %}
+            </h1>
+            <p>{{order.user.address_1}} <br />{{order.user.address_2}}&nbsp;{{order.user.state}}<br />{{order.user.city}}&nbsp;{{order.user.pincode}}</p>
         </td>
         </tr>
     </table>
     <table class="invoice-header max-width">
         <tr>
             <td class="invoice-number">
-                <h4 style="margin-top: 0; margin-bottom: 12px;">ORDER ID:&nbsp;&nbsp;123456789</h4>
+                <h4 style="margin-top: 0; margin-bottom: 12px;">ORDER ID:&nbsp;&nbsp;{{order.receipt}}</h4>
             </td>
             <td class="invoice-date">
-                <h4 style="margin-top: 0; margin-bottom: 12px;">INVOICE DATE:&nbsp;&nbsp;27/02/2021</h4>
+                <h4 style="margin-top: 0; margin-bottom: 12px;">INVOICE DATE:&nbsp;&nbsp;{{order.created|date:"D, d M, y"}}</h4>
             </td>
         </tr>
         <tr>
             <td class="invoice-number">
-                <h4 style="margin: 0;">COUPON APPLIED:&nbsp;&nbsp;NEWYEAR_21</h4>
+                <h4 style="margin: 0;">COUPON APPLIED:&nbsp;&nbsp;{{order.coupon.code}}</h4>
             </td>
             <td class="invoice-date">
-                <h4 style="margin: 0;">COUPON DISCOUNT:&nbsp;&nbsp;21%</h4>
+                <h4 style="margin: 0;">COUPON DISCOUNT:&nbsp;&nbsp;{{order.coupon.discount}}%</h4>
             </td>
         </tr>
     </table>
@@ -68,7 +73,17 @@
             </tr>
         </thead>
         <tbody class="table-body">
-            <tr>
+            {% with items=order.items.all %}
+                {% for item in items %}
+                    <tr>
+                        <td>{{item.service.name}}</td>
+                        <td>{{item.quantity}}</td>
+                        <td>&#8377; {{item.service.price}}</td>
+                        <td>&#8377; {{item.total}}</td>
+                    </tr>
+                {% endfor %}
+            {% endwith %}
+            <!-- <tr>
                 <td>Room Heater</td>
                 <td>5</td>
                 <td>&#8377; 100</td>
@@ -85,7 +100,7 @@
                 <td>1</td>
                 <td>&#8377; 3500</td>
                 <td>&#8377; 3500</td>
-            </tr>
+            </tr> -->
         </tbody>
         <tfoot class="table-footer">
             <tr>
@@ -104,31 +119,31 @@
                 <td></td>
                 <td></td>
                 <td class="footer-header">Subtotal</td>
-                <td>&#8377; 4299</td>
+                <td>&#8377; {{order.subtotal}}</td>
             </tr>
             <tr>
                 <td></td>
                 <td></td>
                 <td class="footer-header">Discount @21%</td>
-                <td class="remove">- &#8377; 902.79</td>
+                <td class="remove">- &#8377; {{order.discount}}</td>
             </tr>
             <tr>
                 <td></td>
                 <td></td>
                 <td class="footer-header">Tax @5%</td>
-                <td class="remove">+ &#8377; 214.95</td>
+                <td class="remove">+ &#8377; {{tax}}</td>
             </tr>
             <tr>
                 <td></td>
                 <td></td>
                 <td class="footer-header footer-total">Total</td>
-                <td class="footer-total">&#8377; 3611.16</td>
+                <td class="footer-total">&#8377; {{order.total}}</td>
             </tr>
             <tr>
                 <td></td>
                 <td></td>
                 <td class="footer-header footer-total">Payment Status</td>
-                <td class="footer-total">PAID</td>
+                <td class="footer-total">{% if order.paid %}PAID{% else %}PENDING{% endif %}</td>
             </tr>
         </tfoot>
     </table>
