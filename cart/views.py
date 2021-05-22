@@ -317,10 +317,10 @@ def add_from_recommanded_toCart(request):
         data = {'status': 'error'}
     return Response(data)
 
-def download_pdf(request, order_id):
+def download_invoice(request, order_id):
     order = get_object_or_404(Order, receipt=order_id)
     response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'attachments; filename=invoice_corecare_' + order_id
+    response['Content-Disposition'] = 'attachments; filename=invoice_corecare_' + order_id + ".pdf"
     pdf_str = render_to_string('invoice/invoice.html', {'order': order})
     stylesheet = [weasyprint.CSS(settings.BASE_DIR / "staticfiles/static/css/main.css")]
     weasyprint.HTML(string=pdf_str).write_pdf(response, stylesheets=stylesheet)
