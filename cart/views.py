@@ -201,7 +201,7 @@ def create_order(request):
         Recommender().create_recommandation_for(create_recommandation_list)
         # Get basic Recommandation based on order to send via email via celery
         service_recommandation = Recommender().get_basic_recommandation(create_recommandation_list, max_result=4)
-        order_success_mail.delay(cart_detail['order_receipt'], service_recommandation)
+        order_success_mail.delay(cart_detail['order_receipt'], service_recommandation, cart_detail['cart_subtotal'])
         # Clear Cart
         cartObject.clear_Cart()
         data = {'status': 'ok', 'msg': f"Paymant sucessfull your order with order id {order.receipt} has been created ", 'receipt': order.receipt}   
