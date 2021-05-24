@@ -12,7 +12,7 @@ from rest_framework import status
 from .serializers import UserSerializer
 
 # Project Modules
-from .utils import generate_key_for_otp, generate_key_for_otp, get_token
+from .utils import generate_key_for_otp, generate_key_for_otp, get_token, timedelta_to_second
 
 # Other Imports
 import base64
@@ -29,7 +29,16 @@ from django.conf import settings
 from django.middleware import csrf
 
 
+
 # Create your views here.
+@api_view(['GET'])
+def get_csrf(request):
+    token = csrf.get_token(request)
+    response = Response()
+    response['X-CSRFToken'] = token
+    response.data = {'status': "success"}
+    return response
+
 
 class LoginView(APIView):
 
@@ -42,21 +51,42 @@ class LoginView(APIView):
         if user is not None:
             if user.is_active:
                 data = get_token(user)
+                access_expire = timedelta_to_second(settings.SIMPLE_JWT['ACCESS_TOKEN_LIFETIME'])
+                refresh_expire = timedelta_to_second(settings.SIMPLE_JWT['REFRESH_TOKEN_LIFETIME'])
                 response.set_cookie(
                     key=settings.SIMPLE_JWT['AUTH_COOKIE'],
                     value=data['access'],
-                    expires=settings.SIMPLE_JWT['ACCESS_TOKEN_LIFETIME'],
+                    expires=access_expire,
                     secure=settings.SIMPLE_JWT['AUTH_COOKIE_SECURE'],
                     httponly=settings.SIMPLE_JWT['AUTH_COOKIE_HTTP_ONLY'],
                     samesite=settings.SIMPLE_JWT['AUTH_COOKIE_SAMESITE']
                 )
-                csrf.get_token(request)
+                response.set_cookie(
+                    key=settings.SIMPLE_JWT['AUTH_COOKIE_REFRESH'],
+                    value=data['refresh'],
+                    expires=refresh_expire,
+                    secure=settings.SIMPLE_JWT['AUTH_COOKIE_SECURE'],
+                    httponly=settings.SIMPLE_JWT['AUTH_COOKIE_HTTP_ONLY'],
+                    samesite=settings.SIMPLE_JWT['AUTH_COOKIE_SAMESITE']
+                )
+                # csrf.get_token(request)
                 response.data = {"status": "success", 'msg': "Login Successfull.", "data":data}
                 return response
             else:
                 return Response(data={"status": "error", 'msg': "Your account has been disabled for security reasons."}, status=status.HTTP_404_NOT_FOUND)
         else:
             return Response(data={"status": "error", 'msg': "Invalid username or password"}, status=status.HTTP_404_NOT_FOUND)
+
+class LogoutView(APIView):
+
+
+    def post(self, request):
+        print("Afzal Saiyed AF")
+        response = Response()
+        response.delete_cookie(settings.SIMPLE_JWT['AUTH_COOKIE'])
+        response.delete_cookie(settings.SIMPLE_JWT['AUTH_COOKIE_REFRESH'])
+        response.data = {'status': "ok", "msg": "Successfully Logout"}
+        return response
 
 
 class GetCurrentUser(APIView):

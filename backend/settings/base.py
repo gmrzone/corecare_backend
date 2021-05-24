@@ -155,34 +155,38 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/static/')
 
 CORS_ORIGIN_ALLOW_ALL = True
 
+# # EXPOSE THESE HEADERS
+CORS_EXPOSE_HEADERS = ['Content-Type', 'X-CSRFToken']
+
 CORS_ALLOW_CREDENTIALS = True
 
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
-     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
-    ] 
-}
-
-# # Http only cookie
 # REST_FRAMEWORK = {
 #     'DEFAULT_AUTHENTICATION_CLASSES': (
-#         'account.AuthenticationBackend.CustomAuthentication',
+#         'rest_framework_simplejwt.authentication.JWTAuthentication',
 #     ),
 #      'DEFAULT_PERMISSION_CLASSES': [
 #         'rest_framework.permissions.AllowAny',
 #     ] 
 # }
+
+# Http only cookie
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'account.AuthenticationBackend.CustomAuthentication',
+    ),
+     'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ] 
+}
 from datetime import timedelta
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(hours=10),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=3),
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=4),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
     
     # Http Only Cookie
     'AUTH_COOKIE': 'access_token',  # Cookie name. Enables cookies if value is set.
+    'AUTH_COOKIE_REFRESH': 'refresh_token',  # refresh Cookie name. Enables cookies if value is set.
     'AUTH_COOKIE_DOMAIN': None,     # A string like "example.com", or None for standard domain cookie.
     'AUTH_COOKIE_SECURE': False,    # Whether the auth cookies should be secure (https:// only).
     'AUTH_COOKIE_HTTP_ONLY' : True, # Http only cookie flag.It's not fetch by javascript.
@@ -195,6 +199,13 @@ AUTH_USER_MODEL = 'account.CustomUser'
 
 
 CART_SESSION_ID = 'cart'
+
+# Http Only Cookie for Session and Csrf
+SESSION_COOKIE_SAMESITE = "Lax"
+SESSION_COOKIE_HTTPONLY = True
+CSRF_COOKIE_SAMESITE = "Lax"
+CSRF_COOKIE_HTTPONLY = True
+
 
 # SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'

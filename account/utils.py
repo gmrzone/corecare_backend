@@ -41,3 +41,9 @@ def get_token(user):
         'refresh': str(token),
         'access': str(token.access_token),
     }
+
+def timedelta_to_second(timedelta):
+    seconds = timedelta.seconds
+    if not seconds:
+        seconds = timedelta.days * 3600 * 24
+    return seconds
