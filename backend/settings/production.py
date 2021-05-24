@@ -17,7 +17,7 @@ SIMPLE_JWT = {
                                     # This can be 'Lax', 'Strict', or None to disable the flag.
 }
 
-CSRF_TRUSTED_ORIGINS = ['dev.corecare.in:80', 'dev.corecare.in:443']
+
 sentry_sdk.init(
     dsn="https://75ecc79fbbdf4351a9a046aa59e82fe4@o622317.ingest.sentry.io/5752665",
     integrations=[DjangoIntegration()],
