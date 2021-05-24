@@ -14,18 +14,14 @@ class CustomAuthentication(JWTAuthentication):
         # if header is non that means no bearer token is provided by frontend
         if header is None:
             raw_token = request.COOKIES.get(settings.SIMPLE_JWT.get('AUTH_COOKIE', None), None)
-            refresh_token = request.COOKIES.get(settings.SIMPLE_JWT.get('AUTH_COOKIE_REFRESH', None), None)
-            print(refresh_token, "refresh_auth")
-            print(raw_token, "access_auth")              
+            refresh_token = request.COOKIES.get(settings.SIMPLE_JWT.get('AUTH_COOKIE_REFRESH', None), None)           
         else:
             raw_token = self.get_raw_token(header)
         if raw_token is None:
             refresh_token = request.COOKIES.get(settings.SIMPLE_JWT.get('AUTH_COOKIE_REFRESH', None), None)
             if refresh_token:
                 refresh = RefreshToken(refresh_token)
-                print(refresh_token == str(refresh))
                 raw_token = str(refresh.access_token)
-                print(raw_token, "new Access")
             else:
                 return None
         validated_token = self.get_validated_token(raw_token)
