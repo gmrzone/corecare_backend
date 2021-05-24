@@ -2,7 +2,20 @@ from .base import *
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
-SIMPLE_JWT.AUTH_COOKIE_SECURE = True
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=4),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+    
+    # Http Only Cookie
+    'AUTH_COOKIE': 'access_token',  # Cookie name. Enables cookies if value is set.
+    'AUTH_COOKIE_REFRESH': 'refresh_token',  # refresh Cookie name. Enables cookies if value is set.
+    'AUTH_COOKIE_DOMAIN': None,     # A string like "example.com", or None for standard domain cookie.
+    'AUTH_COOKIE_SECURE': True,    # Whether the auth cookies should be secure (https:// only).
+    'AUTH_COOKIE_HTTP_ONLY' : True, # Http only cookie flag.It's not fetch by javascript.
+    'AUTH_COOKIE_PATH': '/',        # The path of the auth cookie.
+    'AUTH_COOKIE_SAMESITE': 'Lax',  # Whether to set the flag restricting cookie leaks on cross-site requests.
+                                    # This can be 'Lax', 'Strict', or None to disable the flag.
+}
 sentry_sdk.init(
     dsn="https://75ecc79fbbdf4351a9a046aa59e82fe4@o622317.ingest.sentry.io/5752665",
     integrations=[DjangoIntegration()],
