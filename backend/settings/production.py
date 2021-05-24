@@ -2,7 +2,7 @@ from .base import *
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
-
+SIMPLE_JWT.AUTH_COOKIE_SECURE = True
 sentry_sdk.init(
     dsn="https://75ecc79fbbdf4351a9a046aa59e82fe4@o622317.ingest.sentry.io/5752665",
     integrations=[DjangoIntegration()],
