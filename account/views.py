@@ -1,16 +1,18 @@
 # RestFramework
+from django.contrib.auth import authenticate
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.generics import CreateAPIView, UpdateAPIView
 from rest_framework.views import APIView
 from .tasks import new_signup
+from rest_framework import status
 
 # Serializers
 from .serializers import UserSerializer
 
 # Project Modules
-from .utils import generate_key_for_otp, generate_key_for_otp
+from .utils import generate_key_for_otp, generate_key_for_otp, get_token
 
 # Other Imports
 import base64
@@ -22,13 +24,43 @@ from .models import CustomUser
 # Django Imports
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import AnonymousUser
-
+from django.contrib.auth import authenticate
+from django.conf import settings
+from django.middleware import csrf
 
 
 # Create your views here.
 
+class LoginView(APIView):
+
+    def post(self, request):
+        data = request.data
+        response = Response()
+        number = data.get('number')
+        password = data.get('password')
+        user = authenticate(number=number, password=password)
+        if user is not None:
+            if user.is_active:
+                data = get_token(user)
+                response.set_cookie(
+                    key=settings.SIMPLE_JWT['AUTH_COOKIE'],
+                    value=data['access'],
+                    expires=settings.SIMPLE_JWT['ACCESS_TOKEN_LIFETIME'],
+                    secure=settings.SIMPLE_JWT['AUTH_COOKIE_SECURE'],
+                    httponly=settings.SIMPLE_JWT['AUTH_COOKIE_HTTP_ONLY'],
+                    samesite=settings.SIMPLE_JWT['AUTH_COOKIE_SAMESITE']
+                )
+                csrf.get_token(request)
+                response.data = {"status": "success", 'msg': "Login Successfull.", "data":data}
+                return response
+            else:
+                return Response(data={"status": "error", 'msg': "Your account has been disabled for security reasons."}, status=status.HTTP_404_NOT_FOUND)
+        else:
+            return Response(data={"status": "error", 'msg': "Invalid username or password"}, status=status.HTTP_404_NOT_FOUND)
+
+
 class GetCurrentUser(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]  
     http_method_names = ['get']
     
     def get(self, request):

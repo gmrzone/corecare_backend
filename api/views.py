@@ -27,6 +27,7 @@ from django.db.models import Q
 
 @api_view(['GET'])
 def EmployeeCategoryList(request):
+    print(request.user)
     employee_category = cache.get('employee_category')
     if employee_category:
         print("cached_employee_category")
