@@ -16,6 +16,8 @@ SIMPLE_JWT = {
     'AUTH_COOKIE_SAMESITE': 'Lax',  # Whether to set the flag restricting cookie leaks on cross-site requests.
                                     # This can be 'Lax', 'Strict', or None to disable the flag.
 }
+
+CSRF_TRUSTED_ORIGINS = ['dev.corecare.in']
 sentry_sdk.init(
     dsn="https://75ecc79fbbdf4351a9a046aa59e82fe4@o622317.ingest.sentry.io/5752665",
     integrations=[DjangoIntegration()],

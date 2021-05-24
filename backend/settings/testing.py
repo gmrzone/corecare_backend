@@ -18,17 +18,9 @@ SIMPLE_JWT = {
                                     # This can be 'Lax', 'Strict', or None to disable the flag.
 }
 
-# POSTGRESS DEVELOPMENT
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': os.environ["PG_DEV_DB_NAME"],
-#         'USER': os.environ["PG_DEV_DB_USER"],
-#         'PASSWORD': os.environ["PG_DEV_DB_PASSWORD"],
-#         'HOST': os.environ["PG_DEV_DB_HOST"],
-#         'PORT': '5432',
-#     }
-# }
+CSRF_TRUSTED_ORIGINS = ["127.0.0.1"]
+
+# POSTGRES Development
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
