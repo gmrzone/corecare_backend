@@ -18,7 +18,7 @@ SIMPLE_JWT = {
 }
 DEBUG = True
 
-CSRF_TRUSTED_ORIGINS = ["127.0.0.1"]
+CSRF_TRUSTED_ORIGINS = ["127.0.0.1:3000"]
 
 INSTALLED_APPS.append('debug_toolbar')
 DATABASES = {

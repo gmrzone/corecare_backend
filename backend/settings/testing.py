@@ -18,7 +18,7 @@ SIMPLE_JWT = {
                                     # This can be 'Lax', 'Strict', or None to disable the flag.
 }
 
-CSRF_TRUSTED_ORIGINS = ["127.0.0.1"]
+CSRF_TRUSTED_ORIGINS = ["127.0.0.1:3000"]
 
 # POSTGRES Development
 DATABASES = {
