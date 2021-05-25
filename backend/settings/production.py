@@ -65,7 +65,7 @@ CACHES = {
     'default': {
         'BACKEND': 'redis_cache.RedisCache',
         'LOCATION': get_var("REDIS_LOCATION_AUTH"),	
-        'TIMEOUT': 600
+        'TIMEOUT': 10800
     },
 }
 

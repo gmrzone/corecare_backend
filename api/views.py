@@ -73,10 +73,10 @@ class GetSubcategoryForSingleCategory(ListAPIView):
         return super().dispatch(request, id, slug, *args, **kwargs)
 
     def get_queryset(self):
-        query = cache.get(f"{self.slug}_subcategory")
+        query = cache.get(f"{self.slug}_subcategory_{self.id}")
         if not query:
             query = ServiceSubcategory.objects.filter(service_specialist__id=self.id, service_specialist__slug=self.slug).select_related('service_specialist')
-            cache.set(f"{self.slug}_subcategory", query)
+            cache.set(f"{self.slug}_subcategory_{self.id}", query)
         return query
 
 class GetSubcategoryView(ListAPIView):
@@ -175,13 +175,14 @@ class GetCouponsView(ListAPIView):
  
 @api_view(['GET'])
 def get_subcategory_for_single_category(request, id, slug):
-    subcategory = cache.get(f"{slug}_subcategory")
+    cache.delete(f"{slug}_subcategory")
+    subcategory = cache.get(f"{slug}_subcategory_{id}")
     if subcategory:
         return Response(subcategory)
     else:
         subcategory = ServiceSubcategory.objects.filter(service_specialist__id=id, service_specialist__slug=slug).select_related('service_specialist')
         serializer = SubcategorySerializer(subcategory, many=True)
-        cache.set(f"{slug}_subcategory", serializer.data)
+        cache.set(f"{slug}_subcategory_{id}", serializer.data)
         print(f"{slug}_category_db")
         return Response(serializer.data, status=200)
 
