@@ -1,5 +1,5 @@
 from .base import *
-
+from datetime import timedelta
 
 # SECURITY WARNING: don't run with debug turned on in production!
 SIMPLE_JWT = {

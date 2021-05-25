@@ -22,8 +22,7 @@ from itertools import chain
 
 # Django Imports
 from django.core.cache import cache
-from django.core.mail import send_mail
-from django.db.models import Q
+
 
 @api_view(['GET'])
 def EmployeeCategoryList(request):

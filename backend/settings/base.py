@@ -153,11 +153,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'staticfiles/media/')
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/static/')
 
 
-CORS_ORIGIN_ALLOW_ALL = True
 
+# CORS SEttings
 # # EXPOSE THESE HEADERS
 CORS_EXPOSE_HEADERS = ['Content-Type', 'X-CSRFToken']
-
+CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_REPLACE_HTTPS_REFERER = True
 
@@ -172,7 +172,7 @@ CORS_REPLACE_HTTPS_REFERER = True
 #     ] 
 # }
 
-# Http only cookie
+# Http only cookie with Custom Authentication
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'account.AuthenticationBackend.CustomAuthentication',
@@ -181,7 +181,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny',
     ] 
 }
-from datetime import timedelta
+
 
 AUTH_USER_MODEL = 'account.CustomUser'
 

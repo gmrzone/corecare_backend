@@ -71,6 +71,9 @@ class CategoryReview(models.Model):
     def __str__(self):
         return f"Comment By {self.user.number}"
 
+    class Meta:
+        ordering = ('created',)
+
 class CouponCode(models.Model):
     code = models.CharField(max_length=100, db_index=True)
     discount = models.IntegerField(default=0, validators=[MaxValueValidator(100), MinValueValidator(0)])
