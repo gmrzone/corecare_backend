@@ -31,8 +31,9 @@ class Post(DateFieldAbstract):
 
 
 class PostImage(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True, blank=True, related_name="images")
-    image = models.ImageField(upload_to=blog_images)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
+    # post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True, blank=True, related_name="images")
+    upload = models.ImageField(upload_to=blog_images)
 
 class Comment(DateFieldAbstract):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")

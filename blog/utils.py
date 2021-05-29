@@ -6,5 +6,5 @@ def blog_image_location(instance, filename):
     return path
 
 def blog_images(instance, filename):
-    path = os.path.join("Blog_Images", instance.post.title, filename)
+    path = os.path.join("Blog_Images", filename)
     return path

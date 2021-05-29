@@ -1,11 +1,15 @@
+from api.models import EmployeeCategory
 from .models import CustomUser
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import ModelSerializer, RelatedField
 
 # Project Modules
 from .utils import generate_key_for_otp, generate_key_for_otp
 import base64
 import pyotp
+
+
 class UserSerializer(ModelSerializer):
+
     class Meta:
         model = CustomUser
         fields = ['id', 'number', 'username', 'email', 'first_name', 'photo', 'last_name', 'verified', 'address_1', 'address_2', 'city', 'state', 'pincode', 'is_active', 'is_employee', 'is_verified_employee']

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Comment
+from .models import Post, Comment, PostImage
 
 
 @admin.register(Post)
@@ -12,3 +12,6 @@ class PostAdmin(admin.ModelAdmin):
 @admin.register(Comment)
 class Comments(admin.ModelAdmin):
     list_display = ('post', 'user', 'comment')
+
+
+admin.site.register(PostImage)

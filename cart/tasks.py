@@ -24,3 +24,6 @@ def order_success_mail(order_id, recommanded_ids):
     weasyprint.HTML(string=pdf_str).write_pdf(target=empty_obj, stylesheets=stylesheet)
     mail.attach(f"{order_id}.pdf", empty_obj.getvalue(), 'application/pdf')
     mail.send()
+
+
+
