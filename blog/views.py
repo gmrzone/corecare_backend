@@ -1,10 +1,14 @@
-from django.shortcuts import render
+from api.models import EmployeeCategory
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from rest_framework import serializers
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from rest_framework.views import APIView
 from rest_framework.generics import CreateAPIView
-from .serializers import BlogImagesSerializer
+from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework import status
+from .serializers import BlogImagesSerializer, PostSerializer
 from django.middleware.csrf import get_token
 # Create your views here.
 
@@ -33,3 +37,23 @@ class UploadBlogImages(CreateAPIView):
         }}
         get_token(request)
         return Response(data)
+
+class CreateBlogPostView(CreateAPIView):
+    serializer_class = PostSerializer
+    http_method_names = ['post']
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, category,  *args, **kwargs):
+        user = request.user
+        category = get_object_or_404(EmployeeCategory, name=category)
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            serializer.save(category=category, author=user)
+            data = {'status': 'success', 'message': "Post Created Sucessfully"}
+            H_status = status.HTTP_200_OK
+        else:
+            print(serializer.error_messages)
+            data = {'status': 'error', 'message': "Error"}
+            H_status = status.HTTP_400_BAD_REQUEST
+        return Response(data, status=H_status)
+
