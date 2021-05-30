@@ -73,7 +73,6 @@ class LoginView(APIView):
                     key="get_user",
                     value=True,
                     expires=refresh_expire,
-                    httponly=False,
                 )
                 # csrf.get_token(request)
                 response.data = {"status": "success", 'msg': "Login Successfull.", "data":data}
