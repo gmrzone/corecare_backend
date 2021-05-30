@@ -69,13 +69,8 @@ class LoginView(APIView):
                     httponly=settings.SIMPLE_JWT['AUTH_COOKIE_HTTP_ONLY'],
                     samesite=settings.SIMPLE_JWT['AUTH_COOKIE_SAMESITE']
                 )
-                response.set_cookie(
-                    key="get_user",
-                    value=True,
-                    expires=refresh_expire,
-                )
                 # csrf.get_token(request)
-                response.data = {"status": "success", 'msg': "Login Successfull.", "data":data}
+                response.data = {"status": "success", 'msg': "Login Successfull.", "data":data, "expire": refresh_expire}
                 return response
             else:
                 return Response(data={"status": "error", 'msg': "Your account has been disabled for security reasons."}, status=status.HTTP_404_NOT_FOUND)
