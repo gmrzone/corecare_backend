@@ -5,11 +5,13 @@ from rest_framework import serializers
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
-from rest_framework.generics import CreateAPIView
+from rest_framework.generics import CreateAPIView, ListAPIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework import status
 from .serializers import BlogImagesSerializer, PostSerializer
 from django.middleware.csrf import get_token
+
+from .models import Post
 # Create your views here.
 
 @api_view(['GETs'])
@@ -55,8 +57,19 @@ class CreateBlogPostView(CreateAPIView):
             data = {'status': 'success', 'message': "Post Created Sucessfully"}
             H_status = status.HTTP_200_OK
         else:
-            print(serializer.error_messages)
             data = {'status': 'error', 'message': "Error"}
             H_status = status.HTTP_400_BAD_REQUEST
         return Response(data, status=H_status)
+
+
+class BlogPostListView(ListAPIView):
+    serializer_class = PostSerializer
+    http_method_names = ['get']
+    permission_classes = [AllowAny]
+    
+
+    def get_queryset(self):
+        query = Post.objects.all().select_related('author', 'category')
+        return query
+
 
