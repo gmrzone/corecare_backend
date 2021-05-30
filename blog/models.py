@@ -15,10 +15,10 @@ class DateFieldAbstract(models.Model):
 class Post(DateFieldAbstract):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='blog_posts')
     category = models.ForeignKey(EmployeeCategory, on_delete=models.SET_NULL, related_name="category_posts", null=True)
-    title = models.CharField(max_length=100, db_index=True)
+    title = models.CharField(max_length=400, db_index=True)
     slug = models.SlugField(max_length=100, db_index=True, blank=True)
     photo = models.ImageField(upload_to=blog_image_location, default="default_blog.jpg")
-    body = models.TextField(max_length=2000)
+    body = models.TextField(max_length=200000)
     active = models.BooleanField(default=True)
 
     def save(self, *args, **kwargs):

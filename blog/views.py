@@ -45,7 +45,10 @@ class CreateBlogPostView(CreateAPIView):
 
     def post(self, request, category,  *args, **kwargs):
         user = request.user
-        category = get_object_or_404(EmployeeCategory, name=category)
+        if not category == "others":
+            category = get_object_or_404(EmployeeCategory, slug=category)
+        else:
+            category= None
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             serializer.save(category=category, author=user)
