@@ -5,7 +5,7 @@ from rest_framework import serializers
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
-from rest_framework.generics import CreateAPIView, ListAPIView
+from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveAPIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework import status
 from .serializers import BlogImagesSerializer, PostSerializer
@@ -71,5 +71,26 @@ class BlogPostListView(ListAPIView):
     def get_queryset(self):
         query = Post.objects.all().select_related('author', 'category')
         return query
+
+class BlogDetailView(APIView):
+    
+    http_method_names = ['get']
+    permission_classes = [AllowAny]
+    year = None
+    month = None    
+    day = None
+    slug = None
+
+    def dispatch(self, request,year, month, day, slug, *args, **kwargs):
+        self.year = year
+        self.month = month
+        self.day = day
+        self.slug = slug
+        return super().dispatch(request, *args, **kwargs)
+
+    def get(self, request):
+        query = Post.objects.select_related('author', 'category').get(created__year=self.year, created__month=self.month, created__day=self.day, slug=self.slug)
+        serializer = PostSerializer(query)
+        return Response(serializer.data)
 
 
