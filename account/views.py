@@ -69,6 +69,12 @@ class LoginView(APIView):
                     httponly=settings.SIMPLE_JWT['AUTH_COOKIE_HTTP_ONLY'],
                     samesite=settings.SIMPLE_JWT['AUTH_COOKIE_SAMESITE']
                 )
+                response.set_cookie(
+                    key="get_user",
+                    value=True,
+                    expires=refresh_expire,
+                    httponly=False,
+                )
                 # csrf.get_token(request)
                 response.data = {"status": "success", 'msg': "Login Successfull.", "data":data}
                 return response
@@ -85,6 +91,7 @@ class LogoutView(APIView):
         response = Response()
         response.delete_cookie(settings.SIMPLE_JWT['AUTH_COOKIE'])
         response.delete_cookie(settings.SIMPLE_JWT['AUTH_COOKIE_REFRESH'])
+        response.delete_cookie('get_user')
         response.data = {'status': "ok", "msg": "Successfully Logout"}
         return response
 

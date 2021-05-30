@@ -175,7 +175,6 @@ class GetCouponsView(ListAPIView):
  
 @api_view(['GET'])
 def get_subcategory_for_single_category(request, id, slug):
-    cache.delete(f"{slug}_subcategory")
     subcategory = cache.get(f"{slug}_subcategory_{id}")
     if subcategory:
         return Response(subcategory)

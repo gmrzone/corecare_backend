@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveAPIView
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser
 from rest_framework import status
 from .serializers import BlogImagesSerializer, PostSerializer
 from django.middleware.csrf import get_token
@@ -43,7 +43,7 @@ class UploadBlogImages(CreateAPIView):
 class CreateBlogPostView(CreateAPIView):
     serializer_class = PostSerializer
     http_method_names = ['post']
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsAdminUser]
 
     def post(self, request, category,  *args, **kwargs):
         user = request.user
