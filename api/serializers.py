@@ -1,7 +1,7 @@
 
 from django.db.models import fields
 from .models import EmployeeCategory, CouponCode, ServiceSubcategory, Service, CategoryReview, Contact, PartnerRequest
-from rest_framework.serializers import ModelSerializer, StringRelatedField, Field, SerializerMethodField
+from rest_framework.serializers import ModelSerializer, StringRelatedField, Field
 from django.utils.timesince import timesince
 from account.models import CustomUser
 
@@ -18,13 +18,9 @@ class ServiceSerializer(ModelSerializer):
 
 class SubcategorySerializer(ModelSerializer):
     service_specialist = EmployeeCategorySerializer()
-    icon = SerializerMethodField(method_name="get_icon")
     class Meta:
         model = ServiceSubcategory
         fields = '__all__'
-
-    def get_icon(self, obj):
-        return obj.icon.url
 
 class CouponCodeSerializers(ModelSerializer):
     category = StringRelatedField(many=True)
