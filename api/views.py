@@ -173,28 +173,16 @@ class GetCouponsView(ListAPIView):
         return queryset
 
  
-# @api_view(['GET'])
-# def get_subcategory_for_single_category(request, id, slug):
-#     subcategory = cache.get(f"{slug}_subcategory_{id}")
-#     if subcategory:
-#         return Response(subcategory)
-#     else:
-#         subcategory = ServiceSubcategory.objects.filter(service_specialist__id=id, service_specialist__slug=slug).select_related('service_specialist')
-#         serializer = SubcategorySerializer(subcategory, many=True)
-#         cache.set(f"{slug}_subcategory_{id}", serializer.data)
-#         print(f"{slug}_category_db")
-#         return Response(serializer.data, status=200)
-
 @api_view(['GET'])
 def get_subcategory_for_single_category(request, id, slug):
-    subcategory = cache.get(f"{slug}_subcategory_{id}")
-    if  not subcategory:
+    serialized_data = cache.get(f"{slug}_subcategory_{id}")
+    if serialized_data:
+        return Response(serialized_data)
+    else:
         subcategory = ServiceSubcategory.objects.filter(service_specialist__id=id, service_specialist__slug=slug).select_related('service_specialist')
-        cache.set(f"{slug}_subcategory_{id}", subcategory)
-    serializer = SubcategorySerializer(subcategory, many=True)
-    return Response(serializer.data, status=200)
-
-
+        serializer = SubcategorySerializer(subcategory, many=True)
+        cache.set(f"{slug}_subcategory_{id}", serializer.data)
+        return Response(serializer.data, status=200)
 
 @api_view(['GET'])
 def GetSubcategory(request):
