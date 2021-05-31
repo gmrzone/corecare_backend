@@ -237,6 +237,7 @@ class VerifyOtp(APIView):
 
 
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def update_profile_image(request):
     image = request.data.get('image')
     number = request.data.get('number')
@@ -254,6 +255,7 @@ def update_profile_image(request):
 class UpdateProfileImage(UpdateAPIView):
     serializer_class = UserSerializer
     http_method_names = ['patch']
+    permission_classes = [AllowAny]
 
     def update(self, request, number, *args, **kwargs):
         instance = CustomUser.objects.get(number=number)
