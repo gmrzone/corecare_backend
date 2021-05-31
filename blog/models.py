@@ -37,9 +37,10 @@ class PostImage(models.Model):
 
 class Comment(DateFieldAbstract):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100, null=True)
+    email = models.EmailField(max_length=100, null=True)
     parent = models.ForeignKey('self', on_delete=models.CASCADE, related_name="replies")
-    comment = models.TextField(max_length=500)
+    comment = models.TextField(max_length=400)
     active = models.BooleanField(default=True)
 
     class Meta:

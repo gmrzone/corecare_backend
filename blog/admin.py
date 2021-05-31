@@ -11,7 +11,7 @@ class PostAdmin(admin.ModelAdmin):
 
 @admin.register(Comment)
 class Comments(admin.ModelAdmin):
-    list_display = ('post', 'user', 'comment')
+    list_display = ('post', 'name','email', 'comment')
 
 
 admin.site.register(PostImage)

@@ -1,7 +1,8 @@
 from rest_framework.serializers import ModelSerializer, SerializerMethodField
-from .models import PostImage, Post
+from .models import PostImage, Post, Comment
 from api.serializers import TimeSince, EmployeeCategorySerializer
 from account.serializers import UserSerializer
+
 class BlogImagesSerializer(ModelSerializer):
 
     class Meta:
@@ -22,10 +23,16 @@ class PostSerializer(ModelSerializer):
         fields = ('author', 'category', 'title', 'slug', 'photo', 'body', 'created', "date_slug")
 
     def get_date_slug(self, obj):
+        created_date = obj.created
         return {
-            "year": obj.created.year,
-            "month": obj.created.month,
-            "day": obj.created.day
+            "year": str(created_date.year),
+            "month": str(created_date.month),
+            "day": str(created_date.day)
         }
 
 
+class CommentSerializer(ModelSerializer):
+    created = TimeSince(read_only=True)
+    class Meta:
+        model = Comment
+        fields = ('name', "email", "parent", "comment", "created")
