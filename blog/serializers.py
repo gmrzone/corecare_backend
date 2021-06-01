@@ -2,6 +2,7 @@ from rest_framework.serializers import ModelSerializer, SerializerMethodField
 from .models import PostImage, Post, Comment
 from api.serializers import TimeSince, EmployeeCategorySerializer
 from account.serializers import UserSerializer
+from api.serializers import ReviewUser
 
 class BlogImagesSerializer(ModelSerializer):
 
@@ -33,8 +34,7 @@ class PostSerializer(ModelSerializer):
 
 class CommentSerializer(ModelSerializer):
     created = TimeSince(read_only=True)
-    user = UserSerializer(many=False, read_only=True)
-
+    user = ReviewUser(many=False, read_only=True)
     class Meta:
         model = Comment
-        fields = ("id", 'user', 'name', "email", "replies", "comment", "created")
+        fields = ("id", 'parent', 'user', 'name', "email", "replies", "comment", "created")
