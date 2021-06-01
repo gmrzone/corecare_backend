@@ -102,11 +102,11 @@ class CreatePostCommentView(CreateAPIView):
         user = request.user if request.user.is_authenticated else None
         post = get_object_or_404(Post, created__year=year, created__month=month, created__day=day, slug=slug)
         data = request.data
-        print(data)
         serializer = self.serializer_class(data=data)
         if serializer.is_valid():
-            serializer.save(user=user, post=post, parent=parent)
-            response = Response({"status": "ok", "message": "Comment Created Sucessfully."}, status=status.HTTP_200_OK)
+            instance = serializer.save(user=user, post=post, parent=parent)
+            data = self.serializer_class(parent if parent_id else instance).data
+            response = Response({"status": "ok", "message": "Comment Created Sucessfully.", "data": data}, status=status.HTTP_200_OK)
         else:
             response = Response({"status": "error", "message": "Please Make sure to fill all required fields"}, status=status.HTTP_400_BAD_REQUEST)
         return response
@@ -129,6 +129,6 @@ class PostCommentListView(ListAPIView):
         return super().dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
-        query = Comment.objects.filter(post__slug=self.post_slug, created__year=self.year, created__month=self.month, created__day=self.day).select_related('user').prefetch_related('replies')
+        query = Comment.objects.filter(post__created__year=self.year, post__created__month=self.month, post__created__day=self.day, post__slug=self.post_slug).select_related('user').prefetch_related('replies')
         return query
 
