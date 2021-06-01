@@ -5,7 +5,7 @@ from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework.generics import CreateAPIView, ListAPIView
 from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser
-from rest_framework import status
+from rest_framework import serializers, status
 from .serializers import BlogImagesSerializer, PostSerializer, CommentSerializer
 from django.middleware.csrf import get_token
 
@@ -105,8 +105,8 @@ class CreatePostCommentView(CreateAPIView):
         serializer = self.serializer_class(data=data)
         if serializer.is_valid():
             instance = serializer.save(user=user, post=post, parent=parent)
-            data = self.serializer_class(parent if parent_id else instance).data
-            response = Response({"status": "ok", "message": "Comment Created Sucessfully.", "data": data}, status=status.HTTP_200_OK)
+            serializer_data = self.serializer_class(instance).data
+            response = Response({"status": "ok", "message": "Comment Created Sucessfully.", "data": serializer_data}, status=status.HTTP_200_OK)
         else:
             response = Response({"status": "error", "message": "Please Make sure to fill all required fields"}, status=status.HTTP_400_BAD_REQUEST)
         return response
@@ -129,6 +129,24 @@ class PostCommentListView(ListAPIView):
         return super().dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
-        query = Comment.objects.filter(post__created__year=self.year, post__created__month=self.month, post__created__day=self.day, post__slug=self.post_slug).select_related('user').prefetch_related('replies')
+        query = Comment.objects.filter(post__created__year=self.year, post__created__month=self.month, post__created__day=self.day, post__slug=self.post_slug, parent=None).select_related('user')
         return query
+
+class CommentRepliesListView(ListAPIView):
+    serializer_class = CommentSerializer
+    http_method_names = ["get"]
+    permission_classes = [AllowAny]
+    parent_id = None
+
+    def dispatch(self, request, parent_id, *args, **kwargs):
+        self.parent_id = parent_id
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_queryset(self):
+        query = Comment.objects.filter(parent__id=self.parent_id).select_related('user')
+        return query
+
+
+    
+
 
