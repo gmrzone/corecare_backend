@@ -33,6 +33,8 @@ class PostSerializer(ModelSerializer):
 
 class CommentSerializer(ModelSerializer):
     created = TimeSince(read_only=True)
+    user = UserSerializer(many=False, read_only=True)
+
     class Meta:
         model = Comment
-        fields = ('name', "email", "parent", "comment", "created")
+        fields = ("id", 'user', 'name', "email", "replies", "comment", "created")

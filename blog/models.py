@@ -6,7 +6,7 @@ from api.models import EmployeeCategory
 # Create your models here.
 
 class DateFieldAbstract(models.Model):
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True, db_index=True)
     updated = models.DateTimeField(auto_now=True)
 
     class Meta:
@@ -25,6 +25,9 @@ class Post(DateFieldAbstract):
         if not self.slug:
             self.slug = slugify(self.title)
         return super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title
     class Meta:
         index_together = ('id', "slug")
         ordering = ('-created',)
@@ -36,14 +39,16 @@ class PostImage(models.Model):
     upload = models.ImageField(upload_to=blog_images)
 
 class Comment(DateFieldAbstract):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="blog_comments", null=True)
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
     name = models.CharField(max_length=100, null=True)
     email = models.EmailField(max_length=100, null=True)
-    parent = models.ForeignKey('self', on_delete=models.CASCADE, related_name="replies")
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, related_name="replies", null=True, blank=True)
     comment = models.TextField(max_length=400)
     active = models.BooleanField(default=True)
 
     class Meta:
-        ordering = ('-created',)
+        ordering = ('created',)
+
     
     
