@@ -7,7 +7,7 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ('title','author', 'active')
     list_editable = ('active',)
     search_fields = ('title', 'body')
-    list_filter = ('active',)
+    list_filter = ('active', 'category')
 
 @admin.register(Comment)
 class Comments(admin.ModelAdmin):
