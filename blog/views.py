@@ -129,7 +129,7 @@ class PostCommentListView(ListAPIView):
         return super().dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
-        query = Comment.objects.filter(post__created__year=self.year, post__created__month=self.month, post__created__day=self.day, post__slug=self.post_slug, parent=None).select_related('user')
+        query = Comment.objects.filter(post__created__year=self.year, post__created__month=self.month, post__created__day=self.day, post__slug=self.post_slug, parent=None).select_related('user').prefetch_related('replies')
         return query
 
 class CommentRepliesListView(ListAPIView):
@@ -143,7 +143,7 @@ class CommentRepliesListView(ListAPIView):
         return super().dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
-        query = Comment.objects.filter(parent__id=self.parent_id).select_related('user')
+        query = Comment.objects.filter(parent__id=self.parent_id).select_related('user').prefetch_related('replies')
         return query
 
 
