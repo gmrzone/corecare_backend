@@ -8,7 +8,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser
 from rest_framework import serializers, status
 from .serializers import BlogImagesSerializer, PostSerializer, CommentSerializer
 from django.middleware.csrf import get_token
-
+from .pagination import PostListPagination
 from .models import Comment, Post
 # Create your views here.
 
@@ -64,11 +64,26 @@ class BlogPostListView(ListAPIView):
     serializer_class = PostSerializer
     http_method_names = ['get']
     permission_classes = [AllowAny]
-    
+    pagination_class = PostListPagination
 
     def get_queryset(self):
         query = Post.objects.all().select_related('author', 'category')
         return query
+
+    def get(self, request, *args, **kwargs):
+        page = request.GET.get('page')
+        if page:
+            return super().get(request, *args, **kwargs)
+        else:
+            query = self.get_queryset()
+            serializer = self.serializer_class(query, many=True)
+            return Response(serializer.data)
+
+# class BlogPostListView(APIView):
+#     http_method_names = ['get']
+#     permission_classes = [AllowAny]
+    
+#     def get(self, request):
 
 class BlogDetailView(APIView):
     
