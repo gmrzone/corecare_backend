@@ -1,0 +1,535 @@
+[
+{
+    "model": "blog.post",
+    "pk": 11,
+    "fields": {
+        "created": "2021-05-30T13:46:30.556Z",
+        "updated": "2021-05-30T13:46:30.556Z",
+        "author": [
+            "7208333993"
+        ],
+        "category": null,
+        "title": "From the CEO’s Desk: Corecare’s Protocols to Ensure Your Health & Safety",
+        "slug": "from-the-ceos-desk-corecares-protocols-to-ensure-your-health-safety",
+        "photo": "default_blog.jpg",
+        "body": "<p>Dear All,</p><p>&nbsp;</p><p>Trust you are all doing well and keeping safe in these difficult times.&nbsp;</p><p>I wanted to reach out to you today, and talk about some of the safety protocols we have put in place, to protect the health and safety of our customers, and our 35,000 service professionals. These safety protocols are not new, and many of them were operationalized over a year back when the pandemic hit us.&nbsp;</p><p>&nbsp;</p><p>The company takes the safety and hygiene of its customers and service professionals with utmost seriousness. In this regard, the company has put in place <strong>8 key safety protocols</strong> –</p><ol><li><strong>Mandatory PPE Kits</strong>: All our partners get free masks, gloves, face shields and coveralls from us, with the SOP requiring change of PPE after every single service. We are committed to providing free PPE kits to our service professionals till the end of the pandemic.</li><li><strong>Testing</strong>: We have been running regular testing camps where our service professionals can get themselves tested, free of cost. We have also offered testing facilities and doctor consultations to any professionals complaining of symptoms.</li><li><strong>Vaccination camps</strong>: We had started vaccination camps in partnership with healthcare providers and local government authorities to vaccinate on priority all service professionals aged 45+. These camps have now been extended to all service professionals aged 18+.</li><li><strong>Daily temperature checks:</strong> All service professionals perform a daily temperature check, and if their temperature is above 99 degrees Fahrenheit, or they have any symptoms like a cold, cough etc., they should self-quarantine.</li><li><strong>Health &amp; safety training: </strong>All Urban Company service professionals have completed an online health and safety training program, as per WHO prescribed hygiene standards.</li><li><strong>Mandatory use of the Aarogya Setu app</strong>: Before starting a service, all service professionals display their health status on the Aarogya Setu app to the customers.</li><li><strong>Sanitization of tools and equipment</strong>: Service professionals sanitize their equipment in front of the customers, before and after each service.</li><li><strong>Single-use disposables and sachet products:</strong> The company prescribes that all professionals use only disposables, and single-use sachet products, for the safety of the customers.</li></ol><p>I urge you to stay home and take care of yourself and your loved ones. We are in this together.</p><p style=\"text-align:right;\">&nbsp;</p><p style=\"text-align:right;\">Thanks,<br>Afzal Saiyed<br>Co-founder &amp; CEO, CoreCare</p>",
+        "active": true
+    }
+},
+{
+    "model": "blog.post",
+    "pk": 20,
+    "fields": {
+        "created": "2021-05-31T15:02:25.565Z",
+        "updated": "2021-05-31T15:02:25.565Z",
+        "author": [
+            "7208333993"
+        ],
+        "category": 3,
+        "title": "5 Questions to Ask Yourself Before Hiring a Home Cleaning Service",
+        "slug": "5-questions-to-ask-yourself-before-hiring-a-home-cleaning-service",
+        "photo": "Blog_Images/5 Questions to Ask Yourself Before Hiring a Home Cleaning Service/blog_photo.jpeg",
+        "body": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(84,83,83);\">If you’re reading this post, chances are you are planning on hiring a </span><a href=\"https://www.urbancompany.com/dubai-professional-home-cleaning\"><i><strong>home cleaning service company</strong></i></a><span style=\"background-color:rgb(255,255,255);color:rgb(84,83,83);\">, but maybe are a little unsure about how often you need one. Some of you may still be wondering if you need one at all! We understand your confusions, and after years of being in the business, we can safely say that many of our customers have the same questions. And so, we’ve put together a list of questions we feel customers should ask themselves before hiring a pro house cleaning company from Corecare.</span></p><p>&nbsp;</p><h3><strong>#1. How big is your house?</strong></h3><p>The best things about small houses is that are very easy to maintain and keep tidy. Studio apartments, and single bedroom apartments don’t need a thorough home cleaning service more than once every two weeks. In comparison, a bigger house with more number of rooms could a use a professional home cleaning services more regularly; every week to be exact. Of course, this also depends on your lifestyle and preferences.</p><h3><strong>#2. Do you have children or pets?</strong></h3><p>If there are toddlers and young children (this includes pets too!) in your family, your house is sure to get messy, soon after a complete scrubdown! In this case, it is a good idea to get hire professional home cleaning services every week, for a thorough cleansing and sanitisation of your home.If yours is a simple two-member family, with no children of any kind, you could schedule a complete home cleaning service every fortnight. &nbsp;</p><h3><strong>#3. What is your budget?</strong></h3><p>Financial plans determine many of our choices – including how often should one hire professional home cleaning services in Dubai, or even whether we want to hire one at all! In case saving up is at the top of your agenda right now, you could do most of the tidying yourself, and hire home cleaning services every 20 – 30 days.</p><p>Having said that, UrbanClap does provide home cleaning services at affordable rates. So instead of wasting your time cleaning up, you could let professionals look after your house, while you use the time more productively.</p><h3><strong>#4. What’s your lifestyle like?</strong></h3><p>Your lifestyle too determines how often you need to hire a professional home cleaning service. If you’re someone who travels for work, and are barely at home, you don’t need to give your home a professional cleaning that often. However, if you work a regular 9 to 5 job and live with a family, you might want to book professional cleaning services more often. Interestingly, busy executives as well as stay-home moms, both need a extra pair of professional hands to look after cleaning, so hiring professional home cleaning services is an obvious decision for them.</p><h3><strong>#5. Anything special coming up?</strong></h3><p>Do you have a dinner party planned for the weekend? Are your parents visiting you soon? In special instances hiring a professional cleaning home service to thoroughly clean out every corner of the house is your best bet to make a good impression on the visitors – especially on your parents!</p><p><br>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>",
+        "active": true
+    }
+},
+{
+    "model": "blog.post",
+    "pk": 21,
+    "fields": {
+        "created": "2021-05-31T18:48:16.941Z",
+        "updated": "2021-05-31T19:43:38.362Z",
+        "author": [
+            "7208333993"
+        ],
+        "category": 3,
+        "title": "5+ Indian Kitchen Design Images from Real Homes",
+        "slug": "5-indian-kitchen-design-images-from-real-homes",
+        "photo": "Blog_Images/5+ Indian Kitchen Design Images from Real Homes/kitchrn.jpg",
+        "body": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(84,83,83);\">Have you ever wondered why Indian kitchen design is not given as much attention as other areas of the house? And this despite kitchen being the busiest or most used spaces in our homes! Ironic, right?</span></p><p>&nbsp;</p><p><span style=\"background-color:rgb(255,255,255);color:rgb(84,83,83);\">Well, we don’t believe that modern kitchens should ever get the short end of the stick. So, we rummaged through all our modular kitchen design images on the </span><span style=\"background-color:rgb(255,255,255);color:hsl(0, 75%, 60%);\">Corecare Portal</span><span style=\"background-color:rgb(255,255,255);color:rgb(84,83,83);\"> to select the cream of the lot for you — a collection that will make you want to redo your cook-space. Take a look at these 15 beautiful kitchen&nbsp;interior design ideas (for small Indian homes too!), and turn it into everyone’s favourate meet-up point.</span></p><p>&nbsp;</p><h2><span style=\"background-color:rgb(255,255,255);color:rgb(84,83,83);\">1. Add a pop of colour &amp; accessorise</span></h2><figure class=\"image\"><img src=\"https://de927adv5b23k.cloudfront.net/wp-content/uploads/2018/06/29154133/beige-color-modular-kitchen-with-tiled-wall-and-cabinets-dhaval-patel-2-e1528272192698-768x519.jpeg\"></figure><p><span style=\"background-color:rgb(255,255,255);color:rgb(84,83,83);\">Don’t you just love how this gorgeous blue peninsula brings in a burst of colour to this elegant single wall kitchen in beige and white? Plus, that&nbsp;eye-catching geometric pendant lamp further accentuates the entire look. Add two bar stools and you’ve got yourself a fantastic breakfast counter inside your kitchen!</span></p><p>&nbsp;</p><h2><span style=\"background-color:rgb(255,255,255);color:rgb(84,83,83);\">2. Open it up &amp; make it inviting</span></h2><figure class=\"image\"><img src=\"https://de927adv5b23k.cloudfront.net/wp-content/uploads/2018/06/29154116/U-Shaped-Kitchen-With-Dark-Walnut-Wooden-Cabinets-prashant-chauhan-768x513.jpg\"></figure><p><span style=\"background-color:rgb(255,255,255);color:rgb(84,83,83);\">Nailing that modern layout-meets-traditional accessories look, this semi-open kitchen stays connected with the rest of the home, thanks to partition shelves on the left, and two window-like arched openings straight ahead. The wooden cabinetry, white G4 stone countertop and earthy yellow backsplash make this Indian kitchen design a warm and inviting one — perfect if you’re a family that loves to gather in this area!</span></p><p>&nbsp;</p><h2><span style=\"background-color:rgb(255,255,255);color:rgb(84,83,83);\">3. Go sophisticated with grey</span></h2><figure class=\"image\"><img src=\"https://de927adv5b23k.cloudfront.net/wp-content/uploads/2018/06/29154128/grey-shade-kitchen-cabinets-furdo-533x800.jpeg\"></figure><p><span style=\"background-color:rgb(255,255,255);color:rgb(84,83,83);\">Who says grey is dull and boring? This all-grey model kitchen with double-stacked cabinets is all about understated luxury. The black countertop breaks the flow and the raised panel cabinetry adds to the grandeur. We’re imagining potted herbs and a teal floor rug to bring out that grey even more! What do you think?</span></p><p>&nbsp;</p><h2><span style=\"background-color:rgb(255,255,255);color:rgb(84,83,83);\">4. Adopt farmhouse chic</span></h2><figure class=\"image\"><img src=\"https://de927adv5b23k.cloudfront.net/wp-content/uploads/2018/06/29154122/luxurious-kitchen-with-white-cabinets-and-white-intricate-patterned-floor-shreya-bhimani-768x576.jpeg\"></figure><p><span style=\"background-color:rgb(255,255,255);color:rgb(84,83,83);\">Beautiful kitchens look like this! If you’re a fan of the American farmhouse kitchen style, here’s inspiration right from an Indian apartment. Powder blue base cabinets and a vintage crockery display unit on the right are so on-point, that even the modern handle-less wall cabinets and the sleek grey appliances don’t take away from them. And hey, don’t miss that stunning blue patterned backsplash and grey antique tile flooring. So much character!</span></p><p>&nbsp;</p><h2><span style=\"background-color:rgb(255,255,255);color:rgb(84,83,83);\">5. Ace that white</span></h2><figure class=\"image\"><img src=\"https://de927adv5b23k.cloudfront.net/wp-content/uploads/2018/06/29154114/White-Themed-Modular-Kitchen-revathi-shailja-768x515.jpeg\"></figure><p><span style=\"background-color:rgb(255,255,255);color:rgb(84,83,83);\">Want to make your all-white kitchen come alive? A glazed light blue backsplash and eye-catching wall art work like magic in this new model&nbsp;kitchen. Semi-open and with a neat little island, we also like how it makes space for a compact dining set-up at its one end, therefore, partitioning the dining and kitchen space from the rest of this modern Indian apartment.</span></p><p>&nbsp;</p><p>&nbsp;</p><p><span style=\"background-color:rgb(255,255,255);color:hsl(271, 100%, 50%);\">So, those are our Indian kitchen design ideas for you! What design are you planning to go for? We’d love to know in the comments below!</span></p>",
+        "active": true
+    }
+},
+{
+    "model": "blog.postimage",
+    "pk": 10,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "upload": "Blog_Images/corecare_vertical_blue.png"
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 1,
+    "fields": {
+        "created": "2021-05-31T23:09:08.550Z",
+        "updated": "2021-05-31T23:09:08.550Z",
+        "user": [
+            "7208333993"
+        ],
+        "post": 21,
+        "name": "Afzal saiyed",
+        "email": "saiyedafzalgz@gmail.com",
+        "parent": null,
+        "comment": "Testing Auth comment",
+        "active": true
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 2,
+    "fields": {
+        "created": "2021-05-31T23:13:09.702Z",
+        "updated": "2021-05-31T23:13:09.702Z",
+        "user": null,
+        "post": 21,
+        "name": "Kaif Saiyed",
+        "email": "kaif2442@yahoo.in",
+        "parent": null,
+        "comment": "Testing Public Comment",
+        "active": true
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 3,
+    "fields": {
+        "created": "2021-05-31T23:27:47.914Z",
+        "updated": "2021-05-31T23:27:47.914Z",
+        "user": null,
+        "post": 21,
+        "name": "Arshad Shaikh",
+        "email": "arshadshaikh@gmail.com",
+        "parent": null,
+        "comment": "Testing New Serializer with Postman",
+        "active": true
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 4,
+    "fields": {
+        "created": "2021-05-31T23:28:55.655Z",
+        "updated": "2021-05-31T23:28:55.655Z",
+        "user": [
+            "7208333993"
+        ],
+        "post": 21,
+        "name": "Afzal saiyed",
+        "email": "saiyedafzalgz@gmail.com",
+        "parent": null,
+        "comment": "Testing New Serializer with Auth and postman",
+        "active": true
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 25,
+    "fields": {
+        "created": "2021-06-01T14:52:11.792Z",
+        "updated": "2021-06-01T14:52:11.792Z",
+        "user": [
+            "7208333993"
+        ],
+        "post": 21,
+        "name": "Afzal saiyed",
+        "email": "saiyedafzalgz@gmail.com",
+        "parent": 1,
+        "comment": "Testing Reply",
+        "active": true
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 27,
+    "fields": {
+        "created": "2021-06-01T20:09:59.527Z",
+        "updated": "2021-06-01T20:09:59.527Z",
+        "user": [
+            "7208333993"
+        ],
+        "post": 21,
+        "name": "Afzal saiyed",
+        "email": "saiyedafzalgz@gmail.com",
+        "parent": null,
+        "comment": "Final Comment Test",
+        "active": true
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 32,
+    "fields": {
+        "created": "2021-06-01T20:41:03.456Z",
+        "updated": "2021-06-01T20:41:03.456Z",
+        "user": [
+            "7208333993"
+        ],
+        "post": 21,
+        "name": "Afzal saiyed",
+        "email": "saiyedafzalgz@gmail.com",
+        "parent": 1,
+        "comment": "Final Reply TEst",
+        "active": true
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 33,
+    "fields": {
+        "created": "2021-06-01T20:43:10.291Z",
+        "updated": "2021-06-01T20:43:10.291Z",
+        "user": [
+            "7208333993"
+        ],
+        "post": 21,
+        "name": "Afzal saiyed",
+        "email": "saiyedafzalgz@gmail.com",
+        "parent": 1,
+        "comment": "Final Reply Test new",
+        "active": true
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 34,
+    "fields": {
+        "created": "2021-06-01T20:45:08.972Z",
+        "updated": "2021-06-01T20:45:08.972Z",
+        "user": [
+            "7208333993"
+        ],
+        "post": 21,
+        "name": "Afzal saiyed",
+        "email": "saiyedafzalgz@gmail.com",
+        "parent": 1,
+        "comment": "RRRRRRRRRR",
+        "active": true
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 35,
+    "fields": {
+        "created": "2021-06-01T20:47:10.350Z",
+        "updated": "2021-06-01T20:47:10.350Z",
+        "user": [
+            "7208333993"
+        ],
+        "post": 21,
+        "name": "Afzal saiyed",
+        "email": "saiyedafzalgz@gmail.com",
+        "parent": 1,
+        "comment": "Reply Test new",
+        "active": true
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 36,
+    "fields": {
+        "created": "2021-06-01T20:48:06.752Z",
+        "updated": "2021-06-01T20:48:06.752Z",
+        "user": [
+            "7208333993"
+        ],
+        "post": 21,
+        "name": "Afzal saiyed",
+        "email": "saiyedafzalgz@gmail.com",
+        "parent": 1,
+        "comment": "Running",
+        "active": true
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 37,
+    "fields": {
+        "created": "2021-06-01T20:50:30.761Z",
+        "updated": "2021-06-01T20:50:30.761Z",
+        "user": [
+            "7208333993"
+        ],
+        "post": 21,
+        "name": "Afzal saiyed",
+        "email": "saiyedafzalgz@gmail.com",
+        "parent": 1,
+        "comment": "Reply Added",
+        "active": true
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 38,
+    "fields": {
+        "created": "2021-06-01T20:52:38.092Z",
+        "updated": "2021-06-01T20:52:38.092Z",
+        "user": [
+            "7208333993"
+        ],
+        "post": 21,
+        "name": "Afzal saiyed",
+        "email": "saiyedafzalgz@gmail.com",
+        "parent": 1,
+        "comment": "asdfse twrey e5y7",
+        "active": true
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 39,
+    "fields": {
+        "created": "2021-06-02T09:01:05.754Z",
+        "updated": "2021-06-02T09:01:05.754Z",
+        "user": [
+            "7208333993"
+        ],
+        "post": 21,
+        "name": "Afzal saiyed",
+        "email": "saiyedafzalgz@gmail.com",
+        "parent": null,
+        "comment": "Testing Comment new",
+        "active": true
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 40,
+    "fields": {
+        "created": "2021-06-02T09:01:23.953Z",
+        "updated": "2021-06-02T09:01:23.953Z",
+        "user": [
+            "7208333993"
+        ],
+        "post": 21,
+        "name": "Afzal saiyed",
+        "email": "saiyedafzalgz@gmail.com",
+        "parent": 2,
+        "comment": "Testing Reply New",
+        "active": true
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 41,
+    "fields": {
+        "created": "2021-06-02T09:03:37.693Z",
+        "updated": "2021-06-02T09:03:37.693Z",
+        "user": [
+            "7208333993"
+        ],
+        "post": 21,
+        "name": "Afzal saiyed",
+        "email": "saiyedafzalgz@gmail.com",
+        "parent": 3,
+        "comment": "TEsting Reply Postman",
+        "active": true
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 42,
+    "fields": {
+        "created": "2021-06-02T09:04:47.225Z",
+        "updated": "2021-06-02T09:04:47.225Z",
+        "user": [
+            "7208333993"
+        ],
+        "post": 21,
+        "name": "Afzal saiyed",
+        "email": "saiyedafzalgz@gmail.com",
+        "parent": 27,
+        "comment": "Reply Enr 2021",
+        "active": true
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 43,
+    "fields": {
+        "created": "2021-06-02T09:05:08.256Z",
+        "updated": "2021-06-02T09:05:08.256Z",
+        "user": [
+            "7208333993"
+        ],
+        "post": 21,
+        "name": "Afzal saiyed",
+        "email": "saiyedafzalgz@gmail.com",
+        "parent": 1,
+        "comment": "New Reply 2021",
+        "active": true
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 44,
+    "fields": {
+        "created": "2021-06-02T09:10:23.649Z",
+        "updated": "2021-06-02T09:10:23.649Z",
+        "user": [
+            "7208333993"
+        ],
+        "post": 11,
+        "name": "Afzal saiyed",
+        "email": "saiyedafzalgz@gmail.com",
+        "parent": null,
+        "comment": "TEsting new Comment",
+        "active": true
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 45,
+    "fields": {
+        "created": "2021-06-02T09:10:34.798Z",
+        "updated": "2021-06-02T09:10:34.799Z",
+        "user": [
+            "7208333993"
+        ],
+        "post": 11,
+        "name": "Afzal saiyed",
+        "email": "saiyedafzalgz@gmail.com",
+        "parent": 44,
+        "comment": "TEsting Reply",
+        "active": true
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 46,
+    "fields": {
+        "created": "2021-06-02T09:11:00.525Z",
+        "updated": "2021-06-02T09:11:00.525Z",
+        "user": [
+            "7208333993"
+        ],
+        "post": 11,
+        "name": "Afzal saiyed",
+        "email": "saiyedafzalgz@gmail.com",
+        "parent": 44,
+        "comment": "TEsting Reply 2",
+        "active": true
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 80,
+    "fields": {
+        "created": "2021-06-02T10:16:56.790Z",
+        "updated": "2021-06-02T10:16:56.790Z",
+        "user": [
+            "7208333993"
+        ],
+        "post": 11,
+        "name": "Afzal saiyed",
+        "email": "saiyedafzalgz@gmail.com",
+        "parent": null,
+        "comment": "asfsdtgerdsygh",
+        "active": true
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 81,
+    "fields": {
+        "created": "2021-06-02T10:17:04.068Z",
+        "updated": "2021-06-02T10:17:04.068Z",
+        "user": [
+            "7208333993"
+        ],
+        "post": 11,
+        "name": "Afzal saiyed",
+        "email": "saiyedafzalgz@gmail.com",
+        "parent": 80,
+        "comment": "Sdrasfsstg",
+        "active": true
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 82,
+    "fields": {
+        "created": "2021-06-02T10:17:22.481Z",
+        "updated": "2021-06-02T10:17:22.481Z",
+        "user": [
+            "7208333993"
+        ],
+        "post": 11,
+        "name": "Afzal saiyed",
+        "email": "saiyedafzalgz@gmail.com",
+        "parent": 80,
+        "comment": "Sdrasfsstg dstfstg",
+        "active": true
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 83,
+    "fields": {
+        "created": "2021-06-02T10:19:03.968Z",
+        "updated": "2021-06-02T10:19:03.968Z",
+        "user": [
+            "7208333993"
+        ],
+        "post": 11,
+        "name": "Afzal saiyed",
+        "email": "saiyedafzalgz@gmail.com",
+        "parent": 80,
+        "comment": "asdfstgef wetwrt",
+        "active": true
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 84,
+    "fields": {
+        "created": "2021-06-02T10:19:16.795Z",
+        "updated": "2021-06-02T10:19:16.795Z",
+        "user": [
+            "7208333993"
+        ],
+        "post": 11,
+        "name": "Afzal saiyed",
+        "email": "saiyedafzalgz@gmail.com",
+        "parent": 80,
+        "comment": "asdfstgef wetwrt swr wrf",
+        "active": true
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 85,
+    "fields": {
+        "created": "2021-06-02T10:20:32.710Z",
+        "updated": "2021-06-02T10:20:32.710Z",
+        "user": [
+            "7208333993"
+        ],
+        "post": 11,
+        "name": "Afzal saiyed",
+        "email": "saiyedafzalgz@gmail.com",
+        "parent": 80,
+        "comment": "dsf srgw rt",
+        "active": true
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 86,
+    "fields": {
+        "created": "2021-06-02T10:20:41.766Z",
+        "updated": "2021-06-02T10:20:41.766Z",
+        "user": [
+            "7208333993"
+        ],
+        "post": 11,
+        "name": "Afzal saiyed",
+        "email": "saiyedafzalgz@gmail.com",
+        "parent": 80,
+        "comment": "dsf srgw rt swd swfwsrf",
+        "active": true
+    }
+}
+]

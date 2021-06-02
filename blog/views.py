@@ -65,6 +65,7 @@ class BlogPostListView(ListAPIView):
     http_method_names = ['get']
     permission_classes = [AllowAny]
     pagination_class = PostListPagination
+    pagination_class.page_size = 8
 
     def get_queryset(self):
         query = Post.objects.all().select_related('author', 'category')
