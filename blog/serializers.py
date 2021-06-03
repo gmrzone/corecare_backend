@@ -21,7 +21,7 @@ class PostSerializer(ModelSerializer):
     date_slug = SerializerMethodField(method_name="get_date_slug")
     class Meta:
         model = Post
-        fields = ('author', 'category', 'title', 'slug', 'photo', 'body', 'created', "date_slug")
+        fields = ('id', 'author', 'category', 'title', 'slug', 'photo', 'body', 'created', "date_slug")
 
     def get_date_slug(self, obj):
         created_date = obj.created
