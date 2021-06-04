@@ -89,6 +89,9 @@ class BlogPostListView(ListAPIView):
             serializer = self.serializer_class(query, many=True)
             return Response(serializer.data)
 
+
+
+
 # class BlogPostListView(APIView):
 #     http_method_names = ['get']
 #     permission_classes = [AllowAny]
@@ -131,7 +134,7 @@ class GetTopPost(APIView):
         preserve_ids = Case(*[When(id=id, then=index) for index, id in enumerate(top_posts_r)])
         posts = Post.objects.filter(id__in=top_posts_r).select_related('author', 'category').order_by(preserve_ids)
         serializer = PostSerializer(posts, many=True)
-        return Response(serializer.data)
+        return Response(serializer.data )
 
 
 class CreatePostCommentView(CreateAPIView):
