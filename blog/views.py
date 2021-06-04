@@ -10,7 +10,16 @@ from .serializers import BlogImagesSerializer, PostSerializer, CommentSerializer
 from django.middleware.csrf import get_token
 from .pagination import PostListPagination
 from .models import Comment, Post
+from redis import Redis, StrictRedis
+from django.conf import settings
+from django.db.models import Case, When
 # Create your views here.
+
+if settings.DEBUG:
+    r = Redis(host=settings.REDIS_HOST, port=settings.REDIS_PORT, db=settings.REDIS_DB)
+else:
+    r = StrictRedis(host=settings.REDIS_HOST, port=settings.REDIS_PORT, db=settings.REDIS_DB, password=settings.REDIS_PASSWORD)
+
 
 @api_view(['GETs'])
 def test(request):
@@ -104,7 +113,24 @@ class BlogDetailView(APIView):
 
     def get(self, request):
         query = Post.objects.select_related('author', 'category').get(created__year=self.year, created__month=self.month, created__day=self.day, slug=self.slug)
+        r.zincrby("top_posts", 1, query.id)
         serializer = PostSerializer(query)
+        return Response(serializer.data)
+
+class GetTopPost(APIView):
+    http_method_names = ['get']
+    permission_classes = [AllowAny]
+    count = None
+    def dispatch(self, request, count, *args, **kwargs):
+        self.count = count
+        return super().dispatch(request, *args, **kwargs)
+
+    def get(self, request):
+        top_posts_r = r.zrange("top_posts", 0, -1, desc=True)
+        top_posts_r = top_posts_r[0:self.count] if self.count < len(top_posts_r) else top_posts_r
+        preserve_ids = Case(*[When(id=id, then=index) for index, id in enumerate(top_posts_r)])
+        posts = Post.objects.filter(id__in=top_posts_r).select_related('author', 'category').order_by(preserve_ids)
+        serializer = PostSerializer(posts, many=True)
         return Response(serializer.data)
 
 
