@@ -85,7 +85,7 @@ class LogoutView(APIView):
         response = Response()
         response.delete_cookie(settings.SIMPLE_JWT['AUTH_COOKIE'])
         response.delete_cookie(settings.SIMPLE_JWT['AUTH_COOKIE_REFRESH'])
-        response.delete_cookie('get_user')
+        # response.delete_cookie('get_user')
         response.data = {'status': "ok", "msg": "Successfully Logout"}
         return response
 
