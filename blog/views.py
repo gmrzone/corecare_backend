@@ -10,15 +10,10 @@ from .serializers import BlogImagesSerializer, PostSerializer, CommentSerializer
 from django.middleware.csrf import get_token
 from .pagination import PostListPagination
 from .models import Comment, Post
-from redis import Redis, StrictRedis
-from django.conf import settings
 from django.db.models import Case, When
-# Create your views here.
+from cart.utils import r
 
-if settings.DEBUG:
-    r = Redis(host=settings.REDIS_HOST, port=settings.REDIS_PORT, db=settings.REDIS_DB)
-else:
-    r = StrictRedis(host=settings.REDIS_HOST, port=settings.REDIS_PORT, db=settings.REDIS_DB, password=settings.REDIS_PASSWORD)
+
 
 
 @api_view(['GETs'])

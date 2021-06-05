@@ -3,11 +3,6 @@ from rest_framework.response import Response
 from redis import Redis, StrictRedis
 from django.conf import settings
 
-if settings.DEBUG:
-    r = Redis(host=settings.REDIS_HOST, port=settings.REDIS_PORT, db=settings.REDIS_DB)
-else:
-    r = StrictRedis(host=settings.REDIS_HOST, port=settings.REDIS_PORT, db=settings.REDIS_DB, password=settings.REDIS_PASSWORD)
-
 
 class PostListPagination(PageNumberPagination):
     def get_page_size(self, request):
