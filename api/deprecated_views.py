@@ -33,3 +33,11 @@
 #     else:
 #         ser = CategoryReviewSerializer(review)
 #     return Response(ser.data)
+
+
+# @api_view(['GET'])
+# def getReviews(request, slug):
+#     # employees = EmployeeCategory.objects.get(slug=slug).category_reviews.all().select_related('user', 'parent')
+#     reviews = CategoryReview.objects.filter(category__slug=slug).select_related('user').prefetch_related('replies')
+#     ser = CategoryReviewSerializer(reviews, many=True)
+#     return Response(ser.data)

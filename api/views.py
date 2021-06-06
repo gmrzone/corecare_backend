@@ -114,10 +114,24 @@ class GetReviewsList(ListAPIView):
         return super().dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
-        query = cache.get(f"{self.slug}_reviews")
-        if not query:
-            query = CategoryReview.objects.filter(category__slug=self.slug).select_related('parent', 'user').prefetch_related('replies')
-            cache.set(f"{self.slug}_reviews", query)
+        # cache.delete(f"{self.slug}_reviews")
+        # query = cache.get(f"{self.slug}_reviews")
+        # if not query:
+        #     query = CategoryReview.objects.filter(category__slug=self.slug).select_related('user').prefetch_related('replies')
+        #     cache.set(f"{self.slug}_reviews", query)
+        query = CategoryReview.objects.filter(category__slug=self.slug).select_related('user').prefetch_related('replies')
+        return query
+
+class GetReplyForReview(ListAPIView):
+    serializer_class = CategoryReviewSerializer
+    http_method_names = ['get']
+
+    def dispatch(self, request, parent_id, *args, **kwargs):
+        self.parent_id = parent_id
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_queryset(self):
+        query = CategoryReview.objects.filter(parent__id=self.parent_id).select_related('user').prefetch_related('replies')
         return query
 
 class GetFullServiceList(ListAPIView):
@@ -206,13 +220,6 @@ def getEmployees(request, slug):
     ser = UserSerializer(employees, many=True)
     return Response(ser.data)
 
-
-@api_view(['GET'])
-def getReviews(request, slug):
-    # employees = EmployeeCategory.objects.get(slug=slug).category_reviews.all().select_related('user', 'parent')
-    reviews = CategoryReview.objects.filter(category__slug=slug).select_related('parent', 'user').prefetch_related('replies')
-    ser = CategoryReviewSerializer(reviews, many=True)
-    return Response(ser.data)
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])

@@ -37,14 +37,22 @@ class ReviewUser(ModelSerializer):
         model = CustomUser
         fields = ['number', 'username', 'email', 'photo']
 
+# class CategoryReviewSerializer(ModelSerializer):
+#     user = ReviewUser(many=False, read_only=True)
+#     created = TimeSince(read_only=True)
+
+#     class Meta:
+#         model = CategoryReview
+#         fields = ['id' ,'user', 'star', 'replies', 'review', 'parent', 'created']
+
+
 class CategoryReviewSerializer(ModelSerializer):
     user = ReviewUser(many=False, read_only=True)
     created = TimeSince(read_only=True)
 
     class Meta:
         model = CategoryReview
-        fields = ['id' ,'user', 'star', 'replies', 'review', 'parent', 'created']
-
+        fields = ['id' ,'user', 'star', 'replies', 'review', 'created']
 
 class AllSubcategoryServiceSerializer(ModelSerializer):
     services = ServiceSerializer(many=True)
