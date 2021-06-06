@@ -31,13 +31,13 @@ class PostSerializer(ModelSerializer):
             "day": str(created_date.day)
         }
 
-class ReplySerializer(ModelSerializer):
-    created = TimeSince(read_only=True)
-    user = ReviewUser(many=False, read_only=True)
+# class ReplySerializer(ModelSerializer):
+#     created = TimeSince(read_only=True)
+#     user = ReviewUser(many=False, read_only=True)
 
-    class Meta:
-        model = Comment
-        fields = ('id', 'user', 'name', 'email', "comment", 'created')
+#     class Meta:
+#         model = Comment
+#         fields = ('id', 'user', 'name', 'email', "comment", 'created')
 
 
 class CommentSerializer(ModelSerializer):
@@ -45,4 +45,4 @@ class CommentSerializer(ModelSerializer):
     user = ReviewUser(many=False, read_only=True)
     class Meta:
         model = Comment
-        fields = ("id","parent", 'user', 'name', "email", "replies", "comment", "created")
+        fields = ("id", 'user', 'name', "email", "replies", "comment", "created")
