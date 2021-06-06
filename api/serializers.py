@@ -52,7 +52,7 @@ class CategoryReviewSerializer(ModelSerializer):
 
     class Meta:
         model = CategoryReview
-        fields = ['id' ,'user', 'star', 'replies', 'review', 'created']
+        fields = ['id' ,'user', 'star', 'replies', 'review', 'parent', 'created']
 
 class AllSubcategoryServiceSerializer(ModelSerializer):
     services = ServiceSerializer(many=True)

@@ -119,7 +119,7 @@ class GetReviewsList(ListAPIView):
         # if not query:
         #     query = CategoryReview.objects.filter(category__slug=self.slug).select_related('user').prefetch_related('replies')
         #     cache.set(f"{self.slug}_reviews", query)
-        query = CategoryReview.objects.filter(category__slug=self.slug).select_related('user').prefetch_related('replies')
+        query = CategoryReview.objects.filter(category__slug=self.slug, parent=None).select_related('user').prefetch_related('replies')
         return query
 
 class GetReplyForReview(ListAPIView):
@@ -235,13 +235,9 @@ def createReview(request, slug):
         review = CategoryReview(star=request.data['star'], review=request.data['review'], parent=parent)
     review.user = request.user
     review.category = category
-    cache.delete(f"{slug}_reviews")
+    # cache.delete(f"{slug}_reviews")
     review.save()
-    if parent_id:
-        a = CategoryReview.objects.filter(category=category).select_related('user', 'parent')
-        ser = CategoryReviewSerializer(a, many=True)
-    else:
-        ser = CategoryReviewSerializer(review)
+    ser = CategoryReviewSerializer(review)
     return Response(ser.data)
 
 # Class Slow View

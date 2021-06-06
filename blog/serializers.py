@@ -45,4 +45,4 @@ class CommentSerializer(ModelSerializer):
     user = ReviewUser(many=False, read_only=True)
     class Meta:
         model = Comment
-        fields = ("id", 'user', 'name', "email", "replies", "comment", "created")
+        fields = ("id", 'parent', 'user', 'name', "email", "replies", "comment", "created")
