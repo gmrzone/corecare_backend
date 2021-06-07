@@ -69,15 +69,24 @@ class BlogPostListView(ListAPIView):
     serializer_class = PostSerializer
     http_method_names = ['get']
     permission_classes = [AllowAny]
+    category = None
     pagination_class = PostListPagination
     pagination_class.page_size = 9
 
+    def dispatch(self, request, *args, **kwargs):
+        self.category = request.GET.get('category')
+        return super().dispatch(request, *args, **kwargs)
+
     def get_queryset(self):
-        query = Post.objects.all().select_related('author', 'category')
+        if self.category:
+            query = Post.objects.filter(category__slug=self.category).select_related('author', 'category')
+        else:
+            query = Post.objects.all().select_related('author', 'category')
         return query
 
     def get(self, request, *args, **kwargs):
         page = request.GET.get('page')
+       
         if page:
             return super().get(request, *args, **kwargs)
         else:
