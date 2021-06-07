@@ -112,7 +112,7 @@ class BlogDetailView(APIView):
 
     def get(self, request):
         query = Post.objects.select_related('author', 'category').get(created__year=self.year, created__month=self.month, created__day=self.day, slug=self.slug)
-        r.zincrby("top_posts", 1, query.id)
+        # r.zincrby("top_posts", 1, query.id)
         serializer = PostSerializer(query)
         return Response(serializer.data)
 
@@ -126,9 +126,12 @@ class GetTopPost(APIView):
 
     def get(self, request):
         top_posts_r = r.zrange("top_posts", 0, -1, desc=True)
-        top_posts_r = top_posts_r[0:self.count] if self.count < len(top_posts_r) else top_posts_r
-        preserve_ids = Case(*[When(id=id, then=index) for index, id in enumerate(top_posts_r)])
-        posts = Post.objects.filter(id__in=top_posts_r).select_related('author', 'category').order_by(preserve_ids)
+        if top_posts_r and len(top_posts_r) > 3:
+            top_posts_r = top_posts_r[0:self.count] if self.count < len(top_posts_r) else top_posts_r
+            preserve_ids = Case(*[When(id=id, then=index) for index, id in enumerate(top_posts_r)])
+            posts = Post.objects.filter(id__in=top_posts_r).select_related('author', 'category').order_by(preserve_ids)
+        else:
+            posts = Post.objects.all().select_related('author', 'category')
         serializer = PostSerializer(posts, many=True)
         return Response(serializer.data )
 
@@ -193,7 +196,24 @@ class GetPostViews(APIView):
     
     def get(self, request):
         post_views = r.zrange("top_posts", 0, -1, desc=True, withscores=True, score_cast_func=int)
-        post_views = {key.decode() if isinstance(key, bytes) else key: value for key, value in post_views}
+        if post_views:
+            post_views = {key.decode() if isinstance(key, bytes) else key: value for key, value in post_views}
+        else:
+            post_views = {}
         return Response(post_views)
+
+
+class IncreasePostViews(APIView):
+    http_method_names = ['get']
+    post_id = None
+
+    def dispatch(self, request, post_id, *args, **kwargs):
+        self.post_id = post_id
+        return super().dispatch(request, *args, **kwargs)
+
+    def get(self, request):
+        r.zincrby("top_posts", 1, self.post_id)
+        return Response({'status': 'ok'})
+        
 
 
