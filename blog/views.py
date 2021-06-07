@@ -1,3 +1,4 @@
+from typing import Dict
 from api.models import EmployeeCategory
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
@@ -12,7 +13,7 @@ from .pagination import PostListPagination
 from .models import Comment, Post
 from django.db.models import Case, When
 from cart.utils import r
-
+import json
 
 
 
@@ -187,6 +188,12 @@ class CommentRepliesListView(ListAPIView):
         return query
 
 
+class GetPostViews(APIView):
+    http_method_names = ['get']
     
+    def get(self, request):
+        post_views = r.zrange("top_posts", 0, -1, desc=True, withscores=True, score_cast_func=int)
+        post_views = {key.decode() if isinstance(key, bytes) else key: value for key, value in post_views}
+        return Response(post_views)
 
 
