@@ -13,7 +13,7 @@ from .pagination import PostListPagination
 from .models import Comment, Post
 from django.db.models import Case, When
 from cart.utils import r
-import json
+
 
 
 
