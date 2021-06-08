@@ -6,7 +6,7 @@ app_name = 'api'
 
 urlpatterns = [
     
-    path('', views.EmployeeCategoryList, name='employee_category_list'),
+    path('employee_category/', views.EmployeeCategoryList, name='employee_category_list'),
     # path('', views.afzal, name='employee_category_list'),
     path('coupons/', views.GetCouponsView.as_view(), name='coupon_list'),
     path('subcategory/', views.GetSubcategory, name='subcategory'),
@@ -30,7 +30,7 @@ urlpatterns = [
     path('v2/category/hiring/', views.GetHiringEmployeeCategory.as_view(), name="hiring_category_new"),
     path('search/v2/<str:query>/<str:city>/', views.SearchServices.as_view(), name="search_service_new"),
 
-    path('v2/', views.EmployeeCategoryListView.as_view(), name='employee_category_list_new'),
+    path('employee_category/v2/', views.EmployeeCategoryListView.as_view(), name='employee_category_list_new'),
     path('subcategory/v2/', views.GetSubcategoryView.as_view(), name='subcategory_new'),
     path('services/v2/', views.GetServiceList.as_view(), name='services_list_new'),
 

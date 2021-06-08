@@ -21,13 +21,15 @@ from django.conf import settings
 
 
 
+
+
 urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('', include('api.urls', namespace="api")),
-    path('', include('account.urls', namespace="account")),
-    path('', include('cart.urls', namespace="cart")),
-    path('', include('blog.urls', namespace="blog")),
+    path('account/', include('account.urls', namespace="account")),
+    path('cart/', include('cart.urls', namespace="cart")),
+    path('blog/', include('blog.urls', namespace="blog")),
 ]
 
 
