@@ -1,7 +1,6 @@
-from api.models import EmployeeCategory
-from .models import CustomUser
-from rest_framework.serializers import ModelSerializer, RelatedField
 
+from .models import CustomUser
+from rest_framework.serializers import ModelSerializer
 # Project Modules
 from .utils import generate_key_for_otp
 import base64

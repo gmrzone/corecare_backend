@@ -73,3 +73,53 @@
 #     else:
 #         data = {'status': 'error', 'message': "Invalid Number"}
 #     return Response(data)
+
+
+# def update_user(user, first_name, last_name, email, address_1, address_2, city, state, pincode, new_account):
+#     user.first_name = first_name
+#     user.last_name = last_name
+#     user.email = email
+#     user.address_1 = address_1
+#     user.address_2 = address_2
+#     user.city = city
+#     user.state = state
+#     user.pincode = pincode
+#     user.save()
+#     if new_account:
+#         new_signup.delay(user.id)
+
+# @api_view(['POST'])
+# def signup_additional(request):
+#     user = request.user
+#     first_name = request.data.get('first_name')
+#     last_name = request.data.get('last_name')
+#     email = request.data.get('email')
+#     address_1 = request.data.get('address_1')
+#     address_2 = request.data.get('address_2')
+#     city = request.data.get('city')
+#     state = request.data.get('state')
+#     pincode = request.data.get('pincode')
+#     number = request.data.get('number')
+#     password = request.data.get('password')
+#     email_exist = CustomUser.objects.filter(email=email).exists()
+#     if isinstance(user, AnonymousUser):
+#         if first_name and last_name and email and address_1 and address_2 and city and state and pincode and number:
+#             if email_exist:
+#                 data = {'status': 'error', 'msg': 'We Already have an account associated with email {0}'.format(email)}
+#             else:
+#                 user = get_object_or_404(CustomUser, number=number)
+#                 if user.check_password(password):
+#                     print("Correect Password")
+#                     update_user(user, first_name, last_name, email, address_1, address_2, city, state, pincode, new_account=True)
+#                     data = {'status': 'ok', 'msg': 'Profile Sucessfully Updated'}
+#                 else:
+#                     data = {'status': 'error', 'msg': 'Invalid Number'}
+#         else:
+#             data = {'status': 'error', 'msg': 'Please Provide all the required fields'}
+#     else:
+#         if email_exist:
+#             data = {'status': 'error', 'msg': 'We Already have an account associated with email {0}'.format(email)}
+#         else:
+#             update_user(user, first_name, last_name, email, address_1, address_2, city, state, pincode, new_account=False)
+#             data = {'status': 'ok', 'msg': 'Profile Sucessfully Updated'}
+#     return Response(data)

@@ -113,59 +113,10 @@ class SignUp(CreateAPIView):
                 data = {'status': 'error', 'msg': serializer.error_messages}
                 hstatus = status.HTTP_400_BAD_REQUEST
         else:
-            data = {'status': 'warning', 'msg': 'An Account with number {0} already Exist with us. Please Login or Reset Your Password.'.format(number)}
+            data = {'status': 'error', 'msg': 'An Account with number {0} already Exist with us. Please Login or Reset Your Password.'.format(number)}
             hstatus = status.HTTP_406_NOT_ACCEPTABLE
         return Response(data, status=hstatus)       
 
-
-
-def update_user(user, first_name, last_name, email, address_1, address_2, city, state, pincode, new_account):
-    user.first_name = first_name
-    user.last_name = last_name
-    user.email = email
-    user.address_1 = address_1
-    user.address_2 = address_2
-    user.city = city
-    user.state = state
-    user.pincode = pincode
-    user.save()
-    if new_account:
-        new_signup.delay(user.id)
-
-@api_view(['POST'])
-def signup_additional(request):
-    user = request.user
-    first_name = request.data.get('first_name')
-    last_name = request.data.get('last_name')
-    email = request.data.get('email')
-    address_1 = request.data.get('address_1')
-    address_2 = request.data.get('address_2')
-    city = request.data.get('city')
-    state = request.data.get('state')
-    pincode = request.data.get('pincode')
-    number = request.data.get('number')
-    password = request.data.get('password')
-    email_exist = CustomUser.objects.filter(email=email).exists()
-    if isinstance(user, AnonymousUser):
-        if first_name and last_name and email and address_1 and address_2 and city and state and pincode and number:
-            if email_exist:
-                data = {'status': 'error', 'msg': 'We Already have an account associated with email {0}'.format(email)}
-            else:
-                user = get_object_or_404(CustomUser, number=number)
-                if user.check_password(password):
-                    update_user(user, first_name, last_name, email, address_1, address_2, city, state, pincode, new_account=True)
-                    data = {'status': 'ok', 'msg': 'Profile Sucessfully Updated'}
-                else:
-                    data = {'status': 'error', 'msg': 'Invalid Number'}
-        else:
-            data = {'status': 'error', 'msg': 'Please Provide all the required fields'}
-    else:
-        if email_exist:
-            data = {'status': 'error', 'msg': 'We Already have an account associated with email {0}'.format(email)}
-        else:
-            update_user(user, first_name, last_name, email, address_1, address_2, city, state, pincode, new_account=False)
-            data = {'status': 'ok', 'msg': 'Profile Sucessfully Updated'}
-    return Response(data)
 
 class UpdateSignupAdditionalData(UpdateAPIView):
     serializer_class = UserSerializer
@@ -173,38 +124,26 @@ class UpdateSignupAdditionalData(UpdateAPIView):
     http_method_names = ['patch']
 
     def update(self, request, number, *args, **kwargs):
-        try:
-            request_data = {
-                "first_name": request.data['first_name'],
-                "last_name": request.data['last_name'],
-                "email": request.data['email'],
-                "address_1": request.data['address_1'],
-                "address_2": request.data['address_2'],
-                "city": request.data['city'],
-                "state": request.data['state'],
-                'pincode': request.data['pincode']
-                }
-        except KeyError:
-            data = {'status': 'error', 'msg': 'Please Provide all the required fields'}
+        password = request.data.get('password')
+        print(request.data)
+        if request.user.is_authenticated:
+            instance = request.user
+            new_user = False
         else:
-            user = request.user
-            # number = request.data.get('number')
-            password = request.data.get('password')
-            isAnonUser = isinstance(user, AnonymousUser)
-            if isAnonUser:
-                instance = get_object_or_404(CustomUser, number=number)
-                if not instance.check_password(password):
-                    return Response({'status': 'error', 'msg': 'Invalid Number'})
-            else:
-                instance = user
-            serializer = UserSerializer(instance=instance, data=request_data, partial=True)
-            if serializer.is_valid():
-                self.perform_update(serializer)
-                data = {'status': 'ok', 'msg': 'Profile Sucessfully Updated'}
-            else:
-                data = {"error": 'ok', "message": serializer.errors}
-        return Response(data)
-
+            instance = get_object_or_404(CustomUser, number=number)
+            new_user = True
+            if not instance.check_password(password):
+                return Response({'status': 'error', 'msg': 'Invalid Number or Password'}, status=status.HTTP_400_BAD_REQUEST)
+        serializer = self.serializer_class(instance=instance, data=request.data, partial=True)
+        if serializer.is_valid():
+            self.perform_update(serializer)
+            print(new_user)
+            data = {'status': 'ok', 'msg': 'Profile Sucessfully Updated'}
+            hstatus = status.HTTP_200_OK
+        else:
+            data = {"error": 'ok', "msg": serializer.errors}
+            hstatus = status.HTTP_406_NOT_ACCEPTABLE
+        return Response(data, status=hstatus)
 
 
 class VerifyOtp(APIView):
@@ -218,23 +157,29 @@ class VerifyOtp(APIView):
     def post(self, request):
         entered_otp = request.data.get('entered_otp')
         password = request.data.get('password1')
-        if entered_otp and len(entered_otp) == 6:
-            secret_key = generate_key_for_otp(self.number)
-            key = base64.b32encode(secret_key.encode())
-            otp = pyotp.TOTP(key, interval=300, digits=6)
-            if otp.verify(entered_otp):
-                user = get_object_or_404(CustomUser, number=self.number)
-                user.set_password(password)
-                user.verified = True
-                user.save()
-                data = {'status': 'ok', 'msg': 'Your Number Has been Verified Sucessfully'}
+        conf_password = request.data.get('password2')
+        if password == conf_password:
+            if entered_otp and len(entered_otp) == 6:
+                secret_key = generate_key_for_otp(self.number)
+                key = base64.b32encode(secret_key.encode())
+                otp = pyotp.TOTP(key, interval=300, digits=6)
+                if otp.verify(entered_otp):
+                    user = get_object_or_404(CustomUser, number=self.number)
+                    user.set_password(password)
+                    user.verified = True
+                    user.save()
+                    data = {'status': 'ok', 'msg': 'Your Number Has been Verified Sucessfully'}
+                    hstatus = status.HTTP_200_OK
+                else:
+                    data = {'status': 'error', 'msg': 'Invalid OTP or OTP Expired'}
+                    hstatus = status.HTTP_408_REQUEST_TIMEOUT
             else:
-                data = {'status': 'error', 'msg': 'Invalid OTP or OTP Expired'}
+                data = {'status': 'error', 'msg': 'Please Enter a valid 6 digit OTP'}
+                hstatus = status.HTTP_400_BAD_REQUEST
         else:
-            data = {'status': 'error', 'msg': 'Please Enter a valid 6 digit OTP'}
-        return Response(data)
-
-
+            data = {'status': "error", 'msg': "Both password dont match. Please try again."}
+            hstatus = status.HTTP_400_BAD_REQUEST
+        return Response(data, status=hstatus)
 
 
 class UpdateProfileImage(UpdateAPIView):
@@ -243,7 +188,6 @@ class UpdateProfileImage(UpdateAPIView):
     permission_classes = [AllowAny]
 
     def update(self, request, number, *args, **kwargs):
-        print(number)
         instance = CustomUser.objects.get(number=number)
         image = request.data.get('image')
         password = request.data.get('password')
