@@ -14,12 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include, re_path
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView, TokenVerifyView
+from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 
-
+from rest_framework.schemas import get_schema_view
+from rest_framework.documentation import include_docs_urls
 
 
 
@@ -30,6 +30,14 @@ urlpatterns = [
     path('account/', include('account.urls', namespace="account")),
     path('cart/', include('cart.urls', namespace="cart")),
     path('blog/', include('blog.urls', namespace="blog")),
+
+    # Documentation and Schema
+    path('openapi', get_schema_view(
+        title="Corecare API",
+        description="Documentation for Corecare API",
+        version="1.0.0"
+    ), name='openapi-schema'),
+    path('', include_docs_urls(title="Corecare API"))
 ]
 
 

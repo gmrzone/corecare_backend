@@ -7,7 +7,9 @@ from rest_framework.generics import CreateAPIView, UpdateAPIView
 from rest_framework.views import APIView
 from .tasks import new_signup
 from rest_framework import status
-
+from rest_framework.schemas import ManualSchema
+import coreapi
+from rest_framework.schemas.coreapi import coreschema
 # Serializers
 from .serializers import UserSerializer
 
@@ -17,7 +19,6 @@ from .utils import generate_key_for_otp, generate_key_for_otp, get_token, timede
 # Other Imports
 import base64
 import pyotp
-
 # Models
 from .models import CustomUser
 
@@ -27,8 +28,6 @@ from django.contrib.auth.models import AnonymousUser
 from django.contrib.auth import authenticate
 from django.conf import settings
 from django.middleware import csrf
-
-
 
 # Create your views here.
 @api_view(['GET'])
@@ -42,6 +41,7 @@ def get_csrf(request):
 
 class LoginView(APIView):
 
+    schema = ManualSchema(fields=[coreapi.Field('number', required=True, location='form', schema=coreschema.String()), coreapi.Field('password', required=True, location="form", schema=coreschema.String())])
     def post(self, request):
         data = request.data
         response = Response()
@@ -75,7 +75,7 @@ class LoginView(APIView):
             else:
                 return Response(data={"status": "error", 'msg': "Your account has been disabled for security reasons."}, status=status.HTTP_404_NOT_FOUND)
         else:
-            return Response(data={"status": "error", 'msg': "Invalid username or password"}, status=status.HTTP_404_NOT_FOUND)
+            return Response(data={"status": "error", 'msg': "Invalid number or password"}, status=status.HTTP_404_NOT_FOUND)
 
 class LogoutView(APIView):
 
