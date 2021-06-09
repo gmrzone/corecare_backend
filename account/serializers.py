@@ -3,7 +3,7 @@ from .models import CustomUser
 from rest_framework.serializers import ModelSerializer, RelatedField
 
 # Project Modules
-from .utils import generate_key_for_otp, generate_key_for_otp
+from .utils import generate_key_for_otp
 import base64
 import pyotp
 

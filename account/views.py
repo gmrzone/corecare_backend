@@ -92,7 +92,7 @@ class GetCurrentUser(APIView):
     def get(self, request):
         user = request.user
         serializer = UserSerializer(user)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 class SignUp(CreateAPIView):
     serializer_class = UserSerializer
@@ -108,11 +108,14 @@ class SignUp(CreateAPIView):
             serializer =self.serializer_class(data=request.data)
             if serializer.is_valid():
                 data = serializer.save()
+                hstatus = status.HTTP_200_OK
             else:
                 data = {'status': 'error', 'msg': serializer.error_messages}
+                hstatus = status.HTTP_400_BAD_REQUEST
         else:
             data = {'status': 'warning', 'msg': 'An Account with number {0} already Exist with us. Please Login or Reset Your Password.'.format(number)}
-        return Response(data)       
+            hstatus = status.HTTP_406_NOT_ACCEPTABLE
+        return Response(data, status=hstatus)       
 
 
 
@@ -207,17 +210,20 @@ class UpdateSignupAdditionalData(UpdateAPIView):
 class VerifyOtp(APIView):
     permission_classes = [AllowAny]
     http_method_names = ['post']
+    number = None
 
+    def dispatch(self, request, number, *args, **kwargs):
+        self.number = number
+        return super().dispatch(request, *args, **kwargs)
     def post(self, request):
-        number = request.data.get('number')
         entered_otp = request.data.get('entered_otp')
         password = request.data.get('password1')
         if entered_otp and len(entered_otp) == 6:
-            secret_key = generate_key_for_otp(number)
+            secret_key = generate_key_for_otp(self.number)
             key = base64.b32encode(secret_key.encode())
             otp = pyotp.TOTP(key, interval=300, digits=6)
             if otp.verify(entered_otp):
-                user = get_object_or_404(CustomUser, number=number)
+                user = get_object_or_404(CustomUser, number=self.number)
                 user.set_password(password)
                 user.verified = True
                 user.save()
@@ -230,21 +236,6 @@ class VerifyOtp(APIView):
 
 
 
-@api_view(['POST'])
-@permission_classes([AllowAny])
-def update_profile_image(request):
-    image = request.data.get('image')
-    number = request.data.get('number')
-    password = request.data.get('password')
-    user = get_object_or_404(CustomUser, number=number)
-    if user.check_password(password):
-        if image:
-            user.photo = image
-        user.save()
-        data = {'status': 'ok', 'message': 'Profile Photo Updated'}
-    else:
-        data = {'status': 'error', 'message': "Invalid Number"}
-    return Response(data)
 
 class UpdateProfileImage(UpdateAPIView):
     serializer_class = UserSerializer
@@ -252,23 +243,27 @@ class UpdateProfileImage(UpdateAPIView):
     permission_classes = [AllowAny]
 
     def update(self, request, number, *args, **kwargs):
+        print(number)
         instance = CustomUser.objects.get(number=number)
         image = request.data.get('image')
-        print(image)
         password = request.data.get('password')
         if instance.check_password(password):
             serializer = UserSerializer(instance=instance, data={'photo': image}, partial=True)
             if serializer.is_valid():
                 self.perform_update(serializer)
                 data = {'status': 'ok', 'message': 'Profile Photo Updated'}
+                hstatus = status.HTTP_200_OK
             else:
                 if image:
                     data = {'status': 'error', 'message': 'Invalid or Unsupported Image File'}
+                    hstatus = status.HTTP_406_NOT_ACCEPTABLE
                 else:
                     data = {'status': 'ok', 'message': 'No profile photo updated using default Avatar.'}
+                    hstatus = status.HTTP_200_OK
         else:
             data = {'status': 'error', 'message': "Invalid Number"}
-        return Response(data)
+            hstatus = status.HTTP_401_UNAUTHORIZED
+        return Response(data, status=hstatus)
 
         
 

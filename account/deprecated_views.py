@@ -56,3 +56,20 @@
 #     else:
 #         data = {'status': 'error', 'msg': 'Please Enter a valid 6 digit OTP'}
 #     return Response(data)
+
+
+# @api_view(['POST'])
+# @permission_classes([AllowAny])
+# def update_profile_image(request):
+#     image = request.data.get('image')
+#     number = request.data.get('number')
+#     password = request.data.get('password')
+#     user = get_object_or_404(CustomUser, number=number)
+#     if user.check_password(password):
+#         if image:
+#             user.photo = image
+#         user.save()
+#         data = {'status': 'ok', 'message': 'Profile Photo Updated'}
+#     else:
+#         data = {'status': 'error', 'message': "Invalid Number"}
+#     return Response(data)
