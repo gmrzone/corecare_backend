@@ -18,9 +18,6 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 
-from rest_framework.schemas import get_schema_view
-from rest_framework.documentation import include_docs_urls
-
 
 
 urlpatterns = [
@@ -31,13 +28,6 @@ urlpatterns = [
     path('cart/', include('cart.urls', namespace="cart")),
     path('blog/', include('blog.urls', namespace="blog")),
 
-    # Documentation and Schema
-    path('openapi', get_schema_view(
-        title="Corecare API",
-        description="Documentation for Corecare API",
-        version="1.0.0"
-    ), name='openapi-schema'),
-    path('', include_docs_urls(title="Corecare API"))
 ]
 
 

@@ -7,9 +7,7 @@ from rest_framework.generics import CreateAPIView, UpdateAPIView
 from rest_framework.views import APIView
 from .tasks import new_signup
 from rest_framework import status
-from rest_framework.schemas import ManualSchema
-import coreapi
-from rest_framework.schemas.coreapi import coreschema
+
 # Serializers
 from .serializers import UserSerializer
 
@@ -41,7 +39,6 @@ def get_csrf(request):
 
 class LoginView(APIView):
 
-    schema = ManualSchema(fields=[coreapi.Field('number', required=True, location='form', schema=coreschema.String()), coreapi.Field('password', required=True, location="form", schema=coreschema.String())])
     def post(self, request):
         data = request.data
         response = Response()
@@ -79,7 +76,6 @@ class LoginView(APIView):
 
 class LogoutView(APIView):
 
-    schema = ManualSchema(fields=[coreapi.Field('X-CSRFToken', required=True, location='header', schema=coreschema.String())])
     def post(self, request):
         response = Response()
         response.delete_cookie(settings.SIMPLE_JWT['AUTH_COOKIE'])
@@ -101,7 +97,6 @@ class GetCurrentUser(APIView):
 class SignUp(CreateAPIView):
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
-    schema = ManualSchema(fields=[coreapi.Field('number', required=True, location='form', schema=coreschema.String()), coreapi.Field('X-CSRFToken', required=True, location='header', schema=coreschema.String())])
     def create(self, request, *args, **kwargs):
         number = request.data.get('number')
         try:
@@ -173,7 +168,6 @@ class UpdateSignupAdditionalData(UpdateAPIView):
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
     http_method_names = ['patch']
-    schema = ManualSchema(fields=[coreapi.Field('X-CSRFToken', required=True, location='header', schema=coreschema.String()), coreapi.Field('number', required=True, location='query', schema=coreschema.String()), coreapi.Field('username', required=True, location='form', schema=coreschema.String()), coreapi.Field('first_name', required=True, location='form', schema=coreschema.String()), coreapi.Field('last_name', required=True, location='form', schema=coreschema.String()), coreapi.Field('email', required=True, location='form', schema=coreschema.String()), coreapi.Field('address_1', required=True, location='form', schema=coreschema.String()), coreapi.Field('address_2', required=True, location='form', schema=coreschema.String()), coreapi.Field('city', required=True, location='form', schema=coreschema.String()), coreapi.Field('state', required=True, location='form', schema=coreschema.String()), coreapi.Field('pincode', required=True, location='form', schema=coreschema.String())])
 
     def update(self, request, number, *args, **kwargs):
         try:
