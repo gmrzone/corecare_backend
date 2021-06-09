@@ -79,9 +79,8 @@ class LoginView(APIView):
 
 class LogoutView(APIView):
 
-
+    schema = ManualSchema(fields=[coreapi.Field('X-CSRFToken', required=True, location='header', schema=coreschema.String())])
     def post(self, request):
-        print("Afzal Saiyed AF")
         response = Response()
         response.delete_cookie(settings.SIMPLE_JWT['AUTH_COOKIE'])
         response.delete_cookie(settings.SIMPLE_JWT['AUTH_COOKIE_REFRESH'])
@@ -102,7 +101,7 @@ class GetCurrentUser(APIView):
 class SignUp(CreateAPIView):
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
-
+    schema = ManualSchema(fields=[coreapi.Field('number', required=True, location='form', schema=coreschema.String()), coreapi.Field('X-CSRFToken', required=True, location='header', schema=coreschema.String())])
     def create(self, request, *args, **kwargs):
         number = request.data.get('number')
         try:
@@ -174,6 +173,7 @@ class UpdateSignupAdditionalData(UpdateAPIView):
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
     http_method_names = ['patch']
+    schema = ManualSchema(fields=[coreapi.Field('X-CSRFToken', required=True, location='header', schema=coreschema.String()), coreapi.Field('number', required=True, location='query', schema=coreschema.String()), coreapi.Field('username', required=True, location='form', schema=coreschema.String()), coreapi.Field('first_name', required=True, location='form', schema=coreschema.String()), coreapi.Field('last_name', required=True, location='form', schema=coreschema.String()), coreapi.Field('email', required=True, location='form', schema=coreschema.String()), coreapi.Field('address_1', required=True, location='form', schema=coreschema.String()), coreapi.Field('address_2', required=True, location='form', schema=coreschema.String()), coreapi.Field('city', required=True, location='form', schema=coreschema.String()), coreapi.Field('state', required=True, location='form', schema=coreschema.String()), coreapi.Field('pincode', required=True, location='form', schema=coreschema.String())])
 
     def update(self, request, number, *args, **kwargs):
         try:
