@@ -1,9 +1,6 @@
 
 # Rest framework import
-from rest_framework.schemas import inspectors
 from account.models import CustomUser
-from django.db.models import query
-from django.db.models.query import QuerySet
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.generics import CreateAPIView
@@ -18,7 +15,7 @@ from .serializers import CouponCodeSerializers, EmployeeCategorySerializer, Subc
 from account.serializers import UserSerializer
 
 # Others imports
-from itertools import chain
+
 
 # Django Imports
 from django.core.cache import cache

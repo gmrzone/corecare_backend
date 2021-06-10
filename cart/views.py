@@ -127,33 +127,6 @@ class CreateRazorPayOrder(APIView):
             data = {'status': 'error', 'msg': 'address_error'}
         return Response(data)
 
-
-def create_order_helper(request, cart, cart_detail, razorpay_payment_id, razorpay_signature):
-        user = request.user
-        coupon_id = cart_detail.get('coupon_id')
-        if coupon_id:
-            coupon = CouponCode.objects.get(id=coupon_id)
-        else:
-            coupon = None
-        category = get_object_or_404(EmployeeCategory, slug=cart_detail['category'])
-        
-        order, created = Order.objects.get_or_create(
-            category=category, user=user, 
-            receipt=cart_detail['order_receipt'], 
-            razorpay_order_id=cart_detail['razorpay_order_id'],
-            razorpay_payment_id = razorpay_payment_id,
-            razorpay_signature = razorpay_signature,
-            subtotal=cart_detail['cart_subtotal'],
-            discount=cart_detail['discount'], total=cart_detail['total'],
-            coupon=coupon,
-            paid=True
-            )
-        for i in cart.values():
-            service = cache.get(f"service_{i['service']['id']}")
-            if not service:
-                service = Service.objects.get(id=i.service.id)
-            OrderItem.objects.create(order=order, service=service, quantity=i['quantity'], total=int(i['quantity']) * float(i['price']))
-
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def create_order(request):
