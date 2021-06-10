@@ -16,12 +16,6 @@ from cart.utils import r
 
 
 
-
-@api_view(['GETs'])
-def test(request):
-    return Response({'main': "Afzal"})
-
-
 class UploadBlogImages(CreateAPIView):
     serializer_class = BlogImagesSerializer
     http_method_names = ['post']

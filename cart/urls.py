@@ -6,6 +6,7 @@ app_name = "cart"
 
 router = SimpleRouter()
 router.register(r"orders", viewsets.OrderViewSet, basename='orders')
+
 urlpatterns = [
     path('add/', views.AddServiceToCart.as_view(), name="add_to_cart"),
     path('remove/', views.RemoveServiceFromCart.as_view(), name="remove_to_cart"),

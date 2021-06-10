@@ -28,13 +28,11 @@ from django.core.cache import cache
 def EmployeeCategoryList(request):
     employee_category = cache.get('employee_category')
     if employee_category:
-        print("cached_employee_category")
         return Response(employee_category)
     else:
         categories = EmployeeCategory.objects.all()
         serializer = EmployeeCategorySerializer(categories, many=True)
         cache.set('employee_category', serializer.data)
-        print("db_employee_Category")
         return Response(serializer.data)
 
 # Working Class Views But images url as relative

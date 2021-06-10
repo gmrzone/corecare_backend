@@ -137,7 +137,8 @@ class UpdateSignupAdditionalData(UpdateAPIView):
         serializer = self.serializer_class(instance=instance, data=request.data, partial=True)
         if serializer.is_valid():
             self.perform_update(serializer)
-            print(new_user)
+            if new_user:
+                new_signup.delay(instance.id)
             data = {'status': 'ok', 'msg': 'Profile Sucessfully Updated'}
             hstatus = status.HTTP_200_OK
         else:
