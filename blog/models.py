@@ -1,7 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.utils.text import slugify
-from .utils import blog_image_location, blog_images
+from .utils import blog_image_location, blog_images, blog_image_placeholder_location
 from api.models import EmployeeCategory
 # Create your models here.
 
@@ -16,8 +16,9 @@ class Post(DateFieldAbstract):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='blog_posts')
     category = models.ForeignKey(EmployeeCategory, on_delete=models.SET_NULL, related_name="category_posts", null=True)
     title = models.CharField(max_length=400, db_index=True)
-    slug = models.SlugField(max_length=100, db_index=True, blank=True)
-    photo = models.ImageField(upload_to=blog_image_location, default="default_blog.jpg")
+    slug = models.SlugField(max_length=400, db_index=True, blank=True)
+    photo = models.ImageField(upload_to=blog_image_location, default="default_blog.jpg", max_length=400)
+    placeholder = models.ImageField(upload_to=blog_image_placeholder_location, null=True, blank=True, max_length=400)
     body = models.TextField(max_length=200000)
     active = models.BooleanField(default=True)
 
