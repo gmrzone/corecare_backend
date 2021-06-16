@@ -17,7 +17,7 @@ def update_post_placeholder_helper(instance, sender, blur, height, quality):
         image_file, image_name, file_size, content_type = generate_placeholder(instance.photo, blur, height, quality)
         instance.placeholder = InMemoryUploadedFile(image_file, field_name="placeholder", name=image_name, size=file_size, content_type=content_type, charset="utf-8")
 
-# This helper function will check the resolution of the uploaded image if it is too large it will reduce its size to 500 * 800 
+# This helper function will check the resolution of the uploaded image if it is too large it will reduce its size
 # and also generate a blur placeholder of blog post when creating new post
 def optimize_images(instance, image_height, placeholder_blur, placeholder_height, placeholder_quality):
     instance_image = instance.photo
@@ -25,11 +25,10 @@ def optimize_images(instance, image_height, placeholder_blur, placeholder_height
     image = Image.open(instance_image)
     image_format = image.format
     content_type = Image.MIME[image_format]
-    max_height = 500
-    if image.size[1] > 500:
-        ratio = max_height / image.size[1]
+    if image.size[1] > image_height:
+        ratio = image_height / image.size[1]
         width = int(image.size[0] * ratio)
-        image = image.resize((width, max_height))
+        image = image.resize((width, image_height))
     placeholder_ratio = placeholder_height / image.size[1]
     placeholder_width = int(image.size[0] * placeholder_ratio)
     placeholder_image = image.resize((placeholder_width, placeholder_height))
@@ -38,6 +37,8 @@ def optimize_images(instance, image_height, placeholder_blur, placeholder_height
     placeholder_out = BytesIO()
     image.save(main_image_out, image_format, quality=90, optimize=True)
     placeholder_image.save(placeholder_out, image_format, quality=placeholder_quality, optimize=True)
+    main_image_out.seek(0)
+    placeholder_out.seek(0)
     image_size = sys.getsizeof(main_image_out)
     placeholder_size = sys.getsizeof(placeholder_out)
     return ((main_image_out, image_name, content_type, image_size), (placeholder_out, image_name, content_type, placeholder_size))
@@ -53,6 +54,7 @@ def get_post_placeholder(instance, sender, **kwargs):
         update_post_placeholder_helper(instance, sender, 10, 240, 15)
 
 
+# This signal will delete both image and placeholder on Pots Delete
 @receiver(pre_delete, sender=Post, dispatch_uid="post.delete_placeholder")
 def delete_post_images(instance, sender, **kwargs):
     object = sender.objects.get(pk=instance.id)
