@@ -7,11 +7,19 @@ from django.core.files.uploadedfile import InMemoryUploadedFile
 from PIL import Image, ImageFilter
 from io import BytesIO
 import sys
-def get_post_placeholder_helper(instance, blur, height, quality):
-    image_file, image_name, file_size, content_type = generate_placeholder(instance.photo, blur, height, quality)
-    instance.placeholder = InMemoryUploadedFile(image_file, field_name="placeholder", name=image_name, size=file_size, content_type=content_type, charset="utf-8")
 
-def optimize_images(instance, placeholder_blur, placeholder_height, placeholder_quality):
+# This helper function will check if the Post image is updated. and only if the image is changed it will delete old placeholder and add new placeholder
+def update_post_placeholder_helper(instance, sender, blur, height, quality):
+    old_obj = sender.objects.get(pk=instance.id)
+    if old_obj.placeholder and old_obj.photo.url != instance.photo.url:
+        old_obj.placeholder.delete(False)
+    if old_obj.photo.url != instance.photo.url:
+        image_file, image_name, file_size, content_type = generate_placeholder(instance.photo, blur, height, quality)
+        instance.placeholder = InMemoryUploadedFile(image_file, field_name="placeholder", name=image_name, size=file_size, content_type=content_type, charset="utf-8")
+
+# This helper function will check the resolution of the uploaded image if it is too large it will reduce its size to 500 * 800 
+# and also generate a blur placeholder of blog post when creating new post
+def optimize_images(instance, image_height, placeholder_blur, placeholder_height, placeholder_quality):
     instance_image = instance.photo
     image_name = instance_image.name
     image = Image.open(instance_image)
@@ -35,21 +43,14 @@ def optimize_images(instance, placeholder_blur, placeholder_height, placeholder_
     return ((main_image_out, image_name, content_type, image_size), (placeholder_out, image_name, content_type, placeholder_size))
     
 
-
-
-
 @receiver(pre_save, sender=Post, dispatch_uid="post.generate_placeholder")
 def get_post_placeholder(instance, sender, **kwargs):
     if instance._state.adding:
-        # get_post_placeholder_helper(instance, 10, 240, 15)
-        image, placeholder = optimize_images(instance, 10, 240, 15)
+        image, placeholder = optimize_images(instance, 500, 10, 240, 15)
         instance.photo = InMemoryUploadedFile(image[0], field_name="photo", name=image[1], content_type=image[2], size=image[3], charset="utf-8")
         instance.placeholder = InMemoryUploadedFile(placeholder[0], field_name="placeholder", name=placeholder[1], content_type=placeholder[2], size=placeholder[3], charset="utf-8")
     else:
-        old_obj = sender.objects.get(pk=instance.id)
-        if old_obj.placeholder and old_obj.photo.url != instance.photo.url:
-            old_obj.placeholder.delete(False)
-        get_post_placeholder_helper(instance, 10, 240, 15)
+        update_post_placeholder_helper(instance, sender, 10, 240, 15)
 
 
 @receiver(pre_delete, sender=Post, dispatch_uid="post.delete_placeholder")
