@@ -4,10 +4,10 @@ from django.db.models.base import Model
 from django.utils.text import slugify
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.conf import settings
-from django.utils.timesince import timesince
+from PIL import Image, ImageFilter
 
 # Others imports
-from .utils import EmployeeIconLocation, SubcategoryIconLocation, ServiceIconLocation
+from .utils import EmployeeIconLocation, SubcategoryIconLocation, ServiceIconLocation, SubcategoryPlaceholderLocation
 
 
 class EmployeeCategory(models.Model):
@@ -32,6 +32,7 @@ class ServiceSubcategory(models.Model):
     name = models.CharField(max_length=100, db_index=True)
     slug = models.SlugField(max_length=100, db_index=True, null=True, blank=True)
     icon = models.ImageField(upload_to=SubcategoryIconLocation, default='Service SubCategory Images/default.jpg')
+    placeholder = models.ImageField(upload_to=SubcategoryPlaceholderLocation, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True, null=True)
     service_specialist = models.ForeignKey(EmployeeCategory, on_delete=models.CASCADE, null=True, related_name='subcategory')
 
