@@ -4,10 +4,9 @@ from django.db.models.base import Model
 from django.utils.text import slugify
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.conf import settings
-from PIL import Image, ImageFilter
 
 # Others imports
-from .utils import EmployeeIconLocation, SubcategoryIconLocation, ServiceIconLocation, SubcategoryPlaceholderLocation
+from .utils import EmployeeIconLocation, SubcategoryIconLocation, ServiceIconLocation, SubcategoryPlaceholderLocation, ServicePlaceholderLocation
 
 
 class EmployeeCategory(models.Model):
@@ -50,6 +49,7 @@ class ServiceSubcategory(models.Model):
 class Service(models.Model):
     name = models.CharField(max_length=100, db_index=True)
     icon = models.ImageField(default='Service Images/default-service.jpg', upload_to=ServiceIconLocation)
+    placeholder = models.ImageField(upload_to=ServicePlaceholderLocation, null=True, blank=True)
     subcategory = models.ForeignKey(ServiceSubcategory, on_delete=models.CASCADE, null=True, related_name='services')
     description = models.TextField(max_length=500, null=True, blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)

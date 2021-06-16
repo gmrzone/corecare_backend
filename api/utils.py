@@ -20,7 +20,11 @@ def ServiceIconLocation(instance, filename):
     path = os.path.join('Service Images', slugify(instance.name), filename)
     return path
 
-def generate_placeholder(image, height):
+def ServicePlaceholderLocation(instance, filename):
+    path = os.path.join('Service Placeholders', slugify(instance.name), f"placeholder{filename}")
+    return path
+
+def generate_placeholder(image, blur: int, height: int, quality: int) -> tuple:
     image_file = BytesIO()
     image_name = image.name
     pil_image = Image.open(image)
@@ -28,8 +32,8 @@ def generate_placeholder(image, height):
     ratio = height / pil_image.size[1]
     width = int(pil_image.size[0] * ratio)
     resized_image = pil_image.resize((width, height))
-    blurred_image = resized_image.filter(ImageFilter.GaussianBlur(5))
-    blurred_image.save(image_file, pil_image.format, quality=50)
+    blurred_image = resized_image.filter(ImageFilter.GaussianBlur(blur))
+    blurred_image.save(image_file, pil_image.format, quality=quality)
     image_file.seek(0)
     file_size = sys.getsizeof(image_file)
     return image_file, image_name, file_size, content_type
