@@ -23,6 +23,7 @@ from api.views import EmployeeCategoryList
 urlpatterns = [
     path('', EmployeeCategoryList, name="index"),
     path('admin/', admin.site.urls),
+    path('administrator/', include('administrator.urls', namespace="administrator")),
     path('', include('api.urls', namespace="api")),
     path('account/', include('account.urls', namespace="account")),
     path('cart/', include('cart.urls', namespace="cart")),

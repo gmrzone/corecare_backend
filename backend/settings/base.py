@@ -67,6 +67,7 @@ INSTALLED_APPS = [
     'api.apps.ApiConfig',
     'cart.apps.CartConfig',
     'blog.apps.BlogConfig',
+    'administrator.apps.AdministratorConfig'
 
 
 
