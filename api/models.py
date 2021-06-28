@@ -31,7 +31,7 @@ class ServiceSubcategory(models.Model):
     name = models.CharField(max_length=100, db_index=True)
     slug = models.SlugField(max_length=100, db_index=True, null=True, blank=True)
     icon = models.ImageField(upload_to=SubcategoryIconLocation, default='Service SubCategory Images/default.jpg')
-    placeholder = models.ImageField(upload_to=SubcategoryPlaceholderLocation, null=True, blank=True)
+    placeholder = models.ImageField(upload_to=SubcategoryPlaceholderLocation, default="placeholder_subcategory_default.jpg", null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True, null=True)
     service_specialist = models.ForeignKey(EmployeeCategory, on_delete=models.CASCADE, null=True, related_name='subcategory')
 
@@ -49,7 +49,7 @@ class ServiceSubcategory(models.Model):
 class Service(models.Model):
     name = models.CharField(max_length=100, db_index=True)
     icon = models.ImageField(default='Service Images/default-service.jpg', upload_to=ServiceIconLocation)
-    placeholder = models.ImageField(upload_to=ServicePlaceholderLocation, null=True, blank=True)
+    placeholder = models.ImageField(upload_to=ServicePlaceholderLocation, default="placeholder_service_default.jpg", null=True, blank=True)
     subcategory = models.ForeignKey(ServiceSubcategory, on_delete=models.CASCADE, null=True, related_name='services')
     description = models.TextField(max_length=500, null=True, blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)

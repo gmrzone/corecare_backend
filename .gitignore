@@ -9,3 +9,6 @@
 /dump_data.txt
 __pycache__/
 old_requirements/
+/staticfiles/media/Service Placeholders/
+/staticfiles/media/Service SubCategory Placeholders/
+/staticfiles/media/Blog_Placeholder/
