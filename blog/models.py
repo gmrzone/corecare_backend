@@ -14,11 +14,11 @@ class DateFieldAbstract(models.Model):
 
 class Post(DateFieldAbstract):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='blog_posts')
-    category = models.ForeignKey(EmployeeCategory, on_delete=models.SET_NULL, related_name="category_posts", null=True)
+    category = models.ForeignKey(EmployeeCategory, on_delete=models.SET_NULL, related_name="category_posts", null=True, blank=True)
     title = models.CharField(max_length=400, db_index=True)
     slug = models.SlugField(max_length=400, db_index=True, blank=True)
     photo = models.ImageField(upload_to=blog_image_location, default="default_blog.jpg", max_length=400)
-    placeholder = models.ImageField(upload_to=blog_image_placeholder_location, null=True, blank=True, max_length=400)
+    placeholder = models.ImageField(upload_to=blog_image_placeholder_location, default="placeholder_default_blog.jpg", null=True, blank=True, max_length=400)
     body = models.TextField(max_length=200000)
     active = models.BooleanField(default=True)
 
