@@ -1,0 +1,3296 @@
+[
+    {
+      "model": "api.employeecategory",
+      "pk": 1,
+      "fields": {
+        "name": "Electrician",
+        "slug": "electrician",
+        "icon": "Employee Category/Electrician/electric_1_SjmnwgB.svg"
+      }
+    },
+    {
+      "model": "api.employeecategory",
+      "pk": 2,
+      "fields": {
+        "name": "Carpenter",
+        "slug": "carpenter",
+        "icon": "Employee Category/Carpenter/wood_1_kH0Zi86.svg"
+      }
+    },
+    {
+      "model": "api.employeecategory",
+      "pk": 3,
+      "fields": {
+        "name": "Cleaner",
+        "slug": "cleaner",
+        "icon": "Employee Category/default.svg"
+      }
+    },
+    {
+      "model": "api.employeecategory",
+      "pk": 4,
+      "fields": {
+        "name": "Painter",
+        "slug": "painter",
+        "icon": "Employee Category/Painter/paint-roller_S2ajg7o.svg"
+      }
+    },
+    {
+      "model": "api.employeecategory",
+      "pk": 5,
+      "fields": {
+        "name": "Plumber",
+        "slug": "plumber",
+        "icon": "Employee Category/Plumber/leak_l0J9fmk.svg"
+      }
+    },
+    {
+      "model": "api.employeecategory",
+      "pk": 6,
+      "fields": {
+        "name": "Pest-Control",
+        "slug": "pest-control",
+        "icon": "Employee Category/default.svg"
+      }
+    },
+    {
+      "model": "api.employeecategory",
+      "pk": 7,
+      "fields": {
+        "name": "AC Service & Repair",
+        "slug": "ac-service-repair",
+        "icon": "Employee Category/AC Service & Repair/repair.svg"
+      }
+    },
+    {
+      "model": "api.employeecategory",
+      "pk": 8,
+      "fields": {
+        "name": "Appliance Repair",
+        "slug": "appliance-repair",
+        "icon": "Employee Category/Appliance Repair/repair_6eDw3TE.svg"
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 4,
+      "fields": {
+        "name": "QuickBook Electrician",
+        "slug": "quickbook-electrician",
+        "icon": "Service SubCategory Images/default.jpg",
+        "created": "2021-02-28T17:32:13.006Z",
+        "service_specialist": 1
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 6,
+      "fields": {
+        "name": "Switch/Socket",
+        "slug": "switchsocket",
+        "icon": "Service SubCategory Images/Switch/Socket/switches.jpg",
+        "created": "2021-02-28T17:32:13.164Z",
+        "service_specialist": 1
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 7,
+      "fields": {
+        "name": "Fan",
+        "slug": "fan",
+        "icon": "Service SubCategory Images/Fan/fan-hd.jpg",
+        "created": "2021-02-28T17:32:13.408Z",
+        "service_specialist": 1
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 8,
+      "fields": {
+        "name": "Light",
+        "slug": "light",
+        "icon": "Service SubCategory Images/Light/lights.jpg",
+        "created": "2021-02-28T17:32:13.652Z",
+        "service_specialist": 1
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 9,
+      "fields": {
+        "name": "Chandelier",
+        "slug": "chandelier",
+        "icon": "Service SubCategory Images/Chandelier/Chandeliers.jpg",
+        "created": "2021-02-28T17:32:13.826Z",
+        "service_specialist": 1
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 10,
+      "fields": {
+        "name": "MCB/Fuse",
+        "slug": "mcbfuse",
+        "icon": "Service SubCategory Images/MCB/Fuse/appliances.jpg",
+        "created": "2021-02-28T17:32:13.999Z",
+        "service_specialist": 1
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 11,
+      "fields": {
+        "name": "Inverter/Stabilizer",
+        "slug": "inverterstabilizer",
+        "icon": "Service SubCategory Images/Inverter/Stabilizer/inverter.png",
+        "created": "2021-02-28T17:32:14.171Z",
+        "service_specialist": 1
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 12,
+      "fields": {
+        "name": "Appliances",
+        "slug": "appliances",
+        "icon": "Service SubCategory Images/Appliances/appliances.jpg",
+        "created": "2021-02-28T17:32:14.330Z",
+        "service_specialist": 1
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 13,
+      "fields": {
+        "name": "Wiring",
+        "slug": "wiring",
+        "icon": "Service SubCategory Images/Wiring/wiring.jpg",
+        "created": "2021-02-28T17:32:14.518Z",
+        "service_specialist": 1
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 14,
+      "fields": {
+        "name": "Door Bell",
+        "slug": "door-bell",
+        "icon": "Service SubCategory Images/Door Bell/door-bell.jpg",
+        "created": "2021-02-28T17:32:14.679Z",
+        "service_specialist": 1
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 15,
+      "fields": {
+        "name": "Drill/Hang",
+        "slug": "drillhang",
+        "icon": "Service SubCategory Images/Drill/Hang/wall-drill1.jpg",
+        "created": "2021-02-28T17:32:14.863Z",
+        "service_specialist": 1
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 16,
+      "fields": {
+        "name": "Room Heater",
+        "slug": "room-heater",
+        "icon": "Service SubCategory Images/Room Heater/room-heater.jpg",
+        "created": "2021-02-28T17:32:15.026Z",
+        "service_specialist": 1
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 18,
+      "fields": {
+        "name": "QuickBook Cleaner",
+        "slug": "quickbook-cleaner",
+        "icon": "Service SubCategory Images/default.jpg",
+        "created": "2021-02-28T17:32:15.199Z",
+        "service_specialist": 3
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 19,
+      "fields": {
+        "name": "Quickbook Plumber",
+        "slug": "quickbook-plumber",
+        "icon": "Service SubCategory Images/default.jpg",
+        "created": "2021-02-28T17:32:15.347Z",
+        "service_specialist": 5
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 20,
+      "fields": {
+        "name": "Basin/sink",
+        "slug": "basinsink",
+        "icon": "Service SubCategory Images/default.jpg",
+        "created": "2021-02-28T17:32:15.493Z",
+        "service_specialist": 5
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 21,
+      "fields": {
+        "name": "Bath Fitting",
+        "slug": "bath-fitting",
+        "icon": "Service SubCategory Images/default.jpg",
+        "created": "2021-02-28T17:32:15.626Z",
+        "service_specialist": 5
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 22,
+      "fields": {
+        "name": "Blockage",
+        "slug": "blockage",
+        "icon": "Service SubCategory Images/default.jpg",
+        "created": "2021-02-28T17:32:15.813Z",
+        "service_specialist": 5
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 23,
+      "fields": {
+        "name": "Tap/Mixer",
+        "slug": "tapmixer",
+        "icon": "Service SubCategory Images/default.jpg",
+        "created": "2021-02-28T17:32:16.052Z",
+        "service_specialist": 5
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 24,
+      "fields": {
+        "name": "Motor",
+        "slug": "motor",
+        "icon": "Service SubCategory Images/default.jpg",
+        "created": "2021-02-28T17:32:16.380Z",
+        "service_specialist": 5
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 25,
+      "fields": {
+        "name": "Water Tank",
+        "slug": "water-tank",
+        "icon": "Service SubCategory Images/default.jpg",
+        "created": "2021-02-28T17:32:16.612Z",
+        "service_specialist": 5
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 26,
+      "fields": {
+        "name": "Toilet",
+        "slug": "toilet",
+        "icon": "Service SubCategory Images/default.jpg",
+        "created": "2021-02-28T17:32:16.847Z",
+        "service_specialist": 5
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 27,
+      "fields": {
+        "name": "Minor Installation",
+        "slug": "minor-installation",
+        "icon": "Service SubCategory Images/default.jpg",
+        "created": "2021-02-28T17:32:17.121Z",
+        "service_specialist": 5
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 28,
+      "fields": {
+        "name": "QuickBook Carpenter",
+        "slug": "quickbook-carpenter",
+        "icon": "Service SubCategory Images/default.jpg",
+        "created": "2021-02-28T17:32:17.335Z",
+        "service_specialist": 2
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 29,
+      "fields": {
+        "name": "Balcony",
+        "slug": "balcony",
+        "icon": "Service SubCategory Images/Balcony/carpenter.jpg",
+        "created": "2021-02-28T17:32:17.685Z",
+        "service_specialist": 2
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 30,
+      "fields": {
+        "name": "Bed",
+        "slug": "bed",
+        "icon": "Service SubCategory Images/Bed/bed.jpg",
+        "created": "2021-02-28T17:32:18.036Z",
+        "service_specialist": 2
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 31,
+      "fields": {
+        "name": "Cupboard/Drawer",
+        "slug": "cupboarddrawer",
+        "icon": "Service SubCategory Images/Cupboard/Drawer/carpentry.jpg",
+        "created": "2021-02-28T17:32:18.301Z",
+        "service_specialist": 2
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 32,
+      "fields": {
+        "name": "Door",
+        "slug": "door",
+        "icon": "Service SubCategory Images/Door/door.jpg",
+        "created": "2021-02-28T17:32:18.596Z",
+        "service_specialist": 2
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 33,
+      "fields": {
+        "name": "Drill/Hang",
+        "slug": "drillhang",
+        "icon": "Service SubCategory Images/Drill/Hang/carpenter.jpg",
+        "created": "2021-02-28T17:32:18.820Z",
+        "service_specialist": 2
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 34,
+      "fields": {
+        "name": "Window/Curtain",
+        "slug": "windowcurtain",
+        "icon": "Service SubCategory Images/Window/Curtain/furniture-repair.jpg",
+        "created": "2021-02-28T17:32:19.064Z",
+        "service_specialist": 2
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 35,
+      "fields": {
+        "name": "Furniture Repair",
+        "slug": "furniture-repair",
+        "icon": "Service SubCategory Images/Furniture Repair/furniture-repair1.jpg",
+        "created": "2021-02-28T17:32:19.319Z",
+        "service_specialist": 2
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 36,
+      "fields": {
+        "name": "Furniture Assembly",
+        "slug": "furniture-assembly",
+        "icon": "Service SubCategory Images/Furniture Assembly/furniture-repair.jpg",
+        "created": "2021-02-28T17:32:19.522Z",
+        "service_specialist": 2
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 37,
+      "fields": {
+        "name": "Basic Cleaning",
+        "slug": "basic-cleaning",
+        "icon": "Service SubCategory Images/Basic Cleaning/cleaning_gOKgbZf.jpg",
+        "created": "2021-02-28T17:32:19.725Z",
+        "service_specialist": 3
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 40,
+      "fields": {
+        "name": "Deep Cleaning",
+        "slug": "deep-cleaning",
+        "icon": "Service SubCategory Images/Deep Cleaning/cleaning2_7g4qjkw.jpg",
+        "created": "2021-02-28T17:32:19.867Z",
+        "service_specialist": 3
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 41,
+      "fields": {
+        "name": "Sofa Shampooing",
+        "slug": "sofa-shampooing",
+        "icon": "Service SubCategory Images/Sofa Shampooing/sofa_cleaning_new.jpg",
+        "created": "2021-02-28T17:32:19.990Z",
+        "service_specialist": 3
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 42,
+      "fields": {
+        "name": "Bathroom Deep Cleaning",
+        "slug": "bathroom-deep-cleaning",
+        "icon": "Service SubCategory Images/Bathroom Deep Cleaning/bathroom-cleaning-services.jpg",
+        "created": "2021-03-01T12:28:25.787Z",
+        "service_specialist": 3
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 43,
+      "fields": {
+        "name": "Floor Scrubbing and Polishing",
+        "slug": "floor-scrubbing-and-polishing",
+        "icon": "Service SubCategory Images/Floor Scrubbing and Polishing/floor-cleaning.jpg",
+        "created": "2021-03-01T12:29:24.410Z",
+        "service_specialist": 3
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 44,
+      "fields": {
+        "name": "Home Painting",
+        "slug": "home-painting",
+        "icon": "Service SubCategory Images/default.jpg",
+        "created": "2021-03-29T13:06:34.714Z",
+        "service_specialist": 4
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 45,
+      "fields": {
+        "name": "Water Proofing",
+        "slug": "water-proofing",
+        "icon": "Service SubCategory Images/default.jpg",
+        "created": "2021-03-29T13:06:59.544Z",
+        "service_specialist": 4
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 46,
+      "fields": {
+        "name": "Textured Wall",
+        "slug": "textured-wall",
+        "icon": "Service SubCategory Images/default.jpg",
+        "created": "2021-03-29T13:07:33.759Z",
+        "service_specialist": 4
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 47,
+      "fields": {
+        "name": "Enamel Painting",
+        "slug": "enamel-painting",
+        "icon": "Service SubCategory Images/default.jpg",
+        "created": "2021-03-29T13:08:19.535Z",
+        "service_specialist": 4
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 48,
+      "fields": {
+        "name": "Wood Polishing",
+        "slug": "wood-polishing",
+        "icon": "Service SubCategory Images/default.jpg",
+        "created": "2021-03-29T13:08:38.223Z",
+        "service_specialist": 4
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 49,
+      "fields": {
+        "name": "Wallpaper / Stencils",
+        "slug": "wallpaper-stencils",
+        "icon": "Service SubCategory Images/default.jpg",
+        "created": "2021-03-29T13:09:09.565Z",
+        "service_specialist": 4
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 50,
+      "fields": {
+        "name": "Service",
+        "slug": "service",
+        "icon": "Service SubCategory Images/default.jpg",
+        "created": "2021-03-29T17:48:36.824Z",
+        "service_specialist": 7
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 51,
+      "fields": {
+        "name": "Repair",
+        "slug": "repair",
+        "icon": "Service SubCategory Images/default.jpg",
+        "created": "2021-03-29T17:48:45.183Z",
+        "service_specialist": 7
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 52,
+      "fields": {
+        "name": "Installation",
+        "slug": "installation",
+        "icon": "Service SubCategory Images/default.jpg",
+        "created": "2021-03-29T17:49:17.084Z",
+        "service_specialist": 7
+      }
+    },
+    {
+      "model": "api.servicesubcategory",
+      "pk": 53,
+      "fields": {
+        "name": "Uninstallation",
+        "slug": "uninstallation",
+        "icon": "Service SubCategory Images/default.jpg",
+        "created": "2021-03-29T17:49:26.787Z",
+        "service_specialist": 7
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 1,
+      "fields": {
+        "name": "Residential Basic Cleaning",
+        "icon": "Service Images/Residential Basic Cleaning/deep_cleaning1_optimized.jpg",
+        "subcategory": 37,
+        "description": "",
+        "price": "3000.00",
+        "created": "2021-02-28T14:33:38.016Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 2,
+      "fields": {
+        "name": "Residential Deep Cleaning",
+        "icon": "Service Images/Residential Deep Cleaning/deep_cleaning1_optimized.jpg",
+        "subcategory": 40,
+        "description": "",
+        "price": "4500.00",
+        "created": "2021-02-28T14:33:38.154Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 3,
+      "fields": {
+        "name": "Office Deep Cleaning",
+        "icon": "Service Images/Office Deep Cleaning/deep_cleaning2__optimized.jpg",
+        "subcategory": 40,
+        "description": "",
+        "price": "5000.00",
+        "created": "2021-02-28T14:33:38.252Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 4,
+      "fields": {
+        "name": "Office Basic Cleaning",
+        "icon": "Service Images/Office Basic Cleaning/deep_cleaning2__optimized.jpg",
+        "subcategory": 37,
+        "description": "",
+        "price": "3500.00",
+        "created": "2021-02-28T14:33:38.357Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 5,
+      "fields": {
+        "name": "Sofa Cleaning Services",
+        "icon": "Service Images/Sofa Cleaning Services/sofa-cleaning-services_optimized.jpg",
+        "subcategory": 41,
+        "description": "",
+        "price": "200.00",
+        "created": "2021-02-28T14:33:38.445Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 6,
+      "fields": {
+        "name": "Swift Survey",
+        "icon": "Service Images/Swift Survey/quick_book.jpeg",
+        "subcategory": 4,
+        "description": "",
+        "price": "50.00",
+        "created": "2021-02-28T14:33:38.551Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 7,
+      "fields": {
+        "name": "AC Switchbox Installation",
+        "icon": "Service Images/AC Switchbox Installation/Ac_switchbox_IX83KF4.jpg",
+        "subcategory": 6,
+        "description": "",
+        "price": "319.00",
+        "created": "2021-02-28T14:33:38.639Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 8,
+      "fields": {
+        "name": "Switchboard Installation (Upto 6 Switches)",
+        "icon": "Service Images/Switchboard Installation (Upto 6 Switches)/switchboard.jpg",
+        "subcategory": 6,
+        "description": "Includes only one switchboard",
+        "price": "249.00",
+        "created": "2021-02-28T14:33:38.734Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 9,
+      "fields": {
+        "name": "Switch board Repair (Upto 6 Switches)",
+        "icon": "Service Images/Switch board Repair (Upto 6 Switches)/switchboard_repair.jpg",
+        "subcategory": 6,
+        "description": "Includes only one switchboard",
+        "price": "99.00",
+        "created": "2021-02-28T14:33:38.822Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 10,
+      "fields": {
+        "name": "Switch & Socket Replacement",
+        "icon": "Service Images/Switch & Socket Replacement/socket_replacement.jpg",
+        "subcategory": 6,
+        "description": "Includes only one switchboard",
+        "price": "69.00",
+        "created": "2021-02-28T14:33:38.918Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 11,
+      "fields": {
+        "name": "Ceiling Fan Regulator Replacement",
+        "icon": "Service Images/Ceiling Fan Regulator Replacement/fan_regulator.jpg",
+        "subcategory": 7,
+        "description": "",
+        "price": "79.00",
+        "created": "2021-02-28T14:33:39.015Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 12,
+      "fields": {
+        "name": "Decorative Ceiling Fan Installation",
+        "icon": "Service Images/Decorative Ceiling Fan Installation/decorative_fan.jpg",
+        "subcategory": 7,
+        "description": "",
+        "price": "419.00",
+        "created": "2021-02-28T14:33:39.110Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 13,
+      "fields": {
+        "name": "Normal Fan Installation",
+        "icon": "Service Images/Normal Fan Installation/normal_fan.jpeg",
+        "subcategory": 7,
+        "description": "",
+        "price": "119.00",
+        "created": "2021-02-28T14:33:39.198Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 14,
+      "fields": {
+        "name": "Fan Repair",
+        "icon": "Service Images/Fan Repair/normal_fan.jpeg",
+        "subcategory": 7,
+        "description": "",
+        "price": "169.00",
+        "created": "2021-02-28T14:33:39.293Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 15,
+      "fields": {
+        "name": "Fan Replacement",
+        "icon": "Service Images/Fan Replacement/normal_fan.jpeg",
+        "subcategory": 7,
+        "description": "",
+        "price": "189.00",
+        "created": "2021-02-28T14:33:39.381Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 16,
+      "fields": {
+        "name": "Fan Unistallation",
+        "icon": "Service Images/Fan Unistallation/normal_fan.jpeg",
+        "subcategory": 7,
+        "description": "",
+        "price": "99.00",
+        "created": "2021-02-28T14:33:39.466Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 17,
+      "fields": {
+        "name": "Bulbs Replacement (5 nos)",
+        "icon": "Service Images/Bulbs Replacement (5 nos)/bulb_replacement.jpg",
+        "subcategory": 8,
+        "description": "",
+        "price": "119.00",
+        "created": "2021-02-28T14:33:39.564Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 18,
+      "fields": {
+        "name": "Bulb Holder Installation",
+        "icon": "Service Images/Bulb Holder Installation/bulb_replacement.jpg",
+        "subcategory": 8,
+        "description": "",
+        "price": "99.00",
+        "created": "2021-02-28T14:33:39.670Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 19,
+      "fields": {
+        "name": "Decorative Wall Light/ Ceiling Light",
+        "icon": "Service Images/Decorative Wall Light/ Ceiling Light/decorative_light.jpg",
+        "subcategory": 8,
+        "description": "",
+        "price": "149.00",
+        "created": "2021-02-28T14:33:39.758Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 20,
+      "fields": {
+        "name": "Tube Light or Bed Light",
+        "icon": "Service Images/Tube Light or Bed Light/bulb_replacement.jpg",
+        "subcategory": 8,
+        "description": "",
+        "price": "99.00",
+        "created": "2021-02-28T14:33:39.843Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 21,
+      "fields": {
+        "name": "Replace CFL to LED",
+        "icon": "Service Images/Replace CFL to LED/bulb_replacement.jpg",
+        "subcategory": 8,
+        "description": "",
+        "price": "149.00",
+        "created": "2021-02-28T14:33:39.941Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 22,
+      "fields": {
+        "name": "Chandelier Installation",
+        "icon": "Service Images/Chandelier Installation/chandeliar_install.jpeg",
+        "subcategory": 9,
+        "description": "",
+        "price": "419.00",
+        "created": "2021-02-28T14:33:40.168Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 23,
+      "fields": {
+        "name": "Chandelier Installation (more than 6 Bulbs)",
+        "icon": "Service Images/Chandelier Installation (more than 6 Bulbs)/chandeliar_install_2.jpeg",
+        "subcategory": 9,
+        "description": "",
+        "price": "899.00",
+        "created": "2021-02-28T14:33:40.266Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 24,
+      "fields": {
+        "name": "3 Phase Changeover switch Installation",
+        "icon": "Service Images/3 Phase Changeover switch Installation/change_over_switch.jpg",
+        "subcategory": 10,
+        "description": "",
+        "price": "319.00",
+        "created": "2021-02-28T14:33:40.422Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 25,
+      "fields": {
+        "name": "Fuse Replacement",
+        "icon": "Service Images/Fuse Replacement/fuse_replacement.jpg",
+        "subcategory": 10,
+        "description": "",
+        "price": "99.00",
+        "created": "2021-02-28T14:33:40.511Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 26,
+      "fields": {
+        "name": "Single Pole MCB Installation",
+        "icon": "Service Images/Single Pole MCB Installation/single_mole_mcb.jpg",
+        "subcategory": 10,
+        "description": "",
+        "price": "109.00",
+        "created": "2021-02-28T14:33:40.605Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 27,
+      "fields": {
+        "name": "Sub Meter Installation",
+        "icon": "Service Images/Sub Meter Installation/sub-meter.jpeg",
+        "subcategory": 10,
+        "description": "",
+        "price": "269.00",
+        "created": "2021-02-28T14:33:40.693Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 28,
+      "fields": {
+        "name": "Single Battery Inverter Installation",
+        "icon": "Service Images/Single Battery Inverter Installation/single_battry_inverter.jpeg",
+        "subcategory": 11,
+        "description": "",
+        "price": "419.00",
+        "created": "2021-02-28T14:33:40.799Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 29,
+      "fields": {
+        "name": "Double Battery Inverter Installation",
+        "icon": "Service Images/Double Battery Inverter Installation/double_battry_inverter.jpg",
+        "subcategory": 11,
+        "description": "",
+        "price": "499.00",
+        "created": "2021-02-28T14:33:40.886Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 30,
+      "fields": {
+        "name": "Inverter Fuse Repair",
+        "icon": "Service Images/Inverter Fuse Repair/inverter_fuse.jpeg",
+        "subcategory": 11,
+        "description": "",
+        "price": "119.00",
+        "created": "2021-02-28T14:33:40.982Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 39,
+      "fields": {
+        "name": "Inverter Servicing",
+        "icon": "Service Images/Inverter Servicing/inverter_fuse.jpeg",
+        "subcategory": 11,
+        "description": "",
+        "price": "219.00",
+        "created": "2021-02-28T14:33:41.070Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 40,
+      "fields": {
+        "name": "Stablizer Installation or Repair",
+        "icon": "Service Images/Stablizer Installation or Repair/steblaizer.jpeg",
+        "subcategory": 11,
+        "description": "",
+        "price": "169.00",
+        "created": "2021-02-28T14:33:41.226Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 41,
+      "fields": {
+        "name": "Geyser Installation",
+        "icon": "Service Images/Geyser Installation/geaser.jpg",
+        "subcategory": 12,
+        "description": "",
+        "price": "419.00",
+        "created": "2021-02-28T14:33:41.324Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 42,
+      "fields": {
+        "name": "Geyser Unistallation",
+        "icon": "Service Images/Geyser Unistallation/geaser.jpg",
+        "subcategory": 12,
+        "description": "",
+        "price": "369.00",
+        "created": "2021-02-28T14:33:41.419Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 43,
+      "fields": {
+        "name": "TV Installation (Upto 48 Inches)",
+        "icon": "Service Images/TV Installation (Upto 48 Inches)/tv_above_48.jpg",
+        "subcategory": 12,
+        "description": "",
+        "price": "419.00",
+        "created": "2021-02-28T14:33:41.517Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 44,
+      "fields": {
+        "name": "TV Installation (Above 48 Inches)",
+        "icon": "Service Images/TV Installation (Above 48 Inches)/tv_1.jpeg",
+        "subcategory": 12,
+        "description": "",
+        "price": "499.00",
+        "created": "2021-02-28T14:33:41.612Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 45,
+      "fields": {
+        "name": "TV Unistallation",
+        "icon": "Service Images/TV Unistallation/tv_1.jpeg",
+        "subcategory": 12,
+        "description": "",
+        "price": "169.00",
+        "created": "2021-02-28T14:33:41.700Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 46,
+      "fields": {
+        "name": "Home Theater Installation",
+        "icon": "Service Images/Home Theater Installation/home_theatre.jpg",
+        "subcategory": 12,
+        "description": "",
+        "price": "269.00",
+        "created": "2021-02-28T14:33:41.795Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 47,
+      "fields": {
+        "name": "Stablizer Installation or Repair",
+        "icon": "Service Images/Stablizer Installation or Repair/steblaizer_esnf49M.jpeg",
+        "subcategory": 12,
+        "description": "",
+        "price": "169.00",
+        "created": "2021-02-28T14:33:41.893Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 48,
+      "fields": {
+        "name": "Internal Wiring (Per 5M)",
+        "icon": "Service Images/Internal Wiring (Per 5M)/internal_wiring.jpg",
+        "subcategory": 13,
+        "description": "",
+        "price": "199.00",
+        "created": "2021-02-28T14:33:41.999Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 49,
+      "fields": {
+        "name": "Casing Wiring (Per 5M)",
+        "icon": "Service Images/Casing Wiring (Per 5M)/casing_wiring.jpeg",
+        "subcategory": 13,
+        "description": "",
+        "price": "219.00",
+        "created": "2021-02-28T14:33:42.097Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 50,
+      "fields": {
+        "name": "Wiring without Casing (Per 5M)",
+        "icon": "Service Images/Wiring without Casing (Per 5M)/wiring_without_casing.jpeg",
+        "subcategory": 13,
+        "description": "",
+        "price": "99.00",
+        "created": "2021-02-28T14:33:42.193Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 51,
+      "fields": {
+        "name": "Door Bell Installation",
+        "icon": "Service Images/Door Bell Installation/door_bell.jpeg",
+        "subcategory": 14,
+        "description": "",
+        "price": "69.00",
+        "created": "2021-02-28T14:33:42.280Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 52,
+      "fields": {
+        "name": "Door Bell Repair",
+        "icon": "Service Images/Door Bell Repair/door_bell.jpeg",
+        "subcategory": 14,
+        "description": "",
+        "price": "69.00",
+        "created": "2021-02-28T14:33:42.376Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 54,
+      "fields": {
+        "name": "Drill Hole & Hang (Pack of 2)",
+        "icon": "Service Images/Drill Hole & Hang (Pack of 2)/drill_hang.jpeg",
+        "subcategory": 15,
+        "description": "",
+        "price": "69.00",
+        "created": "2021-02-28T14:33:42.671Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 55,
+      "fields": {
+        "name": "Room Heater Repair",
+        "icon": "Service Images/Room Heater Repair/home_heater.jpg",
+        "subcategory": 16,
+        "description": "",
+        "price": "269.00",
+        "created": "2021-02-28T14:33:42.787Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 57,
+      "fields": {
+        "name": "Swift Survey",
+        "icon": "Service Images/Swift Survey/geaser.jpg",
+        "subcategory": 18,
+        "description": "",
+        "price": "50.00",
+        "created": "2021-02-28T14:33:42.901Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 59,
+      "fields": {
+        "name": "Swift Survey",
+        "icon": "Service Images/Swift Survey/geaser_TKauTuS.jpg",
+        "subcategory": 19,
+        "description": "",
+        "price": "50.00",
+        "created": "2021-02-28T14:33:43.125Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 60,
+      "fields": {
+        "name": "Waste Pipe",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 20,
+        "description": "",
+        "price": "119.00",
+        "created": "2021-02-28T14:33:43.292Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 61,
+      "fields": {
+        "name": "Washbasin Repair",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 20,
+        "description": "",
+        "price": "169.00",
+        "created": "2021-02-28T14:33:43.468Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 62,
+      "fields": {
+        "name": "Wash basin installation",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 20,
+        "description": "",
+        "price": "419.00",
+        "created": "2021-02-28T14:33:43.668Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 63,
+      "fields": {
+        "name": "Bath Fitting Installation",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 21,
+        "description": "",
+        "price": "99.00",
+        "created": "2021-02-28T14:33:43.852Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 64,
+      "fields": {
+        "name": "Shower Installation-Ceiling Mounted",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 21,
+        "description": "",
+        "price": "169.00",
+        "created": "2021-02-28T14:33:43.991Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 65,
+      "fields": {
+        "name": "Shower Installation Wall Mounted or Handheld",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 21,
+        "description": "",
+        "price": "139.00",
+        "created": "2021-02-28T14:33:44.141Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 66,
+      "fields": {
+        "name": "Balcony Pipe",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 22,
+        "description": "",
+        "price": "269.00",
+        "created": "2021-02-28T14:33:44.268Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 67,
+      "fields": {
+        "name": "Drainage pipe (Overground)",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 22,
+        "description": "",
+        "price": "169.00",
+        "created": "2021-02-28T14:33:44.365Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 68,
+      "fields": {
+        "name": "Drainage pipe (Underground)",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 22,
+        "description": "",
+        "price": "369.00",
+        "created": "2021-02-28T14:33:44.482Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 69,
+      "fields": {
+        "name": "Toilet Pot",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 22,
+        "description": "",
+        "price": "1299.00",
+        "created": "2021-02-28T14:33:44.634Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 70,
+      "fields": {
+        "name": "Hot And Cold Water Mixer Installation",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 23,
+        "description": "",
+        "price": "419.00",
+        "created": "2021-02-28T14:33:44.772Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 71,
+      "fields": {
+        "name": "Hot And Cold Water Mixer Repair",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 23,
+        "description": "",
+        "price": "269.00",
+        "created": "2021-02-28T14:33:44.878Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 72,
+      "fields": {
+        "name": "Tap Installation",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 23,
+        "description": "",
+        "price": "79.00",
+        "created": "2021-02-28T14:33:44.965Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 73,
+      "fields": {
+        "name": "Tap Repair",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 23,
+        "description": "",
+        "price": "79.00",
+        "created": "2021-02-28T14:33:45.091Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 74,
+      "fields": {
+        "name": "Tap Replacement",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 23,
+        "description": "",
+        "price": "99.00",
+        "created": "2021-02-28T14:33:45.179Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 75,
+      "fields": {
+        "name": "Water Saving Nozzle",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 23,
+        "description": "",
+        "price": "119.00",
+        "created": "2021-02-28T14:33:45.285Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 76,
+      "fields": {
+        "name": "Motor Installation",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 24,
+        "description": "",
+        "price": "419.00",
+        "created": "2021-02-28T14:33:45.382Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 77,
+      "fields": {
+        "name": "Motor Air Cavity Removal",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 24,
+        "description": "",
+        "price": "119.00",
+        "created": "2021-02-28T14:33:45.509Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 78,
+      "fields": {
+        "name": "Motor Replacement",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 24,
+        "description": "",
+        "price": "499.00",
+        "created": "2021-02-28T14:33:45.688Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 79,
+      "fields": {
+        "name": "Connection Hose",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 27,
+        "description": "",
+        "price": "119.00",
+        "created": "2021-02-28T14:33:45.783Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 80,
+      "fields": {
+        "name": "Drain Cover",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 27,
+        "description": "",
+        "price": "119.00",
+        "created": "2021-02-28T14:33:45.871Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 81,
+      "fields": {
+        "name": "Washing Machine Inlet",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 27,
+        "description": "",
+        "price": "159.00",
+        "created": "2021-02-28T14:33:46.068Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 82,
+      "fields": {
+        "name": "Flush Tank Repair (Concealed)",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 26,
+        "description": "",
+        "price": "269.00",
+        "created": "2021-02-28T14:33:46.166Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 83,
+      "fields": {
+        "name": "Flush Tank Repair (External)",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 26,
+        "description": "",
+        "price": "139.00",
+        "created": "2021-02-28T14:33:46.281Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 84,
+      "fields": {
+        "name": "Flush Tank Replacement",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 26,
+        "description": "",
+        "price": "499.00",
+        "created": "2021-02-28T14:33:46.379Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 85,
+      "fields": {
+        "name": "Indian Toiler Installation",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 26,
+        "description": "",
+        "price": "1699.00",
+        "created": "2021-02-28T14:33:46.485Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 86,
+      "fields": {
+        "name": "Toilet Seat Cover Replacement",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 26,
+        "description": "",
+        "price": "119.00",
+        "created": "2021-02-28T14:33:46.573Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 87,
+      "fields": {
+        "name": "Water Jet Spray",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 26,
+        "description": "",
+        "price": "119.00",
+        "created": "2021-02-28T14:33:46.688Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 88,
+      "fields": {
+        "name": "Western Toilet Installation (Floor Mounted)",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 26,
+        "description": "",
+        "price": "1499.00",
+        "created": "2021-02-28T14:33:46.776Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 89,
+      "fields": {
+        "name": "Western Toilet Repair (Floor Mounted)",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 26,
+        "description": "",
+        "price": "699.00",
+        "created": "2021-02-28T14:33:46.902Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 90,
+      "fields": {
+        "name": "Western Toilet Replacement (Floor Mounted)",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 26,
+        "description": "",
+        "price": "1699.00",
+        "created": "2021-02-28T14:33:46.990Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 91,
+      "fields": {
+        "name": "Western Toilet Installation (Wall Mounted)",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 26,
+        "description": null,
+        "price": "1799.00",
+        "created": "2021-02-28T14:33:47.085Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 92,
+      "fields": {
+        "name": "Western Toilet Replacement (Wall Mounted)",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 26,
+        "description": "",
+        "price": "1899.00",
+        "created": "2021-02-28T14:33:47.174Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 93,
+      "fields": {
+        "name": "Ceramic Flush Tank Repair",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 26,
+        "description": "",
+        "price": "269.00",
+        "created": "2021-02-28T14:33:47.336Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 94,
+      "fields": {
+        "name": "Overhead Tank Installation (Upto 500L)",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 25,
+        "description": "",
+        "price": "599.00",
+        "created": "2021-02-28T14:33:47.441Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 95,
+      "fields": {
+        "name": "Overhead Tank Installation (500L-2000L)",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 25,
+        "description": "",
+        "price": "1199.00",
+        "created": "2021-02-28T14:33:47.569Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 96,
+      "fields": {
+        "name": "Overhead Tank Overflow",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 25,
+        "description": "",
+        "price": "169.00",
+        "created": "2021-02-28T14:33:47.665Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 97,
+      "fields": {
+        "name": "Overhead Tank Leakage",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 25,
+        "description": "",
+        "price": "269.00",
+        "created": "2021-02-28T14:33:47.773Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 98,
+      "fields": {
+        "name": "Overhead Tank Cleaning(Upto 1000L)",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 25,
+        "description": "",
+        "price": "799.00",
+        "created": "2021-02-28T14:33:47.900Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 99,
+      "fields": {
+        "name": "Overhead Tank Cleaning (1001L to 2000L)",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 25,
+        "description": "",
+        "price": "1199.00",
+        "created": "2021-02-28T14:33:48.007Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 100,
+      "fields": {
+        "name": "Underground Tank Cleaning (1000L-1500L)",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 25,
+        "description": "",
+        "price": "1299.00",
+        "created": "2021-02-28T14:33:48.203Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 101,
+      "fields": {
+        "name": "Underground Tank Cleaning (1500L-3000L)",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 25,
+        "description": "",
+        "price": "1699.00",
+        "created": "2021-02-28T14:33:48.347Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 102,
+      "fields": {
+        "name": "Water Meter Installation(Over the Ground)",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 25,
+        "description": "",
+        "price": "369.00",
+        "created": "2021-02-28T14:33:48.475Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 103,
+      "fields": {
+        "name": "Swift Survey",
+        "icon": "Service Images/swift-survey/quick_book.jpeg",
+        "subcategory": 28,
+        "description": "Express Checkout in one-click  \r\nPay as per rate card",
+        "price": "50.00",
+        "created": "2021-02-28T14:33:48.591Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 104,
+      "fields": {
+        "name": "Cloth Ceiling Hanger Installation",
+        "icon": "Service Images/cloth-ceiling-hanger-installation/Cloth_hanger.jpeg",
+        "subcategory": 29,
+        "description": "Including Roof Drilling",
+        "price": "499.00",
+        "created": "2021-02-28T14:33:48.700Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 105,
+      "fields": {
+        "name": "Cloth Wall Hanger Installation",
+        "icon": "Service Images/cloth-wall-hanger-installation/cloth_wall_hanger.jpeg",
+        "subcategory": 29,
+        "description": "Does not include roof driling",
+        "price": "199.00",
+        "created": "2021-02-28T14:33:48.815Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 106,
+      "fields": {
+        "name": "Bed Support Repair",
+        "icon": "Service Images/bed-support-repair/bed_repair.jpeg",
+        "subcategory": 30,
+        "description": "",
+        "price": "419.00",
+        "created": "2021-02-28T14:33:48.903Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 107,
+      "fields": {
+        "name": "Bed Headboard / leg Repair",
+        "icon": "Service Images/bed-headboard-leg-repair/bed_leg.jpeg",
+        "subcategory": 30,
+        "description": "Includes repair of either single headboard or leg",
+        "price": "199.00",
+        "created": "2021-02-28T14:33:49.059Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 108,
+      "fields": {
+        "name": "Cupboard Hinge (2 nos.)",
+        "icon": "Service Images/cupboard-hinge-2-nos/hinge.jpeg",
+        "subcategory": 31,
+        "description": "Installation or Repair",
+        "price": "169.00",
+        "created": "2021-02-28T14:33:49.177Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 109,
+      "fields": {
+        "name": "Channel Repair",
+        "icon": "Service Images/channel-repair/channel.jpeg",
+        "subcategory": 31,
+        "description": "",
+        "price": "149.00",
+        "created": "2021-02-28T14:33:49.262Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 110,
+      "fields": {
+        "name": "Channel Replacement",
+        "icon": "Service Images/channel-replacement/channel.jpeg",
+        "subcategory": 31,
+        "description": "",
+        "price": "199.00",
+        "created": "2021-02-28T14:33:49.380Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 111,
+      "fields": {
+        "name": "Handle Replacement",
+        "icon": "Service Images/handle-replacement/handle_replacement.jpeg",
+        "subcategory": 31,
+        "description": "",
+        "price": "79.00",
+        "created": "2021-02-28T14:33:49.485Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 112,
+      "fields": {
+        "name": "Lock Replacement",
+        "icon": "Service Images/lock-replacement/lock_replacement.jpeg",
+        "subcategory": 31,
+        "description": "",
+        "price": "119.00",
+        "created": "2021-02-28T14:33:49.605Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 113,
+      "fields": {
+        "name": "Lock Installation",
+        "icon": "Service Images/lock-installation/lock_repair.jpeg",
+        "subcategory": 31,
+        "description": "",
+        "price": "419.00",
+        "created": "2021-02-28T14:33:49.689Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 114,
+      "fields": {
+        "name": "Lock Repair",
+        "icon": "Service Images/lock-repair/lock_repair.jpeg",
+        "subcategory": 31,
+        "description": "",
+        "price": "189.00",
+        "created": "2021-02-28T14:33:49.798Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 115,
+      "fields": {
+        "name": "Sliding Door Repair",
+        "icon": "Service Images/sliding-door-repair/sliding_door_iAEJfle.jpeg",
+        "subcategory": 31,
+        "description": "",
+        "price": "369.00",
+        "created": "2021-02-28T14:33:49.903Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 116,
+      "fields": {
+        "name": "Glass Shelf Installation",
+        "icon": "Service Images/glass-shelf-installation/glass_shelf_leh8SRe.jpeg",
+        "subcategory": 31,
+        "description": "Glass Shelf Installation using Clamps",
+        "price": "139.00",
+        "created": "2021-02-28T14:33:50.021Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 117,
+      "fields": {
+        "name": "Wooden Shelf Installation",
+        "icon": "Service Images/wooden-shelf-installation/wooden_shelf_9i9DY4X.jpg",
+        "subcategory": 31,
+        "description": "Wooden Shelf Installation using Clamps",
+        "price": "249.00",
+        "created": "2021-02-28T14:33:50.116Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 118,
+      "fields": {
+        "name": "Accessory Installation",
+        "icon": "Service Images/accessory-installation/accessory_installation.jpeg",
+        "subcategory": 32,
+        "description": "Any one of Latch, Chain, Stopper, Magnet  \r\nCharge for Single Accessory  \r\nAdditional charges for multiple accessory installation",
+        "price": "99.00",
+        "created": "2021-02-28T14:33:50.225Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 119,
+      "fields": {
+        "name": "Aldrop and Door Peephole Installation",
+        "icon": "Service Images/aldrop-and-door-peephole-installation/door_lock.jpg",
+        "subcategory": 32,
+        "description": "",
+        "price": "119.00",
+        "created": "2021-02-28T14:33:50.326Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 120,
+      "fields": {
+        "name": "Door Installation",
+        "icon": "Service Images/door-installation/door_install.jpeg",
+        "subcategory": 32,
+        "description": "For Wooden Doors Only  \r\nIncludes hinge installation, aldrop installation and wood chiseling  \r\nmain door installation Rs 1099",
+        "price": "699.00",
+        "created": "2021-02-28T14:33:50.432Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 121,
+      "fields": {
+        "name": "Door Repair",
+        "icon": "Service Images/door-repair/door_install.jpeg",
+        "subcategory": 32,
+        "description": "Wood Scraping  \r\nDoor Alignment and minor fixes  \r\nExcludes main door  \r\nExcludes hinge replacement, door dismantle and any other lock repair",
+        "price": "169.00",
+        "created": "2021-02-28T14:33:50.540Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 122,
+      "fields": {
+        "name": "Hinge Installation",
+        "icon": "Service Images/hinge-installation/hinge.jpeg",
+        "subcategory": 32,
+        "description": "Extra Rs. 100 if door is Dismantle\r\nApplicable for one door set",
+        "price": "219.00",
+        "created": "2021-02-28T14:33:50.646Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 123,
+      "fields": {
+        "name": "Hinge Installation (including door dismantling)",
+        "icon": "Service Images/hinge-installation-including-door-dismantling/hinge.jpeg",
+        "subcategory": 32,
+        "description": "",
+        "price": "319.00",
+        "created": "2021-02-28T14:33:50.753Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 124,
+      "fields": {
+        "name": "Door Lock Installation",
+        "icon": "Service Images/door-lock-installation/door_lock.jpg",
+        "subcategory": 32,
+        "description": "Includes Creating cavity and installing lock",
+        "price": "499.00",
+        "created": "2021-02-28T14:33:50.849Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 125,
+      "fields": {
+        "name": "Door Lock Replacement",
+        "icon": "Service Images/door-lock-replacement/door-lock2.jpg",
+        "subcategory": 32,
+        "description": "Replacing Existing lock with new one",
+        "price": "419.00",
+        "created": "2021-02-28T14:33:50.936Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 126,
+      "fields": {
+        "name": "Door Lock Repair",
+        "icon": "Service Images/door-lock-repair/door_lock.jpg",
+        "subcategory": 32,
+        "description": "",
+        "price": "219.00",
+        "created": "2021-02-28T14:33:51.043Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 127,
+      "fields": {
+        "name": "Mesh Grill Door Installation",
+        "icon": "Service Images/mesh-grill-door-installation/mesh_grill.jpg",
+        "subcategory": 32,
+        "description": "Excludes Metallic/ aluminium door  \r\nExcludes Replacement of Mesh/jaali",
+        "price": "419.00",
+        "created": "2021-02-28T14:33:51.150Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 128,
+      "fields": {
+        "name": "Mesh Grill Door (Mesh Replacement)",
+        "icon": "Service Images/mesh-grill-door-mesh-replacement/mesh_grill.jpg",
+        "subcategory": 32,
+        "description": "Excludes Metallic/ aliminium doors",
+        "price": "269.00",
+        "created": "2021-02-28T14:33:51.246Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 129,
+      "fields": {
+        "name": "Overhead door closer installation",
+        "icon": "Service Images/overhead-door-closer-installation/overhead_door.jpeg",
+        "subcategory": 32,
+        "description": "",
+        "price": "269.00",
+        "created": "2021-02-28T14:33:51.364Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 130,
+      "fields": {
+        "name": "Surface Mounted Door Closer Installation",
+        "icon": "Service Images/surface-mounted-door-closer-installation/surface_mounted_door.jpeg",
+        "subcategory": 32,
+        "description": "",
+        "price": "449.00",
+        "created": "2021-02-28T14:33:51.470Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 131,
+      "fields": {
+        "name": "Sliding Door Repair",
+        "icon": "Service Images/sliding-door-repair/sliding_door.jpeg",
+        "subcategory": 32,
+        "description": "",
+        "price": "369.00",
+        "created": "2021-02-28T14:33:51.577Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 132,
+      "fields": {
+        "name": "Bath Fitting Installation",
+        "icon": "Service Images/bath-fitting-installation/bath_fitting.jpeg",
+        "subcategory": 33,
+        "description": "Includes installation of any one Towel hanger, Soap holder, Toilet paper holder",
+        "price": "79.00",
+        "created": "2021-02-28T14:33:51.683Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 133,
+      "fields": {
+        "name": "Drill and Hang",
+        "icon": "Service Images/drill-and-hang/drill_hang.jpeg",
+        "subcategory": 33,
+        "description": "Drilling 2 nails  \r\nIncludes hanging any one of painting, clock or photoframe  \r\nNot applicable for objects exceeding 5kg and 6ft area",
+        "price": "69.00",
+        "created": "2021-02-28T14:33:51.791Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 134,
+      "fields": {
+        "name": "Minor Installation",
+        "icon": "Service Images/minor-installation/minor_install.jpeg",
+        "subcategory": 33,
+        "description": "",
+        "price": "119.00",
+        "created": "2021-02-28T14:33:51.897Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 135,
+      "fields": {
+        "name": "Glass Shelf Installation",
+        "icon": "Service Images/glass-shelf-installation/glass_shelf.jpeg",
+        "subcategory": 33,
+        "description": "Glass shelf installation using clamps",
+        "price": "139.00",
+        "created": "2021-02-28T14:33:52.004Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 136,
+      "fields": {
+        "name": "Wooden Shelf Installation",
+        "icon": "Service Images/wooden-shelf-installation/wooden_shelf.jpg",
+        "subcategory": 33,
+        "description": "Wooden shelf installation using clamps",
+        "price": "249.00",
+        "created": "2021-02-28T14:33:52.111Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 137,
+      "fields": {
+        "name": "Bed Assembly",
+        "icon": "Service Images/bed-assembly/bed_asembly.jpeg",
+        "subcategory": 36,
+        "description": "Bunk bed assembly as Rs. 449  \r\nHydraulic Storage bed assembly at Rs. 549  \r\nStorage Bed asembly at Rs. 419",
+        "price": "369.00",
+        "created": "2021-02-28T14:33:52.218Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 138,
+      "fields": {
+        "name": "Coffee Table Assembly",
+        "icon": "Service Images/coffee-table-assembly/coffee_table.jpg",
+        "subcategory": 36,
+        "description": "Modular furniture only",
+        "price": "269.00",
+        "created": "2021-02-28T14:33:52.324Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 139,
+      "fields": {
+        "name": "Study Table Assembly",
+        "icon": "Service Images/study-table-assembly/study_table.jpg",
+        "subcategory": 36,
+        "description": "Modular Furniture Only",
+        "price": "369.00",
+        "created": "2021-02-28T14:33:52.442Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 140,
+      "fields": {
+        "name": "Dining Table Assembly",
+        "icon": "Service Images/dining-table-assembly/dining_table.jpg",
+        "subcategory": 36,
+        "description": "Excludes chair assembly",
+        "price": "369.00",
+        "created": "2021-02-28T14:33:52.548Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 141,
+      "fields": {
+        "name": "Dining Chair Assembly (nos. 1)",
+        "icon": "Service Images/dining-chair-assembly-nos-1/dining_chair.jpg",
+        "subcategory": 36,
+        "description": "",
+        "price": "169.00",
+        "created": "2021-02-28T14:33:52.656Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 142,
+      "fields": {
+        "name": "Shoe Rack / Book Shelf Assembly",
+        "icon": "Service Images/shoe-rack-book-shelf-assembly/shoe_rack.jpeg",
+        "subcategory": 36,
+        "description": "Modular Furniture Only",
+        "price": "319.00",
+        "created": "2021-02-28T14:33:52.752Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 143,
+      "fields": {
+        "name": "Shelving Unit / Cabinet Assembly (2 Doors)",
+        "icon": "Service Images/shelving-unit-cabinet-assembly-2-doors/shelving_unit.jpeg",
+        "subcategory": 36,
+        "description": "2 Doors up to 4 shelves and drawers",
+        "price": "419.00",
+        "created": "2021-02-28T14:33:52.859Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 144,
+      "fields": {
+        "name": "Shelving Unit / Cabinet Assembly (3 Doors)",
+        "icon": "Service Images/shelving-unit-cabinet-assembly-3-doors/shelving_unit.jpeg",
+        "subcategory": 36,
+        "description": "3 Doors up to 4 shelves and drawers",
+        "price": "499.00",
+        "created": "2021-02-28T14:33:52.975Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 145,
+      "fields": {
+        "name": "Utensils Rack Assembly",
+        "icon": "Service Images/utensils-rack-assembly/utinsil.jpeg",
+        "subcategory": 36,
+        "description": "",
+        "price": "269.00",
+        "created": "2021-02-28T14:33:53.083Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 146,
+      "fields": {
+        "name": "Bed Dismantle",
+        "icon": "Service Images/bed-dismantle/bed_dismantle.jpg",
+        "subcategory": 36,
+        "description": "Bunk Bed Dismantle at Rs. 419  \r\nHydraulic Bed Dismantle at Rs 369",
+        "price": "399.00",
+        "created": "2021-02-28T14:33:53.190Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 147,
+      "fields": {
+        "name": "Furniture Dismantle",
+        "icon": "Service Images/furniture-dismantle/furniture_dismantle.jpg",
+        "subcategory": 36,
+        "description": "Study Table, Shoe Rack, Dining Table",
+        "price": "399.00",
+        "created": "2021-02-28T14:33:53.306Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 148,
+      "fields": {
+        "name": "Furniture Leg Cap Installation",
+        "icon": "Service Images/furniture-leg-cap-installation/furniture_leg_cap.jpeg",
+        "subcategory": 35,
+        "description": "Installation includes of leg caps for up to four leg",
+        "price": "119.00",
+        "created": "2021-02-28T14:33:53.412Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 149,
+      "fields": {
+        "name": "Table / Chair Wheels Fitting",
+        "icon": "Service Images/table-chair-wheels-fitting/table_chair_wheel.jpeg",
+        "subcategory": 35,
+        "description": "Includes Fitting of up to 4 wheels.",
+        "price": "119.00",
+        "created": "2021-02-28T14:33:53.510Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 150,
+      "fields": {
+        "name": "Measurement for Curtain Blinds",
+        "icon": "Service Images/Measurement for Curtain Blinds/measurement_curtain.jpeg",
+        "subcategory": 34,
+        "description": "Measurement up to 10 Curtain Blinds",
+        "price": "119.00",
+        "created": "2021-02-28T14:33:53.799Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 151,
+      "fields": {
+        "name": "Curtain Rod Installation (up to 2 brackets)",
+        "icon": "Service Images/Curtain Rod Installation (up to 2 brackets)/curtain_rod.jpeg",
+        "subcategory": 34,
+        "description": "Extra Charges For Additional Brackets at Rs. 70 per additional Bracket",
+        "price": "169.00",
+        "created": "2021-02-28T14:33:54.155Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 152,
+      "fields": {
+        "name": "Shower Curtain Rod Installation",
+        "icon": "Service Images/Shower Curtain Rod Installation/shower_curtain.jpg",
+        "subcategory": 34,
+        "description": "Extra charges for additional brackets at Rs. 70 per additional Bracket",
+        "price": "199.00",
+        "created": "2021-02-28T14:33:54.274Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 153,
+      "fields": {
+        "name": "Motorized Blinds Fitting",
+        "icon": "Service Images/Motorized Blinds Fitting/motorized.jpeg",
+        "subcategory": 34,
+        "description": "",
+        "price": "309.00",
+        "created": "2021-02-28T14:33:54.368Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 154,
+      "fields": {
+        "name": "Non Motorized Blinds Fittings",
+        "icon": "Service Images/Non Motorized Blinds Fittings/non_motorized.jpeg",
+        "subcategory": 34,
+        "description": "",
+        "price": "189.00",
+        "created": "2021-02-28T14:33:54.487Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 155,
+      "fields": {
+        "name": "Window AC Frame",
+        "icon": "Service Images/Window AC Frame/window_ac_frame.jpg",
+        "subcategory": 34,
+        "description": "",
+        "price": "319.00",
+        "created": "2021-02-28T14:33:54.582Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 156,
+      "fields": {
+        "name": "Window Closing (Post Ac Removal)",
+        "icon": "Service Images/Window Closing (Post Ac Removal)/window_closing.jpeg",
+        "subcategory": 34,
+        "description": "Wooden Panel installation on Window",
+        "price": "169.00",
+        "created": "2021-02-28T14:33:54.700Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 157,
+      "fields": {
+        "name": "Window Hinge Installation (4 Nos)",
+        "icon": "Service Images/Window Hinge Installation (4 Nos)/window_hinge.jpeg",
+        "subcategory": 34,
+        "description": "Hinge assembly in one window set",
+        "price": "199.00",
+        "created": "2021-02-28T14:33:54.805Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 158,
+      "fields": {
+        "name": "Floor Scrubbing and Polishing",
+        "icon": "Service Images/Floor Scrubbing and Polishing/floor_Scrubbing_optimized.png",
+        "subcategory": 43,
+        "description": "",
+        "price": "1999.00",
+        "created": "2021-03-09T20:28:29.102Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 159,
+      "fields": {
+        "name": "Bathroom Deep Cleaning",
+        "icon": "Service Images/Bathroom Deep Cleaning/Bathroom-Deep-Cleaning-optimized.jpg",
+        "subcategory": 42,
+        "description": "",
+        "price": "1599.00",
+        "created": "2021-03-09T20:28:50.582Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 161,
+      "fields": {
+        "name": "Painting Consultation",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 44,
+        "description": "Consultation invoice in-depth on-site assessment  \r\nFollowed by understanding your color and paint preference  \r\nBasis your inputs, the consultant will share customized quotation",
+        "price": "99.00",
+        "created": "2021-03-29T13:12:16.381Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 162,
+      "fields": {
+        "name": "Water Proofing Consultation",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 45,
+        "description": "Protection against seepage that result into fungus, mould and peeling paint  \r\nImprove the life of the wall and the paint  \r\nBasis your inputs, the consultant will share customized quotation",
+        "price": "99.00",
+        "created": "2021-03-29T13:15:27.547Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 163,
+      "fields": {
+        "name": "Textured Wall Consultation",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 46,
+        "description": "Add depth and dimension to any wall in your house  \r\nLighten up your walls with textures that bring out the best in your house  \r\nBasis your inputs, the consultant will share customized quotation",
+        "price": "99.00",
+        "created": "2021-03-29T13:19:16.975Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 164,
+      "fields": {
+        "name": "Enamel Painting Consultation",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 47,
+        "description": "Protection of metal and wooden surface against abrasion and damage from moisture  \r\nLends a glossy and sophisticated finish to all metals and wooden surface  \r\nBasis your inputs, the consultant will share customized quotation",
+        "price": "99.00",
+        "created": "2021-03-29T13:22:13.246Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 165,
+      "fields": {
+        "name": "Wood Polishing Consultation",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 48,
+        "description": "Add a touch of freshness and lends glossiness to dull piece of furniture  \r\nConsultation invoices expert guidance on the type of wood polishing require for your furniture  \r\nBasis your inputs, the consultant will share customized quotation",
+        "price": "99.00",
+        "created": "2021-03-29T13:24:29.676Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 166,
+      "fields": {
+        "name": "Wallpaper / StencilsConsultation",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 49,
+        "description": "Add an aesthic touch to you home with a wide range of wallpaper and stencils  \r\nCreate an accent on your wall experiment with designs and patterns  \r\nBasis your inputs, the consultant will share customized quotation",
+        "price": "99.00",
+        "created": "2021-03-29T13:27:28.130Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 167,
+      "fields": {
+        "name": "Split AC Installation",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 52,
+        "description": "",
+        "price": "1499.00",
+        "created": "2021-03-29T17:50:48.195Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 168,
+      "fields": {
+        "name": "Window AC Installation",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 52,
+        "description": "Outer frame and power outlet should be available  \r\nWoodwork including any cuttings and fittings are not part of the service",
+        "price": "99.00",
+        "created": "2021-03-29T17:52:48.810Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 169,
+      "fields": {
+        "name": "Window AC Uninstallation",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 53,
+        "description": "Technician will remove AC and outer cover  \r\nWoodwork including any cuttings and fittings are not part of the service",
+        "price": "399.00",
+        "created": "2021-03-29T17:54:44.193Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 170,
+      "fields": {
+        "name": "Split AC Uninstallation",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 53,
+        "description": "",
+        "price": "649.00",
+        "created": "2021-03-29T17:55:19.588Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 171,
+      "fields": {
+        "name": "Split AC check-up",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 51,
+        "description": "FOR MORE THEN ONE AC, SELECT MULTIPLE -- Noise Issue",
+        "price": "299.00",
+        "created": "2021-03-29T17:58:07.210Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 172,
+      "fields": {
+        "name": "Window AC Check-up",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 51,
+        "description": "FOR MORE THAN ONE AC, SELECT MULTIPLE --Less Cooling / No Cooling",
+        "price": "299.00",
+        "created": "2021-03-29T17:59:58.696Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 173,
+      "fields": {
+        "name": "Split AC Service",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 50,
+        "description": "Offer is valid n same booking and same place  \r\nOur Powerjet AC servicing ensures 2X faster cooling",
+        "price": "599.00",
+        "created": "2021-03-29T18:02:38.911Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.service",
+      "pk": 174,
+      "fields": {
+        "name": "Window AC Service",
+        "icon": "Service Images/default-service.jpg",
+        "subcategory": 50,
+        "description": "Offer is valid n same booking and same place  \r\nOur Powerjet AC servicing ensures 2X faster cooling",
+        "price": "499.00",
+        "created": "2021-03-29T18:03:13.045Z",
+        "active": true
+      }
+    },
+    {
+      "model": "api.categoryreview",
+      "pk": 1,
+      "fields": {
+        "user": 1,
+        "category": 1,
+        "star": 5,
+        "review": "Best Electrician Servise",
+        "parent": null,
+        "active": true,
+        "created": "2021-03-05T15:26:44.467Z",
+        "updated": "2021-03-05T15:30:51.978Z"
+      }
+    },
+    {
+      "model": "api.categoryreview",
+      "pk": 2,
+      "fields": {
+        "user": 2,
+        "category": 1,
+        "star": 4,
+        "review": "Testing rating system",
+        "parent": null,
+        "active": true,
+        "created": "2021-03-05T15:27:10.050Z",
+        "updated": "2021-03-05T15:30:46.698Z"
+      }
+    },
+    {
+      "model": "api.categoryreview",
+      "pk": 3,
+      "fields": {
+        "user": 4,
+        "category": 1,
+        "star": 1,
+        "review": "worst Service Employee to Rude to talk.",
+        "parent": null,
+        "active": true,
+        "created": "2021-03-05T15:27:56.814Z",
+        "updated": "2021-03-05T15:30:42.689Z"
+      }
+    },
+    {
+      "model": "api.categoryreview",
+      "pk": 4,
+      "fields": {
+        "user": 3,
+        "category": 1,
+        "star": 5,
+        "review": "best electrician Services and Very Quick Response Time.",
+        "parent": null,
+        "active": true,
+        "created": "2021-03-05T15:28:42.377Z",
+        "updated": "2021-03-05T15:30:38.436Z"
+      }
+    },
+    {
+      "model": "api.categoryreview",
+      "pk": 5,
+      "fields": {
+        "user": 1,
+        "category": 1,
+        "star": 5,
+        "review": "Thankyou",
+        "parent": 2,
+        "active": true,
+        "created": "2021-03-05T15:29:01.538Z",
+        "updated": "2021-03-05T15:30:55.790Z"
+      }
+    },
+    {
+      "model": "api.categoryreview",
+      "pk": 6,
+      "fields": {
+        "user": 1,
+        "category": 1,
+        "star": 5,
+        "review": "thankyou",
+        "parent": 4,
+        "active": true,
+        "created": "2021-03-05T15:31:16.979Z",
+        "updated": "2021-03-05T15:31:16.979Z"
+      }
+    },
+    {
+      "model": "api.categoryreview",
+      "pk": 7,
+      "fields": {
+        "user": 2,
+        "category": 1,
+        "star": 5,
+        "review": "thankyou",
+        "parent": 4,
+        "active": true,
+        "created": "2021-03-05T15:31:43.471Z",
+        "updated": "2021-03-05T15:31:43.471Z"
+      }
+    },
+    {
+      "model": "api.categoryreview",
+      "pk": 8,
+      "fields": {
+        "user": 7,
+        "category": 2,
+        "star": 5,
+        "review": "Very Good Services offered by @corecare",
+        "parent": null,
+        "active": true,
+        "created": "2021-03-07T12:13:00.385Z",
+        "updated": "2021-03-07T12:13:06.792Z"
+      }
+    },
+    {
+      "model": "api.categoryreview",
+      "pk": 10,
+      "fields": {
+        "user": 1,
+        "category": 1,
+        "star": 5,
+        "review": "testing Postman Review",
+        "parent": null,
+        "active": false,
+        "created": "2021-03-07T20:21:52.692Z",
+        "updated": "2021-03-07T20:21:52.692Z"
+      }
+    },
+    {
+      "model": "api.categoryreview",
+      "pk": 11,
+      "fields": {
+        "user": 1,
+        "category": 1,
+        "star": 5,
+        "review": "testing live review",
+        "parent": null,
+        "active": false,
+        "created": "2021-03-07T20:23:29.736Z",
+        "updated": "2021-03-07T20:23:29.736Z"
+      }
+    },
+    {
+      "model": "api.categoryreview",
+      "pk": 12,
+      "fields": {
+        "user": 3,
+        "category": 2,
+        "star": 3,
+        "review": "testing review ",
+        "parent": null,
+        "active": false,
+        "created": "2021-03-07T20:24:46.949Z",
+        "updated": "2021-03-07T20:24:46.949Z"
+      }
+    },
+    {
+      "model": "api.categoryreview",
+      "pk": 13,
+      "fields": {
+        "user": 3,
+        "category": 3,
+        "star": 5,
+        "review": "testing cleaner",
+        "parent": null,
+        "active": false,
+        "created": "2021-03-08T08:17:30.707Z",
+        "updated": "2021-03-08T08:17:30.707Z"
+      }
+    },
+    {
+      "model": "api.categoryreview",
+      "pk": 14,
+      "fields": {
+        "user": 1,
+        "category": 3,
+        "star": 4,
+        "review": "testing two",
+        "parent": null,
+        "active": false,
+        "created": "2021-03-08T08:19:03.485Z",
+        "updated": "2021-03-08T08:19:03.485Z"
+      }
+    },
+    {
+      "model": "api.categoryreview",
+      "pk": 15,
+      "fields": {
+        "user": 1,
+        "category": 4,
+        "star": 5,
+        "review": "testing painter review",
+        "parent": null,
+        "active": false,
+        "created": "2021-03-08T08:19:44.262Z",
+        "updated": "2021-03-08T08:19:44.262Z"
+      }
+    },
+    {
+      "model": "api.categoryreview",
+      "pk": 16,
+      "fields": {
+        "user": 1,
+        "category": 1,
+        "star": 5,
+        "review": "final test",
+        "parent": null,
+        "active": false,
+        "created": "2021-03-08T09:11:23.654Z",
+        "updated": "2021-03-08T09:11:23.654Z"
+      }
+    },
+    {
+      "model": "api.categoryreview",
+      "pk": 17,
+      "fields": {
+        "user": 1,
+        "category": 4,
+        "star": 5,
+        "review": "new Painter Review ",
+        "parent": null,
+        "active": false,
+        "created": "2021-03-08T09:16:17.257Z",
+        "updated": "2021-03-08T09:16:17.257Z"
+      }
+    },
+    {
+      "model": "api.categoryreview",
+      "pk": 18,
+      "fields": {
+        "user": 1,
+        "category": 4,
+        "star": 5,
+        "review": "testing three",
+        "parent": null,
+        "active": false,
+        "created": "2021-03-08T09:39:49.057Z",
+        "updated": "2021-03-08T09:39:49.057Z"
+      }
+    },
+    {
+      "model": "api.categoryreview",
+      "pk": 19,
+      "fields": {
+        "user": 1,
+        "category": 4,
+        "star": 5,
+        "review": "testing reply",
+        "parent": 18,
+        "active": false,
+        "created": "2021-03-08T09:39:55.731Z",
+        "updated": "2021-03-08T09:39:55.731Z"
+      }
+    },
+    {
+      "model": "api.categoryreview",
+      "pk": 20,
+      "fields": {
+        "user": 1,
+        "category": 3,
+        "star": 5,
+        "review": "testing cleaner reply",
+        "parent": 14,
+        "active": false,
+        "created": "2021-03-08T10:02:32.439Z",
+        "updated": "2021-03-08T10:02:32.439Z"
+      }
+    },
+    {
+      "model": "api.categoryreview",
+      "pk": 21,
+      "fields": {
+        "user": 1,
+        "category": 3,
+        "star": 5,
+        "review": "testing cleaner reply",
+        "parent": 13,
+        "active": false,
+        "created": "2021-03-08T10:07:13.836Z",
+        "updated": "2021-03-08T10:07:13.836Z"
+      }
+    },
+    {
+      "model": "api.categoryreview",
+      "pk": 22,
+      "fields": {
+        "user": 1,
+        "category": 3,
+        "star": 5,
+        "review": "dasfdasf",
+        "parent": 14,
+        "active": false,
+        "created": "2021-03-08T10:08:00.566Z",
+        "updated": "2021-03-08T10:08:00.566Z"
+      }
+    },
+    {
+      "model": "api.categoryreview",
+      "pk": 23,
+      "fields": {
+        "user": 1,
+        "category": 3,
+        "star": 5,
+        "review": "test four",
+        "parent": 14,
+        "active": false,
+        "created": "2021-03-08T10:10:01.932Z",
+        "updated": "2021-03-08T10:10:01.932Z"
+      }
+    },
+    {
+      "model": "api.categoryreview",
+      "pk": 24,
+      "fields": {
+        "user": 5,
+        "category": 1,
+        "star": 5,
+        "review": "reply testing react",
+        "parent": 2,
+        "active": false,
+        "created": "2021-03-08T10:12:40.239Z",
+        "updated": "2021-03-08T10:12:40.239Z"
+      }
+    },
+    {
+      "model": "api.categoryreview",
+      "pk": 25,
+      "fields": {
+        "user": 5,
+        "category": 1,
+        "star": 5,
+        "review": "final reply test",
+        "parent": 16,
+        "active": false,
+        "created": "2021-03-08T10:16:57.166Z",
+        "updated": "2021-03-08T10:16:57.166Z"
+      }
+    },
+    {
+      "model": "api.categoryreview",
+      "pk": 26,
+      "fields": {
+        "user": 4,
+        "category": 2,
+        "star": 5,
+        "review": "testing reply",
+        "parent": 8,
+        "active": false,
+        "created": "2021-03-08T10:18:07.441Z",
+        "updated": "2021-03-08T10:18:07.441Z"
+      }
+    },
+    {
+      "model": "api.categoryreview",
+      "pk": 27,
+      "fields": {
+        "user": 4,
+        "category": 2,
+        "star": 5,
+        "review": "testing reply 2",
+        "parent": 12,
+        "active": false,
+        "created": "2021-03-08T10:18:18.859Z",
+        "updated": "2021-03-08T10:18:18.859Z"
+      }
+    },
+    {
+      "model": "api.categoryreview",
+      "pk": 28,
+      "fields": {
+        "user": 4,
+        "category": 2,
+        "star": 5,
+        "review": "testing review",
+        "parent": null,
+        "active": false,
+        "created": "2021-03-08T10:18:26.236Z",
+        "updated": "2021-03-08T10:18:26.236Z"
+      }
+    },
+    {
+      "model": "api.categoryreview",
+      "pk": 29,
+      "fields": {
+        "user": 4,
+        "category": 2,
+        "star": 5,
+        "review": "testing review 2",
+        "parent": null,
+        "active": false,
+        "created": "2021-03-08T10:20:02.367Z",
+        "updated": "2021-03-08T10:20:02.367Z"
+      }
+    },
+    {
+      "model": "api.categoryreview",
+      "pk": 30,
+      "fields": {
+        "user": 4,
+        "category": 2,
+        "star": 5,
+        "review": "testing reply final",
+        "parent": 29,
+        "active": false,
+        "created": "2021-03-08T10:20:16.352Z",
+        "updated": "2021-03-08T10:20:16.352Z"
+      }
+    },
+    {
+      "model": "api.categoryreview",
+      "pk": 31,
+      "fields": {
+        "user": 4,
+        "category": 7,
+        "star": 5,
+        "review": "Best Ac Service available at this price",
+        "parent": null,
+        "active": false,
+        "created": "2021-03-08T10:20:50.215Z",
+        "updated": "2021-03-08T10:20:50.215Z"
+      }
+    },
+    {
+      "model": "api.categoryreview",
+      "pk": 32,
+      "fields": {
+        "user": 1,
+        "category": 7,
+        "star": 5,
+        "review": "thankyou",
+        "parent": 31,
+        "active": false,
+        "created": "2021-03-08T10:21:19.801Z",
+        "updated": "2021-03-08T10:21:19.801Z"
+      }
+    },
+    {
+      "model": "api.categoryreview",
+      "pk": 33,
+      "fields": {
+        "user": 1,
+        "category": 5,
+        "star": 1,
+        "review": "Worst Service ever",
+        "parent": null,
+        "active": false,
+        "created": "2021-03-08T10:26:44.462Z",
+        "updated": "2021-03-08T10:26:44.462Z"
+      }
+    },
+    {
+      "model": "api.couponcode",
+      "pk": 1,
+      "fields": {
+        "code": "FIRST_ORDER",
+        "discount": 20,
+        "valid_from": "2021-02-26T19:21:08Z",
+        "valid_to": "2023-02-26T19:21:14Z",
+        "active": true,
+        "category": [],
+        "users": []
+      }
+    },
+    {
+      "model": "api.couponcode",
+      "pk": 2,
+      "fields": {
+        "code": "ELECTRO_15",
+        "discount": 15,
+        "valid_from": "2021-02-26T19:21:52Z",
+        "valid_to": "2023-02-26T19:21:54Z",
+        "active": true,
+        "category": [
+          1
+        ],
+        "users": []
+      }
+    },
+    {
+      "model": "api.couponcode",
+      "pk": 3,
+      "fields": {
+        "code": "WOODWORK_15",
+        "discount": 15,
+        "valid_from": "2021-02-26T19:23:07Z",
+        "valid_to": "2023-02-26T19:23:08Z",
+        "active": true,
+        "category": [
+          2
+        ],
+        "users": []
+      }
+    },
+    {
+      "model": "api.couponcode",
+      "pk": 4,
+      "fields": {
+        "code": "NEWYEAR21",
+        "discount": 21,
+        "valid_from": "2021-02-26T19:24:18Z",
+        "valid_to": "2023-02-26T19:24:19Z",
+        "active": true,
+        "category": [],
+        "users": []
+      }
+    },
+    {
+      "model": "api.couponcode",
+      "pk": 5,
+      "fields": {
+        "code": "CLEAN_20",
+        "discount": 20,
+        "valid_from": "2021-02-26T19:24:53Z",
+        "valid_to": "2023-02-26T19:24:55Z",
+        "active": true,
+        "category": [
+          3
+        ],
+        "users": []
+      }
+    },
+    {
+      "model": "api.couponcode",
+      "pk": 6,
+      "fields": {
+        "code": "PAINTER",
+        "discount": 15,
+        "valid_from": "2021-02-26T19:26:40Z",
+        "valid_to": "2023-02-26T19:26:42Z",
+        "active": true,
+        "category": [
+          4
+        ],
+        "users": []
+      }
+    },
+    {
+      "model": "api.couponcode",
+      "pk": 7,
+      "fields": {
+        "code": "ABOVE_5000",
+        "discount": 10,
+        "valid_from": "2021-02-26T19:27:16Z",
+        "valid_to": "2023-02-26T19:27:17Z",
+        "active": true,
+        "category": [],
+        "users": []
+      }
+    },
+    {
+      "model": "api.couponcode",
+      "pk": 8,
+      "fields": {
+        "code": "ABOVE_10000",
+        "discount": 12,
+        "valid_from": "2021-02-26T19:27:36Z",
+        "valid_to": "2023-02-26T19:27:37Z",
+        "active": true,
+        "category": [],
+        "users": []
+      }
+    },
+    {
+      "model": "api.couponcode",
+      "pk": 9,
+      "fields": {
+        "code": "CORECR_25",
+        "discount": 25,
+        "valid_from": "2021-02-28T17:37:43Z",
+        "valid_to": "2023-02-28T17:37:44Z",
+        "active": true,
+        "category": [],
+        "users": []
+      }
+    },
+    {
+      "model": "api.couponcode",
+      "pk": 10,
+      "fields": {
+        "code": "AFZAL_50",
+        "discount": 50,
+        "valid_from": "2023-03-01T11:06:23Z",
+        "valid_to": "2021-03-01T11:06:28Z",
+        "active": false,
+        "category": [],
+        "users": []
+      }
+    },
+    {
+      "model": "api.couponcode",
+      "pk": 11,
+      "fields": {
+        "code": "TEMP_COUPON",
+        "discount": 70,
+        "valid_from": "2021-03-01T11:19:04Z",
+        "valid_to": "2023-03-01T11:19:09Z",
+        "active": false,
+        "category": [],
+        "users": []
+      }
+    },
+    {
+      "model": "api.contact",
+      "pk": 16,
+      "fields": {
+        "first_name": "Afzal",
+        "last_name": "saiyed",
+        "email": "saiyedafzalgz@gmail.com",
+        "message": "cvbcdgh dfy dey dey h",
+        "created": "2021-03-21T14:39:57.705Z"
+      }
+    }
+    ]
