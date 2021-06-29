@@ -50,7 +50,7 @@ def get_post_placeholder(instance, sender, **kwargs):
         image, placeholder = optimize_images(instance, 500, 10, 240, 15)
         instance.photo = InMemoryUploadedFile(image[0], field_name="photo", name=image[1], content_type=image[2], size=image[3], charset="utf-8")
         instance.placeholder = InMemoryUploadedFile(placeholder[0], field_name="placeholder", name=placeholder[1], content_type=placeholder[2], size=placeholder[3], charset="utf-8")
-    else:
+    if not instance._state.adding:
         update_post_placeholder_helper(instance, sender, 10, 240, 15)
 
 
