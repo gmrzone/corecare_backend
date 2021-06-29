@@ -13,9 +13,9 @@ def update_post_placeholder_helper(instance, sender, blur, height, quality):
     old_obj = sender.objects.get(pk=instance.id)
     if old_obj.placeholder and old_obj.photo.url != instance.photo.url:
         old_obj.placeholder.delete(False)
-    if old_obj.photo.url != instance.photo.url:
-        image_file, image_name, file_size, content_type = generate_placeholder(instance.photo, blur, height, quality)
-        instance.placeholder = InMemoryUploadedFile(image_file, field_name="placeholder", name=image_name, size=file_size, content_type=content_type, charset="utf-8")
+    image_file, image_name, file_size, content_type = generate_placeholder(instance.photo, blur, height, quality)
+    instance.placeholder = InMemoryUploadedFile(image_file, field_name="placeholder", name=image_name, size=file_size, content_type=content_type, charset="utf-8")
+
 
 # This helper function will check the resolution of the uploaded image if it is too large it will reduce its size
 # and also generate a blur placeholder of blog post when creating new post
