@@ -16,6 +16,7 @@ SIMPLE_JWT = {
     'AUTH_COOKIE_SAMESITE': 'Lax',  # Whether to set the flag restricting cookie leaks on cross-site requests.
                                     # This can be 'Lax', 'Strict', or None to disable the flag.
 }
+
 DEBUG = True
 
 
@@ -29,6 +30,7 @@ DATABASES = {
 }
 
 MIDDLEWARE = ['debug_toolbar.middleware.DebugToolbarMiddleware'] + MIDDLEWARE
+
 CACHES = {
     'default': {
         'BACKEND': 'redis_cache.RedisCache',

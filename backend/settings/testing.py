@@ -1,5 +1,5 @@
 from .base import *
-
+from datetime import timedelta
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -17,8 +17,8 @@ SIMPLE_JWT = {
     'AUTH_COOKIE_SAMESITE': 'Lax',  # Whether to set the flag restricting cookie leaks on cross-site requests.
                                     # This can be 'Lax', 'Strict', or None to disable the flag.
 }
-
-
+INSTALLED_APPS.append('debug_toolbar')
+MIDDLEWARE = ['debug_toolbar.middleware.DebugToolbarMiddleware'] + MIDDLEWARE
 
 # POSTGRES Development
 DATABASES = {
@@ -35,12 +35,15 @@ DATABASES = {
 CACHES = {
     'default': {
         'BACKEND': 'redis_cache.RedisCache',
-        'LOCATION': "redis://127.0.0.1:6379/1",
-        'TIMEOUT': 10800
+        'LOCATION': "redis://redis:6379/1",
+        'TIMEOUT': 300
     },
 }
+
 SECURE_SSL_REDIRECT = False
 
 REDIS_HOST = "127.0.0.1"
 REDIS_PORT = 6379
 REDIS_DB = 1
+
+CELERY_BROKER_URL = "redis://redis:6379/1"

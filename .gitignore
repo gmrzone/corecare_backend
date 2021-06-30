@@ -12,3 +12,8 @@ old_requirements/
 /staticfiles/media/Service Placeholders/
 /staticfiles/media/Service SubCategory Placeholders/
 /staticfiles/media/Blog_Placeholder/
+/.dockerignore
+/docker-compose.yml
+/dockerfile
+/dockerfiles
+/data
