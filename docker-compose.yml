@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+    redis:
+        image: redis:alpine 
+        container_name: corecare_redis
+    db:
+        image: postgres
+        container_name: corecare_postgres
+
+
+    corecare_backend:
+        build: .
+        container_name: corecare_backend
+        depends_on: 
+            - db
+            - redis
+        
+    celery:
+        restart: unless-stopped
+        build: 
+            context: .
+        container_name: corecare_celery
+        depends_on: 
+            - db
+            - redis
+            - corecare_backend

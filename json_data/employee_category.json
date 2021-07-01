@@ -1,0 +1,82 @@
+[
+  {
+    "model": "api.employeecategory",
+    "pk": 1,
+    "fields": {
+      "name": "Electrician",
+      "slug": "electrician",
+      "icon": "Employee Category/Electrician/electric_1_SjmnwgB.svg",
+      "hiring": true
+    }
+  },
+  {
+    "model": "api.employeecategory",
+    "pk": 2,
+    "fields": {
+      "name": "Carpenter",
+      "slug": "carpenter",
+      "icon": "Employee Category/Carpenter/wood_1_kH0Zi86.svg",
+      "hiring": true
+    }
+  },
+  {
+    "model": "api.employeecategory",
+    "pk": 3,
+    "fields": {
+      "name": "Cleaner",
+      "slug": "cleaner",
+      "icon": "Employee Category/default.svg",
+      "hiring": true
+    }
+  },
+  {
+    "model": "api.employeecategory",
+    "pk": 4,
+    "fields": {
+      "name": "Painter",
+      "slug": "painter",
+      "icon": "Employee Category/Painter/paint-roller_S2ajg7o.svg",
+      "hiring": true
+    }
+  },
+  {
+    "model": "api.employeecategory",
+    "pk": 5,
+    "fields": {
+      "name": "Plumber",
+      "slug": "plumber",
+      "icon": "Employee Category/Plumber/leak_l0J9fmk.svg",
+      "hiring": false
+    }
+  },
+  {
+    "model": "api.employeecategory",
+    "pk": 6,
+    "fields": {
+      "name": "Pest-Control",
+      "slug": "pest-control",
+      "icon": "Employee Category/default.svg",
+      "hiring": false
+    }
+  },
+  {
+    "model": "api.employeecategory",
+    "pk": 7,
+    "fields": {
+      "name": "AC Service & Repair",
+      "slug": "ac-service-repair",
+      "icon": "Employee Category/AC Service & Repair/repair.svg",
+      "hiring": false
+    }
+  },
+  {
+    "model": "api.employeecategory",
+    "pk": 8,
+    "fields": {
+      "name": "Appliance Repair",
+      "slug": "appliance-repair",
+      "icon": "Employee Category/Appliance Repair/repair_6eDw3TE.svg",
+      "hiring": false
+    }
+  }
+]

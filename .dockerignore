@@ -1,0 +1,13 @@
+/392
+/3_92
+/venv
+/afzal
+/backend/settings/secret.json
+/fulldatafixure.json
+/dump_data.txt
+/db.sqlite3 
+__pycache__/
+old_requirements/
+/staticfiles/media/Service Placeholders/
+/staticfiles/media/Service SubCategory Placeholders/
+/staticfiles/media/Blog_Placeholder/

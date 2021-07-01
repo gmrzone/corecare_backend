@@ -1,0 +1,469 @@
+[
+{
+    "model": "account.customuser",
+    "fields": {
+        "password": "pbkdf2_sha256$260000$KM1QwA6rksDNUHg7f6n45U$gVqz6MoqBBqyRLPfW20IRDTeyLMDdA1iCSTgVjVFMew=",
+        "last_login": "2021-06-28T08:38:06.892Z",
+        "is_superuser": true,
+        "number": "7208333993",
+        "username": "saiyedafzal",
+        "email": "saiyedafzalgz@gmail.com",
+        "first_name": "Afzal",
+        "photo": "Users_Profile_pic/7208333993/undefined_profile_pic_LRLL69V.jpeg",
+        "last_name": "saiyed",
+        "verified": true,
+        "is_staff": true,
+        "address_1": "Room No 605, G Wing Premier Road Mumbai Maharashtra Kohinoor Hospital 400070, New hall road",
+        "address_2": "New hall road",
+        "city": "Mumbai",
+        "state": "Maharashtra",
+        "pincode": "400070",
+        "is_active": true,
+        "is_employee": true,
+        "document": "",
+        "is_verified_employee": true,
+        "employee_category": 1,
+        "date_joined": "2021-02-26T19:00:37Z",
+        "groups": [
+            [
+                "electrician"
+            ]
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "account.customuser",
+    "fields": {
+        "password": "pbkdf2_sha256$216000$zeHlVIRgbuLx$s7XZbiGeJIVuHnuce83gsaamveXH0LzCV+8U3SarcrI=",
+        "last_login": null,
+        "is_superuser": false,
+        "number": "8655529996",
+        "username": "sabasamani1010",
+        "email": "sabasamani1010@gmail.com",
+        "first_name": "saba",
+        "photo": "Users_Profile_pic/8655529996/image4.jpg",
+        "last_name": "samani",
+        "verified": true,
+        "is_staff": false,
+        "address_1": "Room No 605, G Wing Premier Road",
+        "address_2": "Kohinoor Hospital",
+        "city": "Mumbai",
+        "state": "Maharashtra",
+        "pincode": "400070",
+        "is_active": true,
+        "is_employee": true,
+        "document": "",
+        "is_verified_employee": true,
+        "employee_category": 1,
+        "date_joined": "2021-03-05T15:04:44Z",
+        "groups": [
+            [
+                "electrician"
+            ]
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "account.customuser",
+    "fields": {
+        "password": "pbkdf2_sha256$216000$fPKE7NBt4xa2$vJZeMYM+dRbzBBp7fPoExzXnilf4nlYlopEvq1EBqsY=",
+        "last_login": null,
+        "is_superuser": false,
+        "number": "8169206867",
+        "username": "zaidshaikh111",
+        "email": "zaidshaikh111@gmail.com",
+        "first_name": "Zaid",
+        "photo": "Users_Profile_pic/8169206867/image2.jpg",
+        "last_name": "Shaikh",
+        "verified": true,
+        "is_staff": false,
+        "address_1": "Room No 605, G Wing Premier Road",
+        "address_2": "Kohinoor Hospital",
+        "city": "Mumbai",
+        "state": "Maharashtra",
+        "pincode": "400070",
+        "is_active": true,
+        "is_employee": true,
+        "document": "",
+        "is_verified_employee": true,
+        "employee_category": 1,
+        "date_joined": "2021-03-05T15:06:41Z",
+        "groups": [
+            [
+                "electrician"
+            ]
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "account.customuser",
+    "fields": {
+        "password": "pbkdf2_sha256$216000$E9Tsb431Rnqn$IjZXoL0Qx890kfhTDCGbMB7g+JZVrfq33Or7QIFzNpQ=",
+        "last_login": null,
+        "is_superuser": false,
+        "number": "9004281619",
+        "username": "arshadshaikh",
+        "email": "arshadshaikh@gmail.com",
+        "first_name": "Arshad",
+        "photo": "Users_Profile_pic/9004281619/image1.jpg",
+        "last_name": "Shaikh",
+        "verified": true,
+        "is_staff": false,
+        "address_1": "Room No 605, G Wing Premier Road",
+        "address_2": "Kohinoor Hospital",
+        "city": "Mumbai",
+        "state": "Maharashtra",
+        "pincode": "400070",
+        "is_active": true,
+        "is_employee": true,
+        "document": "Employee_Documents/9004281619/image1.jpg",
+        "is_verified_employee": true,
+        "employee_category": 1,
+        "date_joined": "2021-03-05T15:07:47Z",
+        "groups": [
+            [
+                "electrician"
+            ]
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "account.customuser",
+    "fields": {
+        "password": "pbkdf2_sha256$216000$ZDiIhBQJ8QKn$RsoGY7OOOtmVkx4JiV9egIQ1aGBGfBeqwOid7uJK64Y=",
+        "last_login": null,
+        "is_superuser": false,
+        "number": "7209333993",
+        "username": "saiyedafzal0",
+        "email": "saiyedafzal0@gmail.com",
+        "first_name": "Afzal",
+        "photo": "default-profile.png",
+        "last_name": "Saiyed",
+        "verified": true,
+        "is_staff": false,
+        "address_1": "room no 705",
+        "address_2": "adiay socity",
+        "city": "mumbai",
+        "state": "maharashtra",
+        "pincode": "400070",
+        "is_active": true,
+        "is_employee": true,
+        "document": "",
+        "is_verified_employee": true,
+        "employee_category": 5,
+        "date_joined": "2021-03-07T10:20:36Z",
+        "groups": [
+            [
+                "plumber"
+            ]
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "account.customuser",
+    "fields": {
+        "password": "pbkdf2_sha256$216000$z2f917uTnUZF$X2ngYc0o+I/oLKvVFejYlapn9HZlwaE5kYhsQWGp9Zk=",
+        "last_login": null,
+        "is_superuser": false,
+        "number": "7208333994",
+        "username": "saiyedafzal9",
+        "email": "saiyedafzal9@gmail.com",
+        "first_name": "Afzal",
+        "photo": "Users_Profile_pic/7208333994/image4.jpg",
+        "last_name": "Saiyed",
+        "verified": true,
+        "is_staff": false,
+        "address_1": "room no 705",
+        "address_2": "adiay socity",
+        "city": "mumbai",
+        "state": "maharashtra",
+        "pincode": "400070",
+        "is_active": true,
+        "is_employee": true,
+        "document": "",
+        "is_verified_employee": true,
+        "employee_category": 2,
+        "date_joined": "2021-03-07T10:21:38Z",
+        "groups": [
+            [
+                "carpenter"
+            ]
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "account.customuser",
+    "fields": {
+        "password": "pbkdf2_sha256$216000$1EqDx9Kyh5b3$QJ3vorz7f+J124VSgAyH6UYEhFiXIyW+rQTDs479aWQ=",
+        "last_login": null,
+        "is_superuser": false,
+        "number": "8169206868",
+        "username": "zaidshaikh",
+        "email": "zaidshaikh@gmail.com",
+        "first_name": "Zaid",
+        "photo": "default-profile.png",
+        "last_name": "Shaikh",
+        "verified": true,
+        "is_staff": false,
+        "address_1": "room no 705",
+        "address_2": "adiay socity",
+        "city": "mumbai",
+        "state": "maharashtra",
+        "pincode": "400070",
+        "is_active": true,
+        "is_employee": true,
+        "document": "",
+        "is_verified_employee": true,
+        "employee_category": 4,
+        "date_joined": "2021-03-07T10:23:07Z",
+        "groups": [
+            [
+                "painter"
+            ]
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "account.customuser",
+    "fields": {
+        "password": "pbkdf2_sha256$216000$HzNRuwtjjUSh$wzwVmndpfLVN1VJ6VodbUtNrlxNTWKnZBopkJD0R4no=",
+        "last_login": null,
+        "is_superuser": false,
+        "number": "9224281619",
+        "username": "arshadshaikh111",
+        "email": "arshadshaikh111@gmail.com",
+        "first_name": "Arshad",
+        "photo": "Users_Profile_pic/9224281619/image2.jpg",
+        "last_name": "Shaikh",
+        "verified": true,
+        "is_staff": false,
+        "address_1": "Room No 605, G Wing Premier Road",
+        "address_2": "Kohinoor Hospital",
+        "city": "Mumbai",
+        "state": "Maharashtra",
+        "pincode": "400070",
+        "is_active": true,
+        "is_employee": true,
+        "document": "",
+        "is_verified_employee": true,
+        "employee_category": 7,
+        "date_joined": "2021-03-07T10:24:04Z",
+        "groups": [
+            [
+                "ac-service"
+            ]
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "account.customuser",
+    "fields": {
+        "password": "pbkdf2_sha256$216000$5qgZgqnvOTKo$mvBhpRR5CAEXG08mllliDZQ2RyYWs8GaNprLl04UXbs=",
+        "last_login": null,
+        "is_superuser": false,
+        "number": "9568333224",
+        "username": null,
+        "email": "dfhdgfhdgfhd@gmail.com",
+        "first_name": "dasfdfsg",
+        "photo": "default-profile.png",
+        "last_name": "dfhdh",
+        "verified": true,
+        "is_staff": false,
+        "address_1": "Room No 605, G Wing Premier Road Mumbai Maharashtra Kohinoor Hospital 400070",
+        "address_2": "dsgfdfsgdfgh",
+        "city": "Mumbai",
+        "state": "Maharashtra",
+        "pincode": "400070",
+        "is_active": true,
+        "is_employee": false,
+        "document": "",
+        "is_verified_employee": false,
+        "employee_category": null,
+        "date_joined": "2021-03-27T15:45:25.493Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "account.customuser",
+    "fields": {
+        "password": "pbkdf2_sha256$216000$yvHjGIIw2HfW$yWGgX33ThX/Cp7oeBwqyzYoFl8qy0V2NT8UHv7mRnF4=",
+        "last_login": null,
+        "is_superuser": false,
+        "number": "8569333556",
+        "username": null,
+        "email": "sabasamazsdfdasfni1010@gmail.com",
+        "first_name": "saba",
+        "photo": "Users_Profile_pic/8569333556/8569333556_profile_pic.jpeg",
+        "last_name": "samani",
+        "verified": true,
+        "is_staff": false,
+        "address_1": "Room No 605, G Wing Premier Road Mumbai Maharashtra Kohinoor Hospital 400070",
+        "address_2": "dfsgdfgdfg",
+        "city": "Mumbai",
+        "state": "Maharashtra",
+        "pincode": "400070",
+        "is_active": true,
+        "is_employee": false,
+        "document": "",
+        "is_verified_employee": false,
+        "employee_category": null,
+        "date_joined": "2021-04-03T14:19:59.760Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "account.customuser",
+    "fields": {
+        "password": "pbkdf2_sha256$216000$Acg3aAxzksi0$q5vHURv6VIqrOmdRUG7DSyKrV+d7vw/OzbjxVv0QV88=",
+        "last_login": null,
+        "is_superuser": false,
+        "number": "9865336698",
+        "username": null,
+        "email": "saiyedafzalgzsdfsf@gmail.com",
+        "first_name": "Afzala",
+        "photo": "default-profile.png",
+        "last_name": "saiyeda",
+        "verified": true,
+        "is_staff": false,
+        "address_1": "Room No 605, G Wing Premier Road Mumbai Maharashtra Kohinoor Hospital 400070",
+        "address_2": "xcbxgxfgb",
+        "city": "Mumbai",
+        "state": "Maharashtra",
+        "pincode": "400070",
+        "is_active": true,
+        "is_employee": false,
+        "document": "",
+        "is_verified_employee": false,
+        "employee_category": null,
+        "date_joined": "2021-05-18T20:01:17.320Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "account.customuser",
+    "fields": {
+        "password": "pbkdf2_sha256$216000$fEwIhAGVjwWe$hHmJLESRf0y0EgMvi9l320jjjVBAEUCYh+Y8+lLXq/s=",
+        "last_login": null,
+        "is_superuser": false,
+        "number": "9685111225",
+        "username": null,
+        "email": "shehbazkhan@gmail.com",
+        "first_name": "Shehbaz",
+        "photo": "default-profile.png",
+        "last_name": "Khan",
+        "verified": false,
+        "is_staff": false,
+        "address_1": "temp address 1",
+        "address_2": "temp Address 2",
+        "city": "mumbai",
+        "state": "maharashtra",
+        "pincode": "400070",
+        "is_active": true,
+        "is_employee": false,
+        "document": "",
+        "is_verified_employee": false,
+        "employee_category": null,
+        "date_joined": "2021-05-19T09:14:58.104Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "account.customuser",
+    "fields": {
+        "password": "pbkdf2_sha256$216000$ySC4prJLr6AW$RYRwweXSSxIiHZIrvb9Oy2gmVtoIQJPFf7x87Bt59GQ=",
+        "last_login": null,
+        "is_superuser": false,
+        "number": "7854666334",
+        "username": null,
+        "email": "shehbazkhan12@gmail.com",
+        "first_name": "Shehbaz",
+        "photo": "Users_Profile_pic/7854666334/ecaf81cc177a2461cac939180deb3ded_O5uwnoh.png",
+        "last_name": "Khan",
+        "verified": true,
+        "is_staff": false,
+        "address_1": "temp address 1",
+        "address_2": "temp Address 2",
+        "city": "mumbai",
+        "state": "maharashtra",
+        "pincode": "400070",
+        "is_active": true,
+        "is_employee": false,
+        "document": "",
+        "is_verified_employee": false,
+        "employee_category": null,
+        "date_joined": "2021-05-19T09:27:05.803Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "account.customuser",
+    "fields": {
+        "password": "pbkdf2_sha256$260000$vfSNwQpKSXqdDVe2Ne454u$MDAjBx5AjC0OMONGTv02B3IbVy8OrrExh7lQybALxXI=",
+        "last_login": null,
+        "is_superuser": false,
+        "number": "9654123547",
+        "username": null,
+        "email": "saiyedsddafddzalgz@gmail.com",
+        "first_name": "Afzal",
+        "photo": "Users_Profile_pic/9654123547/9654123547_profile_pic.png",
+        "last_name": "saiyed",
+        "verified": true,
+        "is_staff": false,
+        "address_1": "Room No 605, G Wing Premier Road Mumbai Maharashtra Kohinoor Hospital 400070, New hall road, New hall road, New hall road",
+        "address_2": "New hall road",
+        "city": "Mumbai",
+        "state": "Maharashtrasa",
+        "pincode": "400070",
+        "is_active": true,
+        "is_employee": false,
+        "document": "",
+        "is_verified_employee": false,
+        "employee_category": null,
+        "date_joined": "2021-06-09T13:33:29.836Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "account.customuser",
+    "fields": {
+        "password": "pbkdf2_sha256$260000$A7MPSmYLANDUZ1SW4OaPyj$wQiwdO/WK3Lsm7p3UyaOpUfNxLikyGLE3B6sJmfVeYY=",
+        "last_login": null,
+        "is_superuser": false,
+        "number": "8654123654",
+        "username": "afzalsaiyed",
+        "email": "saiyesdassfzsssalgz@gmail.com",
+        "first_name": "Afzal",
+        "photo": "Users_Profile_pic/8654123654/8654123654_profile_pic.jpeg",
+        "last_name": "saiyed",
+        "verified": true,
+        "is_staff": false,
+        "address_1": "Room No 605, G Wing Premier Road Mumbai Maharashtra Kohinoor Hospital 400070, New hall road, New hall road, New hall road, New hall road",
+        "address_2": "New hall road",
+        "city": "Mumbai",
+        "state": "Maharashtrasa",
+        "pincode": "400070",
+        "is_active": true,
+        "is_employee": false,
+        "document": "",
+        "is_verified_employee": false,
+        "employee_category": null,
+        "date_joined": "2021-06-09T13:47:47Z",
+        "groups": [],
+        "user_permissions": []
+    }
+}
+]

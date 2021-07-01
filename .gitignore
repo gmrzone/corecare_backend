@@ -4,7 +4,8 @@
 /afzal
 /backend/settings/secret.json
 /db.sqlite3
-/json_data
+/json_data/all_data_psql.json
+/json_data/new_api_account_data.json
 /fulldatafixure.json
 /dump_data.txt
 __pycache__/
@@ -12,8 +13,11 @@ old_requirements/
 /staticfiles/media/Service Placeholders/
 /staticfiles/media/Service SubCategory Placeholders/
 /staticfiles/media/Blog_Placeholder/
-/.dockerignore
-/docker-compose.yml
-/dockerfile
-/dockerfiles
+/docker-compose.production.yml
+/dockerfile.production
+/dockerfiles/.env
+/dockerfiles/.env.prod
+/dockerfiles/init_sql_prod.sh
+/dockerfiles/wait_for_psql.sh
+/dockerfiles/start_script_prod.sh
 /data

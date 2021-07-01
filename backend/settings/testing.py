@@ -1,6 +1,8 @@
 from .base import *
 from datetime import timedelta
 # SECURITY WARNING: don't run with debug turned on in production!
+# This setting will only work with docker
+
 DEBUG = True
 
 SIMPLE_JWT = {
@@ -17,12 +19,12 @@ SIMPLE_JWT = {
     'AUTH_COOKIE_SAMESITE': 'Lax',  # Whether to set the flag restricting cookie leaks on cross-site requests.
                                     # This can be 'Lax', 'Strict', or None to disable the flag.
 }
-INSTALLED_APPS.append('debug_toolbar')
-MIDDLEWARE = ['debug_toolbar.middleware.DebugToolbarMiddleware'] + MIDDLEWARE
+
+
 
 # POSTGRES Development
 DATABASES = {
-    'default': {
+    'default': {    
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': get_var("PG_DEV_DB_NAME"),
         'USER': get_var("PG_DEV_DB_USER"),
@@ -42,7 +44,7 @@ CACHES = {
 
 SECURE_SSL_REDIRECT = False
 
-REDIS_HOST = "127.0.0.1"
+REDIS_HOST = "redis"
 REDIS_PORT = 6379
 REDIS_DB = 1
 

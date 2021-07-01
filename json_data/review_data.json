@@ -1,0 +1,2290 @@
+[
+{
+    "model": "api.categoryreview",
+    "pk": 1,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 5,
+        "review": "Best Electrician Servise",
+        "parent": null,
+        "active": true,
+        "created": "2021-03-05T15:26:44.467Z",
+        "updated": "2021-03-05T15:30:51.978Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 2,
+    "fields": {
+        "user": [
+            "8655529996"
+        ],
+        "category": 1,
+        "star": 4,
+        "review": "Testing rating system",
+        "parent": null,
+        "active": true,
+        "created": "2021-03-05T15:27:10.050Z",
+        "updated": "2021-03-05T15:30:46.698Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 3,
+    "fields": {
+        "user": [
+            "9004281619"
+        ],
+        "category": 1,
+        "star": 1,
+        "review": "worst Service Employee to Rude to talk.",
+        "parent": null,
+        "active": true,
+        "created": "2021-03-05T15:27:56.814Z",
+        "updated": "2021-03-05T15:30:42.689Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 4,
+    "fields": {
+        "user": [
+            "8169206867"
+        ],
+        "category": 1,
+        "star": 5,
+        "review": "best electrician Services and Very Quick Response Time.",
+        "parent": null,
+        "active": true,
+        "created": "2021-03-05T15:28:42.377Z",
+        "updated": "2021-03-05T15:30:38.436Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 5,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 5,
+        "review": "Thankyou",
+        "parent": 2,
+        "active": true,
+        "created": "2021-03-05T15:29:01.538Z",
+        "updated": "2021-03-05T15:30:55.790Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 6,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 5,
+        "review": "thankyou",
+        "parent": 4,
+        "active": true,
+        "created": "2021-03-05T15:31:16.979Z",
+        "updated": "2021-03-05T15:31:16.979Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 7,
+    "fields": {
+        "user": [
+            "8655529996"
+        ],
+        "category": 1,
+        "star": 5,
+        "review": "thankyou",
+        "parent": 4,
+        "active": true,
+        "created": "2021-03-05T15:31:43.471Z",
+        "updated": "2021-03-05T15:31:43.471Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 8,
+    "fields": {
+        "user": [
+            "7208333994"
+        ],
+        "category": 2,
+        "star": 5,
+        "review": "Very Good Services offered by @corecare",
+        "parent": null,
+        "active": true,
+        "created": "2021-03-07T12:13:00.385Z",
+        "updated": "2021-03-07T12:13:06.792Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 10,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 5,
+        "review": "testing Postman Review",
+        "parent": null,
+        "active": false,
+        "created": "2021-03-07T20:21:52.692Z",
+        "updated": "2021-03-07T20:21:52.692Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 11,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 5,
+        "review": "testing live review",
+        "parent": null,
+        "active": false,
+        "created": "2021-03-07T20:23:29.736Z",
+        "updated": "2021-03-07T20:23:29.736Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 12,
+    "fields": {
+        "user": [
+            "8169206867"
+        ],
+        "category": 2,
+        "star": 3,
+        "review": "testing review ",
+        "parent": null,
+        "active": false,
+        "created": "2021-03-07T20:24:46.949Z",
+        "updated": "2021-03-07T20:24:46.949Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 13,
+    "fields": {
+        "user": [
+            "8169206867"
+        ],
+        "category": 3,
+        "star": 5,
+        "review": "testing cleaner",
+        "parent": null,
+        "active": false,
+        "created": "2021-03-08T08:17:30.707Z",
+        "updated": "2021-03-08T08:17:30.707Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 14,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 3,
+        "star": 4,
+        "review": "testing two",
+        "parent": null,
+        "active": false,
+        "created": "2021-03-08T08:19:03.485Z",
+        "updated": "2021-03-08T08:19:03.485Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 15,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 5,
+        "review": "testing painter review",
+        "parent": null,
+        "active": false,
+        "created": "2021-03-08T08:19:44.262Z",
+        "updated": "2021-03-08T08:19:44.262Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 16,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 5,
+        "review": "final test",
+        "parent": null,
+        "active": false,
+        "created": "2021-03-08T09:11:23.654Z",
+        "updated": "2021-03-08T09:11:23.654Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 17,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 5,
+        "review": "new Painter Review ",
+        "parent": null,
+        "active": false,
+        "created": "2021-03-08T09:16:17.257Z",
+        "updated": "2021-03-08T09:16:17.257Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 18,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 5,
+        "review": "testing three",
+        "parent": null,
+        "active": false,
+        "created": "2021-03-08T09:39:49.057Z",
+        "updated": "2021-03-08T09:39:49.057Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 19,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 5,
+        "review": "testing reply",
+        "parent": 18,
+        "active": false,
+        "created": "2021-03-08T09:39:55.731Z",
+        "updated": "2021-03-08T09:39:55.731Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 20,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 3,
+        "star": 5,
+        "review": "testing cleaner reply",
+        "parent": 14,
+        "active": false,
+        "created": "2021-03-08T10:02:32.439Z",
+        "updated": "2021-03-08T10:02:32.439Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 21,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 3,
+        "star": 5,
+        "review": "testing cleaner reply",
+        "parent": 13,
+        "active": false,
+        "created": "2021-03-08T10:07:13.836Z",
+        "updated": "2021-03-08T10:07:13.836Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 22,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 3,
+        "star": 5,
+        "review": "dasfdasf",
+        "parent": 14,
+        "active": false,
+        "created": "2021-03-08T10:08:00.566Z",
+        "updated": "2021-03-08T10:08:00.566Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 23,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 3,
+        "star": 5,
+        "review": "test four",
+        "parent": 14,
+        "active": false,
+        "created": "2021-03-08T10:10:01.932Z",
+        "updated": "2021-03-08T10:10:01.932Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 26,
+    "fields": {
+        "user": [
+            "9004281619"
+        ],
+        "category": 2,
+        "star": 5,
+        "review": "testing reply",
+        "parent": 8,
+        "active": false,
+        "created": "2021-03-08T10:18:07.441Z",
+        "updated": "2021-03-08T10:18:07.441Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 27,
+    "fields": {
+        "user": [
+            "9004281619"
+        ],
+        "category": 2,
+        "star": 5,
+        "review": "testing reply 2",
+        "parent": 12,
+        "active": false,
+        "created": "2021-03-08T10:18:18.859Z",
+        "updated": "2021-03-08T10:18:18.859Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 28,
+    "fields": {
+        "user": [
+            "9004281619"
+        ],
+        "category": 2,
+        "star": 5,
+        "review": "testing review",
+        "parent": null,
+        "active": false,
+        "created": "2021-03-08T10:18:26.236Z",
+        "updated": "2021-03-08T10:18:26.236Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 29,
+    "fields": {
+        "user": [
+            "9004281619"
+        ],
+        "category": 2,
+        "star": 5,
+        "review": "testing review 2",
+        "parent": null,
+        "active": false,
+        "created": "2021-03-08T10:20:02.367Z",
+        "updated": "2021-03-08T10:20:02.367Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 30,
+    "fields": {
+        "user": [
+            "9004281619"
+        ],
+        "category": 2,
+        "star": 5,
+        "review": "testing reply final",
+        "parent": 29,
+        "active": false,
+        "created": "2021-03-08T10:20:16.352Z",
+        "updated": "2021-03-08T10:20:16.352Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 31,
+    "fields": {
+        "user": [
+            "9004281619"
+        ],
+        "category": 7,
+        "star": 5,
+        "review": "Best Ac Service available at this price",
+        "parent": null,
+        "active": false,
+        "created": "2021-03-08T10:20:50.215Z",
+        "updated": "2021-03-08T10:20:50.215Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 32,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 7,
+        "star": 5,
+        "review": "thankyou",
+        "parent": 31,
+        "active": false,
+        "created": "2021-03-08T10:21:19.801Z",
+        "updated": "2021-03-08T10:21:19.801Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 33,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 5,
+        "star": 1,
+        "review": "Worst Service ever",
+        "parent": null,
+        "active": false,
+        "created": "2021-03-08T10:26:44.462Z",
+        "updated": "2021-03-08T10:26:44.462Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 34,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 2,
+        "star": 5,
+        "review": "ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
+        "parent": null,
+        "active": false,
+        "created": "2021-03-30T09:31:54.034Z",
+        "updated": "2021-03-30T09:31:54.034Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 35,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 3,
+        "star": 2,
+        "review": "Testing dev.corecare.in",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-04T21:21:51.945Z",
+        "updated": "2021-05-04T21:21:51.945Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 36,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 3,
+        "star": 3,
+        "review": "testing Review",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-04T21:24:48.895Z",
+        "updated": "2021-05-04T21:24:48.895Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 37,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 3,
+        "star": 5,
+        "review": "t",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-04T21:26:31.755Z",
+        "updated": "2021-05-04T21:26:31.755Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 38,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 3,
+        "star": 5,
+        "review": "Afzal reply",
+        "parent": 36,
+        "active": false,
+        "created": "2021-05-04T21:27:43.647Z",
+        "updated": "2021-05-04T21:27:43.647Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 39,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 3,
+        "star": 5,
+        "review": "Reply Testing",
+        "parent": 14,
+        "active": false,
+        "created": "2021-05-04T21:28:21.402Z",
+        "updated": "2021-05-04T21:28:21.402Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 40,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 3,
+        "star": 5,
+        "review": "test",
+        "parent": 13,
+        "active": false,
+        "created": "2021-05-04T21:30:22.949Z",
+        "updated": "2021-05-04T21:30:22.949Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 41,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 2,
+        "star": 5,
+        "review": "new Review",
+        "parent": 8,
+        "active": false,
+        "created": "2021-05-04T21:31:42.788Z",
+        "updated": "2021-05-04T21:31:42.788Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 42,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 2,
+        "star": 5,
+        "review": "new",
+        "parent": 8,
+        "active": false,
+        "created": "2021-05-04T21:33:48.465Z",
+        "updated": "2021-05-04T21:33:48.465Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 43,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 2,
+        "star": 5,
+        "review": "Reply too Big",
+        "parent": 34,
+        "active": false,
+        "created": "2021-05-04T21:34:04.655Z",
+        "updated": "2021-05-04T21:34:04.655Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 44,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 6,
+        "star": 1,
+        "review": "Service Still Not available",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-04T21:35:49.014Z",
+        "updated": "2021-05-04T21:35:49.014Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 45,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 6,
+        "star": 5,
+        "review": "Testing",
+        "parent": 44,
+        "active": false,
+        "created": "2021-05-04T21:36:16.631Z",
+        "updated": "2021-05-04T21:36:16.631Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 46,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 6,
+        "star": 5,
+        "review": "zdfsdgfsdgf",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-04T21:36:55.890Z",
+        "updated": "2021-05-04T21:36:55.890Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 47,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 6,
+        "star": 5,
+        "review": "Testing Review",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-04T21:37:59.391Z",
+        "updated": "2021-05-04T21:37:59.391Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 48,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 6,
+        "star": 5,
+        "review": "Testing Reply",
+        "parent": 47,
+        "active": false,
+        "created": "2021-05-04T21:38:11.717Z",
+        "updated": "2021-05-04T21:38:11.717Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 49,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 6,
+        "star": 5,
+        "review": "new Review",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-04T21:42:56.330Z",
+        "updated": "2021-05-04T21:42:56.330Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 50,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 6,
+        "star": 5,
+        "review": "new Reply",
+        "parent": 49,
+        "active": false,
+        "created": "2021-05-04T21:43:02.594Z",
+        "updated": "2021-05-04T21:43:02.594Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 51,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 4,
+        "review": "afzal",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-06T19:06:39.282Z",
+        "updated": "2021-05-06T19:06:39.282Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 52,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 5,
+        "review": "afzal saiyed",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-06T19:07:09.072Z",
+        "updated": "2021-05-06T19:07:09.072Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 53,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 5,
+        "review": "reply test",
+        "parent": 1,
+        "active": false,
+        "created": "2021-05-06T19:08:11.807Z",
+        "updated": "2021-05-06T19:08:11.807Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 54,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 5,
+        "review": "new review",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-06T19:09:58.284Z",
+        "updated": "2021-05-06T19:09:58.284Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 55,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 3,
+        "star": 5,
+        "review": "test postman review",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T13:17:37.952Z",
+        "updated": "2021-05-18T13:17:38.049Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 56,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 3,
+        "star": 4,
+        "review": "test postman review new",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T13:19:40.395Z",
+        "updated": "2021-05-18T13:19:40.476Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 57,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 3,
+        "star": 4,
+        "review": "test postman review Reply",
+        "parent": 56,
+        "active": false,
+        "created": "2021-05-18T13:22:46.726Z",
+        "updated": "2021-05-18T13:22:46.801Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 58,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 8,
+        "star": 4,
+        "review": "test postman review old endpoint",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T13:24:35.975Z",
+        "updated": "2021-05-18T13:24:35.975Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 59,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 8,
+        "star": 4,
+        "review": "test postman reply old endpoint",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T13:25:00.774Z",
+        "updated": "2021-05-18T13:25:00.774Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 60,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 8,
+        "star": 4,
+        "review": "test postman reply old endpoint",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T13:26:05.371Z",
+        "updated": "2021-05-18T13:26:05.371Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 61,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 8,
+        "star": 1,
+        "review": "test postman reply old endpoint",
+        "parent": 58,
+        "active": false,
+        "created": "2021-05-18T13:27:09.688Z",
+        "updated": "2021-05-18T13:27:09.688Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 62,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 8,
+        "star": 1,
+        "review": "test postman review new endpoint",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T13:27:47.912Z",
+        "updated": "2021-05-18T13:27:48.014Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 63,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 8,
+        "star": 2,
+        "review": "test postman reply new endpoint",
+        "parent": 62,
+        "active": false,
+        "created": "2021-05-18T13:28:24.064Z",
+        "updated": "2021-05-18T13:28:24.136Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 64,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 8,
+        "star": 3,
+        "review": "test postman reply new endpoint Put",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T13:29:53.678Z",
+        "updated": "2021-05-18T13:29:53.810Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 65,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 8,
+        "star": 3,
+        "review": "test postman reply new endpoint Put",
+        "parent": 64,
+        "active": false,
+        "created": "2021-05-18T13:30:12.592Z",
+        "updated": "2021-05-18T13:30:12.671Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 66,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 8,
+        "star": 3,
+        "review": "delete this",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T13:36:34.102Z",
+        "updated": "2021-05-18T13:36:34.243Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 67,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 8,
+        "star": 5,
+        "review": "afzal",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T13:39:31.013Z",
+        "updated": "2021-05-18T13:39:31.109Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 68,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 8,
+        "star": 5,
+        "review": "afzal sdf gdfs ghdfh",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T13:40:41.227Z",
+        "updated": "2021-05-18T13:40:41.311Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 69,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 8,
+        "star": 5,
+        "review": "7894566133",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T13:43:47.900Z",
+        "updated": "2021-05-18T13:43:48.129Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 70,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 8,
+        "star": 1,
+        "review": "789456613336597456",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T13:44:55.910Z",
+        "updated": "2021-05-18T13:44:56.008Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 71,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 8,
+        "star": 1,
+        "review": "dsgsgsg",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T13:50:53.065Z",
+        "updated": "2021-05-18T13:50:53.176Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 72,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 8,
+        "star": 2,
+        "review": "asdfaf test",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T13:53:25.521Z",
+        "updated": "2021-05-18T13:53:25.600Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 73,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 8,
+        "star": 5,
+        "review": "reply Test",
+        "parent": 72,
+        "active": false,
+        "created": "2021-05-18T13:53:35.460Z",
+        "updated": "2021-05-18T13:53:35.528Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 74,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 8,
+        "star": 1,
+        "review": "test review",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T13:58:05.881Z",
+        "updated": "2021-05-18T13:58:05.956Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 75,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 8,
+        "star": 2,
+        "review": "test postman review",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T13:58:45.149Z",
+        "updated": "2021-05-18T13:58:45.242Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 76,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 8,
+        "star": 5,
+        "review": "Test Postman Reply",
+        "parent": 75,
+        "active": false,
+        "created": "2021-05-18T13:59:01.815Z",
+        "updated": "2021-05-18T13:59:01.887Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 77,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 8,
+        "star": 5,
+        "review": "new Test Postman",
+        "parent": 75,
+        "active": false,
+        "created": "2021-05-18T13:59:38.299Z",
+        "updated": "2021-05-18T13:59:38.372Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 78,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 8,
+        "star": 5,
+        "review": "new Reply",
+        "parent": 75,
+        "active": false,
+        "created": "2021-05-18T14:01:09.532Z",
+        "updated": "2021-05-18T14:01:09.621Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 79,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 8,
+        "star": 5,
+        "review": "test",
+        "parent": 58,
+        "active": false,
+        "created": "2021-05-18T14:02:44.546Z",
+        "updated": "2021-05-18T14:02:44.624Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 80,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 8,
+        "star": 5,
+        "review": "dzfdasf",
+        "parent": 58,
+        "active": false,
+        "created": "2021-05-18T14:04:18.994Z",
+        "updated": "2021-05-18T14:04:19.100Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 81,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 8,
+        "star": 5,
+        "review": "SdaSDfD",
+        "parent": 75,
+        "active": false,
+        "created": "2021-05-18T14:04:29.058Z",
+        "updated": "2021-05-18T14:04:29.141Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 82,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 5,
+        "review": "szfdasf daf sadg g",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T14:05:44.529Z",
+        "updated": "2021-05-18T14:05:44.529Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 83,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 5,
+        "review": "dafsdgfsdg ds gas g",
+        "parent": 82,
+        "active": false,
+        "created": "2021-05-18T14:05:57.212Z",
+        "updated": "2021-05-18T14:05:57.212Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 84,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 2,
+        "review": "new endpoint",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T14:07:15.036Z",
+        "updated": "2021-05-18T14:07:15.118Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 85,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 5,
+        "review": "new endpoint reply",
+        "parent": 84,
+        "active": false,
+        "created": "2021-05-18T14:07:23.720Z",
+        "updated": "2021-05-18T14:07:23.792Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 86,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 2,
+        "review": "postman test new endpoint",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T14:10:17.738Z",
+        "updated": "2021-05-18T14:10:17.738Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 87,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 1,
+        "review": "postman test review old endpoint",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T14:10:22.033Z",
+        "updated": "2021-05-18T14:10:22.115Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 88,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 1,
+        "review": "postman test reply old endpoint",
+        "parent": 87,
+        "active": false,
+        "created": "2021-05-18T14:10:56.320Z",
+        "updated": "2021-05-18T14:10:56.438Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 89,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 2,
+        "review": "postman test new endpoint reply",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T14:11:01.044Z",
+        "updated": "2021-05-18T14:11:01.044Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 90,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 2,
+        "review": "postman test new endpoint reply",
+        "parent": 86,
+        "active": false,
+        "created": "2021-05-18T14:11:08.574Z",
+        "updated": "2021-05-18T14:11:08.574Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 91,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 2,
+        "review": "postman test new endpoint reply",
+        "parent": 86,
+        "active": false,
+        "created": "2021-05-18T14:11:10.703Z",
+        "updated": "2021-05-18T14:11:10.703Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 92,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 2,
+        "review": "postman test new endpoint reply",
+        "parent": 86,
+        "active": false,
+        "created": "2021-05-18T14:11:13.302Z",
+        "updated": "2021-05-18T14:11:13.302Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 93,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 1,
+        "review": "postman test reply old endpoint",
+        "parent": 87,
+        "active": false,
+        "created": "2021-05-18T14:11:16.177Z",
+        "updated": "2021-05-18T14:11:16.265Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 94,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 1,
+        "review": "postman test reply old endpoint",
+        "parent": 87,
+        "active": false,
+        "created": "2021-05-18T14:11:17.766Z",
+        "updated": "2021-05-18T14:11:17.849Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 95,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 1,
+        "review": "postman test reply old endpoint",
+        "parent": 87,
+        "active": false,
+        "created": "2021-05-18T14:11:19.217Z",
+        "updated": "2021-05-18T14:11:19.291Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 96,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 1,
+        "review": "postman test reply old endpoint",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T14:12:52.265Z",
+        "updated": "2021-05-18T14:12:52.423Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 97,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 2,
+        "review": "postman test new endpoint reply",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T14:12:57.185Z",
+        "updated": "2021-05-18T14:12:57.186Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 98,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 2,
+        "review": "postman test new endpoint reply",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T14:18:53.264Z",
+        "updated": "2021-05-18T14:18:53.264Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 99,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 1,
+        "review": "postman test reply old endpoint",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T14:18:55.373Z",
+        "updated": "2021-05-18T14:18:55.445Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 100,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 2,
+        "review": "postman test new endpoint reply",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T14:19:00.530Z",
+        "updated": "2021-05-18T14:19:00.530Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 101,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 1,
+        "review": "postman test reply old endpoint",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T14:19:03.153Z",
+        "updated": "2021-05-18T14:19:03.243Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 102,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 2,
+        "review": "postman test new endpoint reply",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T14:19:06.969Z",
+        "updated": "2021-05-18T14:19:06.969Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 103,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 1,
+        "review": "postman test reply old endpoint",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T14:19:09.107Z",
+        "updated": "2021-05-18T14:19:09.192Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 104,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 2,
+        "review": "postman test new endpoint reply",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T14:19:11.243Z",
+        "updated": "2021-05-18T14:19:11.243Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 105,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 1,
+        "review": "postman test reply old endpoint",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T14:19:12.731Z",
+        "updated": "2021-05-18T14:19:12.811Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 106,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 1,
+        "review": "postman test reply old endpoint",
+        "parent": 105,
+        "active": false,
+        "created": "2021-05-18T14:19:32.722Z",
+        "updated": "2021-05-18T14:19:32.811Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 107,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 2,
+        "review": "postman test new endpoint reply",
+        "parent": 104,
+        "active": false,
+        "created": "2021-05-18T14:19:35.578Z",
+        "updated": "2021-05-18T14:19:35.578Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 108,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 1,
+        "review": "postman test reply old endpoint",
+        "parent": 105,
+        "active": false,
+        "created": "2021-05-18T14:19:41.221Z",
+        "updated": "2021-05-18T14:19:41.309Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 109,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 2,
+        "review": "postman test new endpoint reply",
+        "parent": 104,
+        "active": false,
+        "created": "2021-05-18T14:19:44.452Z",
+        "updated": "2021-05-18T14:19:44.452Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 110,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 1,
+        "review": "postman test reply old endpoint",
+        "parent": 105,
+        "active": false,
+        "created": "2021-05-18T14:19:49.207Z",
+        "updated": "2021-05-18T14:19:49.284Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 111,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 2,
+        "review": "postman test new endpoint reply",
+        "parent": 104,
+        "active": false,
+        "created": "2021-05-18T14:19:51.907Z",
+        "updated": "2021-05-18T14:19:51.907Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 112,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 2,
+        "review": "postman test new endpoint reply",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T14:21:49.628Z",
+        "updated": "2021-05-18T14:21:49.628Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 113,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 1,
+        "review": "postman test reply old endpoint",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T14:21:51.738Z",
+        "updated": "2021-05-18T14:21:51.824Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 114,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 2,
+        "review": "postman test new endpoint reply",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T14:21:53.829Z",
+        "updated": "2021-05-18T14:21:53.829Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 115,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 1,
+        "review": "postman test reply old endpoint",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T14:21:56.203Z",
+        "updated": "2021-05-18T14:21:56.282Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 116,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 1,
+        "review": "postman test reply old endpoint",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T14:21:57.421Z",
+        "updated": "2021-05-18T14:21:57.498Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 117,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 2,
+        "review": "postman test new endpoint reply",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T14:21:59.782Z",
+        "updated": "2021-05-18T14:21:59.782Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 118,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 2,
+        "review": "postman test new endpoint reply",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T14:22:00.981Z",
+        "updated": "2021-05-18T14:22:00.981Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 119,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 1,
+        "review": "postman test reply old endpoint",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T14:22:03.119Z",
+        "updated": "2021-05-18T14:22:03.198Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 120,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 2,
+        "review": "postman test new endpoint reply",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-18T14:22:05.215Z",
+        "updated": "2021-05-18T14:22:05.215Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 121,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 2,
+        "review": "postman test new endpoint reply",
+        "parent": 120,
+        "active": false,
+        "created": "2021-05-18T14:22:13.462Z",
+        "updated": "2021-05-18T14:22:13.462Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 122,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 4,
+        "star": 1,
+        "review": "postman test reply old endpoint",
+        "parent": 119,
+        "active": false,
+        "created": "2021-05-18T14:22:23.969Z",
+        "updated": "2021-05-18T14:22:24.049Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 123,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 3,
+        "review": "testing",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-19T20:08:24.100Z",
+        "updated": "2021-05-19T20:08:24.100Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 124,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 2,
+        "review": "testing new",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-19T20:19:16.204Z",
+        "updated": "2021-05-19T20:19:16.204Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 125,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 5,
+        "review": "afz",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-19T20:19:31.581Z",
+        "updated": "2021-05-19T20:19:31.581Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 126,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 1,
+        "review": "afz",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-19T20:21:23.621Z",
+        "updated": "2021-05-19T20:21:23.621Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 127,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 2,
+        "review": "Testing Review ordering",
+        "parent": null,
+        "active": false,
+        "created": "2021-05-25T07:41:48.484Z",
+        "updated": "2021-05-25T07:41:48.484Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 128,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 5,
+        "review": "Testing Reply Ordering",
+        "parent": 127,
+        "active": false,
+        "created": "2021-05-25T07:42:13.877Z",
+        "updated": "2021-05-25T07:42:13.877Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 129,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 3,
+        "review": "NEw Review",
+        "parent": null,
+        "active": false,
+        "created": "2021-06-06T19:27:21.521Z",
+        "updated": "2021-06-06T19:27:21.521Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 130,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 5,
+        "review": "NEw Reply ",
+        "parent": 129,
+        "active": false,
+        "created": "2021-06-06T19:27:41.322Z",
+        "updated": "2021-06-06T19:27:41.322Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 131,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 5,
+        "review": "Reply two",
+        "parent": 129,
+        "active": false,
+        "created": "2021-06-06T19:29:15.269Z",
+        "updated": "2021-06-06T19:29:15.269Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 132,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 1,
+        "review": "Adding New Review",
+        "parent": null,
+        "active": false,
+        "created": "2021-06-06T19:42:42.291Z",
+        "updated": "2021-06-06T19:42:42.291Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 133,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 5,
+        "review": "Adding New Reply",
+        "parent": 132,
+        "active": false,
+        "created": "2021-06-06T19:42:57.170Z",
+        "updated": "2021-06-06T19:42:57.170Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 134,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 5,
+        "review": "NEw Reply two",
+        "parent": 132,
+        "active": false,
+        "created": "2021-06-06T19:44:23.506Z",
+        "updated": "2021-06-06T19:44:23.506Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 135,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 5,
+        "review": "New Reply 3",
+        "parent": 132,
+        "active": false,
+        "created": "2021-06-06T19:45:43.321Z",
+        "updated": "2021-06-06T19:45:43.321Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 136,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 5,
+        "review": "Reply Four",
+        "parent": 132,
+        "active": false,
+        "created": "2021-06-06T19:46:33.354Z",
+        "updated": "2021-06-06T19:46:33.354Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 137,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 5,
+        "review": "Reply Five",
+        "parent": 132,
+        "active": false,
+        "created": "2021-06-06T19:46:40.484Z",
+        "updated": "2021-06-06T19:46:40.484Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 138,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 5,
+        "review": "Reply Six",
+        "parent": 132,
+        "active": false,
+        "created": "2021-06-06T19:46:46.467Z",
+        "updated": "2021-06-06T19:46:46.467Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 139,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 5,
+        "review": "New Reply Test",
+        "parent": 132,
+        "active": false,
+        "created": "2021-06-06T20:01:28.445Z",
+        "updated": "2021-06-06T20:01:28.445Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 140,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 5,
+        "review": "Testing New Reply",
+        "parent": 132,
+        "active": false,
+        "created": "2021-06-06T20:02:12.645Z",
+        "updated": "2021-06-06T20:02:12.645Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 141,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 4,
+        "review": "Create New Review",
+        "parent": null,
+        "active": false,
+        "created": "2021-06-06T20:07:02.858Z",
+        "updated": "2021-06-06T20:07:02.858Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 142,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 2,
+        "review": "New",
+        "parent": null,
+        "active": false,
+        "created": "2021-06-06T20:09:08.311Z",
+        "updated": "2021-06-06T20:09:08.311Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 143,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 1,
+        "review": "Final Review Test",
+        "parent": null,
+        "active": false,
+        "created": "2021-06-06T20:11:55.583Z",
+        "updated": "2021-06-06T20:11:55.583Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 144,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 5,
+        "review": "Reply Test",
+        "parent": 143,
+        "active": false,
+        "created": "2021-06-06T20:15:54.106Z",
+        "updated": "2021-06-06T20:15:54.106Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 145,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 5,
+        "review": "Reply Test 2",
+        "parent": 143,
+        "active": false,
+        "created": "2021-06-06T20:15:59.873Z",
+        "updated": "2021-06-06T20:15:59.873Z"
+    }
+},
+{
+    "model": "api.categoryreview",
+    "pk": 146,
+    "fields": {
+        "user": [
+            "7208333993"
+        ],
+        "category": 1,
+        "star": 5,
+        "review": "Final Test",
+        "parent": 143,
+        "active": false,
+        "created": "2021-06-06T20:16:04.956Z",
+        "updated": "2021-06-06T20:16:04.956Z"
+    }
+}
+]
