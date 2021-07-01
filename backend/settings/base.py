@@ -197,7 +197,7 @@ CSRF_COOKIE_HTTPONLY = True
 CSRF_TRUSTED_ORIGINS = ['dev.corecare.in', 'corecare.in', 'development.corecare.in']
 # SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
-
+    
 
 REDIS_HOST = "127.0.0.1"
 REDIS_PORT = 6379
