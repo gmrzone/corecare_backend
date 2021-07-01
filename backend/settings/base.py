@@ -198,18 +198,6 @@ CSRF_TRUSTED_ORIGINS = ['dev.corecare.in', 'corecare.in', 'development.corecare.
 # SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_HOST_USER = os.environ["EMAIL_HOST_USER"]
-EMAIL_HOST_USER = get_var("EMAIL_HOST_USER")
-# EMAIL_HOST_PASSWORD = os.environ["EMAIL_HOST_PASSWORD"]
-EMAIL_HOST_PASSWORD = get_var("EMAIL_HOST_PASSWORD")
-EMAIL_PORT = 587
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-
-
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 REDIS_HOST = "127.0.0.1"
 REDIS_PORT = 6379
