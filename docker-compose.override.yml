@@ -4,11 +4,12 @@ services:
         restart: unless-stopped
     db:
         volumes:
-          - ./data/db:/var/lib/postgresql/data
           - ./dockerfiles/init_sql_dev.sh:/docker-entrypoint-initdb.d/init_sql_dev.sh
         env_file: ./dockerfiles/.env.dev
         
     corecare_backend:
+        build: 
+            dockerfile: ./dockerfile
         restart: unless-stopped
         env_file: ./dockerfiles/.env.dev
         volumes: 
@@ -19,6 +20,9 @@ services:
         command: bash -c 'while !</dev/tcp/db/5432; do sleep 5; done; python manage.py runserver 0.0.0.0:8000'
     
     celery:
+        build: 
+            dockerfile: ./dockerfile
+        restart: unless-stopped
         env_file: ./dockerfiles/.env.dev
         command: celery -A backend worker -l INFO
         volumes: 

@@ -19,5 +19,7 @@ old_requirements/
 /dockerfiles/.env.prod
 /dockerfiles/init_sql_prod.sh
 /dockerfiles/wait_for_psql.sh
+/dockerfiles/redis.conf
 /dockerfiles/start_script_prod.sh
 /data
+/nginx

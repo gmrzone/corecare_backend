@@ -4,19 +4,21 @@ services:
         image: redis:alpine 
         container_name: corecare_redis
     db:
+        volumes: 
+            - ./data/db:/var/lib/postgresql/data
         image: postgres
         container_name: corecare_postgres
 
 
     corecare_backend:
-        build: .
+        build: 
+            context: .
         container_name: corecare_backend
         depends_on: 
             - db
             - redis
         
     celery:
-        restart: unless-stopped
         build: 
             context: .
         container_name: corecare_celery

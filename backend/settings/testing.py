@@ -44,10 +44,10 @@ CACHES = {
 
 SECURE_SSL_REDIRECT = False
 
-REDIS_HOST = "redis"
-REDIS_PORT = 6379
-REDIS_DB = 1
+REDIS_HOST = get_var("REDIS_HOST")
+REDIS_PORT = get_var("REDIS_PORT")
+REDIS_DB = get_var("REDIS_PASSWORD")
 
-CELERY_BROKER_URL = "redis://redis:6379/1"
+CELERY_BROKER_URL = get_var("REDIS_LOCATION_AUTH")
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

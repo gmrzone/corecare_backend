@@ -49,11 +49,11 @@ INTERNAL_IPS = [
     # ...
 ]
 
-REDIS_HOST = "127.0.0.1"
-REDIS_PORT = 6379
-REDIS_DB = 1
+REDIS_HOST = get_var("REDIS_HOST")
+REDIS_PORT = get_var("REDIS_PORT")
+REDIS_DB = get_var("REDIS_PASSWORD")  
 
-CELERY_BROKER_URL = "redis://127.0.0.1:6379/1"
+CELERY_BROKER_URL = get_var("REDIS_LOCATION_AUTH")
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
