@@ -71,8 +71,8 @@ CACHES = {
 
 
 REDIS_HOST = get_var("REDIS_HOST")
-REDIS_PORT = get_var("REDIS_PORT")
-REDIS_DB = get_var("REDIS_PASSWORD")   
+REDIS_PORT = int(get_var("REDIS_PORT"))
+REDIS_DB = int(get_var("REDIS_DB"))   
 REDIS_PASSWORD = get_var("REDIS_PASSWORD")
 
 CELERY_BROKER_URL = get_var("REDIS_LOCATION_AUTH")

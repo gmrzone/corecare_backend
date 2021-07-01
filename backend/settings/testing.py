@@ -37,7 +37,7 @@ DATABASES = {
 CACHES = {
     'default': {
         'BACKEND': 'redis_cache.RedisCache',
-        'LOCATION': "redis://redis:6379/1",
+        'LOCATION': get_var("REDIS_LOCATION_AUTH"),
         'TIMEOUT': 300
     },
 }
@@ -45,8 +45,8 @@ CACHES = {
 SECURE_SSL_REDIRECT = False
 
 REDIS_HOST = get_var("REDIS_HOST")
-REDIS_PORT = get_var("REDIS_PORT")
-REDIS_DB = get_var("REDIS_PASSWORD")
+REDIS_PORT = int(get_var("REDIS_PORT")) 
+REDIS_DB = int(get_var("REDIS_DB"))
 
 CELERY_BROKER_URL = get_var("REDIS_LOCATION_AUTH")
 
