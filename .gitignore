@@ -2,6 +2,7 @@
 /3_92
 /venv
 /afzal
+/prodvenv
 /backend/settings/secret.json
 /db.sqlite3
 /json_data/all_data_psql.json
@@ -23,3 +24,4 @@ old_requirements/
 /dockerfiles/start_script_prod.sh
 /data
 /nginx
+/certbot
