@@ -128,7 +128,7 @@ class GetTopPost(APIView):
         return super().dispatch(request, *args, **kwargs)
 
     def get(self, request):
-        top_posts_r = r.zrange("top_posts", 0, -1, desc=True)
+        top_posts_r = r.zrange("top_posts", 0, -1, desc=True)   
         if top_posts_r and len(top_posts_r) > 3:
             top_posts_r = top_posts_r[0:self.count] if self.count < len(top_posts_r) else top_posts_r
             preserve_ids = Case(*[When(id=id, then=index) for index, id in enumerate(top_posts_r)])

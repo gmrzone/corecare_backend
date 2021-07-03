@@ -24,6 +24,6 @@ services:
             context: .
         container_name: corecare_celery
         depends_on: 
-            - db
+            - db    
             - redis
             - corecare_backend
