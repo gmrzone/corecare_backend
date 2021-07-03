@@ -19,6 +19,7 @@ class PostSerializer(ModelSerializer):
     created = TimeSince(read_only=True)
     author = UserSerializer(many=False, read_only=True)
     date_slug = SerializerMethodField(method_name="get_date_slug")
+    photo = SerializerMethodField(method_name="get_blog_photo")
     class Meta:
         model = Post
         fields = ('id', 'author', 'category', 'title', 'slug', 'photo', 'body', 'created', "date_slug")
@@ -30,6 +31,8 @@ class PostSerializer(ModelSerializer):
             "month": str(created_date.month),
             "day": str(created_date.day)
         }
+    def get_blog_photo(self, obj):
+         return obj.photo.url
 
 # class ReplySerializer(ModelSerializer):
 #     created = TimeSince(read_only=True)
