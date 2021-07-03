@@ -1,26 +1,46 @@
 
 from django.db.models import fields
 from .models import EmployeeCategory, CouponCode, ServiceSubcategory, Service, CategoryReview, Contact, PartnerRequest
-from rest_framework.serializers import ModelSerializer, StringRelatedField, Field
+from rest_framework.serializers import ModelSerializer, StringRelatedField, Field, SerializerMethodField
 from django.utils.timesince import timesince
 from account.models import CustomUser
 
 
 class EmployeeCategorySerializer(ModelSerializer):
+    icon = SerializerMethodField(method_name="get_icon")
     class Meta:
         model = EmployeeCategory
         fields = ['id', 'name', 'slug', 'icon']
 
+    def get_icon(self, obj):
+        return obj.icon.url
+
 class ServiceSerializer(ModelSerializer):
+    icon = SerializerMethodField(method_name="get_service_image")
+    placeholder = SerializerMethodField(method_name="get_service_placeholder")
     class Meta:
         model = Service
         fields= '__all__'
 
+    def get_service_image(self, obj):
+        return obj.icon.url
+
+    def get_service_placeholder(self, obj):
+        return obj.placeholder.url
+
 class SubcategorySerializer(ModelSerializer):
     service_specialist = EmployeeCategorySerializer()
+    icon = SerializerMethodField('get_subcategory_image')
+    placeholder = SerializerMethodField('get_subcategory_placeholder')
     class Meta:
         model = ServiceSubcategory
         fields = '__all__'
+
+    def get_subcategory_image(self, obj):
+        return obj.icon.url
+
+    def get_subcategory_placeholder(self, obj):
+        return obj.placeholder.url
 
 class CouponCodeSerializers(ModelSerializer):
     category = StringRelatedField(many=True)
