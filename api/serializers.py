@@ -53,9 +53,13 @@ class TimeSince(Field):
         return timesince(value) + " ago"
 
 class ReviewUser(ModelSerializer):
+    photo = SerializerMethodField('get_profile_pic')
     class Meta:
         model = CustomUser
         fields = ['number', 'username', 'email', 'photo']
+
+    def get_profile_pic(self, obj):
+        return obj.photo.url
 
 # class CategoryReviewSerializer(ModelSerializer):
 #     user = ReviewUser(many=False, read_only=True)
