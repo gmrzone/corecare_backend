@@ -1,6 +1,4 @@
 from django.urls import path
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
 from .views import *
 app_name = "administrator"
 
@@ -12,4 +10,7 @@ urlpatterns  = [
     path('get-orders/', GetOrders.as_view(), name="all_orders"),
     path('get-category/', GetCategories.as_view(), name="all_categories"),
     path('get-services/', GetServices.as_view(), name="all_services"),
+    path('get-blog-posts/', GetBlogPosts.as_view(), name="all_posts"),
+    path('get-comments/',  GetBlogPostComments.as_view(), name="all_comments"),
+    path('get_coupons/', GetCoupons.as_view(), name="all_coupons"),
 ]

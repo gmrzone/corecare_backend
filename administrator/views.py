@@ -1,12 +1,12 @@
-from django.db.models import query
-from django.shortcuts import render
+
 from rest_framework.generics import ListAPIView
-from .serializers import UserSerializerAdministrator, OrderSerializerAdministrator, ServiceSerializerAdministrator
+from .serializers import *
 from account.models import CustomUser
 from cart.models import Order
-from api.models import ServiceSubcategory, Service
+from api.models import ServiceSubcategory, Service, CouponCode
 from .permissions import IsSuperUser
-from api.serializers import SubcategorySerializer, ServiceSerializer
+from api.serializers import SubcategorySerializer
+from blog.models import Post, Comment
 
 
 # Create your views here.
@@ -60,8 +60,26 @@ class GetServices(ListAPIView):
         return queryset
         
 
+class GetBlogPosts(ListAPIView):
+    serializer_class = BlogPostAdministrator
+    http_method_names = ['get']
 
+    def get_queryset(self):
+        queryset = Post.objects.all().select_related('category', 'author')
+        return queryset
 
+class GetBlogPostComments(ListAPIView):
+    serializer_class = CommentSerializerAdmin
+    http_method_names = ['get']
 
+    def get_queryset(self):
+        queryset = Comment.objects.all().select_related('user').prefetch_related('replies')
+        return queryset
 
+class GetCoupons(ListAPIView):
+    serializer_class = CouponSerializerAdministrator
+    http_method_names = ['get']
 
+    def get_queryset(self):
+        queryset = CouponCode.objects.all().prefetch_related('category', 'users')
+        return queryset
