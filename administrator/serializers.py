@@ -11,4 +11,4 @@ class UserSerializerAdministrator(ModelSerializer):
     class Meta:
 
         model = CustomUser
-        fields = ('id','number', 'username', 'email', 'last_login', 'first_name', 'last_name',"address_1", "address_2", "city", "state", "pincode", "verified", 'date_joined')
+        fields = ('id','number', 'username', 'email', 'last_login', 'first_name', 'last_name',"address_1", "address_2", "city", "state", "pincode", "verified",'is_employee', 'is_active', 'is_verified_employee', 'date_joined')
