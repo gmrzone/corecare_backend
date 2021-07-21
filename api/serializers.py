@@ -29,7 +29,7 @@ class ServiceSerializer(ModelSerializer):
         return obj.placeholder.url
 
 class SubcategorySerializer(ModelSerializer):
-    service_specialist = EmployeeCategorySerializer()
+    service_specialist = StringRelatedField(read_only=True)
     icon = SerializerMethodField('get_subcategory_image')
     placeholder = SerializerMethodField('get_subcategory_placeholder')
     class Meta:
