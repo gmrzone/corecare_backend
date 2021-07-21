@@ -17,7 +17,6 @@ class Recommender:
         return key
 
     def create_recommandation_for(self, services: list) -> None:
-        print("Afzal" ,services)
         for item in services:
             for with_item in services:
                 if int(item) != int(with_item):

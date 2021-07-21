@@ -52,3 +52,7 @@ class OrderSerializer(ModelSerializer):
     class Meta:
         model = Order
         fields = ('id', 'category', 'items', 'user', 'receipt', 'razorpay_order_id', 'subtotal', 'tax', 'discount', 'total', 'coupon', 'paid', 'status', 'created', 'updated', 'fullfill_by')
+
+
+
+
