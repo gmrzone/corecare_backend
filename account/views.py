@@ -22,7 +22,6 @@ from .models import CustomUser
 
 # Django Imports
 from django.shortcuts import get_object_or_404
-from django.contrib.auth.models import AnonymousUser
 from django.contrib.auth import authenticate
 from django.conf import settings
 from django.middleware import csrf
@@ -125,7 +124,6 @@ class UpdateSignupAdditionalData(UpdateAPIView):
 
     def update(self, request, number, *args, **kwargs):
         password = request.data.get('password')
-        print(request.data)
         if request.user.is_authenticated:
             instance = request.user
             new_user = False
