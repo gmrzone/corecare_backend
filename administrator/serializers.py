@@ -18,14 +18,34 @@ class UserSerializerAdministrator(ModelSerializer):
     class Meta:
 
         model = CustomUser
-        fields = ('id','number', 'password', 'username', 'email', 'last_login', 'first_name', 'last_name',"address_1", "address_2", "city", "state", "pincode", "verified",'is_employee', 'is_active', 'is_verified_employee', 'date_joined')
-
+        fields = ('id','number', 'password', 'username', 'email', 'last_login', 'first_name', 'last_name',"address_1", "address_2", "city", "state", "pincode", "verified",'is_employee', 'is_active', 'date_joined')
+        extra_kwargs = {
+        "password": {'write_only': True}
+    }
     def create(self, validated_data):
-
         validated_data['password'] = make_password(validated_data['password'])
         user = CustomUser(**validated_data)
         user.save()
         return user
+
+class EmployeeSerializerAdministrator(ModelSerializer):
+    employee_category = SerializerMethodField('get_employee_category')
+    last_login = TimeSince(read_only=True)
+    date_joined = TimeSince(read_only=True)
+
+    def get_employee_category(self, obj):
+        return {
+            "id": obj.employee_category.id,
+            "name": obj.employee_category.name
+        }
+
+    class Meta:
+
+        model = CustomUser
+        fields = ('id','number', 'password', 'username', 'email', 'last_login', 'first_name', 'last_name',"address_1", "address_2", "city", "state", "pincode", 'is_verified_employee','is_employee', 'is_active', 'employee_category', 'date_joined')
+        extra_kwargs = {
+        "password": {'write_only': True}
+    }
 
 class OrderSerializerAdministrator(ModelSerializer):
     coupon = CouponCodeSerializers(read_only=True)

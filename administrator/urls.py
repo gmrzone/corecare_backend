@@ -14,4 +14,5 @@ urlpatterns  = [
     path('get-comments/',  GetBlogPostComments.as_view(), name="all_comments"),
     path('get_coupons/', GetCoupons.as_view(), name="all_coupons"),
     path('create-user/', CreateUser.as_view(), name="create_user"),
+    path('create-employee/', CreateEmployee.as_view(), name="create_employee")
 ]
