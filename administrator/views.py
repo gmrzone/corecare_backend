@@ -1,5 +1,6 @@
 
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import CreateAPIView, ListAPIView
+from rest_framework.response import Response
 from .serializers import *
 from account.models import CustomUser
 from cart.models import Order
@@ -7,6 +8,7 @@ from api.models import ServiceSubcategory, Service, CouponCode
 from .permissions import IsSuperUser
 from api.serializers import SubcategorySerializer
 from blog.models import Post, Comment
+from rest_framework.status import HTTP_200_OK, HTTP_404_NOT_FOUND
 
 
 # Create your views here.
@@ -18,6 +20,24 @@ class GetUsers(ListAPIView):
     http_method_names = ['get']
     permission_classes = [IsSuperUser]
     queryset = CustomUser.objects.all()
+
+
+class CreateUser(CreateAPIView):
+    serializer_class = UserSerializerAdministrator
+    http_method_names = ['post']
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data, )
+        if serializer.is_valid():
+            self.perform_create(serializer)
+            data = {'status': "ok", "message": "A New user has been added sucessfully."}
+            status = HTTP_200_OK
+        else:
+            data = {'status': "error", "message": "Please make sure all the required fields have been filled."}
+            status = HTTP_404_NOT_FOUND
+
+        return Response(data=data, status=status)
+
 
 
 class GetEmployees(ListAPIView):

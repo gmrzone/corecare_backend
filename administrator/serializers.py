@@ -7,6 +7,7 @@ from cart.serializers import CalculateFullfillTime, OrderItemSerializer
 from blog.models import Comment
 from blog.serializers import PostSerializer
 from api.models import CouponCode
+from django.contrib.auth.hashers import make_password
 
 class UserSerializerAdministrator(ModelSerializer):
 
@@ -17,9 +18,14 @@ class UserSerializerAdministrator(ModelSerializer):
     class Meta:
 
         model = CustomUser
-        fields = ('id','number', 'username', 'email', 'last_login', 'first_name', 'last_name',"address_1", "address_2", "city", "state", "pincode", "verified",'is_employee', 'is_active', 'is_verified_employee', 'date_joined')
+        fields = ('id','number', 'password', 'username', 'email', 'last_login', 'first_name', 'last_name',"address_1", "address_2", "city", "state", "pincode", "verified",'is_employee', 'is_active', 'is_verified_employee', 'date_joined')
 
+    def create(self, validated_data):
 
+        validated_data['password'] = make_password(validated_data['password'])
+        user = CustomUser(**validated_data)
+        user.save()
+        return user
 
 class OrderSerializerAdministrator(ModelSerializer):
     coupon = CouponCodeSerializers(read_only=True)
