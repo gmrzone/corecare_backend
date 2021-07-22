@@ -10,7 +10,7 @@ from .utils import EmployeeIconLocation, SubcategoryIconLocation, ServiceIconLoc
 
 
 class EmployeeCategory(models.Model):
-    name= models.CharField(max_length=100, db_index=True)
+    name = models.CharField(max_length=100, db_index=True)
     slug = models.CharField(null=True, blank=True, max_length=100, db_index=True)
     icon = models.FileField(upload_to=EmployeeIconLocation, default='Employee Category/default.svg')
     hiring = models.BooleanField(default=True)

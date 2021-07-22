@@ -1,5 +1,5 @@
 from rest_framework.fields import SerializerMethodField
-from rest_framework.serializers import ModelSerializer, StringRelatedField
+from rest_framework.serializers import ModelSerializer, StringRelatedField, RelatedField
 from account.models import CustomUser
 from cart.models import Order
 from api.serializers import TimeSince, CouponCodeSerializers, EmployeeCategorySerializer, ServiceSerializer, SubcategorySerializer
@@ -28,24 +28,30 @@ class UserSerializerAdministrator(ModelSerializer):
         user.save()
         return user
 
+
+
 class EmployeeSerializerAdministrator(ModelSerializer):
-    employee_category = SerializerMethodField('get_employee_category')
     last_login = TimeSince(read_only=True)
     date_joined = TimeSince(read_only=True)
-
-    def get_employee_category(self, obj):
-        return {
-            "id": obj.employee_category.id,
-            "name": obj.employee_category.name
-        }
-
+    employee_category_name = SerializerMethodField('get_category_name')
+    extra_kwargs = {
+        "password": {'write_only': True}
+    }
+    def get_category_name(self, obj):
+        return obj.employee_category.name
     class Meta:
 
         model = CustomUser
-        fields = ('id','number', 'password', 'username', 'email', 'last_login', 'first_name', 'last_name',"address_1", "address_2", "city", "state", "pincode", 'is_verified_employee','is_employee', 'is_active', 'employee_category', 'date_joined')
+        fields = ('id','number', 'password', 'username', 'email', 'last_login', 'first_name', 'last_name',"address_1", "address_2", "city", "state", "pincode", 'is_verified_employee','is_employee', 'is_active', 'employee_category', 'employee_category_name', 'date_joined')
         extra_kwargs = {
         "password": {'write_only': True}
     }
+
+    def create(self, validated_data):
+        validated_data['password'] = make_password(validated_data['password'])
+        user = CustomUser(**validated_data)
+        user.save()
+        return user
 
 class OrderSerializerAdministrator(ModelSerializer):
     coupon = CouponCodeSerializers(read_only=True)
