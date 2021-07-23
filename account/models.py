@@ -2,8 +2,7 @@
 # Other imports
 import razorpay
 from django.contrib.auth import validators
-from django.contrib.auth.models import (AbstractBaseUser, AbstractUser,
-                                        PermissionsMixin)
+from django.contrib.auth.models import AbstractBaseUser, AbstractUser, PermissionsMixin
 from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.core.mail import send_mail
 from django.db import models
@@ -14,6 +13,7 @@ from django.utils.translation import gettext_lazy as _
 from api.models import EmployeeCategory
 
 from .managers import CustomUserManager
+
 # Project imports
 from .utils import employee_document_location, profile_pic_loc
 from .validators import number_validator

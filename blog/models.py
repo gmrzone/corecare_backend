@@ -4,8 +4,7 @@ from django.utils.text import slugify
 
 from api.models import EmployeeCategory
 
-from .utils import (blog_image_location, blog_image_placeholder_location,
-                    blog_images)
+from .utils import blog_image_location, blog_image_placeholder_location, blog_images
 
 # Create your models here.
 

@@ -15,8 +15,7 @@ from cart.utils import r
 
 from .models import Comment, Post
 from .pagination import PostListPagination
-from .serializers import (BlogImagesSerializer, CommentSerializer,
-                          PostSerializer)
+from .serializers import BlogImagesSerializer, CommentSerializer, PostSerializer
 
 
 class UploadBlogImages(CreateAPIView):

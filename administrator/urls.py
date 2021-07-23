@@ -16,5 +16,5 @@ urlpatterns = [
     path("get_coupons/", GetCoupons.as_view(), name="all_coupons"),
     path("create-user/", CreateUser.as_view(), name="create_user"),
     path("create-employee/", CreateEmployee.as_view(), name="create_employee"),
-    path('create-order/', CreateOrder.as_view(), name="create_order"),
+    path("create-order/", CreateOrder.as_view(), name="create_order"),
 ]

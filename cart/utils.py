@@ -1,5 +1,9 @@
+from datetime import datetime
+from string import ascii_lowercase, ascii_uppercase
+
 from django.conf import Settings, settings
 from django.db.models import Case, When
+from django.utils.crypto import get_random_string
 from redis import Redis, StrictRedis
 
 from .models import Service
@@ -57,3 +61,11 @@ class Recommender:
         else:
             data = []
         return data
+
+
+def generate_order_receipt(length, user_id):
+    allowed_characters = (
+        datetime.now().strftime("%Y%m%d%H%M%S") + ascii_uppercase + ascii_lowercase
+    )
+    order_receipt = "ORD" + str(user_id) + get_random_string(length, allowed_characters)
+    return order_receipt

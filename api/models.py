@@ -6,9 +6,13 @@ from django.db.models.base import Model
 from django.utils.text import slugify
 
 # Others imports
-from .utils import (EmployeeIconLocation, ServiceIconLocation,
-                    ServicePlaceholderLocation, SubcategoryIconLocation,
-                    SubcategoryPlaceholderLocation)
+from .utils import (
+    EmployeeIconLocation,
+    ServiceIconLocation,
+    ServicePlaceholderLocation,
+    SubcategoryIconLocation,
+    SubcategoryPlaceholderLocation,
+)
 
 
 class EmployeeCategory(models.Model):

@@ -93,10 +93,11 @@ class GetOrders(ListAPIView):
         )
         return queryset
 
+
 class CreateOrder(CreateAPIView):
     serializer_class = OrderSerializerAdministrator
-    http_method_names = ['post']
-    
+    http_method_names = ["post"]
+
     def create(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
         print(request.data)

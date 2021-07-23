@@ -1,19 +1,28 @@
 from django.contrib.auth.hashers import make_password
-from django.db import models
+from django.db import Error, models, transaction
 from rest_framework.fields import SerializerMethodField
-from rest_framework.serializers import ModelSerializer, StringRelatedField, ValidationError
+from rest_framework.serializers import (
+    ModelSerializer,
+    StringRelatedField,
+    ValidationError,
+)
 
 from account.models import CustomUser
 from api.models import CouponCode
-from api.serializers import (CouponCodeSerializers, EmployeeCategorySerializer,
-                             ServiceSerializer, SubcategorySerializer,
-                             TimeSince)
+from api.serializers import (
+    CouponCodeSerializers,
+    EmployeeCategorySerializer,
+    ServiceSerializer,
+    SubcategorySerializer,
+    TimeSince,
+)
 from blog.models import Comment
 from blog.serializers import PostSerializer
 from cart.models import Order, OrderItem
 from cart.serializers import CalculateFullfillTime, OrderItemSerializer
+from cart.utils import generate_order_receipt
 
-from django.db import transaction, Error
+
 class UserSerializerAdministrator(ModelSerializer):
 
     last_login = TimeSince(read_only=True)
@@ -86,8 +95,8 @@ class EmployeeSerializerAdministrator(ModelSerializer):
         user.save()
         return user
 
-class OrderItemMinSerializer(ModelSerializer):
 
+class OrderItemMinSerializer(ModelSerializer):
     class Meta:
         model = OrderItem
         fields = ("service", "quantity", "total")
@@ -121,19 +130,24 @@ class OrderSerializerAdministrator(ModelSerializer):
             "updated",
             "fullfill_by",
         )
-        extra_kwargs = {'items': {'required': False}}
+        extra_kwargs = {"items": {"required": False}, "receipt": {"required": False}}
 
     def create(self, validated_data):
-        items_data = validated_data.pop('items')
+        items_data = validated_data.pop("items")
         try:
+
             with transaction.atomic():
-                instance = Order.objects.create(**validated_data)
+                instance = Order(**validated_data)
+                receipt = generate_order_receipt(17, instance.user.id)
+                instance.receipt = receipt
+                instance.save()
                 for item in items_data:
                     OrderItem.objects.create(order=instance, **item)
         except Error:
-            raise ValidationError("Something is wrong with the server please try again later.")
+            raise ValidationError(
+                "Something is wrong with the server please try again later."
+            )
         return instance
-    
 
 
 class ServiceSerializerAdministrator(ServiceSerializer):

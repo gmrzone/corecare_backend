@@ -14,6 +14,7 @@ from django.utils.crypto import get_random_string
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.generics import CreateAPIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
+
 # Rest Framework
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -27,7 +28,7 @@ from .errors import CategoryChange
 from .models import Order, OrderItem
 from .serializers import OrderSerializer
 from .tasks import order_success_mail
-from .utils import Recommender
+from .utils import Recommender, generate_order_receipt
 
 # Create your views here.
 client = razorpay.Client(auth=("rzp_test_Fz30Ps4aOA4Zke", "HS7mZz3v6G9dLeaS5LY1tejl"))
@@ -129,14 +130,15 @@ class CreateRazorPayOrder(APIView):
             # client = razorpay.Client(auth=('rzp_test_Fz30Ps4aOA4Zke', 'HS7mZz3v6G9dLeaS5LY1tejl'))
             order_amount = cart.get_discounted_total()[0]
             order_currency = "INR"
-            allowed_characters = (
-                datetime.now().strftime("%Y%m%d%H%M%S")
-                + ascii_uppercase
-                + ascii_lowercase
-            )
-            order_receipt = (
-                "ORD" + str(user.id) + get_random_string(17, allowed_characters)
-            )
+            # allowed_characters = (
+            #     datetime.now().strftime("%Y%m%d%H%M%S")
+            #     + ascii_uppercase
+            #     + ascii_lowercase
+            # )
+            # order_receipt = (
+            #     "ORD" + str(user.id) + get_random_string(17, allowed_characters)
+            # )
+            order_receipt = generate_order_receipt(17, user.id)
             shipping_address = f"{user.address_1} {user.address_2} {user.city} {user.state} {user.pincode}"
             notes = {"shipping address": shipping_address}
             order = client.order.create(

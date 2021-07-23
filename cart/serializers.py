@@ -4,8 +4,12 @@ import pytz
 from rest_framework.serializers import Field, ModelSerializer
 
 from account.serializers import UserSerializer
-from api.serializers import (CouponCodeSerializers, EmployeeCategorySerializer,
-                             ServiceSerializer, TimeSince)
+from api.serializers import (
+    CouponCodeSerializers,
+    EmployeeCategorySerializer,
+    ServiceSerializer,
+    TimeSince,
+)
 
 from .models import Order, OrderItem
 
