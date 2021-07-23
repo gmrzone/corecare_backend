@@ -8,18 +8,18 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('api', '0003_auto_20210225_0455'),
+        ("api", "0003_auto_20210225_0455"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='couponcode',
-            name='category',
-            field=models.ManyToManyField(blank=True, to='api.EmployeeCategory'),
+            model_name="couponcode",
+            name="category",
+            field=models.ManyToManyField(blank=True, to="api.EmployeeCategory"),
         ),
         migrations.AlterField(
-            model_name='couponcode',
-            name='users',
+            model_name="couponcode",
+            name="users",
             field=models.ManyToManyField(blank=True, to=settings.AUTH_USER_MODEL),
         ),
     ]

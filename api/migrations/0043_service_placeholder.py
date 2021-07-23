@@ -7,13 +7,17 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('api', '0042_alter_servicesubcategory_placeholder'),
+        ("api", "0042_alter_servicesubcategory_placeholder"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='service',
-            name='placeholder',
-            field=models.ImageField(blank=True, null=True, upload_to=api.utils.SubcategoryPlaceholderLocation),
+            model_name="service",
+            name="placeholder",
+            field=models.ImageField(
+                blank=True,
+                null=True,
+                upload_to=api.utils.SubcategoryPlaceholderLocation,
+            ),
         ),
     ]

@@ -7,13 +7,19 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0020_alter_post_category'),
+        ("blog", "0020_alter_post_category"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='post',
-            name='placeholder',
-            field=models.ImageField(blank=True, default='placeholder_default_blog.jpg', max_length=400, null=True, upload_to=blog.utils.blog_image_placeholder_location),
+            model_name="post",
+            name="placeholder",
+            field=models.ImageField(
+                blank=True,
+                default="placeholder_default_blog.jpg",
+                max_length=400,
+                null=True,
+                upload_to=blog.utils.blog_image_placeholder_location,
+            ),
         ),
     ]

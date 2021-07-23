@@ -6,13 +6,15 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('cart', '0001_initial'),
+        ("cart", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='order',
-            name='razor_pay_id',
-            field=models.CharField(blank=True, db_index=True, max_length=100, null=True),
+            model_name="order",
+            name="razor_pay_id",
+            field=models.CharField(
+                blank=True, db_index=True, max_length=100, null=True
+            ),
         ),
     ]

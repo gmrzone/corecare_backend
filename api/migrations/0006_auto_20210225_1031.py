@@ -7,13 +7,16 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('api', '0005_employeecategory_icon'),
+        ("api", "0005_employeecategory_icon"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='employeecategory',
-            name='icon',
-            field=models.FileField(default='Employee Category/default.svg', upload_to=api.utils.EmployeeIconLocation),
+            model_name="employeecategory",
+            name="icon",
+            field=models.FileField(
+                default="Employee Category/default.svg",
+                upload_to=api.utils.EmployeeIconLocation,
+            ),
         ),
     ]

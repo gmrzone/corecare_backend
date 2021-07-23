@@ -4,26 +4,30 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.authentication import CSRFCheck
 from rest_framework import exceptions
 
+
 def employee_document_location(instance, filename):
     path = os.path.join("Employee_Documents", instance.number, filename)
     return path
 
+
 def profile_pic_loc(instance, filename):
     path = os.path.join("Users_Profile_pic", instance.number, filename)
     return path
+
 
 def validate_number(number):
     if number:
         return True
     else:
         return False
-    
+
 
 def generate_key_for_otp(number):
     return str(number) + str(datetime.date(datetime.now())) + "corecareservices"
 
 
 # Http Onlu Cookie
+
 
 def enforce_csrf(request):
     csrf_check = CSRFCheck()
@@ -35,12 +39,14 @@ def enforce_csrf(request):
         msg = f"CSRF FAILED {reason}"
         raise exceptions.PermissionDenied(msg)
 
+
 def get_token(user):
     token = RefreshToken.for_user(user)
     return {
-        'refresh': str(token),
-        'access': str(token.access_token),
+        "refresh": str(token),
+        "access": str(token.access_token),
     }
+
 
 def timedelta_to_second(timedelta):
     seconds = timedelta.seconds

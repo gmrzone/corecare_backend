@@ -7,13 +7,16 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('api', '0017_service_icon'),
+        ("api", "0017_service_icon"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='servicesubcategory',
-            name='icon',
-            field=models.ImageField(default='Service SubCategory Images/default.jpg', upload_to=api.utils.SubcategoryIconLocation),
+            model_name="servicesubcategory",
+            name="icon",
+            field=models.ImageField(
+                default="Service SubCategory Images/default.jpg",
+                upload_to=api.utils.SubcategoryIconLocation,
+            ),
         ),
     ]

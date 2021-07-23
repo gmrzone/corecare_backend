@@ -7,13 +7,19 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('api', '0025_auto_20210305_0641'),
+        ("api", "0025_auto_20210305_0641"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='categoryreview',
-            name='star',
-            field=models.IntegerField(default=5, validators=[django.core.validators.MaxValueValidator(5), django.core.validators.MinValueValidator(0)]),
+            model_name="categoryreview",
+            name="star",
+            field=models.IntegerField(
+                default=5,
+                validators=[
+                    django.core.validators.MaxValueValidator(5),
+                    django.core.validators.MinValueValidator(0),
+                ],
+            ),
         ),
     ]

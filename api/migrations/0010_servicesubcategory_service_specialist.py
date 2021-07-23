@@ -7,13 +7,17 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('api', '0009_servicesubcategory'),
+        ("api", "0009_servicesubcategory"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='servicesubcategory',
-            name='service_specialist',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='api.employeecategory'),
+            model_name="servicesubcategory",
+            name="service_specialist",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="api.employeecategory",
+            ),
         ),
     ]

@@ -7,14 +7,20 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('api', '0027_categoryreview_category'),
-        ('account', '0005_customuser_photo'),
+        ("api", "0027_categoryreview_category"),
+        ("account", "0005_customuser_photo"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='customuser',
-            name='employee_category',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='user', to='api.employeecategory'),
+            model_name="customuser",
+            name="employee_category",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="user",
+                to="api.employeecategory",
+            ),
         ),
     ]

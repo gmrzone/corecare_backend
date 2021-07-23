@@ -6,19 +6,26 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.conf import settings
 
 # Others imports
-from .utils import EmployeeIconLocation, SubcategoryIconLocation, ServiceIconLocation, SubcategoryPlaceholderLocation, ServicePlaceholderLocation
+from .utils import (
+    EmployeeIconLocation,
+    SubcategoryIconLocation,
+    ServiceIconLocation,
+    SubcategoryPlaceholderLocation,
+    ServicePlaceholderLocation,
+)
 
 
 class EmployeeCategory(models.Model):
     name = models.CharField(max_length=100, db_index=True)
     slug = models.CharField(null=True, blank=True, max_length=100, db_index=True)
-    icon = models.FileField(upload_to=EmployeeIconLocation, default='Employee Category/default.svg')
+    icon = models.FileField(
+        upload_to=EmployeeIconLocation, default="Employee Category/default.svg"
+    )
     hiring = models.BooleanField(default=True)
 
     class Meta:
-        index_together = ('id', 'slug')
+        index_together = ("id", "slug")
 
-        
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.name)
@@ -27,30 +34,54 @@ class EmployeeCategory(models.Model):
     def __str__(self):
         return self.name
 
+
 class ServiceSubcategory(models.Model):
     name = models.CharField(max_length=100, db_index=True)
     slug = models.SlugField(max_length=100, db_index=True, null=True, blank=True)
-    icon = models.ImageField(upload_to=SubcategoryIconLocation, default='Service SubCategory Images/default.jpg')
-    placeholder = models.ImageField(upload_to=SubcategoryPlaceholderLocation, default="placeholder_subcategory_default.jpg", null=True, blank=True)
+    icon = models.ImageField(
+        upload_to=SubcategoryIconLocation,
+        default="Service SubCategory Images/default.jpg",
+    )
+    placeholder = models.ImageField(
+        upload_to=SubcategoryPlaceholderLocation,
+        default="placeholder_subcategory_default.jpg",
+        null=True,
+        blank=True,
+    )
     created = models.DateTimeField(auto_now_add=True, null=True)
-    service_specialist = models.ForeignKey(EmployeeCategory, on_delete=models.CASCADE, null=True, related_name='subcategory')
-
+    service_specialist = models.ForeignKey(
+        EmployeeCategory,
+        on_delete=models.CASCADE,
+        null=True,
+        related_name="subcategory",
+    )
 
     class Meta:
-        ordering = ('-created',)
-    
+        ordering = ("-created",)
+
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.name)
         return super().save(*args, **kwargs)
+
     def __str__(self):
         return self.name
 
+
 class Service(models.Model):
     name = models.CharField(max_length=100, db_index=True)
-    icon = models.ImageField(default='Service Images/default-service.jpg', upload_to=ServiceIconLocation)
-    placeholder = models.ImageField(upload_to=ServicePlaceholderLocation, default="placeholder_service_default.jpg", null=True, blank=True)
-    subcategory = models.ForeignKey(ServiceSubcategory, on_delete=models.CASCADE, null=True, related_name='services')
+    icon = models.ImageField(
+        default="Service Images/default-service.jpg", upload_to=ServiceIconLocation
+    )
+    placeholder = models.ImageField(
+        upload_to=ServicePlaceholderLocation,
+        default="placeholder_service_default.jpg",
+        null=True,
+        blank=True,
+    )
+    subcategory = models.ForeignKey(
+        ServiceSubcategory, on_delete=models.CASCADE, null=True, related_name="services"
+    )
     description = models.TextField(max_length=500, null=True, blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     created = models.DateTimeField(auto_now_add=True, null=True)
@@ -59,12 +90,29 @@ class Service(models.Model):
     def __str__(self):
         return self.name
 
+
 class CategoryReview(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, related_name='reviews', blank=True)
-    category = models.ForeignKey(EmployeeCategory, on_delete=models.CASCADE, null=True, blank=True, related_name='category_reviews')
-    star = models.IntegerField(default=5, validators=[MaxValueValidator(5), MinValueValidator(0)])
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        null=True,
+        related_name="reviews",
+        blank=True,
+    )
+    category = models.ForeignKey(
+        EmployeeCategory,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="category_reviews",
+    )
+    star = models.IntegerField(
+        default=5, validators=[MaxValueValidator(5), MinValueValidator(0)]
+    )
     review = models.TextField(max_length=500, null=True)
-    parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='replies')
+    parent = models.ForeignKey(
+        "self", on_delete=models.CASCADE, null=True, blank=True, related_name="replies"
+    )
     active = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -73,21 +121,26 @@ class CategoryReview(models.Model):
         return f"Comment By {self.user.number}"
 
     class Meta:
-        ordering = ('created',)
+        ordering = ("created",)
+
 
 class CouponCode(models.Model):
     code = models.CharField(max_length=100, db_index=True)
-    discount = models.IntegerField(default=0, validators=[MaxValueValidator(100), MinValueValidator(0)])
+    discount = models.IntegerField(
+        default=0, validators=[MaxValueValidator(100), MinValueValidator(0)]
+    )
     valid_from = models.DateTimeField()
     valid_to = models.DateTimeField()
     active = models.BooleanField(default=False)
     category = models.ManyToManyField(EmployeeCategory, blank=True)
-    users = models.ManyToManyField(settings.AUTH_USER_MODEL , blank=True)
+    users = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True)
 
     class Meta:
-        ordering = ('code',)
+        ordering = ("code",)
+
     def __str__(self):
         return self.code
+
 
 class Contact(models.Model):
     first_name = models.CharField(max_length=100, db_index=True)
@@ -96,12 +149,12 @@ class Contact(models.Model):
     message = models.TextField(max_length=500)
     created = models.DateTimeField(auto_now_add=True)
 
-
     class Meta:
-        ordering = ('-created',)
+        ordering = ("-created",)
 
     def __str__(self):
         return self.email
+
 
 class PartnerRequest(models.Model):
     name = models.CharField(max_length=100, db_index=True)
@@ -110,9 +163,8 @@ class PartnerRequest(models.Model):
     detail = models.TextField(max_length=500)
     created = models.DateTimeField(auto_now_add=True)
 
-
     class Meta:
-        ordering = ('-created',)
+        ordering = ("-created",)
 
     def __str__(self):
         return self.email

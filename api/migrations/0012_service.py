@@ -8,21 +8,45 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('api', '0011_auto_20210228_0342'),
+        ("api", "0011_auto_20210228_0342"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Service',
+            name="Service",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(db_index=True, max_length=100)),
-                ('icon', models.FileField(default='Employee Category/default.svg', upload_to=api.utils.ServiceIconLocation)),
-                ('description', models.TextField(blank=True, max_length=500, null=True)),
-                ('price', models.DecimalField(decimal_places=2, max_digits=10)),
-                ('created', models.DateTimeField(auto_now_add=True, null=True)),
-                ('active', models.BooleanField(default=True)),
-                ('subcategory', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='api.servicesubcategory')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(db_index=True, max_length=100)),
+                (
+                    "icon",
+                    models.FileField(
+                        default="Employee Category/default.svg",
+                        upload_to=api.utils.ServiceIconLocation,
+                    ),
+                ),
+                (
+                    "description",
+                    models.TextField(blank=True, max_length=500, null=True),
+                ),
+                ("price", models.DecimalField(decimal_places=2, max_digits=10)),
+                ("created", models.DateTimeField(auto_now_add=True, null=True)),
+                ("active", models.BooleanField(default=True)),
+                (
+                    "subcategory",
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="api.servicesubcategory",
+                    ),
+                ),
             ],
         ),
     ]

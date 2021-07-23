@@ -4,25 +4,37 @@ from io import BytesIO
 from PIL import Image, ImageFilter
 import sys
 
+
 def EmployeeIconLocation(instance, filename):
-    path = os.path.join('Employee Category', instance.number, filename)
+    path = os.path.join("Employee Category", instance.number, filename)
     return path
+
 
 def SubcategoryIconLocation(instance, filename):
-    path = os.path.join('Service SubCategory Images', slugify(instance.name), filename)
+    path = os.path.join("Service SubCategory Images", slugify(instance.name), filename)
     return path
+
 
 def SubcategoryPlaceholderLocation(instance, filename):
-    path = os.path.join('Service SubCategory Placeholders', slugify(instance.name), f"placeholder_{filename}")
+    path = os.path.join(
+        "Service SubCategory Placeholders",
+        slugify(instance.name),
+        f"placeholder_{filename}",
+    )
     return path
+
 
 def ServiceIconLocation(instance, filename):
-    path = os.path.join('Service Images', slugify(instance.name), filename)
+    path = os.path.join("Service Images", slugify(instance.name), filename)
     return path
 
+
 def ServicePlaceholderLocation(instance, filename):
-    path = os.path.join('Service Placeholders', slugify(instance.name), f"placeholder{filename}")
+    path = os.path.join(
+        "Service Placeholders", slugify(instance.name), f"placeholder{filename}"
+    )
     return path
+
 
 def generate_placeholder(image, blur: int, height: int, quality: int) -> tuple:
     image_file = BytesIO()
@@ -37,6 +49,3 @@ def generate_placeholder(image, blur: int, height: int, quality: int) -> tuple:
     image_file.seek(0)
     file_size = sys.getsizeof(image_file)
     return image_file, image_name, file_size, content_type
-
-
-

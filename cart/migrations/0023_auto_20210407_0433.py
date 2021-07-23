@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('cart', '0022_auto_20210407_0358'),
+        ("cart", "0022_auto_20210407_0358"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='order',
-            name='fullfill_by',
-            field=models.DateTimeField(default='django.utils.timezone.now'),
+            model_name="order",
+            name="fullfill_by",
+            field=models.DateTimeField(default="django.utils.timezone.now"),
         ),
     ]

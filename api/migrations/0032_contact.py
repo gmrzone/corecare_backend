@@ -6,22 +6,49 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('api', '0031_auto_20210308_0839'),
+        ("api", "0031_auto_20210308_0839"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Contact',
+            name="Contact",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('first_name', models.CharField(blank=True, db_index=True, max_length=100, null=True)),
-                ('last_name', models.CharField(blank=True, db_index=True, max_length=100, null=True)),
-                ('email', models.EmailField(blank=True, db_index=True, max_length=100, null=True, unique=True)),
-                ('message', models.TextField(blank=True, max_length=500, null=True)),
-                ('created', models.DateTimeField(auto_now_add=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "first_name",
+                    models.CharField(
+                        blank=True, db_index=True, max_length=100, null=True
+                    ),
+                ),
+                (
+                    "last_name",
+                    models.CharField(
+                        blank=True, db_index=True, max_length=100, null=True
+                    ),
+                ),
+                (
+                    "email",
+                    models.EmailField(
+                        blank=True,
+                        db_index=True,
+                        max_length=100,
+                        null=True,
+                        unique=True,
+                    ),
+                ),
+                ("message", models.TextField(blank=True, max_length=500, null=True)),
+                ("created", models.DateTimeField(auto_now_add=True)),
             ],
             options={
-                'ordering': ('-created',),
+                "ordering": ("-created",),
             },
         ),
     ]

@@ -7,18 +7,22 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('account', '0003_auto_20210305_0650'),
+        ("account", "0003_auto_20210305_0650"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='customuser',
-            name='document',
-            field=models.ImageField(blank=True, null=True, upload_to=account.utils.employee_document_location),
+            model_name="customuser",
+            name="document",
+            field=models.ImageField(
+                blank=True,
+                null=True,
+                upload_to=account.utils.employee_document_location,
+            ),
         ),
         migrations.AddField(
-            model_name='customuser',
-            name='is_verified_employee',
+            model_name="customuser",
+            name="is_verified_employee",
             field=models.BooleanField(default=False),
         ),
     ]

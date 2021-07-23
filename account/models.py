@@ -8,6 +8,7 @@ from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 from django.core.mail import send_mail
 from .validators import number_validator
+
 # Models Imports
 from api.models import EmployeeCategory
 from .managers import CustomUserManager
@@ -18,15 +19,26 @@ from .utils import employee_document_location, profile_pic_loc
 # Other imports
 import razorpay
 
+
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     username_validators = UnicodeUsernameValidator()
-    
-    number = models.CharField(max_length=10, db_index=True, unique=True, validators=[number_validator])
-    username = models.CharField(_('username'),max_length=150, null=True, blank=True, unique=True, validators=[username_validators], error_messages={'unique': _('A user with that username already exists.')})
-    email = models.EmailField(_('email address'), unique=True, blank=True, null=True)
-    first_name = models.CharField(_('first name'), max_length=150, blank=True)
-    photo = models.ImageField(default='default-profile.png', upload_to=profile_pic_loc)
-    last_name = models.CharField(_('last name'), max_length=150, blank=True)
+
+    number = models.CharField(
+        max_length=10, db_index=True, unique=True, validators=[number_validator]
+    )
+    username = models.CharField(
+        _("username"),
+        max_length=150,
+        null=True,
+        blank=True,
+        unique=True,
+        validators=[username_validators],
+        error_messages={"unique": _("A user with that username already exists.")},
+    )
+    email = models.EmailField(_("email address"), unique=True, blank=True, null=True)
+    first_name = models.CharField(_("first name"), max_length=150, blank=True)
+    photo = models.ImageField(default="default-profile.png", upload_to=profile_pic_loc)
+    last_name = models.CharField(_("last name"), max_length=150, blank=True)
     verified = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     address_1 = models.CharField(max_length=200, null=True, blank=True)
@@ -36,22 +48,30 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     pincode = models.CharField(max_length=6, null=True, blank=True)
     is_active = models.BooleanField(default=True)
     is_employee = models.BooleanField(default=False)
-    document = models.ImageField(upload_to=employee_document_location, null=True, blank=True)
+    document = models.ImageField(
+        upload_to=employee_document_location, null=True, blank=True
+    )
     is_verified_employee = models.BooleanField(default=False)
-    employee_category = models.ForeignKey(EmployeeCategory, on_delete=models.SET_NULL, null=True, blank=True, related_name="users")
+    employee_category = models.ForeignKey(
+        EmployeeCategory,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="users",
+    )
     date_joined = models.DateTimeField(default=timezone.now)
 
-    EMAIL_FIELD = 'email'
-    USERNAME_FIELD = 'number'
-    REQUIRED_FIELDS = ['email']
+    EMAIL_FIELD = "email"
+    USERNAME_FIELD = "number"
+    REQUIRED_FIELDS = ["email"]
 
     objects = CustomUserManager()
 
     def email_user(self, subject, message, from_email=None, **kwargs):
-        send_mail(subject, message,from_email, [self.email], **kwargs)
+        send_mail(subject, message, from_email, [self.email], **kwargs)
 
     def get_full_name(self):
-        full_name = f'{self.first_name} f{self.last_name}'
+        full_name = f"{self.first_name} f{self.last_name}"
         return full_name
 
     def get_short_name(self):
@@ -59,5 +79,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.number
+
 
 # Create your models here.

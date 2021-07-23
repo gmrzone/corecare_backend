@@ -7,13 +7,17 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0016_alter_comment_options'),
+        ("blog", "0016_alter_comment_options"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='post',
-            name='placeholder',
-            field=models.ImageField(blank=True, null=True, upload_to=blog.utils.blog_image_placeholder_location),
+            model_name="post",
+            name="placeholder",
+            field=models.ImageField(
+                blank=True,
+                null=True,
+                upload_to=blog.utils.blog_image_placeholder_location,
+            ),
         ),
     ]

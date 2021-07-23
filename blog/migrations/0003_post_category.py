@@ -7,14 +7,19 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('api', '0038_partnerrequest'),
-        ('blog', '0002_auto_20210522_2029'),
+        ("api", "0038_partnerrequest"),
+        ("blog", "0002_auto_20210522_2029"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='post',
-            name='category',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='category_posts', to='api.employeecategory'),
+            model_name="post",
+            name="category",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="category_posts",
+                to="api.employeecategory",
+            ),
         ),
     ]

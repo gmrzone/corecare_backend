@@ -9,7 +9,7 @@
 #     else:
 #         try:
 #             cart = Cart(request=request)
-#             cart.add(service, category) 
+#             cart.add(service, category)
 #         except CategoryChange as e:
 #             data = {'status': 'category_change', "mssg": str(e)}
 #         else:

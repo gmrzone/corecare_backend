@@ -7,18 +7,28 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('api', '0044_alter_service_placeholder'),
+        ("api", "0044_alter_service_placeholder"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='service',
-            name='placeholder',
-            field=models.ImageField(blank=True, default='placeholder_service_default.jpg', null=True, upload_to=api.utils.ServicePlaceholderLocation),
+            model_name="service",
+            name="placeholder",
+            field=models.ImageField(
+                blank=True,
+                default="placeholder_service_default.jpg",
+                null=True,
+                upload_to=api.utils.ServicePlaceholderLocation,
+            ),
         ),
         migrations.AlterField(
-            model_name='servicesubcategory',
-            name='placeholder',
-            field=models.ImageField(blank=True, default='placeholder_subcategory_default.jpg', null=True, upload_to=api.utils.SubcategoryPlaceholderLocation),
+            model_name="servicesubcategory",
+            name="placeholder",
+            field=models.ImageField(
+                blank=True,
+                default="placeholder_subcategory_default.jpg",
+                null=True,
+                upload_to=api.utils.SubcategoryPlaceholderLocation,
+            ),
         ),
     ]

@@ -7,14 +7,19 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('api', '0036_auto_20210321_0202'),
-        ('cart', '0008_remove_order_category'),
+        ("api", "0036_auto_20210321_0202"),
+        ("cart", "0008_remove_order_category"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='order',
-            name='category',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='related_orders', to='api.employeecategory'),
+            model_name="order",
+            name="category",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="related_orders",
+                to="api.employeecategory",
+            ),
         ),
     ]

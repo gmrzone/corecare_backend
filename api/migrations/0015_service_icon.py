@@ -7,13 +7,16 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('api', '0014_remove_service_icon'),
+        ("api", "0014_remove_service_icon"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='service',
-            name='icon',
-            field=models.ImageField(default=' Service Images/default-service.jpg', upload_to=api.utils.ServiceIconLocation),
+            model_name="service",
+            name="icon",
+            field=models.ImageField(
+                default=" Service Images/default-service.jpg",
+                upload_to=api.utils.ServiceIconLocation,
+            ),
         ),
     ]

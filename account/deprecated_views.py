@@ -1,5 +1,3 @@
-
-
 # @api_view(['GET'])
 # @permission_classes([IsAuthenticated])
 # def get_current_user(request):

@@ -8,22 +8,22 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('api', '0001_initial'),
+        ("api", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='couponcode',
-            name='users',
+            model_name="couponcode",
+            name="users",
             field=models.ManyToManyField(to=settings.AUTH_USER_MODEL),
         ),
         migrations.RemoveField(
-            model_name='couponcode',
-            name='category',
+            model_name="couponcode",
+            name="category",
         ),
         migrations.AddField(
-            model_name='couponcode',
-            name='category',
-            field=models.ManyToManyField(to='api.EmployeeCategory'),
+            model_name="couponcode",
+            name="category",
+            field=models.ManyToManyField(to="api.EmployeeCategory"),
         ),
     ]

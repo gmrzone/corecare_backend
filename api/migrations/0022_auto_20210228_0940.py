@@ -6,12 +6,12 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('api', '0021_auto_20210228_0939'),
+        ("api", "0021_auto_20210228_0939"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='employeecategory',
+            name="employeecategory",
             options={},
         ),
     ]

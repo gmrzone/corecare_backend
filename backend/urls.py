@@ -21,19 +21,21 @@ from api.views import EmployeeCategoryList
 
 
 urlpatterns = [
-    path('', EmployeeCategoryList, name="index"),
-    path('admin/', admin.site.urls),
-    path('administrator/', include('administrator.urls', namespace="administrator")),
-    path('', include('api.urls', namespace="api")),
-    path('account/', include('account.urls', namespace="account")),
-    path('cart/', include('cart.urls', namespace="cart")),
-    path('blog/', include('blog.urls', namespace="blog")),
-
+    path("", EmployeeCategoryList, name="index"),
+    path("admin/", admin.site.urls),
+    path("administrator/", include("administrator.urls", namespace="administrator")),
+    path("", include("api.urls", namespace="api")),
+    path("account/", include("account.urls", namespace="account")),
+    path("cart/", include("cart.urls", namespace="cart")),
+    path("blog/", include("blog.urls", namespace="blog")),
 ]
 
 
 if settings.DEBUG:
     import debug_toolbar
-    urlpatterns.append(path('__debug__/', include(debug_toolbar.urls)),)
+
+    urlpatterns.append(
+        path("__debug__/", include(debug_toolbar.urls)),
+    )
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

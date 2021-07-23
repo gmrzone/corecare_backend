@@ -7,14 +7,20 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('api', '0044_alter_service_placeholder'),
-        ('blog', '0019_auto_20210616_1448'),
+        ("api", "0044_alter_service_placeholder"),
+        ("blog", "0019_auto_20210616_1448"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='post',
-            name='category',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='category_posts', to='api.employeecategory'),
+            model_name="post",
+            name="category",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="category_posts",
+                to="api.employeecategory",
+            ),
         ),
     ]

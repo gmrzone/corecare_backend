@@ -6,12 +6,12 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('api', '0020_servicesubcategory_icon'),
+        ("api", "0020_servicesubcategory_icon"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='employeecategory',
-            options={'ordering': ('-name',)},
+            name="employeecategory",
+            options={"ordering": ("-name",)},
         ),
     ]

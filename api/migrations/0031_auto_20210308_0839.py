@@ -6,18 +6,20 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('api', '0030_auto_20210308_0819'),
+        ("api", "0030_auto_20210308_0819"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='servicesubcategory',
-            name='slug',
+            model_name="servicesubcategory",
+            name="slug",
             field=models.SlugField(blank=True, max_length=100, null=True),
         ),
         migrations.AlterField(
-            model_name='employeecategory',
-            name='slug',
-            field=models.CharField(blank=True, db_index=True, max_length=100, null=True),
+            model_name="employeecategory",
+            name="slug",
+            field=models.CharField(
+                blank=True, db_index=True, max_length=100, null=True
+            ),
         ),
     ]

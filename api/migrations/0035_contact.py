@@ -6,22 +6,33 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('api', '0034_delete_contact'),
+        ("api", "0034_delete_contact"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Contact',
+            name="Contact",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('first_name', models.CharField(db_index=True, max_length=100)),
-                ('last_name', models.CharField(db_index=True, max_length=100)),
-                ('email', models.EmailField(db_index=True, max_length=100, unique=True)),
-                ('message', models.TextField(max_length=500)),
-                ('created', models.DateTimeField(auto_now_add=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("first_name", models.CharField(db_index=True, max_length=100)),
+                ("last_name", models.CharField(db_index=True, max_length=100)),
+                (
+                    "email",
+                    models.EmailField(db_index=True, max_length=100, unique=True),
+                ),
+                ("message", models.TextField(max_length=500)),
+                ("created", models.DateTimeField(auto_now_add=True)),
             ],
             options={
-                'ordering': ('-created',),
+                "ordering": ("-created",),
             },
         ),
     ]

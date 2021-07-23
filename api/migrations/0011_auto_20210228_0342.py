@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('api', '0010_servicesubcategory_service_specialist'),
+        ("api", "0010_servicesubcategory_service_specialist"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='servicesubcategory',
-            name='created',
+            model_name="servicesubcategory",
+            name="created",
             field=models.DateTimeField(auto_now_add=True, null=True),
         ),
     ]

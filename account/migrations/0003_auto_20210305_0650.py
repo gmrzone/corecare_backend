@@ -7,19 +7,24 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('api', '0025_auto_20210305_0641'),
-        ('account', '0002_auto_20210305_0642'),
+        ("api", "0025_auto_20210305_0641"),
+        ("account", "0002_auto_20210305_0642"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='customuser',
-            name='employee_category',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='api.employeecategory'),
+            model_name="customuser",
+            name="employee_category",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to="api.employeecategory",
+            ),
         ),
         migrations.AddField(
-            model_name='customuser',
-            name='is_employee',
+            model_name="customuser",
+            name="is_employee",
             field=models.BooleanField(default=False),
         ),
     ]

@@ -6,27 +6,27 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0009_auto_20210530_1343'),
+        ("blog", "0009_auto_20210530_1343"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='comment',
-            name='user',
+            model_name="comment",
+            name="user",
         ),
         migrations.AddField(
-            model_name='comment',
-            name='email',
+            model_name="comment",
+            name="email",
             field=models.EmailField(max_length=100, null=True),
         ),
         migrations.AddField(
-            model_name='comment',
-            name='name',
+            model_name="comment",
+            name="name",
             field=models.CharField(max_length=100, null=True),
         ),
         migrations.AlterField(
-            model_name='comment',
-            name='comment',
+            model_name="comment",
+            name="comment",
             field=models.TextField(max_length=400),
         ),
     ]

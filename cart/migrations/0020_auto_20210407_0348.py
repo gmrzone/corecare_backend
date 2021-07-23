@@ -8,13 +8,15 @@ from django.utils.timezone import utc
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('cart', '0019_auto_20210407_0348'),
+        ("cart", "0019_auto_20210407_0348"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='order',
-            name='fullfill_by',
-            field=models.DateTimeField(default=datetime.datetime(2021, 4, 10, 10, 48, 45, 880250, tzinfo=utc)),
+            model_name="order",
+            name="fullfill_by",
+            field=models.DateTimeField(
+                default=datetime.datetime(2021, 4, 10, 10, 48, 45, 880250, tzinfo=utc)
+            ),
         ),
     ]
