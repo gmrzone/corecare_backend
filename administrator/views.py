@@ -1,10 +1,9 @@
 from rest_framework.generics import CreateAPIView, ListAPIView
 from rest_framework.response import Response
-from rest_framework.status import HTTP_201_CREATED, HTTP_404_NOT_FOUND
+from rest_framework.status import HTTP_201_CREATED, HTTP_400_BAD_REQUEST
 
 from account.models import CustomUser
 from api.models import CouponCode, Service, ServiceSubcategory
-from api.serializers import SubcategorySerializer
 from blog.models import Comment, Post
 from cart.models import Order
 
@@ -40,7 +39,7 @@ class CreateUser(CreateAPIView):
                 "status": "error",
                 "message": "Please make sure all the required fields have been filled.",
             }
-            status = HTTP_404_NOT_FOUND
+            status = HTTP_400_BAD_REQUEST
 
         return Response(data=data, status=status)
 
@@ -59,6 +58,7 @@ class GetEmployees(ListAPIView):
 
 class CreateEmployee(CreateAPIView):
     serializer_class = EmployeeSerializerAdministrator
+    permission_classes = [IsSuperUser]
     http_method_names = ["post"]
 
     def create(self, request, *args, **kwargs):
@@ -75,7 +75,7 @@ class CreateEmployee(CreateAPIView):
                 "status": "error",
                 "message": "Please make sure all the required fields have been filled.",
             }
-            status = HTTP_404_NOT_FOUND
+            status = HTTP_400_BAD_REQUEST
 
         return Response(data=data, status=status)
 
@@ -114,18 +114,40 @@ class CreateOrder(CreateAPIView):
                 "status": "error",
                 "message": "Please make sure all the required fields have been filled.",
             }
-            status = HTTP_404_NOT_FOUND
+            status = HTTP_400_BAD_REQUEST
         return Response(data=data, status=status)
 
 
-class GetCategories(ListAPIView):
-    serializer_class = SubcategorySerializer
+class GetSubCategories(ListAPIView):
+    serializer_class = ServiceSubcategorySerializerAdmin
     permission_classes = [IsSuperUser]
     http_method_names = ["get"]
 
     def get_queryset(self):
         queryset = ServiceSubcategory.objects.all().select_related("service_specialist")
         return queryset
+
+class CreateSubCategory(CreateAPIView):
+    serializer_class = ServiceSubcategorySerializerAdmin
+    http_method_names = ['post']
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            self.perform_create(serializer)
+            data = {
+                "status": "ok",
+                "message": "Subcategory has been created sucessfully",
+            }
+            status = HTTP_201_CREATED
+        else:
+            data = {
+                "status": "error",
+                "message": "Please make sure all the required fields have been filled.",
+            }
+            status = HTTP_400_BAD_REQUEST
+        return Response(data, status=status)
+
 
 
 class GetServices(ListAPIView):

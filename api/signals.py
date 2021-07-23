@@ -49,8 +49,9 @@ def signal_delete_placeholder_helper(instance, sender):
     if (not obj.icon or obj.icon is not None) and (
         not obj.placeholder or obj.placeholder is not None
     ):
-        obj.icon.delete(False)
-        obj.placeholder.delete(False)
+        # obj.icon.delete(False)
+        # obj.placeholder.delete(False)
+        pass
 
 
 @receiver(

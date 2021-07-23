@@ -130,14 +130,6 @@ class CreateRazorPayOrder(APIView):
             # client = razorpay.Client(auth=('rzp_test_Fz30Ps4aOA4Zke', 'HS7mZz3v6G9dLeaS5LY1tejl'))
             order_amount = cart.get_discounted_total()[0]
             order_currency = "INR"
-            # allowed_characters = (
-            #     datetime.now().strftime("%Y%m%d%H%M%S")
-            #     + ascii_uppercase
-            #     + ascii_lowercase
-            # )
-            # order_receipt = (
-            #     "ORD" + str(user.id) + get_random_string(17, allowed_characters)
-            # )
             order_receipt = generate_order_receipt(17, user.id)
             shipping_address = f"{user.address_1} {user.address_2} {user.city} {user.state} {user.pincode}"
             notes = {"shipping address": shipping_address}

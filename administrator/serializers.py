@@ -1,5 +1,5 @@
 from django.contrib.auth.hashers import make_password
-from django.db import Error, models, transaction
+from django.db import Error, transaction
 from rest_framework.fields import SerializerMethodField
 from rest_framework.serializers import (
     ModelSerializer,
@@ -8,10 +8,8 @@ from rest_framework.serializers import (
 )
 
 from account.models import CustomUser
-from api.models import CouponCode
+from api.models import CouponCode, EmployeeCategory
 from api.serializers import (
-    CouponCodeSerializers,
-    EmployeeCategorySerializer,
     ServiceSerializer,
     SubcategorySerializer,
     TimeSince,
@@ -21,7 +19,7 @@ from blog.serializers import PostSerializer
 from cart.models import Order, OrderItem
 from cart.serializers import CalculateFullfillTime, OrderItemSerializer
 from cart.utils import generate_order_receipt
-
+from api.models import ServiceSubcategory
 
 class UserSerializerAdministrator(ModelSerializer):
 
@@ -62,7 +60,7 @@ class UserSerializerAdministrator(ModelSerializer):
 class EmployeeSerializerAdministrator(ModelSerializer):
     last_login = TimeSince(read_only=True)
     date_joined = TimeSince(read_only=True)
-    extra_kwargs = {"password": {"write_only": True}}
+    employee_category_detail = SerializerMethodField('get_employee_category')
 
     class Meta:
 
@@ -85,9 +83,16 @@ class EmployeeSerializerAdministrator(ModelSerializer):
             "is_employee",
             "is_active",
             "employee_category",
+            "employee_category_detail",
             "date_joined",
         )
         extra_kwargs = {"password": {"write_only": True}}
+
+    def get_employee_category(self, obj):
+        return {
+            "name": obj.employee_category.name,
+            "slug": obj.employee_category.slug
+        }
 
     def create(self, validated_data):
         validated_data["password"] = make_password(validated_data["password"])
@@ -103,13 +108,12 @@ class OrderItemMinSerializer(ModelSerializer):
 
 
 class OrderSerializerAdministrator(ModelSerializer):
-    # coupon = CouponCodeSerializers(read_only=True)
-    # category = EmployeeCategorySerializer(read_only=True)
+
     items = OrderItemMinSerializer(many=True)
     created = TimeSince(read_only=True)
     updated = TimeSince(read_only=True)
     fullfill_by = CalculateFullfillTime(read_only=True)
-    # user = UserSerializerAdministrator(read_only=True)
+    user_detail = SerializerMethodField('get_user_detail')
     class Meta:
         model = Order
         fields = (
@@ -117,6 +121,7 @@ class OrderSerializerAdministrator(ModelSerializer):
             "category",
             "items",
             "user",
+            "user_detail",
             "receipt",
             "razorpay_order_id",
             "subtotal",
@@ -132,10 +137,15 @@ class OrderSerializerAdministrator(ModelSerializer):
         )
         extra_kwargs = {"items": {"required": False}, "receipt": {"required": False}}
 
+    def get_user_detail(self, obj):
+        return {
+            "name": f"{obj.user.first_name} {obj.user.last_name}",
+            "number": obj.user.number
+        }
+
     def create(self, validated_data):
         items_data = validated_data.pop("items")
         try:
-
             with transaction.atomic():
                 instance = Order(**validated_data)
                 receipt = generate_order_receipt(17, instance.user.id)
@@ -148,6 +158,21 @@ class OrderSerializerAdministrator(ModelSerializer):
                 "Something is wrong with the server please try again later."
             )
         return instance
+
+
+class ServiceSubcategorySerializerAdmin(ModelSerializer):
+    created = TimeSince(read_only=True)
+    service_specialist_detail = SerializerMethodField('get_specialist_name', read_only=True)
+    class Meta:
+        model = ServiceSubcategory
+        fields = ('name', 'slug', 'created', 'service_specialist', "service_specialist_detail")
+
+
+    def get_specialist_name(self, obj):
+        return {
+            "slug": obj.service_specialist.slug,
+            "name": obj.service_specialist.name,
+        }
 
 
 class ServiceSerializerAdministrator(ServiceSerializer):
