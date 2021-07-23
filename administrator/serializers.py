@@ -1,7 +1,7 @@
 from django.contrib.auth.hashers import make_password
+from django.db import models
 from rest_framework.fields import SerializerMethodField
-from rest_framework.serializers import (ModelSerializer, RelatedField,
-                                        StringRelatedField)
+from rest_framework.serializers import ModelSerializer, StringRelatedField, ValidationError
 
 from account.models import CustomUser
 from api.models import CouponCode
@@ -10,10 +10,10 @@ from api.serializers import (CouponCodeSerializers, EmployeeCategorySerializer,
                              TimeSince)
 from blog.models import Comment
 from blog.serializers import PostSerializer
-from cart.models import Order
+from cart.models import Order, OrderItem
 from cart.serializers import CalculateFullfillTime, OrderItemSerializer
 
-
+from django.db import transaction, Error
 class UserSerializerAdministrator(ModelSerializer):
 
     last_login = TimeSince(read_only=True)
@@ -53,11 +53,7 @@ class UserSerializerAdministrator(ModelSerializer):
 class EmployeeSerializerAdministrator(ModelSerializer):
     last_login = TimeSince(read_only=True)
     date_joined = TimeSince(read_only=True)
-    employee_category_name = SerializerMethodField("get_category_name")
     extra_kwargs = {"password": {"write_only": True}}
-
-    def get_category_name(self, obj):
-        return obj.employee_category.name
 
     class Meta:
 
@@ -80,7 +76,6 @@ class EmployeeSerializerAdministrator(ModelSerializer):
             "is_employee",
             "is_active",
             "employee_category",
-            "employee_category_name",
             "date_joined",
         )
         extra_kwargs = {"password": {"write_only": True}}
@@ -91,16 +86,21 @@ class EmployeeSerializerAdministrator(ModelSerializer):
         user.save()
         return user
 
+class OrderItemMinSerializer(ModelSerializer):
+
+    class Meta:
+        model = OrderItem
+        fields = ("service", "quantity", "total")
+
 
 class OrderSerializerAdministrator(ModelSerializer):
-    coupon = CouponCodeSerializers(read_only=True)
-    category = EmployeeCategorySerializer(read_only=True)
-    items = OrderItemSerializer(many=True, read_only=True)
+    # coupon = CouponCodeSerializers(read_only=True)
+    # category = EmployeeCategorySerializer(read_only=True)
+    items = OrderItemMinSerializer(many=True)
     created = TimeSince(read_only=True)
     updated = TimeSince(read_only=True)
     fullfill_by = CalculateFullfillTime(read_only=True)
-    user = UserSerializerAdministrator(read_only=True)
-
+    # user = UserSerializerAdministrator(read_only=True)
     class Meta:
         model = Order
         fields = (
@@ -121,6 +121,19 @@ class OrderSerializerAdministrator(ModelSerializer):
             "updated",
             "fullfill_by",
         )
+        extra_kwargs = {'items': {'required': False}}
+
+    def create(self, validated_data):
+        items_data = validated_data.pop('items')
+        try:
+            with transaction.atomic():
+                instance = Order.objects.create(**validated_data)
+                for item in items_data:
+                    OrderItem.objects.create(order=instance, **item)
+        except Error:
+            raise ValidationError("Something is wrong with the server please try again later.")
+        return instance
+    
 
 
 class ServiceSerializerAdministrator(ServiceSerializer):

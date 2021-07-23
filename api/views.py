@@ -1,5 +1,4 @@
-# Rest framework import
-# Django Imports
+
 from django.core.cache import cache
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.generics import CreateAPIView, ListAPIView
@@ -9,20 +8,15 @@ from rest_framework.response import Response
 from account.models import CustomUser
 from account.serializers import UserSerializer
 
-# Models Import
 from .models import (CategoryReview, CouponCode, EmployeeCategory, Service,
                      ServiceSubcategory)
-# Serializers import
+
 from .serializers import (AllSubcategoryServiceSerializer,
                           CategoryReviewSerializer, ContactSerializer,
                           CouponCodeSerializers, EmployeeCategorySerializer,
                           PartnerRequestSerializer, ServiceSerializer,
                           SubcategorySerializer)
 from .tasks import send_contact_or_partners_mail
-
-# Others imports
-
-
 
 
 @api_view(["GET"])

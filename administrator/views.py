@@ -24,7 +24,7 @@ class GetUsers(ListAPIView):
 class CreateUser(CreateAPIView):
     serializer_class = UserSerializerAdministrator
     http_method_names = ["post"]
-    # permission_classes = [IsSuperUser]
+    permission_classes = [IsSuperUser]
 
     def create(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
@@ -47,7 +47,7 @@ class CreateUser(CreateAPIView):
 
 class GetEmployees(ListAPIView):
     serializer_class = EmployeeSerializerAdministrator
-    # permission_classes = [IsSuperUser]
+    permission_classes = [IsSuperUser]
     http_method_names = ["get"]
 
     def get_queryset(self):
@@ -92,6 +92,29 @@ class GetOrders(ListAPIView):
             .prefetch_related("items", "items__service", "coupon__category")
         )
         return queryset
+
+class CreateOrder(CreateAPIView):
+    serializer_class = OrderSerializerAdministrator
+    http_method_names = ['post']
+    
+    def create(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data)
+        print(request.data)
+        if serializer.is_valid():
+            self.perform_create(serializer)
+            data = {
+                "status": "ok",
+                "message": "Order has been created sucessfully.",
+            }
+            status = HTTP_201_CREATED
+        else:
+            print(serializer.errors)
+            data = {
+                "status": "error",
+                "message": "Please make sure all the required fields have been filled.",
+            }
+            status = HTTP_404_NOT_FOUND
+        return Response(data=data, status=status)
 
 
 class GetCategories(ListAPIView):
