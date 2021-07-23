@@ -1,13 +1,16 @@
-from celery import shared_task
-from django.template.loader import render_to_string
-from .models import Order
-from api.models import Service
-from django.db.models import Case, When
-from django.core.mail import EmailMessage
-import weasyprint
-from io import BytesIO
-from django.conf import settings
 import os
+from io import BytesIO
+
+import weasyprint
+from celery import shared_task
+from django.conf import settings
+from django.core.mail import EmailMessage
+from django.db.models import Case, When
+from django.template.loader import render_to_string
+
+from api.models import Service
+
+from .models import Order
 
 
 @shared_task

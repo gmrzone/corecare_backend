@@ -1,8 +1,9 @@
-from rest_framework_simplejwt.authentication import JWTAuthentication
 from django.conf import settings
-from .utils import enforce_csrf
+from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.exceptions import InvalidToken
 from rest_framework_simplejwt.tokens import RefreshToken
+
+from .utils import enforce_csrf
 
 
 class CustomAuthentication(JWTAuthentication):

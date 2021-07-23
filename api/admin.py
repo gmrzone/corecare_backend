@@ -1,13 +1,8 @@
 from django.contrib import admin
-from .models import (
-    EmployeeCategory,
-    CouponCode,
-    ServiceSubcategory,
-    Service,
-    CategoryReview,
-    Contact,
-    PartnerRequest,
-)
+
+from .models import (CategoryReview, Contact, CouponCode, EmployeeCategory,
+                     PartnerRequest, Service, ServiceSubcategory)
+
 
 # Register your models here.
 @admin.register(EmployeeCategory)

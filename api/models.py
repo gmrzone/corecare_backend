@@ -1,18 +1,14 @@
 # Django imports
+from django.conf import settings
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.db.models.base import Model
 from django.utils.text import slugify
-from django.core.validators import MaxValueValidator, MinValueValidator
-from django.conf import settings
 
 # Others imports
-from .utils import (
-    EmployeeIconLocation,
-    SubcategoryIconLocation,
-    ServiceIconLocation,
-    SubcategoryPlaceholderLocation,
-    ServicePlaceholderLocation,
-)
+from .utils import (EmployeeIconLocation, ServiceIconLocation,
+                    ServicePlaceholderLocation, SubcategoryIconLocation,
+                    SubcategoryPlaceholderLocation)
 
 
 class EmployeeCategory(models.Model):

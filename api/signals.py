@@ -1,9 +1,10 @@
 from django import dispatch
-from django.dispatch import receiver
-from django.db.models.signals import pre_save, pre_delete
-from .models import ServiceSubcategory, Service
-from .utils import generate_placeholder
 from django.core.files.uploadedfile import InMemoryUploadedFile
+from django.db.models.signals import pre_delete, pre_save
+from django.dispatch import receiver
+
+from .models import Service, ServiceSubcategory
+from .utils import generate_placeholder
 
 
 def signal_save_placeholder_helper(instance, sender, blur, height, quality):

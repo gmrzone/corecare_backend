@@ -1,33 +1,33 @@
 # Django Imports
-from api.serializers import ServiceSerializer
-from django.shortcuts import get_object_or_404, render
+# Other Modules Imports
+from datetime import datetime
+from string import ascii_lowercase, ascii_uppercase
+
+import razorpay
+import weasyprint
 from django.conf import settings
-from django.utils.crypto import get_random_string
 from django.core.cache import cache
-from django.template.loader import render_to_string
 from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, render
+from django.template.loader import render_to_string
+from django.utils.crypto import get_random_string
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.generics import CreateAPIView
+from rest_framework.permissions import AllowAny, IsAuthenticated
+# Rest Framework
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 # Project Import
 from api.models import CouponCode, EmployeeCategory, Service
+from api.serializers import ServiceSerializer
 from cart.models import Cart
+
 from .errors import CategoryChange
-from string import ascii_lowercase, ascii_uppercase
 from .models import Order, OrderItem
-from .utils import Recommender
 from .serializers import OrderSerializer
 from .tasks import order_success_mail
-
-# Other Modules Imports
-from datetime import datetime
-import razorpay
-import weasyprint
-
-# Rest Framework
-from rest_framework.response import Response
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import AllowAny, IsAuthenticated
-from rest_framework.views import APIView
-from rest_framework.generics import CreateAPIView
+from .utils import Recommender
 
 # Create your views here.
 client = razorpay.Client(auth=("rzp_test_Fz30Ps4aOA4Zke", "HS7mZz3v6G9dLeaS5LY1tejl"))

@@ -1,21 +1,13 @@
 from django.db.models import fields
-from .models import (
-    EmployeeCategory,
-    CouponCode,
-    ServiceSubcategory,
-    Service,
-    CategoryReview,
-    Contact,
-    PartnerRequest,
-)
-from rest_framework.serializers import (
-    ModelSerializer,
-    StringRelatedField,
-    Field,
-    SerializerMethodField,
-)
 from django.utils.timesince import timesince
+from rest_framework.serializers import (Field, ModelSerializer,
+                                        SerializerMethodField,
+                                        StringRelatedField)
+
 from account.models import CustomUser
+
+from .models import (CategoryReview, Contact, CouponCode, EmployeeCategory,
+                     PartnerRequest, Service, ServiceSubcategory)
 
 
 class EmployeeCategorySerializer(ModelSerializer):

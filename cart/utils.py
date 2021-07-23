@@ -1,9 +1,9 @@
-from redis import Redis, StrictRedis
 from django.conf import Settings, settings
-from .serializers import ServiceSerializer
-from .models import Service
 from django.db.models import Case, When
+from redis import Redis, StrictRedis
 
+from .models import Service
+from .serializers import ServiceSerializer
 
 if settings.DEBUG:
     r = Redis(host=settings.REDIS_HOST, port=settings.REDIS_PORT, db=settings.REDIS_DB)

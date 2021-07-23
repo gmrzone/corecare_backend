@@ -1,15 +1,8 @@
 from django.urls import path
-from .views import get_csrf
-from .views import (
-    SignUp,
-    GetCurrentUser,
-    UpdateSignupAdditionalData,
-    VerifyOtp,
-    UpdateProfileImage,
-    LoginView,
-    LogoutView,
-)
 
+from .views import (GetCurrentUser, LoginView, LogoutView, SignUp,
+                    UpdateProfileImage, UpdateSignupAdditionalData, VerifyOtp,
+                    get_csrf)
 
 app_name = "account"
 

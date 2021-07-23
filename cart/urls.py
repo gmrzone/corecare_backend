@@ -1,7 +1,7 @@
 from django.urls import path
-from . import views
-from . import viewsets
 from rest_framework.routers import SimpleRouter
+
+from . import views, viewsets
 
 app_name = "cart"
 

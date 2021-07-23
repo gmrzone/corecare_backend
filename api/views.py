@@ -1,39 +1,28 @@
 # Rest framework import
-from account.models import CustomUser
-from rest_framework.response import Response
+# Django Imports
+from django.core.cache import cache
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.generics import CreateAPIView
+from rest_framework.generics import CreateAPIView, ListAPIView
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.generics import ListAPIView, CreateAPIView
-from .tasks import send_contact_or_partners_mail
+from rest_framework.response import Response
+
+from account.models import CustomUser
+from account.serializers import UserSerializer
 
 # Models Import
-from .models import (
-    CategoryReview,
-    EmployeeCategory,
-    CouponCode,
-    Service,
-    ServiceSubcategory,
-)
-
+from .models import (CategoryReview, CouponCode, EmployeeCategory, Service,
+                     ServiceSubcategory)
 # Serializers import
-from .serializers import (
-    CouponCodeSerializers,
-    EmployeeCategorySerializer,
-    SubcategorySerializer,
-    ServiceSerializer,
-    CategoryReviewSerializer,
-    AllSubcategoryServiceSerializer,
-    ContactSerializer,
-    PartnerRequestSerializer,
-)
-from account.serializers import UserSerializer
+from .serializers import (AllSubcategoryServiceSerializer,
+                          CategoryReviewSerializer, ContactSerializer,
+                          CouponCodeSerializers, EmployeeCategorySerializer,
+                          PartnerRequestSerializer, ServiceSerializer,
+                          SubcategorySerializer)
+from .tasks import send_contact_or_partners_mail
 
 # Others imports
 
 
-# Django Imports
-from django.core.cache import cache
 
 
 @api_view(["GET"])

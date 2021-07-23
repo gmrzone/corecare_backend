@@ -1,12 +1,15 @@
-from api.utils import generate_placeholder
-from django.dispatch import receiver
-from django.db.models.signals import pre_delete, pre_save
-from .models import Post
-from django.core.files.uploadedfile import InMemoryUploadedFile
-
-from PIL import Image, ImageFilter
-from io import BytesIO
 import sys
+from io import BytesIO
+
+from django.core.files.uploadedfile import InMemoryUploadedFile
+from django.db.models.signals import pre_delete, pre_save
+from django.dispatch import receiver
+from PIL import Image, ImageFilter
+
+from api.utils import generate_placeholder
+
+from .models import Post
+
 
 # This helper function will check if the Post image is updated. and only if the image is changed it will delete old placeholder and add new placeholder
 def update_post_placeholder_helper(instance, sender, blur, height, quality):

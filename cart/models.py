@@ -1,25 +1,19 @@
 # Django Imports
-from django.db.models.aggregates import Max
-from django.db.models.fields import DateTimeField
-from django.db import models
+# Others Import
+from decimal import Decimal
+
 from django.conf import settings
-from django.utils import timezone
 from django.core.cache import cache
 from django.core.validators import MaxValueValidator, MinValueValidator
-from django.conf import settings
-from django.core.cache import cache
+from django.db import models
+from django.db.models.aggregates import Max
+from django.db.models.fields import DateTimeField
 from django.utils import timezone
 
 # Models Imports
-from api.models import EmployeeCategory, Service
-from api.models import CouponCode
-from api.models import Service
-
+from api.models import CouponCode, EmployeeCategory, Service
 # Serializers
 from api.serializers import ServiceSerializer
-
-# Others Import
-from decimal import Decimal
 
 # Project Module Imports
 from .errors import CategoryChange

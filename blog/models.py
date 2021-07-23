@@ -1,8 +1,11 @@
-from django.db import models
 from django.conf import settings
+from django.db import models
 from django.utils.text import slugify
-from .utils import blog_image_location, blog_images, blog_image_placeholder_location
+
 from api.models import EmployeeCategory
+
+from .utils import (blog_image_location, blog_image_placeholder_location,
+                    blog_images)
 
 # Create your models here.
 

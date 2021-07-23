@@ -1,8 +1,9 @@
 import os
-from django.utils.text import slugify
-from io import BytesIO
-from PIL import Image, ImageFilter
 import sys
+from io import BytesIO
+
+from django.utils.text import slugify
+from PIL import Image, ImageFilter
 
 
 def EmployeeIconLocation(instance, filename):

@@ -10,9 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-from pathlib import Path
-import os
 import json
+import os
+from pathlib import Path
+
 from django.core import exceptions
 from django.core.exceptions import ImproperlyConfigured
 

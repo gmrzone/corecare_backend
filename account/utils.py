@@ -1,8 +1,9 @@
 import os
 from datetime import datetime
-from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework.authentication import CSRFCheck
+
 from rest_framework import exceptions
+from rest_framework.authentication import CSRFCheck
+from rest_framework_simplejwt.tokens import RefreshToken
 
 
 def employee_document_location(instance, filename):

@@ -1,8 +1,9 @@
 from rest_framework.serializers import ModelSerializer, SerializerMethodField
-from .models import PostImage, Post, Comment
-from api.serializers import TimeSince, EmployeeCategorySerializer
+
 from account.serializers import UserSerializer
-from api.serializers import ReviewUser
+from api.serializers import EmployeeCategorySerializer, ReviewUser, TimeSince
+
+from .models import Comment, Post, PostImage
 
 
 class BlogImagesSerializer(ModelSerializer):

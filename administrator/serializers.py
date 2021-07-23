@@ -1,19 +1,17 @@
+from django.contrib.auth.hashers import make_password
 from rest_framework.fields import SerializerMethodField
-from rest_framework.serializers import ModelSerializer, StringRelatedField, RelatedField
+from rest_framework.serializers import (ModelSerializer, RelatedField,
+                                        StringRelatedField)
+
 from account.models import CustomUser
-from cart.models import Order
-from api.serializers import (
-    TimeSince,
-    CouponCodeSerializers,
-    EmployeeCategorySerializer,
-    ServiceSerializer,
-    SubcategorySerializer,
-)
-from cart.serializers import CalculateFullfillTime, OrderItemSerializer
+from api.models import CouponCode
+from api.serializers import (CouponCodeSerializers, EmployeeCategorySerializer,
+                             ServiceSerializer, SubcategorySerializer,
+                             TimeSince)
 from blog.models import Comment
 from blog.serializers import PostSerializer
-from api.models import CouponCode
-from django.contrib.auth.hashers import make_password
+from cart.models import Order
+from cart.serializers import CalculateFullfillTime, OrderItemSerializer
 
 
 class UserSerializerAdministrator(ModelSerializer):

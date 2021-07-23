@@ -1,10 +1,14 @@
-from .models import Order, OrderItem
-from rest_framework.serializers import ModelSerializer, Field
-from api.serializers import CouponCodeSerializers, TimeSince
-from api.serializers import ServiceSerializer, EmployeeCategorySerializer
-from account.serializers import UserSerializer
 from datetime import timedelta
+
 import pytz
+from rest_framework.serializers import Field, ModelSerializer
+
+from account.serializers import UserSerializer
+from api.serializers import (CouponCodeSerializers, EmployeeCategorySerializer,
+                             ServiceSerializer, TimeSince)
+
+from .models import Order, OrderItem
+
 
 # class date(Field):
 #     def to_representation(self, value):

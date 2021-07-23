@@ -1,18 +1,22 @@
 from typing import Dict
-from api.models import EmployeeCategory
-from django.shortcuts import get_object_or_404
-from rest_framework.response import Response
-from rest_framework.decorators import api_view
-from rest_framework.views import APIView
-from rest_framework.generics import CreateAPIView, ListAPIView
-from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser
-from rest_framework import serializers, status
-from .serializers import BlogImagesSerializer, PostSerializer, CommentSerializer
-from django.middleware.csrf import get_token
-from .pagination import PostListPagination
-from .models import Comment, Post
+
 from django.db.models import Case, When
+from django.middleware.csrf import get_token
+from django.shortcuts import get_object_or_404
+from rest_framework import serializers, status
+from rest_framework.decorators import api_view
+from rest_framework.generics import CreateAPIView, ListAPIView
+from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
+from api.models import EmployeeCategory
 from cart.utils import r
+
+from .models import Comment, Post
+from .pagination import PostListPagination
+from .serializers import (BlogImagesSerializer, CommentSerializer,
+                          PostSerializer)
 
 
 class UploadBlogImages(CreateAPIView):
