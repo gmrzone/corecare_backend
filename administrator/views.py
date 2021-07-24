@@ -20,6 +20,9 @@ from .serializers import *
 
 
 class AdminLogin(APIView):
+
+    http_method_names = ['post']
+
     def post(self, request):
         number = request.data.get("number")
         password = request.data.get("password")
@@ -87,6 +90,16 @@ class AdminLogin(APIView):
         response.data = data
         response.status_code = status
         return response
+
+
+class GetCurrentUser(APIView):
+    http_method_names = ['get']
+    permission_classes = [IsSuperUser]
+    
+    def get(self, request):
+        user = request.user
+        serializer = UserSerializerAdministrator(user)
+        return Response(serializer.data, status=HTTP_200_OK)
 
 
 class GetUsers(ListAPIView):
@@ -225,6 +238,7 @@ class CreateSubCategory(CreateAPIView):
             status = HTTP_400_BAD_REQUEST
         return Response(data, status=status)
 
+# Tested till Here
 
 class GetServices(ListAPIView):
     serializer_class = ServiceSerializerAdministrator
@@ -236,6 +250,27 @@ class GetServices(ListAPIView):
         )
         return queryset
 
+class CreateService(CreateAPIView):
+    serializer_class = ServiceSerializerAdministrator
+    http_method_names = ['post']
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            self.perform_create()
+            data = {
+                "status": "ok",
+                "message": "Service has been created sucessfully",
+            }
+            status = HTTP_201_CREATED
+        else:
+            data = {
+                "status": "error",
+                "message": "Please make sure all the required fields have been filled.",
+            }
+            status = HTTP_406_NOT_ACCEPTABLE
+        return Response(data=data, status=status)
+
 
 class GetBlogPosts(ListAPIView):
     serializer_class = BlogPostAdministrator
@@ -244,6 +279,27 @@ class GetBlogPosts(ListAPIView):
     def get_queryset(self):
         queryset = Post.objects.all().select_related("category", "author")
         return queryset
+
+class CreateBlogPost(CreateAPIView):
+    serializer_class = BlogPostAdministrator
+    http_method_names = ['post']
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            self.perform_create()
+            data = {
+                "status": "ok",
+                "message": "Post has been created sucessfully",
+            }
+            status = HTTP_201_CREATED
+        else:
+            data = {
+                "status": "error",
+                "message": "Please make sure all the required fields have been filled.",
+            }
+            status = HTTP_406_NOT_ACCEPTABLE
+        return Response(data=data, status=status)
 
 
 class GetBlogPostComments(ListAPIView):
@@ -257,6 +313,28 @@ class GetBlogPostComments(ListAPIView):
         return queryset
 
 
+class CreateBlogPostComment(CreateAPIView):
+    serializer_class = CommentSerializerAdmin
+    http_method_names = ['post']
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            self.perform_create()
+            data = {
+                "status": "ok",
+                "message": "Comment has been created sucessfully",
+            }
+            status = HTTP_201_CREATED
+        else:
+            data = {
+                "status": "error",
+                "message": "Please make sure all the required fields have been filled.",
+            }
+            status = HTTP_406_NOT_ACCEPTABLE
+        return Response(data=data, status=status)
+
+
 class GetCoupons(ListAPIView):
     serializer_class = CouponSerializerAdministrator
     http_method_names = ["get"]
@@ -264,3 +342,25 @@ class GetCoupons(ListAPIView):
     def get_queryset(self):
         queryset = CouponCode.objects.all().prefetch_related("category", "users")
         return queryset
+
+
+class CreateCoupon(CreateAPIView):
+    serializer_class = CouponSerializerAdministrator
+    http_method_names = ['post']
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            self.perform_create()
+            data = {
+                "status": "ok",
+                "message": "Coupon has been created sucessfully",
+            }
+            status = HTTP_201_CREATED
+        else:
+            data = {
+                "status": "error",
+                "message": "Please make sure all the required fields have been filled.",
+            }
+            status = HTTP_406_NOT_ACCEPTABLE
+        return Response(data=data, status=status)
