@@ -10,6 +10,7 @@ class AdminCreateMixin:
     
     def create(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
+        print(request.data)
         if serializer.is_valid():
             self.perform_create(serializer)
             data = {

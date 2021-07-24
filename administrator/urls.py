@@ -20,4 +20,5 @@ urlpatterns = [
     path("create-subcategory/", CreateSubCategory.as_view(), name="create_subcategory"),
     path('login/', AdminLogin.as_view(), name="login"),
     path('get-current-user/', GetCurrentUser.as_view(), name="get_current_user"),
+    path('create-service/', CreateService.as_view(), name="create_service")
 ]
