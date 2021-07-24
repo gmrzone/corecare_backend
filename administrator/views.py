@@ -151,27 +151,10 @@ class GetOrders(ListAPIView):
         return queryset
 
 
-class CreateOrder(CreateAPIView):
+class CreateOrder(AdminCreateMixin, CreateAPIView):
     serializer_class = OrderSerializerAdministrator
-    http_method_names = ["post"]
-
-    def create(self, request, *args, **kwargs):
-        serializer = self.serializer_class(data=request.data)
-        if serializer.is_valid():
-            self.perform_create(serializer)
-            data = {
-                "status": "ok",
-                "message": "Order has been created sucessfully.",
-            }
-            status = HTTP_201_CREATED
-        else:
-            print(serializer.errors)
-            data = {
-                "status": "error",
-                "message": "Please make sure all the required fields have been filled.",
-            }
-            status = HTTP_400_BAD_REQUEST
-        return Response(data=data, status=status)
+    http_method_names = ['post']
+    serializer_success_msg = "Order has been created sucessfully"
 
 
 class GetSubCategories(ListAPIView):
@@ -184,26 +167,12 @@ class GetSubCategories(ListAPIView):
         return queryset
 
 
-class CreateSubCategory(CreateAPIView):
-    serializer_class = ServiceSubcategorySerializerAdmin
-    http_method_names = ["post"]
 
-    def create(self, request, *args, **kwargs):
-        serializer = self.serializer_class(data=request.data)
-        if serializer.is_valid():
-            self.perform_create(serializer)
-            data = {
-                "status": "ok",
-                "message": "Subcategory has been created sucessfully",
-            }
-            status = HTTP_201_CREATED
-        else:
-            data = {
-                "status": "error",
-                "message": "Please make sure all the required fields have been filled.",
-            }
-            status = HTTP_400_BAD_REQUEST
-        return Response(data, status=status)
+
+class CreateSubCategory(AdminCreateMixin, CreateAPIView):
+    serializer_class = ServiceSubcategorySerializerAdmin
+    http_method_names = ['post']
+    serializer_success_msg = "Subcategory has been created sucessfully"
 
 # Tested till Here
 

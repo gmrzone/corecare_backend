@@ -19,7 +19,7 @@ class AdminCreateMixin:
         else:
             print(serializer.errors)
             data = {
-                "status": "ok",
+                "status": "error",
                 "message": serializer.errors
             }
             status = HTTP_406_NOT_ACCEPTABLE
