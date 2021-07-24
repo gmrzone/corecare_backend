@@ -4,7 +4,6 @@ import pyotp
 from rest_framework.serializers import ModelSerializer, SerializerMethodField
 
 from .models import CustomUser
-
 # Project Modules
 from .utils import generate_key_for_otp
 

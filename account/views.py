@@ -6,7 +6,6 @@ import pyotp
 from django.conf import settings
 from django.contrib.auth import authenticate
 from django.middleware import csrf
-
 # Django Imports
 from django.shortcuts import get_object_or_404
 from rest_framework import status
@@ -18,11 +17,9 @@ from rest_framework.views import APIView
 
 # Models
 from .models import CustomUser
-
 # Serializers
 from .serializers import UserSerializer
 from .tasks import new_signup
-
 # Project Modules
 from .utils import generate_key_for_otp, get_token, timedelta_to_second
 

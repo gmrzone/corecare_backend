@@ -7,23 +7,13 @@ from rest_framework.response import Response
 from account.models import CustomUser
 from account.serializers import UserSerializer
 
-from .models import (
-    CategoryReview,
-    CouponCode,
-    EmployeeCategory,
-    Service,
-    ServiceSubcategory,
-)
-from .serializers import (
-    AllSubcategoryServiceSerializer,
-    CategoryReviewSerializer,
-    ContactSerializer,
-    CouponCodeSerializers,
-    EmployeeCategorySerializer,
-    PartnerRequestSerializer,
-    ServiceSerializer,
-    SubcategorySerializer,
-)
+from .models import (CategoryReview, CouponCode, EmployeeCategory, Service,
+                     ServiceSubcategory)
+from .serializers import (AllSubcategoryServiceSerializer,
+                          CategoryReviewSerializer, ContactSerializer,
+                          CouponCodeSerializers, EmployeeCategorySerializer,
+                          PartnerRequestSerializer, ServiceSerializer,
+                          SubcategorySerializer)
 from .tasks import send_contact_or_partners_mail
 
 

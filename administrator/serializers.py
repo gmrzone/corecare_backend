@@ -1,25 +1,18 @@
 from django.contrib.auth.hashers import make_password
 from django.db import Error, transaction
 from rest_framework.fields import SerializerMethodField
-from rest_framework.serializers import (
-    ModelSerializer,
-    StringRelatedField,
-    ValidationError,
-)
+from rest_framework.serializers import (ModelSerializer, StringRelatedField,
+                                        ValidationError)
 
 from account.models import CustomUser
-from api.models import CouponCode, EmployeeCategory
-from api.serializers import (
-    ServiceSerializer,
-    SubcategorySerializer,
-    TimeSince,
-)
+from api.models import CouponCode, EmployeeCategory, ServiceSubcategory
+from api.serializers import ServiceSerializer, SubcategorySerializer, TimeSince
 from blog.models import Comment
 from blog.serializers import PostSerializer
 from cart.models import Order, OrderItem
 from cart.serializers import CalculateFullfillTime, OrderItemSerializer
 from cart.utils import generate_order_receipt
-from api.models import ServiceSubcategory
+
 
 class UserSerializerAdministrator(ModelSerializer):
 
@@ -60,7 +53,7 @@ class UserSerializerAdministrator(ModelSerializer):
 class EmployeeSerializerAdministrator(ModelSerializer):
     last_login = TimeSince(read_only=True)
     date_joined = TimeSince(read_only=True)
-    employee_category_detail = SerializerMethodField('get_employee_category')
+    employee_category_detail = SerializerMethodField("get_employee_category")
 
     class Meta:
 
@@ -89,10 +82,7 @@ class EmployeeSerializerAdministrator(ModelSerializer):
         extra_kwargs = {"password": {"write_only": True}}
 
     def get_employee_category(self, obj):
-        return {
-            "name": obj.employee_category.name,
-            "slug": obj.employee_category.slug
-        }
+        return {"name": obj.employee_category.name, "slug": obj.employee_category.slug}
 
     def create(self, validated_data):
         validated_data["password"] = make_password(validated_data["password"])
@@ -113,7 +103,8 @@ class OrderSerializerAdministrator(ModelSerializer):
     created = TimeSince(read_only=True)
     updated = TimeSince(read_only=True)
     fullfill_by = CalculateFullfillTime(read_only=True)
-    user_detail = SerializerMethodField('get_user_detail')
+    user_detail = SerializerMethodField("get_user_detail")
+
     class Meta:
         model = Order
         fields = (
@@ -140,7 +131,7 @@ class OrderSerializerAdministrator(ModelSerializer):
     def get_user_detail(self, obj):
         return {
             "name": f"{obj.user.first_name} {obj.user.last_name}",
-            "number": obj.user.number
+            "number": obj.user.number,
         }
 
     def create(self, validated_data):
@@ -162,11 +153,19 @@ class OrderSerializerAdministrator(ModelSerializer):
 
 class ServiceSubcategorySerializerAdmin(ModelSerializer):
     created = TimeSince(read_only=True)
-    service_specialist_detail = SerializerMethodField('get_specialist_name', read_only=True)
+    service_specialist_detail = SerializerMethodField(
+        "get_specialist_name", read_only=True
+    )
+
     class Meta:
         model = ServiceSubcategory
-        fields = ('name', 'slug', 'created', 'service_specialist', "service_specialist_detail")
-
+        fields = (
+            "name",
+            "slug",
+            "created",
+            "service_specialist",
+            "service_specialist_detail",
+        )
 
     def get_specialist_name(self, obj):
         return {
