@@ -15,6 +15,7 @@ from cart.models import Order
 
 from .permissions import IsSuperUser
 from .serializers import *
+from .mixins import AdminCreateMixin
 
 # Create your views here.
 
@@ -109,28 +110,12 @@ class GetUsers(ListAPIView):
     queryset = CustomUser.objects.all()
 
 
-class CreateUser(CreateAPIView):
+class CreateUser(AdminCreateMixin, CreateAPIView):
     serializer_class = UserSerializerAdministrator
-    http_method_names = ["post"]
+    http_method_names = ['post']
     permission_classes = [IsSuperUser]
+    serializer_success_msg = "A new user has been created sucessfully"
 
-    def create(self, request, *args, **kwargs):
-        serializer = self.serializer_class(data=request.data)
-        if serializer.is_valid():
-            self.perform_create(serializer)
-            data = {
-                "status": "ok",
-                "message": "A New user has been created sucessfully.",
-            }
-            status = HTTP_201_CREATED
-        else:
-            data = {
-                "status": "error",
-                "message": "Please make sure all the required fields have been filled.",
-            }
-            status = HTTP_400_BAD_REQUEST
-
-        return Response(data=data, status=status)
 
 
 class GetEmployees(ListAPIView):
@@ -145,28 +130,11 @@ class GetEmployees(ListAPIView):
         return queryset
 
 
-class CreateEmployee(CreateAPIView):
+class CreateEmployee(AdminCreateMixin, CreateAPIView):
     serializer_class = EmployeeSerializerAdministrator
-    permission_classes = [IsSuperUser]
-    http_method_names = ["post"]
-
-    def create(self, request, *args, **kwargs):
-        serializer = self.serializer_class(data=request.data)
-        if serializer.is_valid():
-            self.perform_create(serializer)
-            data = {
-                "status": "ok",
-                "message": "An Employee user has been created sucessfully.",
-            }
-            status = HTTP_201_CREATED
-        else:
-            data = {
-                "status": "error",
-                "message": "Please make sure all the required fields have been filled.",
-            }
-            status = HTTP_400_BAD_REQUEST
-
-        return Response(data=data, status=status)
+    serializer_success_msg = "A new employee has been created sucessfully"
+    http_method_names = ['post']
+    
 
 
 class GetOrders(ListAPIView):
@@ -189,7 +157,6 @@ class CreateOrder(CreateAPIView):
 
     def create(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
-        print(request.data)
         if serializer.is_valid():
             self.perform_create(serializer)
             data = {

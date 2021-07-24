@@ -2,7 +2,7 @@ from rest_framework.permissions import BasePermission
 
 
 class IsSuperUser(BasePermission):
-    message = "Only users with superuser privilege can access this page"
+    message = "Only users with superuser privilege can access this endpoint"
 
     def has_permission(self, request, view):
         return bool(
@@ -14,7 +14,7 @@ class IsSuperUser(BasePermission):
 
 
 class IsEmployee(BasePermission):
-    message = "Only Employee can access this page"
+    message = "Only Employees can access this page"
 
     def has_permission(self, request, view):
         return bool(
