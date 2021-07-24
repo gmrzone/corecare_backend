@@ -112,7 +112,6 @@ class GetUsers(ListAPIView):
 
 class CreateUser(AdminCreateMixin, CreateAPIView):
     serializer_class = UserSerializerAdministrator
-    http_method_names = ['post']
     permission_classes = [IsSuperUser]
     serializer_success_msg = "A new user has been created sucessfully"
 
@@ -133,7 +132,8 @@ class GetEmployees(ListAPIView):
 class CreateEmployee(AdminCreateMixin, CreateAPIView):
     serializer_class = EmployeeSerializerAdministrator
     serializer_success_msg = "A new employee has been created sucessfully"
-    http_method_names = ['post']
+    permission_classes = [IsSuperUser]
+
     
 
 
@@ -153,8 +153,8 @@ class GetOrders(ListAPIView):
 
 class CreateOrder(AdminCreateMixin, CreateAPIView):
     serializer_class = OrderSerializerAdministrator
-    http_method_names = ['post']
     serializer_success_msg = "Order has been created sucessfully"
+    permission_classes = [IsSuperUser]
 
 
 class GetSubCategories(ListAPIView):
@@ -167,14 +167,11 @@ class GetSubCategories(ListAPIView):
         return queryset
 
 
-
-
 class CreateSubCategory(AdminCreateMixin, CreateAPIView):
     serializer_class = ServiceSubcategorySerializerAdmin
-    http_method_names = ['post']
     serializer_success_msg = "Subcategory has been created sucessfully"
+    permission_classes = [IsSuperUser]
 
-# Tested till Here
 
 class GetServices(ListAPIView):
     serializer_class = ServiceSerializerAdministrator
@@ -186,26 +183,9 @@ class GetServices(ListAPIView):
         )
         return queryset
 
-class CreateService(CreateAPIView):
+class CreateService(AdminCreateMixin, CreateAPIView):
     serializer_class = ServiceSerializerAdministrator
-    http_method_names = ['post']
-
-    def create(self, request, *args, **kwargs):
-        serializer = self.serializer_class(data=request.data)
-        if serializer.is_valid():
-            self.perform_create()
-            data = {
-                "status": "ok",
-                "message": "Service has been created sucessfully",
-            }
-            status = HTTP_201_CREATED
-        else:
-            data = {
-                "status": "error",
-                "message": "Please make sure all the required fields have been filled.",
-            }
-            status = HTTP_406_NOT_ACCEPTABLE
-        return Response(data=data, status=status)
+    serializer_success_msg = "Service has been created sucessfully"
 
 
 class GetBlogPosts(ListAPIView):
@@ -216,26 +196,10 @@ class GetBlogPosts(ListAPIView):
         queryset = Post.objects.all().select_related("category", "author")
         return queryset
 
-class CreateBlogPost(CreateAPIView):
-    serializer_class = BlogPostAdministrator
-    http_method_names = ['post']
 
-    def create(self, request, *args, **kwargs):
-        serializer = self.serializer_class(data=request.data)
-        if serializer.is_valid():
-            self.perform_create()
-            data = {
-                "status": "ok",
-                "message": "Post has been created sucessfully",
-            }
-            status = HTTP_201_CREATED
-        else:
-            data = {
-                "status": "error",
-                "message": "Please make sure all the required fields have been filled.",
-            }
-            status = HTTP_406_NOT_ACCEPTABLE
-        return Response(data=data, status=status)
+class CreateBlogPost(AdminCreateMixin, CreateAPIView):
+    serializer_class = BlogPostAdministrator
+    serializer_success_msg = "Post has been created sucessfully"
 
 
 class GetBlogPostComments(ListAPIView):
@@ -249,27 +213,10 @@ class GetBlogPostComments(ListAPIView):
         return queryset
 
 
-class CreateBlogPostComment(CreateAPIView):
+class CreateBlogPostComment(AdminCreateMixin, CreateAPIView):
     serializer_class = CommentSerializerAdmin
-    http_method_names = ['post']
-
-    def create(self, request, *args, **kwargs):
-        serializer = self.serializer_class(data=request.data)
-        if serializer.is_valid():
-            self.perform_create()
-            data = {
-                "status": "ok",
-                "message": "Comment has been created sucessfully",
-            }
-            status = HTTP_201_CREATED
-        else:
-            data = {
-                "status": "error",
-                "message": "Please make sure all the required fields have been filled.",
-            }
-            status = HTTP_406_NOT_ACCEPTABLE
-        return Response(data=data, status=status)
-
+    serializer_success_msg = "Comment has been created sucessfully"
+    
 
 class GetCoupons(ListAPIView):
     serializer_class = CouponSerializerAdministrator
@@ -280,23 +227,6 @@ class GetCoupons(ListAPIView):
         return queryset
 
 
-class CreateCoupon(CreateAPIView):
+class CreateCoupon(AdminCreateMixin, CreateAPIView):
     serializer_class = CouponSerializerAdministrator
-    http_method_names = ['post']
-
-    def create(self, request, *args, **kwargs):
-        serializer = self.serializer_class(data=request.data)
-        if serializer.is_valid():
-            self.perform_create()
-            data = {
-                "status": "ok",
-                "message": "Coupon has been created sucessfully",
-            }
-            status = HTTP_201_CREATED
-        else:
-            data = {
-                "status": "error",
-                "message": "Please make sure all the required fields have been filled.",
-            }
-            status = HTTP_406_NOT_ACCEPTABLE
-        return Response(data=data, status=status)
+    serializer_success_msg = "Coupon has been created sucessfully"

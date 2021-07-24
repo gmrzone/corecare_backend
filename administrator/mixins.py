@@ -5,6 +5,7 @@ from rest_framework.response import Response
 class AdminCreateMixin:
     serializer_class = NotImplemented
     serializer_success_msg = NotImplemented
+    http_method_names = ['post']
 
     
     def create(self, request, *args, **kwargs):
