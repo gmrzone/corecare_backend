@@ -2,15 +2,14 @@ from django.contrib.auth.hashers import make_password
 from django.db import Error, transaction
 from rest_framework import serializers
 from rest_framework.fields import SerializerMethodField
-from rest_framework.serializers import (ModelSerializer, StringRelatedField,
+from rest_framework.serializers import (ModelSerializer, ImageField, DateField,
                                         ValidationError)
-from rest_framework.views import exception_handler
+
 
 from account.models import CustomUser
 from api.models import CouponCode, Service, ServiceSubcategory
 from api.serializers import ServiceSerializer, SubcategorySerializer, TimeSince
 from blog.models import Comment, Post
-from blog.serializers import PostSerializer
 from cart.models import Order, OrderItem
 from cart.serializers import CalculateFullfillTime
 from cart.utils import generate_order_receipt
@@ -22,7 +21,7 @@ class UserSerializerAdministrator(ModelSerializer):
 
     last_login = TimeSince(read_only=True)
     date_joined = TimeSince(read_only=True)
-    photo = serializers.ImageField(
+    photo = ImageField(
         write_only=True, required=False, allow_empty_file=True
     )
     photo_url = SerializerMethodField("get_photo", read_only=True)
@@ -67,7 +66,7 @@ class EmployeeSerializerAdministrator(ModelSerializer):
     last_login = TimeSince(read_only=True)
     date_joined = TimeSince(read_only=True)
     employee_category_detail = SerializerMethodField("get_employee_category")
-    photo = serializers.ImageField(
+    photo = ImageField(
         write_only=True, required=False, allow_empty_file=True
     )
     photo_url = SerializerMethodField("get_photo", read_only=True)
@@ -169,7 +168,7 @@ class OrderSerializerAdministrator(ModelSerializer):
                 # for item in items_data:
                 #     OrderItem.objects.create(order=instance, **item)
         except Error:
-            raise serializers.ValidationError(
+            raise ValidationError(
                 "Something is wrong with the server please try again later."
             )
         return instance
@@ -181,7 +180,7 @@ class ServiceSubcategorySerializerAdmin(ModelSerializer):
         "get_specialist_name", read_only=True
     )
     icon_url = SerializerMethodField("get_icon", read_only=True)
-    icon = serializers.ImageField(
+    icon = ImageField(
         write_only=True, required=False, allow_empty_file=True
     )
 
@@ -211,7 +210,7 @@ class ServiceSubcategorySerializerAdmin(ModelSerializer):
 class ServiceSerializerAdministrator(ServiceSerializer):
     subcategory_name = SerializerMethodField("get_subcategory_name")
     icon_url = SerializerMethodField("get_icon", read_only=True)
-    icon = serializers.ImageField(
+    icon = ImageField(
         write_only=True, required=False, allow_empty_file=True
     )
 
@@ -243,7 +242,7 @@ class BlogPostAdministrator(ModelSerializer):
     created = TimeSince(read_only=True)
     date_slug = SerializerMethodField(method_name="get_date_slug", read_only=True)
     photo_url = SerializerMethodField(method_name="get_blog_photo", read_only=True)
-    photo = serializers.ImageField(
+    photo = ImageField(
         write_only=True, allow_empty_file=True, required=False
     )
 
@@ -297,7 +296,7 @@ class CommentSerializerAdmin(ModelSerializer):
     def validate(self, attrs):
         offline_details = attrs.get('name', None) and attrs.get('email', None)
         if not attrs.get('user', None) and not offline_details:
-            raise serializers.ValidationError("To create a comment you need to be logged in or provide your name and email.")
+            raise ValidationError("To create a comment you need to be logged in or provide your name and email.")
         else:
             return super().validate(attrs)
 
@@ -305,8 +304,8 @@ class CouponSerializerAdministrator(ModelSerializer):
     
     valid_from_date = SerializerMethodField("get_valid_from", read_only=True)
     valid_to_date = SerializerMethodField("get_valid_to", read_only=True)
-    valid_from = serializers.DateField(input_formats=(['%d-%m-%Y']), write_only=True)
-    valid_to = serializers.DateField(input_formats=(['%d-%m-%Y']), write_only=True)
+    valid_from = DateField(input_formats=(['%d-%m-%Y']), write_only=True)
+    valid_to = DateField(input_formats=(['%d-%m-%Y']), write_only=True)
     
     class Meta:
         model = CouponCode
@@ -341,11 +340,6 @@ class CouponSerializerAdministrator(ModelSerializer):
             return None
         return {"year": valid_to.year, "month": valid_to.month, "day": valid_to.day}
 
-    # def create(self, validated_data):
-    #     # validated_data['valid_from'] = make_aware(validated_data['valid_from'])
-    #     # validated_data['valid_to'] = make_aware(validated_data['valid_to'])
-    #     print(validated_data)
-    #     return super().create(validated_data)
 
     def validate(self, attrs):
         # Convert naive Datetime to utc aware
@@ -354,9 +348,9 @@ class CouponSerializerAdministrator(ModelSerializer):
         valid_from_aware = datetime(year=valid_from_naive.year, month=valid_from_naive.month, day=valid_from_naive.day, tzinfo=pytz.UTC)
         valid_to_aware = datetime(year=valid_to_naive.year, month=valid_to_naive.month, day=valid_to_naive.day, tzinfo=pytz.UTC)
         if valid_from_aware >= valid_to_aware:
-            raise serializers.ValidationError('Valid_from date cannot be greater then or equal to Valid_to date')
+            raise ValidationError('Valid_from date cannot be greater then or equal to Valid_to date')
         elif valid_to_aware < datetime.now().astimezone(pytz.UTC):
-            raise serializers.ValidationError('Valid_to dates needs to be a future date')
+            raise ValidationError('Valid_to dates needs to be a future date')
         else:
             attrs['valid_from'] = valid_from_aware
             attrs['valid_to'] = valid_to_aware
