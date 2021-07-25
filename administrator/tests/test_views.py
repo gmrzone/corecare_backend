@@ -7,6 +7,7 @@ from django.urls import reverse
 
 class AdminLoginTests(TestCase):
 
+    # Create 2 users one normal and one admin
     def setUp(self) -> None:
         self.model = get_user_model()
         self.normal_user_number = "7286444556"
@@ -20,7 +21,7 @@ class AdminLoginTests(TestCase):
         admin_user.set_password(self.admin_user_password)
         admin_user.save()
 
-    # total user create is 3
+    # total user create is 2
     def test_user_creation(self):
         self.assertEqual(self.model.objects.all().count(), 2)
 

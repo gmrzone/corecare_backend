@@ -9,7 +9,7 @@ from rest_framework.views import exception_handler
 from account.models import CustomUser
 from api.models import CouponCode, Service, ServiceSubcategory
 from api.serializers import ServiceSerializer, SubcategorySerializer, TimeSince
-from blog.models import Comment
+from blog.models import Comment, Post
 from blog.serializers import PostSerializer
 from cart.models import Order, OrderItem
 from cart.serializers import CalculateFullfillTime
@@ -216,8 +216,38 @@ class ServiceSerializerAdministrator(ServiceSerializer):
     def get_subcategory_name(self, obj):
         return obj.subcategory.name
 
-class BlogPostAdministrator(PostSerializer):
-    author = StringRelatedField()
+class BlogPostAdministrator(ModelSerializer):
+
+    created = TimeSince(read_only=True)
+    date_slug = SerializerMethodField(method_name="get_date_slug", read_only=True)
+    photo_url = SerializerMethodField(method_name="get_blog_photo", read_only=True)
+    photo = serializers.ImageField(write_only=True, allow_empty_file=True, required=False)
+
+    class Meta:
+        model = Post
+        fields = (
+            "id",
+            "author",
+            "category",
+            "title",
+            "slug",
+            "photo",
+            "photo_url",
+            "body",
+            "created",
+            "date_slug",
+        )
+
+    def get_date_slug(self, obj):
+        created_date = obj.created
+        return {
+            "year": str(created_date.year),
+            "month": str(created_date.month),
+            "day": str(created_date.day),
+        }
+
+    def get_blog_photo(self, obj):
+        return obj.photo.url
 
 
 class CommentSerializerAdmin(ModelSerializer):
