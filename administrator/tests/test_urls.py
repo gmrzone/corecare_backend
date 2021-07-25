@@ -79,3 +79,8 @@ class UrlTests(TestCase):
         url = reverse("administrator:all_coupons")
         resolver = resolve(url)
         self.assertEqual(resolver.func.view_class, GetCoupons)
+
+    def test_create_coupon_url(self):
+        url = reverse('administrator:create_coupon')
+        resolver = resolve(url)
+        self.assertEqual(resolver.func.view_class, CreateCoupon)

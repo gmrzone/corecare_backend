@@ -23,4 +23,5 @@ urlpatterns = [
     path("create-service/", CreateService.as_view(), name="create_service"),
     path("create_post/", CreateBlogPost.as_view(), name="create_post"),
     path('create_comments/', CreateBlogPostComment.as_view(), name="create_comments"),
+    path('create_coupon/', CreateCoupon.as_view(), name="create_coupon")
 ]

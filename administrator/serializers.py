@@ -14,6 +14,8 @@ from blog.serializers import PostSerializer
 from cart.models import Order, OrderItem
 from cart.serializers import CalculateFullfillTime
 from cart.utils import generate_order_receipt
+import pytz
+from datetime import datetime
 
 
 class UserSerializerAdministrator(ModelSerializer):
@@ -300,23 +302,29 @@ class CommentSerializerAdmin(ModelSerializer):
             return super().validate(attrs)
 
 class CouponSerializerAdministrator(ModelSerializer):
-    users = StringRelatedField(many=True, read_only=True)
-    valid_from = SerializerMethodField("get_valid_from")
-    valid_to = SerializerMethodField("get_valid_to")
-    category = StringRelatedField(read_only=True, many=True)
-
+    
+    valid_from_date = SerializerMethodField("get_valid_from", read_only=True)
+    valid_to_date = SerializerMethodField("get_valid_to", read_only=True)
+    valid_from = serializers.DateField(input_formats=(['%d-%m-%Y']), write_only=True)
+    valid_to = serializers.DateField(input_formats=(['%d-%m-%Y']), write_only=True)
+    
     class Meta:
         model = CouponCode
         fields = (
             "code",
             "discount",
             "valid_from",
+            "valid_from_date",
             "valid_to",
-            "active",
+            "valid_to_date",
+            "active",   
             "category",
             "users",
         )
-
+        extra_kwargs = {
+            'valid_from': {'write_only': True},
+            'valid_to': {'write_only': True}
+        }
     def get_valid_from(self, obj):
         valid_from = obj.valid_from
         if not valid_from:
@@ -332,3 +340,24 @@ class CouponSerializerAdministrator(ModelSerializer):
         if not valid_to:
             return None
         return {"year": valid_to.year, "month": valid_to.month, "day": valid_to.day}
+
+    # def create(self, validated_data):
+    #     # validated_data['valid_from'] = make_aware(validated_data['valid_from'])
+    #     # validated_data['valid_to'] = make_aware(validated_data['valid_to'])
+    #     print(validated_data)
+    #     return super().create(validated_data)
+
+    def validate(self, attrs):
+        # Convert naive Datetime to utc aware
+        valid_from_naive = attrs['valid_from']
+        valid_to_naive =  attrs['valid_to']
+        valid_from_aware = datetime(year=valid_from_naive.year, month=valid_from_naive.month, day=valid_from_naive.day, tzinfo=pytz.UTC)
+        valid_to_aware = datetime(year=valid_to_naive.year, month=valid_to_naive.month, day=valid_to_naive.day, tzinfo=pytz.UTC)
+        if valid_from_aware >= valid_to_aware:
+            raise serializers.ValidationError('Valid_from date cannot be greater then or equal to Valid_to date')
+        elif valid_to_aware < datetime.now().astimezone(pytz.UTC):
+            raise serializers.ValidationError('Valid_to dates needs to be a future date')
+        else:
+            attrs['valid_from'] = valid_from_aware
+            attrs['valid_to'] = valid_to_aware
+            return super().validate(attrs)
