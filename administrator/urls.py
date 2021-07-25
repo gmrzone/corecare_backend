@@ -18,7 +18,9 @@ urlpatterns = [
     path("create-employee/", CreateEmployee.as_view(), name="create_employee"),
     path("create-order/", CreateOrder.as_view(), name="create_order"),
     path("create-subcategory/", CreateSubCategory.as_view(), name="create_subcategory"),
-    path('login/', AdminLogin.as_view(), name="login"),
-    path('get-current-user/', GetCurrentUser.as_view(), name="get_current_user"),
-    path('create-service/', CreateService.as_view(), name="create_service")
+    path("login/", AdminLogin.as_view(), name="login"),
+    path("get-current-user/", GetCurrentUser.as_view(), name="get_current_user"),
+    path("create-service/", CreateService.as_view(), name="create_service"),
+    path("create_post/", CreateBlogPost.as_view(), name="create_post"),
+    path('create_comments/', CreateBlogPostComment.as_view(), name="create_comments"),
 ]

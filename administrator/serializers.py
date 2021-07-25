@@ -20,8 +20,10 @@ class UserSerializerAdministrator(ModelSerializer):
 
     last_login = TimeSince(read_only=True)
     date_joined = TimeSince(read_only=True)
-    photo = serializers.ImageField(write_only=True, required=False, allow_empty_file=True)
-    photo_url = SerializerMethodField('get_photo', read_only=True)
+    photo = serializers.ImageField(
+        write_only=True, required=False, allow_empty_file=True
+    )
+    photo_url = SerializerMethodField("get_photo", read_only=True)
 
     class Meta:
 
@@ -63,8 +65,10 @@ class EmployeeSerializerAdministrator(ModelSerializer):
     last_login = TimeSince(read_only=True)
     date_joined = TimeSince(read_only=True)
     employee_category_detail = SerializerMethodField("get_employee_category")
-    photo = serializers.ImageField(write_only=True, required=False, allow_empty_file=True)
-    photo_url = SerializerMethodField('get_photo', read_only=True)
+    photo = serializers.ImageField(
+        write_only=True, required=False, allow_empty_file=True
+    )
+    photo_url = SerializerMethodField("get_photo", read_only=True)
 
     class Meta:
 
@@ -163,7 +167,7 @@ class OrderSerializerAdministrator(ModelSerializer):
                 # for item in items_data:
                 #     OrderItem.objects.create(order=instance, **item)
         except Error:
-            raise ValidationError(
+            raise serializers.ValidationError(
                 "Something is wrong with the server please try again later."
             )
         return instance
@@ -174,8 +178,11 @@ class ServiceSubcategorySerializerAdmin(ModelSerializer):
     service_specialist_detail = SerializerMethodField(
         "get_specialist_name", read_only=True
     )
-    icon_url = SerializerMethodField('get_icon', read_only=True)
-    icon = serializers.ImageField(write_only=True, required=False, allow_empty_file=True)
+    icon_url = SerializerMethodField("get_icon", read_only=True)
+    icon = serializers.ImageField(
+        write_only=True, required=False, allow_empty_file=True
+    )
+
     class Meta:
         model = ServiceSubcategory
         fields = (
@@ -189,9 +196,9 @@ class ServiceSubcategorySerializerAdmin(ModelSerializer):
             "service_specialist_detail",
         )
 
-
     def get_icon(self, obj):
         return obj.icon.url
+
     def get_specialist_name(self, obj):
         return {
             "slug": obj.service_specialist.slug,
@@ -200,15 +207,27 @@ class ServiceSubcategorySerializerAdmin(ModelSerializer):
 
 
 class ServiceSerializerAdministrator(ServiceSerializer):
-    subcategory_name = SerializerMethodField('get_subcategory_name')
-    icon_url = SerializerMethodField('get_icon', read_only=True)
-    icon = serializers.ImageField(write_only=True, required=False, allow_empty_file=True)
-
+    subcategory_name = SerializerMethodField("get_subcategory_name")
+    icon_url = SerializerMethodField("get_icon", read_only=True)
+    icon = serializers.ImageField(
+        write_only=True, required=False, allow_empty_file=True
+    )
 
     class Meta:
         model = Service
-        fields = ('id', 'name', 'price', "active", 'created', 'description', 'subcategory', "subcategory_name", 'icon', 'icon_url')
-        read_only_fields = ('created', 'active', 'subcategory_name')
+        fields = (
+            "id",
+            "name",
+            "price",
+            "active",
+            "created",
+            "description",
+            "subcategory",
+            "subcategory_name",
+            "icon",
+            "icon_url",
+        )
+        read_only_fields = ("created", "active", "subcategory_name")
 
     def get_icon(self, obj):
         return obj.icon.url
@@ -216,12 +235,15 @@ class ServiceSerializerAdministrator(ServiceSerializer):
     def get_subcategory_name(self, obj):
         return obj.subcategory.name
 
+
 class BlogPostAdministrator(ModelSerializer):
 
     created = TimeSince(read_only=True)
     date_slug = SerializerMethodField(method_name="get_date_slug", read_only=True)
     photo_url = SerializerMethodField(method_name="get_blog_photo", read_only=True)
-    photo = serializers.ImageField(write_only=True, allow_empty_file=True, required=False)
+    photo = serializers.ImageField(
+        write_only=True, allow_empty_file=True, required=False
+    )
 
     class Meta:
         model = Post
@@ -252,13 +274,14 @@ class BlogPostAdministrator(ModelSerializer):
 
 class CommentSerializerAdmin(ModelSerializer):
     created = TimeSince(read_only=True)
-    user = StringRelatedField()
+    
 
     class Meta:
         model = Comment
         fields = (
             "id",
             "parent",
+            "post",
             "user",
             "name",
             "email",
@@ -267,7 +290,14 @@ class CommentSerializerAdmin(ModelSerializer):
             "active",
             "created",
         )
+        read_only_fields = ('parent', 'replies')
 
+    def validate(self, attrs):
+        offline_details = attrs.get('name', None) and attrs.get('email', None)
+        if not attrs.get('user', None) and not offline_details:
+            raise serializers.ValidationError("To create a comment you need to be logged in or provide your name and email.")
+        else:
+            return super().validate(attrs)
 
 class CouponSerializerAdministrator(ModelSerializer):
     users = StringRelatedField(many=True, read_only=True)

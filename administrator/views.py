@@ -13,16 +13,16 @@ from api.models import CouponCode, Service, ServiceSubcategory
 from blog.models import Comment, Post
 from cart.models import Order
 
+from .mixins import AdminCreateMixin
 from .permissions import IsSuperUser
 from .serializers import *
-from .mixins import AdminCreateMixin
 
 # Create your views here.
 
 
 class AdminLogin(APIView):
 
-    http_method_names = ['post']
+    http_method_names = ["post"]
 
     def post(self, request):
         number = request.data.get("number")
@@ -94,9 +94,9 @@ class AdminLogin(APIView):
 
 
 class GetCurrentUser(APIView):
-    http_method_names = ['get']
+    http_method_names = ["get"]
     permission_classes = [IsSuperUser]
-    
+
     def get(self, request):
         user = request.user
         serializer = UserSerializerAdministrator(user)
@@ -116,7 +116,6 @@ class CreateUser(AdminCreateMixin, CreateAPIView):
     serializer_success_msg = "A new user has been created sucessfully"
 
 
-
 class GetEmployees(ListAPIView):
     serializer_class = EmployeeSerializerAdministrator
     permission_classes = [IsSuperUser]
@@ -133,8 +132,6 @@ class CreateEmployee(AdminCreateMixin, CreateAPIView):
     serializer_class = EmployeeSerializerAdministrator
     serializer_success_msg = "A new employee has been created sucessfully"
     permission_classes = [IsSuperUser]
-
-    
 
 
 class GetOrders(ListAPIView):
@@ -183,6 +180,7 @@ class GetServices(ListAPIView):
         )
         return queryset
 
+
 class CreateService(AdminCreateMixin, CreateAPIView):
     serializer_class = ServiceSerializerAdministrator
     serializer_success_msg = "Service has been created sucessfully"
@@ -216,7 +214,7 @@ class GetBlogPostComments(ListAPIView):
 class CreateBlogPostComment(AdminCreateMixin, CreateAPIView):
     serializer_class = CommentSerializerAdmin
     serializer_success_msg = "Comment has been created sucessfully"
-    
+
 
 class GetCoupons(ListAPIView):
     serializer_class = CouponSerializerAdministrator
