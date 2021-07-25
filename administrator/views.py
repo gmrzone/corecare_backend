@@ -154,7 +154,7 @@ class GetOrders(ListAPIView):
 class CreateOrder(AdminCreateMixin, CreateAPIView):
     serializer_class = OrderSerializerAdministrator
     serializer_success_msg = "Order has been created sucessfully"
-    permission_classes = [IsSuperUser]
+    # permission_classes = [IsSuperUser]
 
 
 class GetSubCategories(ListAPIView):

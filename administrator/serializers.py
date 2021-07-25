@@ -158,8 +158,10 @@ class OrderSerializerAdministrator(ModelSerializer):
                 receipt = generate_order_receipt(17, instance.user.id)
                 instance.receipt = receipt
                 instance.save()
-                for item in items_data:
-                    OrderItem.objects.create(order=instance, **item)
+                items = (OrderItem(order=instance, **rest) for rest in items_data)
+                OrderItem.objects.bulk_create(items)
+                # for item in items_data:
+                #     OrderItem.objects.create(order=instance, **item)
         except Error:
             raise ValidationError(
                 "Something is wrong with the server please try again later."
