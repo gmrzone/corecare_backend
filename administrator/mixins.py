@@ -20,14 +20,18 @@ class AdminCreateMixin:
             status = HTTP_406_NOT_ACCEPTABLE
         return Response(data=data, status=status)
 
+
 class AdminRetriveMixin:
 
-    http_method_names = ['get']
+    http_method_names = ["get"]
 
     def get_object(self):
         queryset = self.filter_queryset(self.get_queryset())
-        filter = {field: self.kwargs[field] for field in self.lookup_fields if self.kwargs[field]}
+        filter = {
+            field: self.kwargs[field]
+            for field in self.lookup_fields
+            if self.kwargs[field]
+        }
         obj = get_object_or_404(queryset, **filter)
         self.check_object_permissions(self.request, obj)
         return obj
-

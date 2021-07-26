@@ -22,8 +22,12 @@ urlpatterns = [
     path("get-current-user/", GetCurrentUser.as_view(), name="get_current_user"),
     path("create-service/", CreateService.as_view(), name="create_service"),
     path("create_post/", CreateBlogPost.as_view(), name="create_post"),
-    path('create_comments/', CreateBlogPostComment.as_view(), name="create_comments"),
-    path('create_coupon/', CreateCoupon.as_view(), name="create_coupon"),
-    path('get-user/<str:number>/<int:pk>/', GetUser.as_view(), name="get_user"),
-    path('get-employee/<str:number>/<int:pk>/', GetEmployee.as_view(), name="get_employee"),
+    path("create_comments/", CreateBlogPostComment.as_view(), name="create_comments"),
+    path("create_coupon/", CreateCoupon.as_view(), name="create_coupon"),
+    path("get-user/<str:number>/<int:pk>/", GetUser.as_view(), name="get_user"),
+    path(
+        "get-employee/<str:number>/<int:pk>/",
+        GetEmployee.as_view(),
+        name="get_employee",
+    ),
 ]

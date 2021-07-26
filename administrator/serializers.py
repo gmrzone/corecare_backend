@@ -1,10 +1,12 @@
+from datetime import datetime
+
+import pytz
 from django.contrib.auth.hashers import make_password
 from django.db import Error, transaction
 from rest_framework import serializers
 from rest_framework.fields import SerializerMethodField
-from rest_framework.serializers import (ModelSerializer, ImageField, DateField,
+from rest_framework.serializers import (DateField, ImageField, ModelSerializer,
                                         ValidationError)
-
 
 from account.models import CustomUser
 from api.models import CouponCode, Service, ServiceSubcategory
@@ -13,17 +15,13 @@ from blog.models import Comment, Post
 from cart.models import Order, OrderItem
 from cart.serializers import CalculateFullfillTime
 from cart.utils import generate_order_receipt
-import pytz
-from datetime import datetime
 
 
 class UserSerializerAdministrator(ModelSerializer):
 
     last_login = TimeSince(read_only=True)
     date_joined = TimeSince(read_only=True)
-    photo = ImageField(
-        write_only=True, required=False, allow_empty_file=True
-    )
+    photo = ImageField(write_only=True, required=False, allow_empty_file=True)
     photo_url = SerializerMethodField("get_photo", read_only=True)
 
     class Meta:
@@ -66,9 +64,7 @@ class EmployeeSerializerAdministrator(ModelSerializer):
     last_login = TimeSince(read_only=True)
     date_joined = TimeSince(read_only=True)
     employee_category_detail = SerializerMethodField("get_employee_category")
-    photo = ImageField(
-        write_only=True, required=False, allow_empty_file=True
-    )
+    photo = ImageField(write_only=True, required=False, allow_empty_file=True)
     photo_url = SerializerMethodField("get_photo", read_only=True)
 
     class Meta:
@@ -180,9 +176,7 @@ class ServiceSubcategorySerializerAdmin(ModelSerializer):
         "get_specialist_name", read_only=True
     )
     icon_url = SerializerMethodField("get_icon", read_only=True)
-    icon = ImageField(
-        write_only=True, required=False, allow_empty_file=True
-    )
+    icon = ImageField(write_only=True, required=False, allow_empty_file=True)
 
     class Meta:
         model = ServiceSubcategory
@@ -210,9 +204,7 @@ class ServiceSubcategorySerializerAdmin(ModelSerializer):
 class ServiceSerializerAdministrator(ServiceSerializer):
     subcategory_name = SerializerMethodField("get_subcategory_name")
     icon_url = SerializerMethodField("get_icon", read_only=True)
-    icon = ImageField(
-        write_only=True, required=False, allow_empty_file=True
-    )
+    icon = ImageField(write_only=True, required=False, allow_empty_file=True)
 
     class Meta:
         model = Service
@@ -242,9 +234,7 @@ class BlogPostAdministrator(ModelSerializer):
     created = TimeSince(read_only=True)
     date_slug = SerializerMethodField(method_name="get_date_slug", read_only=True)
     photo_url = SerializerMethodField(method_name="get_blog_photo", read_only=True)
-    photo = ImageField(
-        write_only=True, allow_empty_file=True, required=False
-    )
+    photo = ImageField(write_only=True, allow_empty_file=True, required=False)
 
     class Meta:
         model = Post
@@ -275,7 +265,6 @@ class BlogPostAdministrator(ModelSerializer):
 
 class CommentSerializerAdmin(ModelSerializer):
     created = TimeSince(read_only=True)
-    
 
     class Meta:
         model = Comment
@@ -291,22 +280,25 @@ class CommentSerializerAdmin(ModelSerializer):
             "active",
             "created",
         )
-        read_only_fields = ('parent', 'replies')
+        read_only_fields = ("parent", "replies")
 
     def validate(self, attrs):
-        offline_details = attrs.get('name', None) and attrs.get('email', None)
-        if not attrs.get('user', None) and not offline_details:
-            raise ValidationError("To create a comment you need to be logged in or provide your name and email.")
+        offline_details = attrs.get("name", None) and attrs.get("email", None)
+        if not attrs.get("user", None) and not offline_details:
+            raise ValidationError(
+                "To create a comment you need to be logged in or provide your name and email."
+            )
         else:
             return super().validate(attrs)
 
+
 class CouponSerializerAdministrator(ModelSerializer):
-    
+
     valid_from_date = SerializerMethodField("get_valid_from", read_only=True)
     valid_to_date = SerializerMethodField("get_valid_to", read_only=True)
-    valid_from = DateField(input_formats=(['%d-%m-%Y']), write_only=True)
-    valid_to = DateField(input_formats=(['%d-%m-%Y']), write_only=True)
-    
+    valid_from = DateField(input_formats=(["%d-%m-%Y"]), write_only=True)
+    valid_to = DateField(input_formats=(["%d-%m-%Y"]), write_only=True)
+
     class Meta:
         model = CouponCode
         fields = (
@@ -316,14 +308,15 @@ class CouponSerializerAdministrator(ModelSerializer):
             "valid_from_date",
             "valid_to",
             "valid_to_date",
-            "active",   
+            "active",
             "category",
             "users",
         )
         extra_kwargs = {
-            'valid_from': {'write_only': True},
-            'valid_to': {'write_only': True}
+            "valid_from": {"write_only": True},
+            "valid_to": {"write_only": True},
         }
+
     def get_valid_from(self, obj):
         valid_from = obj.valid_from
         if not valid_from:
@@ -340,18 +333,29 @@ class CouponSerializerAdministrator(ModelSerializer):
             return None
         return {"year": valid_to.year, "month": valid_to.month, "day": valid_to.day}
 
-
     def validate(self, attrs):
         # Convert naive Datetime to utc aware
-        valid_from_naive = attrs['valid_from']
-        valid_to_naive =  attrs['valid_to']
-        valid_from_aware = datetime(year=valid_from_naive.year, month=valid_from_naive.month, day=valid_from_naive.day, tzinfo=pytz.UTC)
-        valid_to_aware = datetime(year=valid_to_naive.year, month=valid_to_naive.month, day=valid_to_naive.day, tzinfo=pytz.UTC)
+        valid_from_naive = attrs["valid_from"]
+        valid_to_naive = attrs["valid_to"]
+        valid_from_aware = datetime(
+            year=valid_from_naive.year,
+            month=valid_from_naive.month,
+            day=valid_from_naive.day,
+            tzinfo=pytz.UTC,
+        )
+        valid_to_aware = datetime(
+            year=valid_to_naive.year,
+            month=valid_to_naive.month,
+            day=valid_to_naive.day,
+            tzinfo=pytz.UTC,
+        )
         if valid_from_aware >= valid_to_aware:
-            raise ValidationError('Valid_from date cannot be greater then or equal to Valid_to date')
+            raise ValidationError(
+                "Valid_from date cannot be greater then or equal to Valid_to date"
+            )
         elif valid_to_aware < datetime.now().astimezone(pytz.UTC):
-            raise ValidationError('Valid_to dates needs to be a future date')
+            raise ValidationError("Valid_to dates needs to be a future date")
         else:
-            attrs['valid_from'] = valid_from_aware
-            attrs['valid_to'] = valid_to_aware
+            attrs["valid_from"] = valid_from_aware
+            attrs["valid_to"] = valid_to_aware
             return super().validate(attrs)

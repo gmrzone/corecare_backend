@@ -1,19 +1,20 @@
+from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import resolve, reverse
-from django.contrib.auth import get_user_model
+
 from ..views import *
 
 
 class UrlTests(TestCase):
-
-
     def test_users_list_url(self):
         url = reverse("administrator:all_users")
         resolver = resolve(url)
         self.assertEqual(resolver.func.view_class, GetUsers)
 
     def test_user_detail_url(self):
-        url = reverse("administrator:get_user", kwargs={'number': "7208333993", "pk": 1})
+        url = reverse(
+            "administrator:get_user", kwargs={"number": "7208333993", "pk": 1}
+        )
         resolver = resolve(url)
         self.assertEqual(resolver.func.view_class, GetUser)
 
@@ -22,15 +23,15 @@ class UrlTests(TestCase):
         resolver = resolve(url)
         self.assertEqual(resolver.func.view_class, CreateUser)
 
-
     def test_employees_list_url(self):
         url = reverse("administrator:all_employees")
         resolver = resolve(url)
         self.assertEqual(resolver.func.view_class, GetEmployees)
 
-    
     def test_employee_detail_url(self):
-        url = reverse("administrator:get_employee", kwargs={'number': "7208333993", "pk": 1})
+        url = reverse(
+            "administrator:get_employee", kwargs={"number": "7208333993", "pk": 1}
+        )
         resolver = resolve(url)
         self.assertEqual(resolver.func.view_class, GetEmployee)
 
@@ -85,7 +86,7 @@ class UrlTests(TestCase):
         self.assertEqual(resolver.func.view_class, GetBlogPostComments)
 
     def test_create_comment_url(self):
-        url = reverse('administrator:create_comments')
+        url = reverse("administrator:create_comments")
         resolver = resolve(url)
         self.assertEqual(resolver.func.view_class, CreateBlogPostComment)
 
@@ -95,8 +96,6 @@ class UrlTests(TestCase):
         self.assertEqual(resolver.func.view_class, GetCoupons)
 
     def test_create_coupon_url(self):
-        url = reverse('administrator:create_coupon')
+        url = reverse("administrator:create_coupon")
         resolver = resolve(url)
         self.assertEqual(resolver.func.view_class, CreateCoupon)
-
-    
