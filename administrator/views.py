@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.contrib.auth import authenticate
-from rest_framework.generics import CreateAPIView, ListAPIView
+from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveAPIView, get_object_or_404
 from rest_framework.response import Response
 from rest_framework.status import (HTTP_200_OK, HTTP_201_CREATED,
                                    HTTP_400_BAD_REQUEST, HTTP_404_NOT_FOUND,
@@ -13,7 +13,7 @@ from api.models import CouponCode, Service, ServiceSubcategory
 from blog.models import Comment, Post
 from cart.models import Order
 
-from .mixins import AdminCreateMixin
+from .mixins import AdminCreateMixin, AdminRetriveMixin
 from .permissions import IsSuperUser
 from .serializers import *
 
@@ -109,6 +109,14 @@ class GetUsers(ListAPIView):
     permission_classes = [IsSuperUser]
     queryset = CustomUser.objects.all()
 
+class GetUser(AdminRetriveMixin ,RetrieveAPIView):
+    serializer_class = UserSerializerAdministrator
+    lookup_fields = ('pk', 'number')
+
+    def get_queryset(self):
+        queryset = CustomUser.objects.all()
+        return queryset
+
 
 class CreateUser(AdminCreateMixin, CreateAPIView):
     serializer_class = UserSerializerAdministrator
@@ -125,6 +133,14 @@ class GetEmployees(ListAPIView):
         queryset = CustomUser.objects.filter(is_employee=True).select_related(
             "employee_category"
         )
+        return queryset
+
+class GetEmployee(AdminRetriveMixin, RetrieveAPIView):
+    serializer_class = EmployeeSerializerAdministrator
+    lookup_fields = ('pk', 'number')
+
+    def get_queryset(self):
+        queryset = CustomUser.objects.filter(is_employee=True).select_related('employee_category')
         return queryset
 
 
