@@ -167,9 +167,10 @@ class GetOrders(ListAPIView):
         )
         return queryset
 
+
 class GetOrder(AdminRetriveMixin, RetrieveAPIView):
     serializer_class = OrderSerializerAdministrator
-    lookup_fields = ('receipt', "pk")
+    lookup_fields = ("receipt", "pk")
 
     def get_queryset(self):
         queryset = (
@@ -194,9 +195,10 @@ class GetSubCategories(ListAPIView):
         queryset = ServiceSubcategory.objects.all().select_related("service_specialist")
         return queryset
 
+
 class GetSubcategory(AdminRetriveMixin, RetrieveAPIView):
     serializer_class = ServiceSubcategorySerializerAdmin
-    lookup_fields = ('slug', "pk")
+    lookup_fields = ("slug", "pk")
 
     def get_queryset(self):
         queryset = ServiceSubcategory.objects.all().select_related("service_specialist")
@@ -219,9 +221,10 @@ class GetServices(ListAPIView):
         )
         return queryset
 
+
 class GetService(AdminRetriveMixin, RetrieveAPIView):
     serializer_class = ServiceSerializerAdministrator
-    lookup_fields = ('created__year', 'created__month', "pk")
+    lookup_fields = ("created__year", "created__month", "pk")
 
     def get_queryset(self):
         queryset = Service.objects.all().select_related(
@@ -244,6 +247,15 @@ class GetBlogPosts(ListAPIView):
         return queryset
 
 
+class GetBlogPost(AdminRetriveMixin, RetrieveAPIView):
+    serializer_class = BlogPostAdministrator
+    lookup_fields = ("created__year", "created__month", "created__day", "slug")
+
+    def get_queryset(self):
+        queryset = Post.objects.all().select_related("category", "author")
+        return queryset
+
+
 class CreateBlogPost(AdminCreateMixin, CreateAPIView):
     serializer_class = BlogPostAdministrator
     serializer_success_msg = "Post has been created sucessfully"
@@ -260,6 +272,17 @@ class GetBlogPostComments(ListAPIView):
         return queryset
 
 
+class GetBlogPostComment(AdminRetriveMixin, RetrieveAPIView):
+    serializer_class = CommentSerializerAdmin
+    lookup_fields = ("created__year", "created__month", "created__day", "pk")
+
+    def get_queryset(self):
+        queryset = (
+            Comment.objects.all().select_related("user").prefetch_related("replies")
+        )
+        return queryset
+
+
 class CreateBlogPostComment(AdminCreateMixin, CreateAPIView):
     serializer_class = CommentSerializerAdmin
     serializer_success_msg = "Comment has been created sucessfully"
@@ -268,6 +291,15 @@ class CreateBlogPostComment(AdminCreateMixin, CreateAPIView):
 class GetCoupons(ListAPIView):
     serializer_class = CouponSerializerAdministrator
     http_method_names = ["get"]
+
+    def get_queryset(self):
+        queryset = CouponCode.objects.all().prefetch_related("category", "users")
+        return queryset
+
+
+class GetCoupon(AdminRetriveMixin, RetrieveAPIView):
+    serializer_class = CouponSerializerAdministrator
+    lookup_fields = ("code", "pk")
 
     def get_queryset(self):
         queryset = CouponCode.objects.all().prefetch_related("category", "users")

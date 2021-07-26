@@ -265,6 +265,7 @@ class BlogPostAdministrator(ModelSerializer):
 
 class CommentSerializerAdmin(ModelSerializer):
     created = TimeSince(read_only=True)
+    created_iso = SerializerMethodField("get_date")
 
     class Meta:
         model = Comment
@@ -279,8 +280,9 @@ class CommentSerializerAdmin(ModelSerializer):
             "comment",
             "active",
             "created",
+            "created_iso",
         )
-        read_only_fields = ("parent", "replies")
+        read_only_fields = ("parent", "replies", "created_iso")
 
     def validate(self, attrs):
         offline_details = attrs.get("name", None) and attrs.get("email", None)
@@ -290,6 +292,9 @@ class CommentSerializerAdmin(ModelSerializer):
             )
         else:
             return super().validate(attrs)
+
+    def get_date(self, obj):
+        return obj.created.strftime("%d, %b %Y  %A, %H")
 
 
 class CouponSerializerAdministrator(ModelSerializer):
@@ -302,6 +307,7 @@ class CouponSerializerAdministrator(ModelSerializer):
     class Meta:
         model = CouponCode
         fields = (
+            "id",
             "code",
             "discount",
             "valid_from",

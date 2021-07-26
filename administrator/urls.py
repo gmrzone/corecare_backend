@@ -30,7 +30,30 @@ urlpatterns = [
         GetEmployee.as_view(),
         name="get_employee",
     ),
-    path('get-order/<str:receipt>/<int:pk>/', GetOrder.as_view(), name="get_order"),
-    path('get-subcategory/<slug:slug>/<int:pk>/', GetSubcategory.as_view(), name="get_subcategory"),
-    path('get-service/<int:created__year>/<int:created__month>/<int:pk>/',GetService.as_view(), name="get_service")
+    path("get-order/<str:receipt>/<int:pk>/", GetOrder.as_view(), name="get_order"),
+    path(
+        "get-subcategory/<slug:slug>/<int:pk>/",
+        GetSubcategory.as_view(),
+        name="get_subcategory",
+    ),
+    path(
+        "get-service/<int:created__year>/<int:created__month>/<int:pk>/",
+        GetService.as_view(),
+        name="get_service",
+    ),
+    path(
+        "get-blog-post/<int:created__year>/<int:created__month>/<int:created__day>/<slug:slug>/",
+        GetBlogPost.as_view(),
+        name="get_blog_post",
+    ),
+    path(
+        "get-comment/<int:created__year>/<int:created__month>/<int:created__day>/<int:pk>/",
+        GetBlogPostComment.as_view(),
+        name="get_comment",
+    ),
+    path(
+        "get-coupon/<str:code>/<int:pk>/",
+        GetCoupon.as_view(),
+        name="get_coupon",
+    ),
 ]
