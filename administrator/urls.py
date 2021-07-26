@@ -30,4 +30,7 @@ urlpatterns = [
         GetEmployee.as_view(),
         name="get_employee",
     ),
+    path('get-order/<str:receipt>/<int:pk>/', GetOrder.as_view(), name="get_order"),
+    path('get-subcategory/<slug:slug>/<int:pk>/', GetSubcategory.as_view(), name="get_subcategory"),
+    path('get-service/<int:created__year>/<int:created__month>/<int:pk>/',GetService.as_view(), name="get_service")
 ]

@@ -157,8 +157,19 @@ class CreateEmployee(AdminCreateMixin, CreateAPIView):
 
 class GetOrders(ListAPIView):
     serializer_class = OrderSerializerAdministrator
-    permission_classes = [IsSuperUser]
     http_method_names = ["get"]
+
+    def get_queryset(self):
+        queryset = (
+            Order.objects.all()
+            .select_related("category", "user", "coupon")
+            .prefetch_related("items", "items__service", "coupon__category")
+        )
+        return queryset
+
+class GetOrder(AdminRetriveMixin, RetrieveAPIView):
+    serializer_class = OrderSerializerAdministrator
+    lookup_fields = ('receipt', "pk")
 
     def get_queryset(self):
         queryset = (
@@ -177,8 +188,15 @@ class CreateOrder(AdminCreateMixin, CreateAPIView):
 
 class GetSubCategories(ListAPIView):
     serializer_class = ServiceSubcategorySerializerAdmin
-    permission_classes = [IsSuperUser]
     http_method_names = ["get"]
+
+    def get_queryset(self):
+        queryset = ServiceSubcategory.objects.all().select_related("service_specialist")
+        return queryset
+
+class GetSubcategory(AdminRetriveMixin, RetrieveAPIView):
+    serializer_class = ServiceSubcategorySerializerAdmin
+    lookup_fields = ('slug', "pk")
 
     def get_queryset(self):
         queryset = ServiceSubcategory.objects.all().select_related("service_specialist")
@@ -194,6 +212,16 @@ class CreateSubCategory(AdminCreateMixin, CreateAPIView):
 class GetServices(ListAPIView):
     serializer_class = ServiceSerializerAdministrator
     http_method_names = ["get"]
+
+    def get_queryset(self):
+        queryset = Service.objects.all().select_related(
+            "subcategory", "subcategory__service_specialist"
+        )
+        return queryset
+
+class GetService(AdminRetriveMixin, RetrieveAPIView):
+    serializer_class = ServiceSerializerAdministrator
+    lookup_fields = ('created__year', 'created__month', "pk")
 
     def get_queryset(self):
         queryset = Service.objects.all().select_related(

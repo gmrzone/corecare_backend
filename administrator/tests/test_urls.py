@@ -1,4 +1,3 @@
-from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import resolve, reverse
 
@@ -45,6 +44,13 @@ class UrlTests(TestCase):
         resolver = resolve(url)
         self.assertEqual(resolver.func.view_class, GetOrders)
 
+    def test_order_detail_url(self):
+        url = reverse(
+            "administrator:get_order", kwargs={"receipt": "ORD123456789", "pk": 1}
+        )
+        resolver = resolve(url)
+        self.assertEqual(resolver.func.view_class, GetOrder)
+
     def test_create_orders_url(self):
         url = reverse("administrator:create_order")
         resolver = resolve(url)
@@ -55,6 +61,13 @@ class UrlTests(TestCase):
         resolver = resolve(url)
         self.assertEqual(resolver.func.view_class, GetSubCategories)
 
+    def test_subcategory_detail_url(self):
+        url = reverse(
+            "administrator:get_subcategory", kwargs={"slug": "fffff", "pk": 1}
+        )
+        resolver = resolve(url)
+        self.assertEqual(resolver.func.view_class, GetSubcategory)
+
     def test_create_subcategory_url(self):
         url = reverse("administrator:create_subcategory")
         resolver = resolve(url)
@@ -64,6 +77,13 @@ class UrlTests(TestCase):
         url = reverse("administrator:all_services")
         resolver = resolve(url)
         self.assertEqual(resolver.func.view_class, GetServices)
+
+    def test_service_detail_url(self):
+        url = reverse(
+            "administrator:get_service", kwargs={"created__year": 2021, 'created__month': 2, "pk": 1}
+        )
+        resolver = resolve(url)
+        self.assertEqual(resolver.func.view_class, GetService)
 
     def test_create_service_url(self):
         url = reverse("administrator:create_service")
