@@ -59,6 +59,11 @@ class UserSerializerAdministrator(ModelSerializer):
         user.save()
         return user
 
+    def update(self, instance, validated_data):
+        if validated_data.get('password', None):
+            validated_data['password'] = make_password(validated_data['password'])
+        return super().update(instance, validated_data)
+
 
 class EmployeeSerializerAdministrator(ModelSerializer):
     last_login = TimeSince(read_only=True)
@@ -106,6 +111,8 @@ class EmployeeSerializerAdministrator(ModelSerializer):
         user = CustomUser(**validated_data)
         user.save()
         return user
+
+
 
 
 class OrderItemMinSerializer(ModelSerializer):

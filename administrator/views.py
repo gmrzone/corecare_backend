@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.contrib.auth import authenticate
 from rest_framework.generics import (CreateAPIView, ListAPIView,
-                                     RetrieveAPIView, get_object_or_404)
+                                     RetrieveAPIView, UpdateAPIView, get_object_or_404)
 from rest_framework.response import Response
 from rest_framework.status import (HTTP_200_OK, HTTP_201_CREATED,
                                    HTTP_400_BAD_REQUEST, HTTP_404_NOT_FOUND,
@@ -14,7 +14,7 @@ from api.models import CouponCode, Service, ServiceSubcategory
 from blog.models import Comment, Post
 from cart.models import Order
 
-from .mixins import AdminCreateMixin, AdminRetriveMixin
+from .mixins import AdminCreateMixin, AdminRetriveMixin, AdminUpdateMixin
 from .permissions import IsSuperUser
 from .serializers import *
 
@@ -107,7 +107,6 @@ class GetCurrentUser(APIView):
 class GetUsers(ListAPIView):
     serializer_class = UserSerializerAdministrator
     http_method_names = ["get"]
-    permission_classes = [IsSuperUser]
     queryset = CustomUser.objects.all()
 
 
@@ -122,13 +121,22 @@ class GetUser(AdminRetriveMixin, RetrieveAPIView):
 
 class CreateUser(AdminCreateMixin, CreateAPIView):
     serializer_class = UserSerializerAdministrator
-    permission_classes = [IsSuperUser]
     serializer_success_msg = "A new user has been created sucessfully"
+
+class UpdateUser(AdminRetriveMixin, AdminUpdateMixin, UpdateAPIView):
+
+    serializer_class = UserSerializerAdministrator
+    lookup_fields = ("pk", "number")
+    serializer_success_msg = "Update sucessfully"
+    http_method_names = ['patch']
+
+    def get_queryset(self):
+        queryset = CustomUser.objects.all()
+        return queryset
 
 
 class GetEmployees(ListAPIView):
     serializer_class = EmployeeSerializerAdministrator
-    permission_classes = [IsSuperUser]
     http_method_names = ["get"]
 
     def get_queryset(self):

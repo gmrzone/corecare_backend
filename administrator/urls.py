@@ -56,4 +56,5 @@ urlpatterns = [
         GetCoupon.as_view(),
         name="get_coupon",
     ),
+    path('update-user/<str:number>/<int:pk>/', UpdateUser.as_view(), name='update_user')
 ]
