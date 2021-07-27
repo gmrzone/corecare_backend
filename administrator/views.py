@@ -123,12 +123,12 @@ class CreateUser(AdminCreateMixin, CreateAPIView):
     serializer_class = UserSerializerAdministrator
     serializer_success_msg = "A new user has been created sucessfully"
 
-class UpdateUser(AdminRetriveMixin, AdminUpdateMixin, UpdateAPIView):
+class UpdateUser(AdminUpdateMixin , AdminRetriveMixin, UpdateAPIView):
 
     serializer_class = UserSerializerAdministrator
     lookup_fields = ("pk", "number")
     serializer_success_msg = "Update sucessfully"
-    http_method_names = ['patch']
+
 
     def get_queryset(self):
         queryset = CustomUser.objects.all()
@@ -160,7 +160,19 @@ class GetEmployee(AdminRetriveMixin, RetrieveAPIView):
 class CreateEmployee(AdminCreateMixin, CreateAPIView):
     serializer_class = EmployeeSerializerAdministrator
     serializer_success_msg = "A new employee has been created sucessfully"
-    permission_classes = [IsSuperUser]
+
+
+class UpdateEmployee(AdminUpdateMixin, AdminRetriveMixin, UpdateAPIView):
+    serializer_class = EmployeeSerializerAdministrator
+    serializer_success_msg = "Employee Update sucessfully"
+    lookup_fields = ('pk', 'number')
+
+    def get_queryset(self):
+        queryset = CustomUser.objects.filter(is_employee=True).select_related(
+            "employee_category"
+        )
+        return queryset
+
 
 
 class GetOrders(ListAPIView):
@@ -193,6 +205,19 @@ class CreateOrder(AdminCreateMixin, CreateAPIView):
     serializer_class = OrderSerializerAdministrator
     serializer_success_msg = "Order has been created sucessfully"
     # permission_classes = [IsSuperUser]
+
+class UpdateOrder(AdminUpdateMixin, AdminRetriveMixin, UpdateAPIView):
+    serializer_class = OrderSerializerAdministrator
+    lookup_fields = ("receipt", "pk")
+    serializer_success_msg = "Order Updated sucessfully"
+
+    def get_queryset(self):
+        queryset = (
+            Order.objects.all()
+            .select_related("category", "user", "coupon")
+            .prefetch_related("items", "items__service", "coupon__category")
+        )
+        return queryset
 
 
 class GetSubCategories(ListAPIView):

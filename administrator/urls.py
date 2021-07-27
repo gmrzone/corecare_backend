@@ -56,5 +56,7 @@ urlpatterns = [
         GetCoupon.as_view(),
         name="get_coupon",
     ),
-    path('update-user/<str:number>/<int:pk>/', UpdateUser.as_view(), name='update_user')
+    path('update-user/<str:number>/<int:pk>/', UpdateUser.as_view(), name='update_user'),
+    path('update-employee/<str:number>/<int:pk>/', UpdateEmployee.as_view(), name="update_employee"),
+    path('update-order/<str:receipt>/<int:pk>/', UpdateOrder.as_view(), name="update_order"),
 ]

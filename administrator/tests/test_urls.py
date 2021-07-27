@@ -166,3 +166,19 @@ class UpdateUrlTests(TestCase):
         url = reverse('administrator:update_user', kwargs={"number": "7208333993", "pk": 1})
         resolver = resolve(url)
         self.assertEqual(resolver.func.view_class, UpdateUser)
+
+    def test_update_user(self):
+        url = reverse('administrator:update_employee', kwargs={"number": "7208333993", "pk": 1})
+        resolver = resolve(url)
+        self.assertEqual(resolver.func.view_class, UpdateEmployee)
+
+    def test_update_order(self):
+        url = reverse('administrator:update_order', kwargs={"receipt": "ORD146694dd", "pk": 1})
+        resolver = resolve(url)
+        self.assertEqual(resolver.func.view_class, UpdateOrder)
+
+
+
+
+
+
