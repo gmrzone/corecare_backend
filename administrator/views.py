@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.contrib.auth import authenticate
-from rest_framework.generics import (CreateAPIView, ListAPIView,
+from rest_framework.generics import (CreateAPIView, DestroyAPIView, ListAPIView,
                                      RetrieveAPIView, UpdateAPIView, get_object_or_404)
 from rest_framework.response import Response
 from rest_framework.status import (HTTP_200_OK, HTTP_201_CREATED,
@@ -14,7 +14,7 @@ from api.models import CouponCode, Service, ServiceSubcategory
 from blog.models import Comment, Post
 from cart.models import Order
 
-from .mixins import AdminCreateMixin, AdminRetriveMixin, AdminUpdateMixin
+from .mixins import AdminCreateMixin, AdminRetriveMixin, AdminUpdateMixin, AdminDestroyMixin
 from .permissions import IsSuperUser
 from .serializers import *
 
@@ -132,6 +132,13 @@ class UpdateUser(AdminUpdateMixin , AdminRetriveMixin, UpdateAPIView):
 
     def get_queryset(self):
         queryset = CustomUser.objects.all()
+        return queryset
+
+class DeleteUser(AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
+    lookup_fields = ("pk", "number")
+
+    def get_queryset(self):
+        queryset = queryset = CustomUser.objects.all()
         return queryset
 
 

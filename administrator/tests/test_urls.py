@@ -178,6 +178,14 @@ class UpdateUrlTests(TestCase):
         self.assertEqual(resolver.func.view_class, UpdateOrder)
 
 
+class DeleteUrlTest(TestCase):
+
+    def test_delete_user(self):
+        url = reverse('administrator:delete_user', kwargs={"number": "7208333993", "pk": 1})
+        resolver = resolve(url)
+        self.assertEqual(resolver.func.view_class, DeleteUser)
+
+
 
 
 

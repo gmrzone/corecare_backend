@@ -44,7 +44,6 @@ class AdminUpdateMixin:
     def update(self, request , *args, **kwargs):
         instance = self.get_object()
         partial = kwargs.pop('partial', False)
-        print(partial)
         serializer = self.serializer_class(instance=instance, data=request.data, partial=partial)
         if serializer.is_valid():
             self.perform_update(serializer)
@@ -53,4 +52,14 @@ class AdminUpdateMixin:
         else:
             data = {"status": "error", "message": serializer.errors}
             status = HTTP_406_NOT_ACCEPTABLE
+        return Response(data=data, status=status)
+
+class AdminDestroyMixin:
+    serializer_class = None
+    
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        self.perform_destroy(instance)
+        data = {"status": "ok", "message": self.serializer_success_msg}
+        status = HTTP_200_OK
         return Response(data=data, status=status)

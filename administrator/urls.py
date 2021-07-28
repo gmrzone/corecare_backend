@@ -59,4 +59,5 @@ urlpatterns = [
     path('update-user/<str:number>/<int:pk>/', UpdateUser.as_view(), name='update_user'),
     path('update-employee/<str:number>/<int:pk>/', UpdateEmployee.as_view(), name="update_employee"),
     path('update-order/<str:receipt>/<int:pk>/', UpdateOrder.as_view(), name="update_order"),
+    path('delete-user/<str:number>/<int:pk>/', DeleteUser.as_view(), name="delete_user")
 ]
