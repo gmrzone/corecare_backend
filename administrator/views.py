@@ -279,6 +279,15 @@ class CreateSubCategory(AdminCreateMixin, CreateAPIView):
     permission_classes = [IsSuperUser]
 
 
+class UpdateSubcategory(AdminUpdateMixin, AdminRetriveMixin, UpdateAPIView):
+    lookup_fields = ("slug", "pk")
+    serializer_class = ServiceSubcategorySerializerAdmin
+    serializer_success_msg = "Subcategory has been updated sucessfully"
+
+    def get_queryset(self):
+        queryset = ServiceSubcategory.objects.all().select_related("service_specialist")
+        return queryset
+
 class DeleteSubcategory(AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
     lookup_fields = ("slug", "pk")
     serializer_success_msg = "Subcategory has been deleted sucessfully"
@@ -315,6 +324,17 @@ class CreateService(AdminCreateMixin, CreateAPIView):
     serializer_success_msg = "Service has been created sucessfully"
 
 
+class UpdateService(AdminUpdateMixin, AdminRetriveMixin, UpdateAPIView):
+    serializer_class = ServiceSerializerAdministrator
+    serializer_success_msg = "Service has been updated sucessfully"
+    lookup_fields = ("created__year", "created__month", "pk")
+
+    def get_queryset(self):
+        queryset = Service.objects.all().select_related(
+            "subcategory", "subcategory__service_specialist"
+        )
+        return queryset
+
 class DeleteService(AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
     lookup_fields = ("created__year", "created__month", "pk")
     serializer_success_msg = "Service Has been deleted sucessfully"
@@ -348,6 +368,15 @@ class CreateBlogPost(AdminCreateMixin, CreateAPIView):
     serializer_class = BlogPostAdministrator
     serializer_success_msg = "Post has been created sucessfully"
 
+
+class UpdateBlogPost(AdminUpdateMixin, AdminRetriveMixin, UpdateAPIView):
+    serializer_success_msg = "Blog post has been updated sucessfully"
+    serializer_class = BlogPostAdministrator
+    lookup_fields = ("created__year", "created__month", "created__day", "slug")
+
+    def get_queryset(self):
+        queryset = Post.objects.all().select_related("category", "author")
+        return queryset
 
 class DeleteBlogPost(AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
     lookup_fields = ("created__year", "created__month", "created__day", "slug")
@@ -385,6 +414,17 @@ class CreateBlogPostComment(AdminCreateMixin, CreateAPIView):
     serializer_success_msg = "Comment has been created sucessfully"
 
 
+class UpdateBlogPostComment(AdminUpdateMixin, AdminRetriveMixin, UpdateAPIView):
+    serializer_class = CommentSerializerAdmin
+    serializer_success_msg = "Comment has been updated sucessfully"
+    lookup_fields = ("created__year", "created__month", "created__day", "pk")
+
+    def get_queryset(self):
+        queryset = (
+            Comment.objects.all().select_related("user").prefetch_related("replies")
+        )
+        return queryset
+
 class DeleteBlogPostComment(AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
     lookup_fields = ("created__year", "created__month", "created__day", "pk")
     serializer_success_msg = "Comment has been deleted sucessfully"
@@ -418,6 +458,15 @@ class CreateCoupon(AdminCreateMixin, CreateAPIView):
     serializer_class = CouponSerializerAdministrator
     serializer_success_msg = "Coupon has been created sucessfully"
 
+
+class UpdateCoupon(AdminUpdateMixin, AdminRetriveMixin, UpdateAPIView):
+    serializer_class = CouponSerializerAdministrator
+    lookup_fields = ("code", "pk")
+    serializer_success_msg = "Coupon has been updated sucessfully"
+
+    def get_queryset(self):
+        queryset = CouponCode.objects.all().prefetch_related("category", "users")
+        return queryset
 
 class DeleteCouponCode(AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
     serializer_success_msg = "Coupon Code has been deleted Sucessfully"

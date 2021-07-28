@@ -17,6 +17,8 @@ urlpatterns = [
     path("get-blog-posts/", GetBlogPosts.as_view(), name="all_posts"),
     path("get-comments/", GetBlogPostComments.as_view(), name="all_comments"),
     path("get_coupons/", GetCoupons.as_view(), name="all_coupons"),
+
+
     # Create Urls
     path("create-user/", CreateUser.as_view(), name="create_user"),
     path("create-employee/", CreateEmployee.as_view(), name="create_employee"),
@@ -26,6 +28,8 @@ urlpatterns = [
     path("create_post/", CreateBlogPost.as_view(), name="create_post"),
     path("create_comments/", CreateBlogPostComment.as_view(), name="create_comments"),
     path("create_coupon/", CreateCoupon.as_view(), name="create_coupon"),
+
+
     #  Retrive Urls
     path("get-user/<str:number>/<int:pk>/", GetUser.as_view(), name="get_user"),
     path(
@@ -59,6 +63,8 @@ urlpatterns = [
         GetCoupon.as_view(),
         name="get_coupon",
     ),
+
+
     #  Update Urls
     path(
         "update-user/<str:number>/<int:pk>/", UpdateUser.as_view(), name="update_user"
@@ -73,6 +79,13 @@ urlpatterns = [
         UpdateOrder.as_view(),
         name="update_order",
     ),
+    path('update-subcategory/<slug:slug>/<int:pk>/', UpdateSubcategory.as_view(), name="update_subcategory"),
+    path('update-service/<int:created__year>/<int:created__month>/<int:pk>/', UpdateService.as_view(), name="update_service"),
+    path('update-blog-post/<int:created__year>/<int:created__month>/<int:created__day>/<slug:slug>/', UpdateBlogPost.as_view(), name="update_post"),
+    path('update-comment/<int:created__year>/<int:created__month>/<int:created__day>/<int:pk>/', UpdateBlogPostComment.as_view(), name="update_comment"),
+    path('update-coupon/<str:code>/<int:pk>/', UpdateCoupon.as_view(), name="update_coupon"),
+
+
     #  Delete Urls
     path(
         "delete-user/<str:number>/<int:pk>/", DeleteUser.as_view(), name="delete_user"
@@ -88,7 +101,7 @@ urlpatterns = [
         name="delete_order",
     ),
     path(
-        "delete-subcategort/<slug:slug>/<int:pk>/",
+        "delete-subcategory/<slug:slug>/<int:pk>/",
         DeleteSubcategory.as_view(),
         name="delete_subcategory",
     ),

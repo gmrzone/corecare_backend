@@ -182,6 +182,51 @@ class UpdateUrlTests(TestCase):
         resolver = resolve(url)
         self.assertEqual(resolver.func.view_class, UpdateOrder)
 
+    def test_update_subcategory(self):
+        url = reverse(
+            "administrator:update_subcategory",kwargs={"slug": "fffff", "pk": 1}
+        )
+        resolver = resolve(url)
+        self.assertEqual(resolver.func.view_class, UpdateSubcategory)
+
+
+    def test_update_service(self):
+        url = reverse(
+            "administrator:update_service", kwargs={"created__year": 2021, "created__month": 2, "pk": 1}
+        )
+        resolver = resolve(url)
+        self.assertEqual(resolver.func.view_class, UpdateService)
+
+    def test_update_post(self):
+        url = reverse(
+            "administrator:update_post", kwargs={
+                "created__year": 2021,
+                "created__month": 2,
+                "created__day": 3,
+                "slug": "aff",
+            }
+        )
+        resolver = resolve(url)
+        self.assertEqual(resolver.func.view_class, UpdateBlogPost)
+
+    def test_update_comment(self):
+        url = reverse(
+            "administrator:update_comment", kwargs={
+                "created__year": 2021,
+                "created__month": 2,
+                "created__day": 3,
+                "pk": 1,
+            }
+        )
+        resolver = resolve(url)
+        self.assertEqual(resolver.func.view_class, UpdateBlogPostComment)
+
+    def test_update_coupon(self):
+        url = reverse(
+            "administrator:update_coupon", kwargs={"code": "COUPON_CODE", "pk": 1}
+        )
+        resolver = resolve(url)
+        self.assertEqual(resolver.func.view_class, UpdateCoupon)
 
 class DeleteUrlTest(TestCase):
     def test_delete_user(self):
