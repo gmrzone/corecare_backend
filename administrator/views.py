@@ -16,7 +16,7 @@ from blog.models import Comment, Post
 from cart.models import Order
 
 from .mixins import (AdminCreateMixin, AdminDestroyMixin, AdminRetriveMixin,
-                     AdminUpdateMixin)
+                     AdminUpdateMixin, UserQuerysetMixin, EmployeeQuerysetMixin)
 from .permissions import IsSuperUser
 from .serializers import *
 
@@ -105,95 +105,63 @@ class GetCurrentUser(APIView):
         serializer = UserSerializerAdministrator(user)
         return Response(serializer.data, status=HTTP_200_OK)
 
-
-class GetUsers(ListAPIView):
-    serializer_class = UserSerializerAdministrator
+# View to get list of users
+class GetUsers(UserQuerysetMixin, ListAPIView):
     http_method_names = ["get"]
-    queryset = CustomUser.objects.all()
 
 
-class GetUser(AdminRetriveMixin, RetrieveAPIView):
-    serializer_class = UserSerializerAdministrator
+# View to get single user
+class GetUser(UserQuerysetMixin, AdminRetriveMixin, RetrieveAPIView):
     lookup_fields = ("pk", "number")
 
-    def get_queryset(self):
-        queryset = CustomUser.objects.all()
-        return queryset
-
-
+# View to create a user
 class CreateUser(AdminCreateMixin, CreateAPIView):
+
     serializer_class = UserSerializerAdministrator
     serializer_success_msg = "A new user has been created sucessfully"
 
-
-class UpdateUser(AdminUpdateMixin, AdminRetriveMixin, UpdateAPIView):
-
-    serializer_class = UserSerializerAdministrator
+# View to update a user
+class UpdateUser(UserQuerysetMixin, AdminUpdateMixin, AdminRetriveMixin, UpdateAPIView):
     lookup_fields = ("pk", "number")
     serializer_success_msg = "Update sucessfully"
 
-    def get_queryset(self):
-        queryset = CustomUser.objects.all()
-        return queryset
-
-
-class DeleteUser(AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
+    
+# View to delete a user
+class DeleteUser(UserQuerysetMixin, AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
     lookup_fields = ("pk", "number")
+    serializer_class = None
     serializer_success_msg = "User has been deleted sucessfully"
 
-    def get_queryset(self):
-        queryset = queryset = CustomUser.objects.all()
-        return queryset
 
+#  Get List of Employees
+class GetEmployees(EmployeeQuerysetMixin ,ListAPIView):
 
-class GetEmployees(ListAPIView):
-    serializer_class = EmployeeSerializerAdministrator
     http_method_names = ["get"]
 
-    def get_queryset(self):
-        queryset = CustomUser.objects.filter(is_employee=True).select_related(
-            "employee_category"
-        )
-        return queryset
 
-
-class GetEmployee(AdminRetriveMixin, RetrieveAPIView):
-    serializer_class = EmployeeSerializerAdministrator
+# Get a single Employee
+class GetEmployee(EmployeeQuerysetMixin, AdminRetriveMixin, RetrieveAPIView):
     lookup_fields = ("pk", "number")
 
-    def get_queryset(self):
-        queryset = CustomUser.objects.filter(is_employee=True).select_related(
-            "employee_category"
-        )
-        return queryset
-
-
+# Create a Employee
 class CreateEmployee(AdminCreateMixin, CreateAPIView):
     serializer_class = EmployeeSerializerAdministrator
     serializer_success_msg = "A new employee has been created sucessfully"
 
 
-class UpdateEmployee(AdminUpdateMixin, AdminRetriveMixin, UpdateAPIView):
-    serializer_class = EmployeeSerializerAdministrator
+# Update a Employee
+class UpdateEmployee(EmployeeQuerysetMixin, AdminUpdateMixin, AdminRetriveMixin, UpdateAPIView):
+    lookup_fields = ("pk", "number")
     serializer_success_msg = "Employee Update sucessfully"
+
+
+# Delete a Employee
+class DeleteEmployee(EmployeeQuerysetMixin, AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
     lookup_fields = ("pk", "number")
-
-    def get_queryset(self):
-        queryset = CustomUser.objects.filter(is_employee=True).select_related(
-            "employee_category"
-        )
-        return queryset
-
-
-class DeleteEmployee(AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
-    lookup_fields = ("pk", "number")
+    serializer_class = None
     serializer_success_msg = "Employee has been deleted sucessfully"
 
-    def get_queryset(self):
-        queryset = CustomUser.objects.filter(is_employee=True).select_related(
-            "employee_category"
-        )
-        return queryset
+
 
 
 class GetOrders(ListAPIView):

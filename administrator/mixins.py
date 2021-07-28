@@ -3,6 +3,8 @@ from rest_framework.response import Response
 from rest_framework.status import (HTTP_200_OK, HTTP_201_CREATED,
                                    HTTP_406_NOT_ACCEPTABLE)
 
+from .serializers import UserSerializerAdministrator, EmployeeSerializerAdministrator
+from account.models import CustomUser
 
 class AdminCreateMixin:
     serializer_class = NotImplemented
@@ -70,3 +72,23 @@ class AdminDestroyMixin:
         data = {"status": "ok", "message": self.serializer_success_msg}
         status = HTTP_200_OK
         return Response(data=data, status=status)
+
+
+# Queryset mixins
+
+
+class UserQuerysetMixin:
+    serializer_class = UserSerializerAdministrator
+
+    def get_queryset(self):
+        queryset = CustomUser.objects.all()
+        return queryset
+
+class EmployeeQuerysetMixin:
+    serializer_class = EmployeeSerializerAdministrator
+
+    def get_queryset(self):
+        queryset = CustomUser.objects.filter(is_employee=True).select_related(
+            "employee_category"
+        )
+        return queryset
