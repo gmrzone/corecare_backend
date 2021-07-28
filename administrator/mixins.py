@@ -56,6 +56,8 @@ class AdminUpdateMixin:
 
 class AdminDestroyMixin:
     serializer_class = None
+    serializer_success_msg = NotImplemented
+    http_method_names = ['delete']
     
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
