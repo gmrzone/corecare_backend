@@ -1,6 +1,7 @@
 from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
-from rest_framework.status import HTTP_201_CREATED, HTTP_406_NOT_ACCEPTABLE, HTTP_200_OK
+from rest_framework.status import (HTTP_200_OK, HTTP_201_CREATED,
+                                   HTTP_406_NOT_ACCEPTABLE)
 
 
 class AdminCreateMixin:
@@ -36,15 +37,18 @@ class AdminRetriveMixin:
         self.check_object_permissions(self.request, obj)
         return obj
 
+
 class AdminUpdateMixin:
     serializer_class = NotImplemented
     serializer_success_msg = NotImplemented
-    http_method_names = ['patch']
+    http_method_names = ["patch"]
 
-    def update(self, request , *args, **kwargs):
+    def update(self, request, *args, **kwargs):
         instance = self.get_object()
-        partial = kwargs.pop('partial', False)
-        serializer = self.serializer_class(instance=instance, data=request.data, partial=partial)
+        partial = kwargs.pop("partial", False)
+        serializer = self.serializer_class(
+            instance=instance, data=request.data, partial=partial
+        )
         if serializer.is_valid():
             self.perform_update(serializer)
             data = {"status": "ok", "message": self.serializer_success_msg}
@@ -54,11 +58,12 @@ class AdminUpdateMixin:
             status = HTTP_406_NOT_ACCEPTABLE
         return Response(data=data, status=status)
 
+
 class AdminDestroyMixin:
     serializer_class = None
     serializer_success_msg = NotImplemented
-    http_method_names = ['delete']
-    
+    http_method_names = ["delete"]
+
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
         self.perform_destroy(instance)

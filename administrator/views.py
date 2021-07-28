@@ -1,7 +1,8 @@
 from django.conf import settings
 from django.contrib.auth import authenticate
-from rest_framework.generics import (CreateAPIView, DestroyAPIView, ListAPIView,
-                                     RetrieveAPIView, UpdateAPIView, get_object_or_404)
+from rest_framework.generics import (CreateAPIView, DestroyAPIView,
+                                     ListAPIView, RetrieveAPIView,
+                                     UpdateAPIView, get_object_or_404)
 from rest_framework.response import Response
 from rest_framework.status import (HTTP_200_OK, HTTP_201_CREATED,
                                    HTTP_400_BAD_REQUEST, HTTP_404_NOT_FOUND,
@@ -14,7 +15,8 @@ from api.models import CouponCode, Service, ServiceSubcategory
 from blog.models import Comment, Post
 from cart.models import Order
 
-from .mixins import AdminCreateMixin, AdminRetriveMixin, AdminUpdateMixin, AdminDestroyMixin
+from .mixins import (AdminCreateMixin, AdminDestroyMixin, AdminRetriveMixin,
+                     AdminUpdateMixin)
 from .permissions import IsSuperUser
 from .serializers import *
 
@@ -123,16 +125,17 @@ class CreateUser(AdminCreateMixin, CreateAPIView):
     serializer_class = UserSerializerAdministrator
     serializer_success_msg = "A new user has been created sucessfully"
 
-class UpdateUser(AdminUpdateMixin , AdminRetriveMixin, UpdateAPIView):
+
+class UpdateUser(AdminUpdateMixin, AdminRetriveMixin, UpdateAPIView):
 
     serializer_class = UserSerializerAdministrator
     lookup_fields = ("pk", "number")
     serializer_success_msg = "Update sucessfully"
 
-
     def get_queryset(self):
         queryset = CustomUser.objects.all()
         return queryset
+
 
 class DeleteUser(AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
     lookup_fields = ("pk", "number")
@@ -173,13 +176,14 @@ class CreateEmployee(AdminCreateMixin, CreateAPIView):
 class UpdateEmployee(AdminUpdateMixin, AdminRetriveMixin, UpdateAPIView):
     serializer_class = EmployeeSerializerAdministrator
     serializer_success_msg = "Employee Update sucessfully"
-    lookup_fields = ('pk', 'number')
+    lookup_fields = ("pk", "number")
 
     def get_queryset(self):
         queryset = CustomUser.objects.filter(is_employee=True).select_related(
             "employee_category"
         )
         return queryset
+
 
 class DeleteEmployee(AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
     lookup_fields = ("pk", "number")
@@ -190,6 +194,7 @@ class DeleteEmployee(AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
             "employee_category"
         )
         return queryset
+
 
 class GetOrders(ListAPIView):
     serializer_class = OrderSerializerAdministrator
@@ -222,6 +227,7 @@ class CreateOrder(AdminCreateMixin, CreateAPIView):
     serializer_success_msg = "Order has been created sucessfully"
     # permission_classes = [IsSuperUser]
 
+
 class UpdateOrder(AdminUpdateMixin, AdminRetriveMixin, UpdateAPIView):
     serializer_class = OrderSerializerAdministrator
     lookup_fields = ("receipt", "pk")
@@ -235,8 +241,9 @@ class UpdateOrder(AdminUpdateMixin, AdminRetriveMixin, UpdateAPIView):
         )
         return queryset
 
+
 class DeleteOrder(AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
-    lookup_fields = ('receipt', 'pk')
+    lookup_fields = ("receipt", "pk")
     serializer_success_msg = "Order has been deleted sucessfully"
 
     def get_queryset(self):
@@ -246,6 +253,7 @@ class DeleteOrder(AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
             .prefetch_related("items", "items__service", "coupon__category")
         )
         return queryset
+
 
 class GetSubCategories(ListAPIView):
     serializer_class = ServiceSubcategorySerializerAdmin
@@ -272,7 +280,7 @@ class CreateSubCategory(AdminCreateMixin, CreateAPIView):
 
 
 class DeleteSubcategory(AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
-    lookup_fields= ('slug', 'pk')
+    lookup_fields = ("slug", "pk")
     serializer_success_msg = "Subcategory has been deleted sucessfully"
 
     def get_queryset(self):
@@ -306,6 +314,7 @@ class CreateService(AdminCreateMixin, CreateAPIView):
     serializer_class = ServiceSerializerAdministrator
     serializer_success_msg = "Service has been created sucessfully"
 
+
 class DeleteService(AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
     lookup_fields = ("created__year", "created__month", "pk")
     serializer_success_msg = "Service Has been deleted sucessfully"
@@ -315,6 +324,7 @@ class DeleteService(AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
             "subcategory", "subcategory__service_specialist"
         )
         return queryset
+
 
 class GetBlogPosts(ListAPIView):
     serializer_class = BlogPostAdministrator
@@ -337,6 +347,7 @@ class GetBlogPost(AdminRetriveMixin, RetrieveAPIView):
 class CreateBlogPost(AdminCreateMixin, CreateAPIView):
     serializer_class = BlogPostAdministrator
     serializer_success_msg = "Post has been created sucessfully"
+
 
 class DeleteBlogPost(AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
     lookup_fields = ("created__year", "created__month", "created__day", "slug")
@@ -373,6 +384,7 @@ class CreateBlogPostComment(AdminCreateMixin, CreateAPIView):
     serializer_class = CommentSerializerAdmin
     serializer_success_msg = "Comment has been created sucessfully"
 
+
 class DeleteBlogPostComment(AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
     lookup_fields = ("created__year", "created__month", "created__day", "pk")
     serializer_success_msg = "Comment has been deleted sucessfully"
@@ -406,6 +418,7 @@ class CreateCoupon(AdminCreateMixin, CreateAPIView):
     serializer_class = CouponSerializerAdministrator
     serializer_success_msg = "Coupon has been created sucessfully"
 
+
 class DeleteCouponCode(AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
     serializer_success_msg = "Coupon Code has been deleted Sucessfully"
     lookup_fields = ("code", "pk")
@@ -413,4 +426,3 @@ class DeleteCouponCode(AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
     def get_queryset(self):
         queryset = CouponCode.objects.all().prefetch_related("category", "users")
         return queryset
-

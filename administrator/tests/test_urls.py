@@ -161,32 +161,94 @@ class CreateUrlTests(TestCase):
 
 
 class UpdateUrlTests(TestCase):
-
     def test_update_user(self):
-        url = reverse('administrator:update_user', kwargs={"number": "7208333993", "pk": 1})
+        url = reverse(
+            "administrator:update_user", kwargs={"number": "7208333993", "pk": 1}
+        )
         resolver = resolve(url)
         self.assertEqual(resolver.func.view_class, UpdateUser)
 
     def test_update_user(self):
-        url = reverse('administrator:update_employee', kwargs={"number": "7208333993", "pk": 1})
+        url = reverse(
+            "administrator:update_employee", kwargs={"number": "7208333993", "pk": 1}
+        )
         resolver = resolve(url)
         self.assertEqual(resolver.func.view_class, UpdateEmployee)
 
     def test_update_order(self):
-        url = reverse('administrator:update_order', kwargs={"receipt": "ORD146694dd", "pk": 1})
+        url = reverse(
+            "administrator:update_order", kwargs={"receipt": "ORD146694dd", "pk": 1}
+        )
         resolver = resolve(url)
         self.assertEqual(resolver.func.view_class, UpdateOrder)
 
 
 class DeleteUrlTest(TestCase):
-
     def test_delete_user(self):
-        url = reverse('administrator:delete_user', kwargs={"number": "7208333993", "pk": 1})
+        url = reverse(
+            "administrator:delete_user", kwargs={"number": "7208333993", "pk": 1}
+        )
         resolver = resolve(url)
         self.assertEqual(resolver.func.view_class, DeleteUser)
 
+    def test_delete_employee(self):
+        url = reverse(
+            "administrator:delete_employee", kwargs={"number": "7208333993", "pk": 1}
+        )
+        resolver = resolve(url)
+        self.assertEqual(resolver.func.view_class, DeleteEmployee)
 
+    def test_delete_order(self):
+        url = reverse(
+            "administrator:delete_order", kwargs={"receipt": "ORD146694dd", "pk": 1}
+        )
+        resolver = resolve(url)
+        self.assertEqual(resolver.func.view_class, DeleteOrder)
 
+    def test_delete_subcategory(self):
+        url = reverse(
+            "administrator:delete_subcategory", kwargs={"slug": "fffff", "pk": 1}
+        )
+        resolver = resolve(url)
+        self.assertEqual(resolver.func.view_class, DeleteSubcategory)
 
+    def test_delete_service(self):
+        url = reverse(
+            "administrator:delete_service",
+            kwargs={"created__year": 2021, "created__month": 2, "pk": 1},
+        )
+        resolver = resolve(url)
+        self.assertEqual(resolver.func.view_class, DeleteService)
 
+    def test_delete_post(self):
+        url = reverse(
+            "administrator:delete_post",
+            kwargs={
+                "created__year": 2021,
+                "created__month": 2,
+                "created__day": 3,
+                "slug": "aff",
+            },
+        )
+        resolver = resolve(url)
+        self.assertEqual(resolver.func.view_class, DeleteBlogPost)
 
+    def test_delete_comment(self):
+        url = reverse(
+            "administrator:delete_comment",
+            kwargs={
+                "created__year": 2021,
+                "created__month": 2,
+                "created__day": 3,
+                "pk": 1,
+            },
+        )
+        resolver = resolve(url)
+        self.assertEqual(resolver.func.view_class, DeleteBlogPostComment)
+
+    def test_delete_coupon(self):
+        url = reverse(
+            "administrator:delete_coupon", kwargs={"code": "COUPON_CODE", "pk": 1}
+        )
+        resolver = resolve(url)
+        self.assertEqual(resolver.func.view_class, DeleteCouponCode)

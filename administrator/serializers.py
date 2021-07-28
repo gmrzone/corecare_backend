@@ -60,8 +60,8 @@ class UserSerializerAdministrator(ModelSerializer):
         return user
 
     def update(self, instance, validated_data):
-        if validated_data.get('password', None):
-            validated_data['password'] = make_password(validated_data['password'])
+        if validated_data.get("password", None):
+            validated_data["password"] = make_password(validated_data["password"])
         return super().update(instance, validated_data)
 
 
@@ -113,11 +113,9 @@ class EmployeeSerializerAdministrator(ModelSerializer):
         return user
 
     def update(self, instance, validated_data):
-        if validated_data.get('password', None):
-            validated_data['password'] = make_password(validated_data['password'])
+        if validated_data.get("password", None):
+            validated_data["password"] = make_password(validated_data["password"])
         return super().update(instance, validated_data)
-
-
 
 
 class OrderItemMinSerializer(ModelSerializer):
@@ -182,18 +180,26 @@ class OrderSerializerAdministrator(ModelSerializer):
     def update(self, instance, validated_data):
         items_data = validated_data.get("items", None)
         if items_data:
-            validated_data.pop('items')
+            validated_data.pop("items")
 
             for item in items_data:
-                obj, created = OrderItem.objects.get_or_create(**item, order=instance)                
+                obj, created = OrderItem.objects.get_or_create(**item, order=instance)
                 if created:
-                    instance.total = F('total') + (item['total'] * (100 - (F('discount') * 100 / F('subtotal'))) / 100)
-                    instance.subtotal = F('subtotal') + item['total'] 
-                    instance.discount = F('discount') + (item['total'] * (100 - (F('discount') * 100 / F('subtotal'))) / 100)
-                    instance.tax = F('tax') + (item['total'] *   5  / 100)
+                    instance.total = F("total") + (
+                        item["total"]
+                        * (100 - (F("discount") * 100 / F("subtotal")))
+                        / 100
+                    )
+                    instance.subtotal = F("subtotal") + item["total"]
+                    instance.discount = F("discount") + (
+                        item["total"]
+                        * (100 - (F("discount") * 100 / F("subtotal")))
+                        / 100
+                    )
+                    instance.tax = F("tax") + (item["total"] * 5 / 100)
                     instance.save()
         else:
-             instance.update(**validated_data)
+            instance.update(**validated_data)
         return instance
 
 

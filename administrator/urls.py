@@ -6,6 +6,9 @@ app_name = "administrator"
 
 
 urlpatterns = [
+    path("login/", AdminLogin.as_view(), name="login"),
+    path("get-current-user/", GetCurrentUser.as_view(), name="get_current_user"),
+    # List urls
     path("get-all-user/", GetUsers.as_view(), name="all_users"),
     path("get-all-employees/", GetEmployees.as_view(), name="all_employees"),
     path("get-orders/", GetOrders.as_view(), name="all_orders"),
@@ -14,16 +17,16 @@ urlpatterns = [
     path("get-blog-posts/", GetBlogPosts.as_view(), name="all_posts"),
     path("get-comments/", GetBlogPostComments.as_view(), name="all_comments"),
     path("get_coupons/", GetCoupons.as_view(), name="all_coupons"),
+    # Create Urls
     path("create-user/", CreateUser.as_view(), name="create_user"),
     path("create-employee/", CreateEmployee.as_view(), name="create_employee"),
     path("create-order/", CreateOrder.as_view(), name="create_order"),
     path("create-subcategory/", CreateSubCategory.as_view(), name="create_subcategory"),
-    path("login/", AdminLogin.as_view(), name="login"),
-    path("get-current-user/", GetCurrentUser.as_view(), name="get_current_user"),
     path("create-service/", CreateService.as_view(), name="create_service"),
     path("create_post/", CreateBlogPost.as_view(), name="create_post"),
     path("create_comments/", CreateBlogPostComment.as_view(), name="create_comments"),
     path("create_coupon/", CreateCoupon.as_view(), name="create_coupon"),
+    #  Retrive Urls
     path("get-user/<str:number>/<int:pk>/", GetUser.as_view(), name="get_user"),
     path(
         "get-employee/<str:number>/<int:pk>/",
@@ -56,8 +59,57 @@ urlpatterns = [
         GetCoupon.as_view(),
         name="get_coupon",
     ),
-    path('update-user/<str:number>/<int:pk>/', UpdateUser.as_view(), name='update_user'),
-    path('update-employee/<str:number>/<int:pk>/', UpdateEmployee.as_view(), name="update_employee"),
-    path('update-order/<str:receipt>/<int:pk>/', UpdateOrder.as_view(), name="update_order"),
-    path('delete-user/<str:number>/<int:pk>/', DeleteUser.as_view(), name="delete_user")
+    #  Update Urls
+    path(
+        "update-user/<str:number>/<int:pk>/", UpdateUser.as_view(), name="update_user"
+    ),
+    path(
+        "update-employee/<str:number>/<int:pk>/",
+        UpdateEmployee.as_view(),
+        name="update_employee",
+    ),
+    path(
+        "update-order/<str:receipt>/<int:pk>/",
+        UpdateOrder.as_view(),
+        name="update_order",
+    ),
+    #  Delete Urls
+    path(
+        "delete-user/<str:number>/<int:pk>/", DeleteUser.as_view(), name="delete_user"
+    ),
+    path(
+        "delete-employee/<str:number>/<int:pk>/",
+        DeleteEmployee.as_view(),
+        name="delete_employee",
+    ),
+    path(
+        "delete-order/<str:receipt>/<int:pk>/",
+        DeleteOrder.as_view(),
+        name="delete_order",
+    ),
+    path(
+        "delete-subcategort/<slug:slug>/<int:pk>/",
+        DeleteSubcategory.as_view(),
+        name="delete_subcategory",
+    ),
+    path(
+        "delete-service/<int:created__year>/<int:created__month>/<int:pk>/",
+        DeleteService.as_view(),
+        name="delete_service",
+    ),
+    path(
+        "delete-blog-post/<int:created__year>/<int:created__month>/<int:created__day>/<slug:slug>/",
+        DeleteBlogPost.as_view(),
+        name="delete_post",
+    ),
+    path(
+        "delete-comments/<int:created__year>/<int:created__month>/<int:created__day>/<int:pk>/",
+        DeleteBlogPostComment.as_view(),
+        name="delete_comment",
+    ),
+    path(
+        "delete-coupon/<str:code>/<int:pk>/",
+        DeleteCouponCode.as_view(),
+        name="delete_coupon",
+    ),
 ]
