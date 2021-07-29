@@ -3,9 +3,11 @@ from rest_framework.response import Response
 from rest_framework.status import (HTTP_200_OK, HTTP_201_CREATED,
                                    HTTP_406_NOT_ACCEPTABLE)
 
-from .serializers import *
 from account.models import CustomUser
 from cart.models import Order
+
+from .serializers import *
+
 
 class AdminCreateMixin:
     serializer_class = NotImplemented
@@ -85,6 +87,7 @@ class UserQuerysetMixin:
         queryset = CustomUser.objects.all()
         return queryset
 
+
 class EmployeeQuerysetMixin:
     serializer_class = EmployeeSerializerAdministrator
 
@@ -93,6 +96,7 @@ class EmployeeQuerysetMixin:
             "employee_category"
         )
         return queryset
+
 
 class OrderQuerysetMixin:
     serializer_class = OrderSerializerAdministrator
@@ -105,12 +109,14 @@ class OrderQuerysetMixin:
         )
         return queryset
 
+
 class SubcategoryQuerysetMixin:
     serializer_class = ServiceSubcategorySerializerAdmin
 
     def get_queryset(self):
         queryset = ServiceSubcategory.objects.all().select_related("service_specialist")
         return queryset
+
 
 class ServiceQueryMixin:
     serializer_class = ServiceSerializerAdministrator
@@ -121,12 +127,14 @@ class ServiceQueryMixin:
         )
         return queryset
 
+
 class BlogPostQuerysetMixin:
     serializer_class = BlogPostAdministrator
 
     def get_queryset(self):
         queryset = Post.objects.all().select_related("category", "author")
         return queryset
+
 
 class BlogPostCommentQuerysetMixin:
     serializer_class = CommentSerializerAdmin
@@ -137,11 +145,10 @@ class BlogPostCommentQuerysetMixin:
         )
         return queryset
 
+
 class CouponQuerysetMixin:
     serializer_class = CouponSerializerAdministrator
 
     def get_queryset(self):
         queryset = CouponCode.objects.all().prefetch_related("category", "users")
         return queryset
-
-    

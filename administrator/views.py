@@ -2,18 +2,16 @@ from django.conf import settings
 from django.contrib.auth import authenticate
 from rest_framework.generics import (CreateAPIView, DestroyAPIView,
                                      ListAPIView, RetrieveAPIView,
-                                     UpdateAPIView, get_object_or_404)
+                                     UpdateAPIView)
 from rest_framework.response import Response
-from rest_framework.status import (HTTP_200_OK, HTTP_201_CREATED,
+from rest_framework.status import (HTTP_200_OK,
                                    HTTP_400_BAD_REQUEST, HTTP_404_NOT_FOUND,
                                    HTTP_406_NOT_ACCEPTABLE)
 from rest_framework.views import APIView
 
-from account.models import CustomUser
+
 from account.utils import get_token, timedelta_to_second
-from api.models import CouponCode, Service, ServiceSubcategory
-from blog.models import Comment, Post
-from cart.models import Order
+
 
 from .mixins import *
 from .permissions import IsSuperUser
@@ -104,6 +102,7 @@ class GetCurrentUser(APIView):
         serializer = UserSerializerAdministrator(user)
         return Response(serializer.data, status=HTTP_200_OK)
 
+
 # View to get list of users
 class GetUsers(UserQuerysetMixin, ListAPIView):
     http_method_names = ["get"]
@@ -113,27 +112,31 @@ class GetUsers(UserQuerysetMixin, ListAPIView):
 class GetUser(UserQuerysetMixin, AdminRetriveMixin, RetrieveAPIView):
     lookup_fields = ("pk", "number")
 
+
 # View to create a user
 class CreateUser(AdminCreateMixin, CreateAPIView):
 
     serializer_class = UserSerializerAdministrator
     serializer_success_msg = "A new user has been created sucessfully"
 
+
 # View to update a user
 class UpdateUser(UserQuerysetMixin, AdminUpdateMixin, AdminRetriveMixin, UpdateAPIView):
     lookup_fields = ("pk", "number")
     serializer_success_msg = "Update sucessfully"
 
-    
+
 # View to delete a user
-class DeleteUser(UserQuerysetMixin, AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
+class DeleteUser(
+    UserQuerysetMixin, AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView
+):
     lookup_fields = ("pk", "number")
     serializer_class = None
     serializer_success_msg = "User has been deleted sucessfully"
 
 
 #  Get List of Employees
-class GetEmployees(EmployeeQuerysetMixin ,ListAPIView):
+class GetEmployees(EmployeeQuerysetMixin, ListAPIView):
 
     http_method_names = ["get"]
 
@@ -142,6 +145,7 @@ class GetEmployees(EmployeeQuerysetMixin ,ListAPIView):
 class GetEmployee(EmployeeQuerysetMixin, AdminRetriveMixin, RetrieveAPIView):
     lookup_fields = ("pk", "number")
 
+
 # Create a Employee
 class CreateEmployee(AdminCreateMixin, CreateAPIView):
     serializer_class = EmployeeSerializerAdministrator
@@ -149,22 +153,24 @@ class CreateEmployee(AdminCreateMixin, CreateAPIView):
 
 
 # Update a Employee
-class UpdateEmployee(EmployeeQuerysetMixin, AdminUpdateMixin, AdminRetriveMixin, UpdateAPIView):
+class UpdateEmployee(
+    EmployeeQuerysetMixin, AdminUpdateMixin, AdminRetriveMixin, UpdateAPIView
+):
     lookup_fields = ("pk", "number")
     serializer_success_msg = "Employee Update sucessfully"
 
 
 # Delete a Employee
-class DeleteEmployee(EmployeeQuerysetMixin, AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
+class DeleteEmployee(
+    EmployeeQuerysetMixin, AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView
+):
     lookup_fields = ("pk", "number")
     serializer_class = None
     serializer_success_msg = "Employee has been deleted sucessfully"
 
 
+class GetOrders(OrderQuerysetMixin, ListAPIView):
 
-
-class GetOrders(OrderQuerysetMixin ,ListAPIView):
-    
     http_method_names = ["get"]
 
 
@@ -173,19 +179,17 @@ class GetOrder(OrderQuerysetMixin, AdminRetriveMixin, RetrieveAPIView):
     lookup_fields = ("receipt", "pk")
 
 
-
-
 class CreateOrder(AdminCreateMixin, CreateAPIView):
     serializer_class = OrderSerializerAdministrator
     serializer_success_msg = "Order has been created sucessfully"
 
 
-
-class UpdateOrder(OrderQuerysetMixin, AdminUpdateMixin, AdminRetriveMixin, UpdateAPIView):
+class UpdateOrder(
+    OrderQuerysetMixin, AdminUpdateMixin, AdminRetriveMixin, UpdateAPIView
+):
 
     lookup_fields = ("receipt", "pk")
     serializer_success_msg = "Order Updated sucessfully"
-
 
 
 class DeleteOrder(AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
@@ -194,16 +198,13 @@ class DeleteOrder(AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
     serializer_success_msg = "Order has been deleted sucessfully"
 
 
-
 class GetSubCategories(SubcategoryQuerysetMixin, ListAPIView):
     http_method_names = ["get"]
 
 
-
 class GetSubcategory(SubcategoryQuerysetMixin, AdminRetriveMixin, RetrieveAPIView):
-    
-    lookup_fields = ("slug", "pk")
 
+    lookup_fields = ("slug", "pk")
 
 
 class CreateSubCategory(AdminCreateMixin, CreateAPIView):
@@ -212,7 +213,9 @@ class CreateSubCategory(AdminCreateMixin, CreateAPIView):
     permission_classes = [IsSuperUser]
 
 
-class UpdateSubcategory(SubcategoryQuerysetMixin, AdminUpdateMixin, AdminRetriveMixin, UpdateAPIView):
+class UpdateSubcategory(
+    SubcategoryQuerysetMixin, AdminUpdateMixin, AdminRetriveMixin, UpdateAPIView
+):
     lookup_fields = ("slug", "pk")
     serializer_success_msg = "Subcategory has been updated sucessfully"
 
@@ -228,11 +231,9 @@ class GetServices(ServiceQueryMixin, ListAPIView):
     http_method_names = ["get"]
 
 
-
 class GetService(ServiceQueryMixin, RetrieveAPIView):
 
     lookup_fields = ("created__year", "created__month", "pk")
-
 
 
 class CreateService(AdminCreateMixin, CreateAPIView):
@@ -240,13 +241,17 @@ class CreateService(AdminCreateMixin, CreateAPIView):
     serializer_success_msg = "Service has been created sucessfully"
 
 
-class UpdateService(ServiceQueryMixin, AdminUpdateMixin, AdminRetriveMixin, UpdateAPIView):
+class UpdateService(
+    ServiceQueryMixin, AdminUpdateMixin, AdminRetriveMixin, UpdateAPIView
+):
 
     serializer_success_msg = "Service has been updated sucessfully"
     lookup_fields = ("created__year", "created__month", "pk")
 
 
-class DeleteService(ServiceQueryMixin, AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
+class DeleteService(
+    ServiceQueryMixin, AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView
+):
     lookup_fields = ("created__year", "created__month", "pk")
     serializer_success_msg = "Service Has been deleted sucessfully"
     serializer_class = None
@@ -256,11 +261,9 @@ class GetBlogPosts(BlogPostQuerysetMixin, ListAPIView):
     http_method_names = ["get"]
 
 
-
 class GetBlogPost(BlogPostQuerysetMixin, AdminRetriveMixin, RetrieveAPIView):
 
     lookup_fields = ("created__year", "created__month", "created__day", "slug")
-
 
 
 class CreateBlogPost(AdminCreateMixin, CreateAPIView):
@@ -268,7 +271,9 @@ class CreateBlogPost(AdminCreateMixin, CreateAPIView):
     serializer_success_msg = "Post has been created sucessfully"
 
 
-class UpdateBlogPost(BlogPostQuerysetMixin, AdminUpdateMixin, AdminRetriveMixin, UpdateAPIView):
+class UpdateBlogPost(
+    BlogPostQuerysetMixin, AdminUpdateMixin, AdminRetriveMixin, UpdateAPIView
+):
     serializer_success_msg = "Blog post has been updated sucessfully"
     lookup_fields = ("created__year", "created__month", "created__day", "slug")
 
@@ -283,10 +288,10 @@ class GetBlogPostComments(BlogPostCommentQuerysetMixin, ListAPIView):
     http_method_names = ["get"]
 
 
-class GetBlogPostComment(BlogPostCommentQuerysetMixin, AdminRetriveMixin, RetrieveAPIView):
+class GetBlogPostComment(
+    BlogPostCommentQuerysetMixin, AdminRetriveMixin, RetrieveAPIView
+):
     lookup_fields = ("created__year", "created__month", "created__day", "pk")
-
-
 
 
 class CreateBlogPostComment(AdminCreateMixin, CreateAPIView):
@@ -294,12 +299,16 @@ class CreateBlogPostComment(AdminCreateMixin, CreateAPIView):
     serializer_success_msg = "Comment has been created sucessfully"
 
 
-class UpdateBlogPostComment(BlogPostCommentQuerysetMixin, AdminUpdateMixin, AdminRetriveMixin, UpdateAPIView):
+class UpdateBlogPostComment(
+    BlogPostCommentQuerysetMixin, AdminUpdateMixin, AdminRetriveMixin, UpdateAPIView
+):
     serializer_success_msg = "Comment has been updated sucessfully"
     lookup_fields = ("created__year", "created__month", "created__day", "pk")
 
 
-class DeleteBlogPostComment(BlogPostCommentQuerysetMixin, AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
+class DeleteBlogPostComment(
+    BlogPostCommentQuerysetMixin, AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView
+):
     lookup_fields = ("created__year", "created__month", "created__day", "pk")
     serializer_success_msg = "Comment has been deleted sucessfully"
     serializer_class = None
@@ -318,12 +327,16 @@ class CreateCoupon(AdminCreateMixin, CreateAPIView):
     serializer_success_msg = "Coupon has been created sucessfully"
 
 
-class UpdateCoupon(CouponQuerysetMixin, AdminUpdateMixin, AdminRetriveMixin, UpdateAPIView):
+class UpdateCoupon(
+    CouponQuerysetMixin, AdminUpdateMixin, AdminRetriveMixin, UpdateAPIView
+):
     lookup_fields = ("code", "pk")
     serializer_success_msg = "Coupon has been updated sucessfully"
 
 
-class DeleteCouponCode(CouponQuerysetMixin, AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
+class DeleteCouponCode(
+    CouponQuerysetMixin, AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView
+):
     serializer_success_msg = "Coupon Code has been deleted Sucessfully"
     lookup_fields = ("code", "pk")
     serializer_class = None
