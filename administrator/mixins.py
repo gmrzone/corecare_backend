@@ -3,8 +3,9 @@ from rest_framework.response import Response
 from rest_framework.status import (HTTP_200_OK, HTTP_201_CREATED,
                                    HTTP_406_NOT_ACCEPTABLE)
 
-from .serializers import UserSerializerAdministrator, EmployeeSerializerAdministrator
+from .serializers import *
 from account.models import CustomUser
+from cart.models import Order
 
 class AdminCreateMixin:
     serializer_class = NotImplemented
@@ -92,3 +93,55 @@ class EmployeeQuerysetMixin:
             "employee_category"
         )
         return queryset
+
+class OrderQuerysetMixin:
+    serializer_class = OrderSerializerAdministrator
+
+    def get_queryset(self):
+        queryset = (
+            Order.objects.all()
+            .select_related("category", "user", "coupon")
+            .prefetch_related("items", "items__service")
+        )
+        return queryset
+
+class SubcategoryQuerysetMixin:
+    serializer_class = ServiceSubcategorySerializerAdmin
+
+    def get_queryset(self):
+        queryset = ServiceSubcategory.objects.all().select_related("service_specialist")
+        return queryset
+
+class ServiceQueryMixin:
+    serializer_class = ServiceSerializerAdministrator
+
+    def get_queryset(self):
+        queryset = Service.objects.all().select_related(
+            "subcategory", "subcategory__service_specialist"
+        )
+        return queryset
+
+class BlogPostQuerysetMixin:
+    serializer_class = BlogPostAdministrator
+
+    def get_queryset(self):
+        queryset = Post.objects.all().select_related("category", "author")
+        return queryset
+
+class BlogPostCommentQuerysetMixin:
+    serializer_class = CommentSerializerAdmin
+
+    def get_queryset(self):
+        queryset = (
+            Comment.objects.all().select_related("user").prefetch_related("replies")
+        )
+        return queryset
+
+class CouponQuerysetMixin:
+    serializer_class = CouponSerializerAdministrator
+
+    def get_queryset(self):
+        queryset = CouponCode.objects.all().prefetch_related("category", "users")
+        return queryset
+
+    
