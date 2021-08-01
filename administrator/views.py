@@ -117,7 +117,8 @@ class GetUser(UserQuerysetMixin, AdminRetriveMixin, RetrieveAPIView):
 class CreateUser(AdminCreateMixin, CreateAPIView):
 
     serializer_class = UserSerializerAdministrator
-    serializer_success_msg = "A new user has been created sucessfully"
+    serializer_success_msg = "A new user with number {0} has been created sucessfully".format
+    success_arg = "number"
 
 
 # View to update a user
@@ -149,7 +150,8 @@ class GetEmployee(EmployeeQuerysetMixin, AdminRetriveMixin, RetrieveAPIView):
 # Create a Employee
 class CreateEmployee(AdminCreateMixin, CreateAPIView):
     serializer_class = EmployeeSerializerAdministrator
-    serializer_success_msg = "A new employee has been created sucessfully"
+    serializer_success_msg = "A new employee with number {0} has been created sucessfully".format
+    success_arg = "number"
 
 
 # Update a Employee
@@ -182,6 +184,7 @@ class GetOrder(OrderQuerysetMixin, AdminRetriveMixin, RetrieveAPIView):
 class CreateOrder(AdminCreateMixin, CreateAPIView):
     serializer_class = OrderSerializerAdministrator
     serializer_success_msg = "Order has been created sucessfully"
+    success_arg = None
 
 
 class UpdateOrder(
@@ -209,8 +212,10 @@ class GetSubcategory(SubcategoryQuerysetMixin, AdminRetriveMixin, RetrieveAPIVie
 
 class CreateSubCategory(AdminCreateMixin, CreateAPIView):
     serializer_class = ServiceSubcategorySerializerAdmin
-    serializer_success_msg = "Subcategory has been created sucessfully"
+    serializer_success_msg = "Subcategory with name {0} has been created sucessfully".format
     permission_classes = [IsSuperUser]
+    success_arg = "name"
+    
 
 
 class UpdateSubcategory(
@@ -238,7 +243,8 @@ class GetService(ServiceQueryMixin, RetrieveAPIView):
 
 class CreateService(AdminCreateMixin, CreateAPIView):
     serializer_class = ServiceSerializerAdministrator
-    serializer_success_msg = "Service has been created sucessfully"
+    serializer_success_msg = "Service with name {0} been created sucessfully".format
+    success_arg = "name"
 
 
 class UpdateService(
@@ -268,7 +274,9 @@ class GetBlogPost(BlogPostQuerysetMixin, AdminRetriveMixin, RetrieveAPIView):
 
 class CreateBlogPost(AdminCreateMixin, CreateAPIView):
     serializer_class = BlogPostAdministrator
-    serializer_success_msg = "Post has been created sucessfully"
+    serializer_success_msg = "Post with title {0} has been created sucessfully".format
+    success_arg = "title"
+
 
 
 class UpdateBlogPost(
@@ -297,6 +305,7 @@ class GetBlogPostComment(
 class CreateBlogPostComment(AdminCreateMixin, CreateAPIView):
     serializer_class = CommentSerializerAdmin
     serializer_success_msg = "Comment has been created sucessfully"
+    success_arg = None
 
 
 class UpdateBlogPostComment(
@@ -324,7 +333,8 @@ class GetCoupon(CouponQuerysetMixin, AdminRetriveMixin, RetrieveAPIView):
 
 class CreateCoupon(AdminCreateMixin, CreateAPIView):
     serializer_class = CouponSerializerAdministrator
-    serializer_success_msg = "Coupon has been created sucessfully"
+    serializer_success_msg = "Coupon code {0} has been created sucessfully".format
+    success_arg = 'code'
 
 
 class UpdateCoupon(
