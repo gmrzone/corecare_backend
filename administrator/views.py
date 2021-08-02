@@ -16,6 +16,7 @@ from account.utils import get_token, timedelta_to_second
 from .mixins import *
 from .permissions import IsSuperUser
 from .serializers import *
+from .pagination import Adminpaginator
 
 # Create your views here.
 
@@ -106,6 +107,8 @@ class GetCurrentUser(APIView):
 # View to get list of users
 class GetUsers(UserQuerysetMixin, ListAPIView):
     http_method_names = ["get"]
+    pagination_class = Adminpaginator
+    pagination_class.page_size = 15
 
 
 # View to get single user
@@ -140,6 +143,8 @@ class DeleteUser(
 class GetEmployees(EmployeeQuerysetMixin, ListAPIView):
 
     http_method_names = ["get"]
+    pagination_class = Adminpaginator
+    pagination_class.page_size = 15
 
 
 # Get a single Employee
@@ -174,6 +179,8 @@ class DeleteEmployee(
 class GetOrders(OrderQuerysetMixin, ListAPIView):
 
     http_method_names = ["get"]
+    pagination_class = Adminpaginator
+    pagination_class.page_size = 15
 
 
 class GetOrder(OrderQuerysetMixin, AdminRetriveMixin, RetrieveAPIView):
@@ -203,6 +210,8 @@ class DeleteOrder(AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
 
 class GetSubCategories(SubcategoryQuerysetMixin, ListAPIView):
     http_method_names = ["get"]
+    pagination_class = Adminpaginator
+    pagination_class.page_size = 10
 
 
 class GetSubcategory(SubcategoryQuerysetMixin, AdminRetriveMixin, RetrieveAPIView):
@@ -234,6 +243,8 @@ class DeleteSubcategory(AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
 class GetServices(ServiceQueryMixin, ListAPIView):
 
     http_method_names = ["get"]
+    pagination_class = Adminpaginator
+    pagination_class.page_size = 15
 
 
 class GetService(ServiceQueryMixin, RetrieveAPIView):
@@ -265,6 +276,8 @@ class DeleteService(
 
 class GetBlogPosts(BlogPostQuerysetMixin, ListAPIView):
     http_method_names = ["get"]
+    pagination_class = Adminpaginator
+    pagination_class.page_size = 15
 
 
 class GetBlogPost(BlogPostQuerysetMixin, AdminRetriveMixin, RetrieveAPIView):
@@ -294,7 +307,8 @@ class DeleteBlogPost(AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
 
 class GetBlogPostComments(BlogPostCommentQuerysetMixin, ListAPIView):
     http_method_names = ["get"]
-
+    pagination_class = Adminpaginator
+    pagination_class.page_size = 15
 
 class GetBlogPostComment(
     BlogPostCommentQuerysetMixin, AdminRetriveMixin, RetrieveAPIView
@@ -325,6 +339,8 @@ class DeleteBlogPostComment(
 
 class GetCoupons(CouponQuerysetMixin, ListAPIView):
     http_method_names = ["get"]
+    pagination_class = Adminpaginator
+    pagination_class.page_size = 10
 
 
 class GetCoupon(CouponQuerysetMixin, AdminRetriveMixin, RetrieveAPIView):

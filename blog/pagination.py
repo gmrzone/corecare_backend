@@ -12,7 +12,7 @@ class PostListPagination(PageNumberPagination):
     def get_paginated_response(self, data):
         page_size = self.get_page_size(self.request)
         post_count = self.page.paginator.count
-        page_count = int(post_count) // int(page_size) + 1
+        page_count = (int(post_count) // int(page_size)).__ceil__()
         return Response(
             {
                 "links": {

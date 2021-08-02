@@ -12,7 +12,9 @@ class Adminpaginator(PageNumberPagination):
     def get_paginated_response(self, data):
         page_size = self.get_page_size(self.request)
         count = self.page.paginator.count
-        page_count = int(count) // int(page_size) + 1
+        # page_count = int(count) // int(page_size) + 1
+        page_count = (int(count) / int(page_size)).__ceil__()
+        
         return Response({
             "links": {
                 'next': self.get_next_link(),
