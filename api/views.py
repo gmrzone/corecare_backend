@@ -1,9 +1,11 @@
 from django.core.cache import cache
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.generics import CreateAPIView, ListAPIView, UpdateAPIView, get_object_or_404
+from rest_framework.generics import (CreateAPIView, ListAPIView, UpdateAPIView,
+                                     get_object_or_404)
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.status import HTTP_200_OK, HTTP_201_CREATED, HTTP_406_NOT_ACCEPTABLE
+from rest_framework.status import (HTTP_200_OK, HTTP_201_CREATED,
+                                   HTTP_406_NOT_ACCEPTABLE)
 
 from account.models import CustomUser
 from account.serializers import UserSerializer
@@ -90,11 +92,9 @@ class GetSubcategoryView(ListAPIView):
         return query
 
 
-
 class GetEmployeesList(ListAPIView):
     serializer_class = UserSerializer
     http_method_names = ["get"]
-    
 
     def dispatch(self, request, slug, *args, **kwargs):
         self.slug = slug
@@ -266,50 +266,63 @@ def createReview(request, slug):
 
 
 class CreateReview(CreateAPIView):
-    http_method_names = ['post']
+    http_method_names = ["post"]
     serializer_class = CategoryReviewSerializer
 
     def create(self, request, *args, **kwargs):
-        
+
         serializer = self.serializer_class(data=request.data)
         user = request.user
-        category_slug = kwargs['slug']
+        category_slug = kwargs["slug"]
         category = get_object_or_404(EmployeeCategory, slug=category_slug)
         if serializer.is_valid():
             serializer.save(user=user, category=category)
-            data = {"status": 'ok', "message": "Review added sucessfuly", "data": serializer.data}
+            data = {
+                "status": "ok",
+                "message": "Review added sucessfuly",
+                "data": serializer.data,
+            }
             status = HTTP_201_CREATED
         else:
-            data = {"status": 'error', "message": serializer.errors}
+            data = {"status": "error", "message": serializer.errors}
             status = HTTP_406_NOT_ACCEPTABLE
         return Response(data=data, status=status)
 
+
 class UpdateReview(UpdateAPIView):
     serializer_class = CategoryReviewSerializer
-    http_method_names = ['patch']
-    lookup_fields = ('category__slug', 'id')
+    http_method_names = ["patch"]
+    lookup_fields = ("category__slug", "id")
+
     def get_queryset(self):
         queryset = CategoryReview.objects.all()
         return queryset
 
-
     def update(self, request, *args, **kwargs):
         instance = self.get_object()
-        partial = kwargs.pop('partial', False)
-        serializer = self.serializer_class(instance=instance, data=request.data, partial=partial)
+        partial = kwargs.pop("partial", False)
+        serializer = self.serializer_class(
+            instance=instance, data=request.data, partial=partial
+        )
         if serializer.is_valid():
             self.perform_update(serializer)
-            data = {"status": 'ok', "message": "Review updated sucessfuly",}
+            data = {
+                "status": "ok",
+                "message": "Review updated sucessfuly",
+            }
             status = HTTP_200_OK
         else:
-            data = {"status": 'error', "message": serializer.errors}
+            data = {"status": "error", "message": serializer.errors}
             status = HTTP_406_NOT_ACCEPTABLE
         return Response(data=data, status=status)
 
-
     def get_object(self):
         queryset = self.filter_queryset(self.get_queryset())
-        filter = {field: self.kwargs[field] for field in self.lookup_fields if self.kwargs[field]}
+        filter = {
+            field: self.kwargs[field]
+            for field in self.lookup_fields
+            if self.kwargs[field]
+        }
         obj = get_object_or_404(queryset, **filter)
         self.check_object_permissions(self.request, obj)
         return obj
@@ -318,7 +331,7 @@ class UpdateReview(UpdateAPIView):
 # class UpdateReview(UpdateAPIView):
 #     serializer_class = CategoryReviewSerializer
 #     http_method_names = ['patch']
-#     lookup_field = 
+#     lookup_field =
 
 # Class Slow View
 

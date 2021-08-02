@@ -1,8 +1,8 @@
 import base64
 
-
 import pyotp
-from rest_framework.serializers import ModelSerializer, SerializerMethodField, ImageField
+from rest_framework.serializers import (ImageField, ModelSerializer,
+                                        SerializerMethodField)
 
 from .models import CustomUser
 # Project Modules
@@ -12,6 +12,7 @@ from .utils import generate_key_for_otp
 class UserSerializer(ModelSerializer):
     # photo = SerializerMethodField("get_user_pic")
     photo = ImageField(required=False)
+
     class Meta:
         model = CustomUser
         fields = [

@@ -20,7 +20,11 @@ class AdminCreateMixin:
         success_param = request.data.get(self.success_arg, None)
         if serializer.is_valid():
             self.perform_create(serializer)
-            success_message = self.serializer_success_msg(success_param) if  success_param else self.serializer_success_msg
+            success_message = (
+                self.serializer_success_msg(success_param)
+                if success_param
+                else self.serializer_success_msg
+            )
             data = {"status": "ok", "message": success_message}
             status = HTTP_201_CREATED
         else:

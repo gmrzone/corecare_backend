@@ -4,19 +4,16 @@ from rest_framework.generics import (CreateAPIView, DestroyAPIView,
                                      ListAPIView, RetrieveAPIView,
                                      UpdateAPIView)
 from rest_framework.response import Response
-from rest_framework.status import (HTTP_200_OK,
-                                   HTTP_400_BAD_REQUEST, HTTP_404_NOT_FOUND,
-                                   HTTP_406_NOT_ACCEPTABLE)
+from rest_framework.status import (HTTP_200_OK, HTTP_400_BAD_REQUEST,
+                                   HTTP_404_NOT_FOUND, HTTP_406_NOT_ACCEPTABLE)
 from rest_framework.views import APIView
-
 
 from account.utils import get_token, timedelta_to_second
 
-
 from .mixins import *
+from .pagination import Adminpaginator
 from .permissions import IsSuperUser
 from .serializers import *
-from .pagination import Adminpaginator
 
 # Create your views here.
 
@@ -120,7 +117,9 @@ class GetUser(UserQuerysetMixin, AdminRetriveMixin, RetrieveAPIView):
 class CreateUser(AdminCreateMixin, CreateAPIView):
 
     serializer_class = UserSerializerAdministrator
-    serializer_success_msg = "A new user with number {0} has been created sucessfully".format
+    serializer_success_msg = (
+        "A new user with number {0} has been created sucessfully".format
+    )
     success_arg = "number"
 
 
@@ -155,7 +154,9 @@ class GetEmployee(EmployeeQuerysetMixin, AdminRetriveMixin, RetrieveAPIView):
 # Create a Employee
 class CreateEmployee(AdminCreateMixin, CreateAPIView):
     serializer_class = EmployeeSerializerAdministrator
-    serializer_success_msg = "A new employee with number {0} has been created sucessfully".format
+    serializer_success_msg = (
+        "A new employee with number {0} has been created sucessfully".format
+    )
     success_arg = "number"
 
 
@@ -221,10 +222,11 @@ class GetSubcategory(SubcategoryQuerysetMixin, AdminRetriveMixin, RetrieveAPIVie
 
 class CreateSubCategory(AdminCreateMixin, CreateAPIView):
     serializer_class = ServiceSubcategorySerializerAdmin
-    serializer_success_msg = "Subcategory with name {0} has been created sucessfully".format
+    serializer_success_msg = (
+        "Subcategory with name {0} has been created sucessfully".format
+    )
     permission_classes = [IsSuperUser]
     success_arg = "name"
-    
 
 
 class UpdateSubcategory(
@@ -291,7 +293,6 @@ class CreateBlogPost(AdminCreateMixin, CreateAPIView):
     success_arg = "title"
 
 
-
 class UpdateBlogPost(
     BlogPostQuerysetMixin, AdminUpdateMixin, AdminRetriveMixin, UpdateAPIView
 ):
@@ -309,6 +310,7 @@ class GetBlogPostComments(BlogPostCommentQuerysetMixin, ListAPIView):
     http_method_names = ["get"]
     pagination_class = Adminpaginator
     pagination_class.page_size = 15
+
 
 class GetBlogPostComment(
     BlogPostCommentQuerysetMixin, AdminRetriveMixin, RetrieveAPIView
@@ -350,7 +352,7 @@ class GetCoupon(CouponQuerysetMixin, AdminRetriveMixin, RetrieveAPIView):
 class CreateCoupon(AdminCreateMixin, CreateAPIView):
     serializer_class = CouponSerializerAdministrator
     serializer_success_msg = "Coupon code {0} has been created sucessfully".format
-    success_arg = 'code'
+    success_arg = "code"
 
 
 class UpdateCoupon(
