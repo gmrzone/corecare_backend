@@ -72,4 +72,5 @@ urlpatterns = [
     ),
     path("subcategory/v2/", views.GetSubcategoryView.as_view(), name="subcategory_new"),
     path("services/v2/", views.GetServiceList.as_view(), name="services_list_new"),
+    path('create-review/v2/<slug:slug>/', views.CreateReview.as_view(), name="create_review_v2"),
 ]

@@ -92,6 +92,7 @@ class CategoryReviewSerializer(ModelSerializer):
     class Meta:
         model = CategoryReview
         fields = ["id", "user", "star", "replies", "review", "parent", "created"]
+        read_only_fields = ('replies',)
 
 
 class AllSubcategoryServiceSerializer(ModelSerializer):

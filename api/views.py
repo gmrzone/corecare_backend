@@ -3,6 +3,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.generics import CreateAPIView, ListAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.status import HTTP_201_CREATED, HTTP_406_NOT_ACCEPTABLE
 
 from account.models import CustomUser
 from account.serializers import UserSerializer
@@ -89,9 +90,11 @@ class GetSubcategoryView(ListAPIView):
         return query
 
 
+
 class GetEmployeesList(ListAPIView):
     serializer_class = UserSerializer
     http_method_names = ["get"]
+    
 
     def dispatch(self, request, slug, *args, **kwargs):
         self.slug = slug
@@ -260,6 +263,23 @@ def createReview(request, slug):
     review.save()
     ser = CategoryReviewSerializer(review)
     return Response(ser.data)
+
+
+class CreateReview(CreateAPIView):
+    http_method_names = ['post']
+    serializer_class = CategoryReviewSerializer
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data)
+        user = request.user
+        if serializer.is_valid():
+            serializer.save(user=user)
+            data = {"status": 'ok', "message": "Review added sucessfuly", "data": serializer.data}
+            status = HTTP_201_CREATED
+        else:
+            data = {"status": 'error', "message": "Server cannot parse your review"}
+            status = HTTP_406_NOT_ACCEPTABLE
+        return Response(data=data, status=status)
 
 
 # Class Slow View
