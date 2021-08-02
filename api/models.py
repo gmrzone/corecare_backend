@@ -98,8 +98,6 @@ class CategoryReview(models.Model):
     category = models.ForeignKey(
         EmployeeCategory,
         on_delete=models.CASCADE,
-        null=True,
-        blank=True,
         related_name="category_reviews",
     )
     star = models.IntegerField(
