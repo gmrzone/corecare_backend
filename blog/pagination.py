@@ -1,5 +1,3 @@
-from django.conf import settings
-from redis import Redis, StrictRedis
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 
