@@ -106,11 +106,13 @@ class GetUsers(UserQuerysetMixin, ListAPIView):
     http_method_names = ["get"]
     pagination_class = Adminpaginator
     pagination_class.page_size = 15
+    permission_classes = [IsSuperUser]
 
 
 # View to get single user
 class GetUser(UserQuerysetMixin, AdminRetriveMixin, RetrieveAPIView):
     lookup_fields = ("pk", "number")
+    permission_classes = [IsSuperUser]
 
 
 # View to create a user
@@ -121,12 +123,14 @@ class CreateUser(AdminCreateMixin, CreateAPIView):
         "A new user with number {0} has been created sucessfully".format
     )
     success_arg = "number"
+    permission_classes = [IsSuperUser]
 
 
 # View to update a user
 class UpdateUser(UserQuerysetMixin, AdminUpdateMixin, AdminRetriveMixin, UpdateAPIView):
     lookup_fields = ("pk", "number")
     serializer_success_msg = "Update sucessfully"
+    permission_classes = [IsSuperUser]
 
 
 # View to delete a user
@@ -136,6 +140,7 @@ class DeleteUser(
     lookup_fields = ("pk", "number")
     serializer_class = None
     serializer_success_msg = "User has been deleted sucessfully"
+    permission_classes = [IsSuperUser]
 
 
 #  Get List of Employees
@@ -144,11 +149,13 @@ class GetEmployees(EmployeeQuerysetMixin, ListAPIView):
     http_method_names = ["get"]
     pagination_class = Adminpaginator
     pagination_class.page_size = 15
+    permission_classes = [IsSuperUser]
 
 
 # Get a single Employee
 class GetEmployee(EmployeeQuerysetMixin, AdminRetriveMixin, RetrieveAPIView):
     lookup_fields = ("pk", "number")
+    permission_classes = [IsSuperUser]
 
 
 # Create a Employee
@@ -158,6 +165,7 @@ class CreateEmployee(AdminCreateMixin, CreateAPIView):
         "A new employee with number {0} has been created sucessfully".format
     )
     success_arg = "number"
+    permission_classes = [IsSuperUser]
 
 
 # Update a Employee
@@ -166,6 +174,7 @@ class UpdateEmployee(
 ):
     lookup_fields = ("pk", "number")
     serializer_success_msg = "Employee Update sucessfully"
+    permission_classes = [IsSuperUser]
 
 
 # Delete a Employee
@@ -175,6 +184,7 @@ class DeleteEmployee(
     lookup_fields = ("pk", "number")
     serializer_class = None
     serializer_success_msg = "Employee has been deleted sucessfully"
+    permission_classes = [IsSuperUser]
 
 
 class GetOrders(OrderQuerysetMixin, ListAPIView):
@@ -182,17 +192,20 @@ class GetOrders(OrderQuerysetMixin, ListAPIView):
     http_method_names = ["get"]
     pagination_class = Adminpaginator
     pagination_class.page_size = 15
+    permission_classes = [IsSuperUser]
 
 
 class GetOrder(OrderQuerysetMixin, AdminRetriveMixin, RetrieveAPIView):
 
     lookup_fields = ("receipt", "pk")
+    permission_classes = [IsSuperUser]
 
 
 class CreateOrder(AdminCreateMixin, CreateAPIView):
     serializer_class = OrderSerializerAdministrator
     serializer_success_msg = "Order has been created sucessfully"
     success_arg = None
+    permission_classes = [IsSuperUser]
 
 
 class UpdateOrder(
@@ -201,23 +214,27 @@ class UpdateOrder(
 
     lookup_fields = ("receipt", "pk")
     serializer_success_msg = "Order Updated sucessfully"
+    permission_classes = [IsSuperUser]
 
 
 class DeleteOrder(AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
     lookup_fields = ("receipt", "pk")
     serializer_class = None
     serializer_success_msg = "Order has been deleted sucessfully"
+    permission_classes = [IsSuperUser]
 
 
 class GetSubCategories(SubcategoryQuerysetMixin, ListAPIView):
     http_method_names = ["get"]
     pagination_class = Adminpaginator
     pagination_class.page_size = 10
+    permission_classes = [IsSuperUser]
 
 
 class GetSubcategory(SubcategoryQuerysetMixin, AdminRetriveMixin, RetrieveAPIView):
 
     lookup_fields = ("slug", "pk")
+    permission_classes = [IsSuperUser]
 
 
 class CreateSubCategory(AdminCreateMixin, CreateAPIView):
@@ -227,6 +244,7 @@ class CreateSubCategory(AdminCreateMixin, CreateAPIView):
     )
     permission_classes = [IsSuperUser]
     success_arg = "name"
+    permission_classes = [IsSuperUser]
 
 
 class UpdateSubcategory(
@@ -234,12 +252,14 @@ class UpdateSubcategory(
 ):
     lookup_fields = ("slug", "pk")
     serializer_success_msg = "Subcategory has been updated sucessfully"
+    permission_classes = [IsSuperUser]
 
 
 class DeleteSubcategory(AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
     lookup_fields = ("slug", "pk")
     serializer_success_msg = "Subcategory has been deleted sucessfully"
     serializer_class = None
+    permission_classes = [IsSuperUser]
 
 
 class GetServices(ServiceQueryMixin, ListAPIView):
@@ -247,17 +267,20 @@ class GetServices(ServiceQueryMixin, ListAPIView):
     http_method_names = ["get"]
     pagination_class = Adminpaginator
     pagination_class.page_size = 15
+    permission_classes = [IsSuperUser]
 
 
 class GetService(ServiceQueryMixin, RetrieveAPIView):
 
     lookup_fields = ("created__year", "created__month", "pk")
+    permission_classes = [IsSuperUser]
 
 
 class CreateService(AdminCreateMixin, CreateAPIView):
     serializer_class = ServiceSerializerAdministrator
     serializer_success_msg = "Service with name {0} been created sucessfully".format
     success_arg = "name"
+    permission_classes = [IsSuperUser]
 
 
 class UpdateService(
@@ -266,6 +289,7 @@ class UpdateService(
 
     serializer_success_msg = "Service has been updated sucessfully"
     lookup_fields = ("created__year", "created__month", "pk")
+    permission_classes = [IsSuperUser]
 
 
 class DeleteService(
@@ -274,23 +298,27 @@ class DeleteService(
     lookup_fields = ("created__year", "created__month", "pk")
     serializer_success_msg = "Service Has been deleted sucessfully"
     serializer_class = None
+    permission_classes = [IsSuperUser]
 
 
 class GetBlogPosts(BlogPostQuerysetMixin, ListAPIView):
     http_method_names = ["get"]
     pagination_class = Adminpaginator
     pagination_class.page_size = 15
+    permission_classes = [IsSuperUser]
 
 
 class GetBlogPost(BlogPostQuerysetMixin, AdminRetriveMixin, RetrieveAPIView):
 
     lookup_fields = ("created__year", "created__month", "created__day", "slug")
+    permission_classes = [IsSuperUser]
 
 
 class CreateBlogPost(AdminCreateMixin, CreateAPIView):
     serializer_class = BlogPostAdministrator
     serializer_success_msg = "Post with title {0} has been created sucessfully".format
     success_arg = "title"
+    permission_classes = [IsSuperUser]
 
 
 class UpdateBlogPost(
@@ -298,30 +326,35 @@ class UpdateBlogPost(
 ):
     serializer_success_msg = "Blog post has been updated sucessfully"
     lookup_fields = ("created__year", "created__month", "created__day", "slug")
+    permission_classes = [IsSuperUser]
 
 
 class DeleteBlogPost(AdminDestroyMixin, AdminRetriveMixin, DestroyAPIView):
     lookup_fields = ("created__year", "created__month", "created__day", "slug")
     serializer_success_msg = "Post has been Deleted sucessfully"
     serializer_class = None
+    permission_classes = [IsSuperUser]
 
 
 class GetBlogPostComments(BlogPostCommentQuerysetMixin, ListAPIView):
     http_method_names = ["get"]
     pagination_class = Adminpaginator
     pagination_class.page_size = 15
+    permission_classes = [IsSuperUser]
 
 
 class GetBlogPostComment(
     BlogPostCommentQuerysetMixin, AdminRetriveMixin, RetrieveAPIView
 ):
     lookup_fields = ("created__year", "created__month", "created__day", "pk")
+    permission_classes = [IsSuperUser]
 
 
 class CreateBlogPostComment(AdminCreateMixin, CreateAPIView):
     serializer_class = CommentSerializerAdmin
     serializer_success_msg = "Comment has been created sucessfully"
     success_arg = None
+    permission_classes = [IsSuperUser]
 
 
 class UpdateBlogPostComment(
@@ -329,6 +362,7 @@ class UpdateBlogPostComment(
 ):
     serializer_success_msg = "Comment has been updated sucessfully"
     lookup_fields = ("created__year", "created__month", "created__day", "pk")
+    permission_classes = [IsSuperUser]
 
 
 class DeleteBlogPostComment(
@@ -337,22 +371,26 @@ class DeleteBlogPostComment(
     lookup_fields = ("created__year", "created__month", "created__day", "pk")
     serializer_success_msg = "Comment has been deleted sucessfully"
     serializer_class = None
+    permission_classes = [IsSuperUser]
 
 
 class GetCoupons(CouponQuerysetMixin, ListAPIView):
     http_method_names = ["get"]
     pagination_class = Adminpaginator
     pagination_class.page_size = 10
+    permission_classes = [IsSuperUser]
 
 
 class GetCoupon(CouponQuerysetMixin, AdminRetriveMixin, RetrieveAPIView):
     lookup_fields = ("code", "pk")
+    permission_classes = [IsSuperUser]
 
 
 class CreateCoupon(AdminCreateMixin, CreateAPIView):
     serializer_class = CouponSerializerAdministrator
     serializer_success_msg = "Coupon code {0} has been created sucessfully".format
     success_arg = "code"
+    permission_classes = [IsSuperUser]
 
 
 class UpdateCoupon(
@@ -360,6 +398,7 @@ class UpdateCoupon(
 ):
     lookup_fields = ("code", "pk")
     serializer_success_msg = "Coupon has been updated sucessfully"
+    permission_classes = [IsSuperUser]
 
 
 class DeleteCouponCode(
@@ -368,3 +407,4 @@ class DeleteCouponCode(
     serializer_success_msg = "Coupon Code has been deleted Sucessfully"
     lookup_fields = ("code", "pk")
     serializer_class = None
+    permission_classes = [IsSuperUser]

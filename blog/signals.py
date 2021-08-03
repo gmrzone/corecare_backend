@@ -89,12 +89,12 @@ def get_post_placeholder(instance, sender, **kwargs):
         update_post_placeholder_helper(instance, sender, 10, 240, 15)
 
 
-# # This signal will delete both image and placeholder on Pots Delete
-# @receiver(pre_delete, sender=Post, dispatch_uid="post.delete_placeholder")
-# def delete_post_images(instance, sender, **kwargs):
-#     object = sender.objects.get(pk=instance.id)
-#     if (not object.photo or object.photo is not None) and (
-#         object.placeholder or object.placeholder is not None
-#     ):
-#         object.photo.delete(False)
-#         object.placeholder.delete(False)
+# This signal will delete both image and placeholder on Posts Delete
+@receiver(pre_delete, sender=Post, dispatch_uid="post.delete_placeholder")
+def delete_post_images(instance, sender, **kwargs):
+    object = sender.objects.get(pk=instance.id)
+    if (not object.photo or object.photo is not None) and (
+        object.placeholder or object.placeholder is not None
+    ):
+        object.photo.delete(False)
+        object.placeholder.delete(False)
