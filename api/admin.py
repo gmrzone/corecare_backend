@@ -21,6 +21,7 @@ class CouponCodeAdmin(admin.ModelAdmin):
 class ServiceSubcategoryAdmin(admin.ModelAdmin):
     list_display = ("name", "service_specialist")
     list_filter = ("service_specialist",)
+    list_select_related = ("service_specialist",)
 
 
 @admin.register(Service)
@@ -29,6 +30,7 @@ class ServiceAdmin(admin.ModelAdmin):
     list_filter = ("active",)
     list_editable = ("price", "active")
     search_fields = ("name",)
+    list_select_related = ("subcategory",)
 
 
 @admin.register(CategoryReview)

@@ -30,4 +30,3 @@ class OrderAdmin(admin.ModelAdmin):
     search_fields = ("status", "user")
     inlines = [OrderItemMInline]
     list_select_related = ("user", "coupon")
-

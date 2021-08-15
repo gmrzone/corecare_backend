@@ -53,7 +53,6 @@ def signal_delete_placeholder_helper(instance, sender):
         obj.placeholder.delete(False)
 
 
-
 @receiver(
     pre_save, sender=ServiceSubcategory, dispatch_uid="subcategory.save_placeholder"
 )
