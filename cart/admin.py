@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.db.models.query_utils import select_related_descend
 
 from .models import Order, OrderItem
 
@@ -28,3 +29,5 @@ class OrderAdmin(admin.ModelAdmin):
     list_filter = ("paid", "status")
     search_fields = ("status", "user")
     inlines = [OrderItemMInline]
+    list_select_related = ("user", "coupon")
+
