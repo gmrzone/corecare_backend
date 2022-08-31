@@ -15,6 +15,8 @@ WORKDIR /corecare_backend
 COPY ./requirements/base.txt .
 COPY ./requirements/testing.txt .
 RUN pip install -r testing.txt
+COPY . .
+EXPOSE 8000
 
 
 

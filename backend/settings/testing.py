@@ -26,11 +26,11 @@ SIMPLE_JWT = {
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": get_var("PG_DEV_DB_NAME"),
-        "USER": get_var("PG_DEV_DB_USER"),
-        "PASSWORD": get_var("PG_DEV_DB_PASSWORD"),
-        "HOST": get_var("PG_DEV_DB_HOST"),
-        "PORT": "5432",
+        "NAME": get_var("POSTGRES_DB"),
+        "USER": get_var("POSTGRES_USER"),
+        "PASSWORD": get_var("POSTGRES_PASSWORD"),
+        "HOST": get_var("POSTGRES_DB_HOST"),
+        "PORT": get_var("PGPORT"),
     }
 }
 

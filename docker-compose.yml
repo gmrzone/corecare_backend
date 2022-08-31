@@ -6,10 +6,11 @@ services:
 
     db:
         volumes: 
-            - ./data/db:/var/lib/postgresql/data
+            - pgdata:/var/lib/postgresql/data
         image: postgres
         container_name: corecare_postgres
-
+        ports:
+        - 5432:5432
 
     corecare_backend:
         build: 
@@ -27,3 +28,5 @@ services:
             - db    
             - redis
             - corecare_backend
+volumes:
+  pgdata:
