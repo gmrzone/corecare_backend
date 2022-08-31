@@ -27,11 +27,14 @@ def generate_key_for_otp(number):
     return str(number) + str(datetime.date(datetime.now())) + "corecareservices"
 
 
-# Http Onlu Cookie
+# Http Only Cookie
 
+# TODO WORKAROUND NEED TO FIX THIS PERMANENTLY
+def dummy_get_response(request):  # pragma: no cover
+    return None
 
 def enforce_csrf(request):
-    csrf_check = CSRFCheck()
+    csrf_check = CSRFCheck(dummy_get_response)
     csrf_check.process_request(request)
     # populates request.META['CSRF_COOKIE'], which is used in process_view()
     reason = csrf_check.process_view(request, None, (), {})

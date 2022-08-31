@@ -157,7 +157,6 @@ CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_REPLACE_HTTPS_REFERER = True
 
-
 # REST_FRAMEWORK = {
 #     'DEFAULT_AUTHENTICATION_CLASSES': (
 #         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -188,7 +187,7 @@ SESSION_COOKIE_SAMESITE = "Lax"
 SESSION_COOKIE_HTTPONLY = True
 CSRF_COOKIE_SAMESITE = "Lax"
 CSRF_COOKIE_HTTPONLY = True
-CSRF_TRUSTED_ORIGINS = ["htps://dev.corecare.in", "https://corecare.in", "https://development.corecare.in"]
+CSRF_TRUSTED_ORIGINS = ["htps://dev.corecare.in", "https://corecare.in", "https://development.corecare.in", "http://127.0.0.1:3000"]
 # SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
 
