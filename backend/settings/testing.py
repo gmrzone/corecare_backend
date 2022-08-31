@@ -51,3 +51,11 @@ REDIS_DB = int(get_var("REDIS_DB"))
 CELERY_BROKER_URL = get_var("REDIS_LOCATION_AUTH")
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_USE_TLS = True
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = get_var("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = get_var("EMAIL_HOST_PASSWORD")
+EMAIL_PORT = 587
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
